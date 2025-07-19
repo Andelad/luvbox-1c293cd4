@@ -120,48 +120,20 @@ export default function App() {
   }, [currentPage, navigateToPage, handleCTAClick]);
 
   return (
-    <>
-      <Background />
-      {isInApp ? (
-        <>
-          <AppLayout 
-            onNavigate={navigateToPage} 
-            onGlobeClick={handleGlobeClick}
-            currentPage={currentPage}
-            sidebarExpanded={sidebarExpanded}
-            onToggleSidebar={toggleSidebar}
-          >
-            <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('the-box')}>
-              <Suspense fallback={<PageLoader />}>
-                {renderPage()}
-              </Suspense>
-            </ErrorBoundary>
-          </AppLayout>
-          <ExitAppDialog 
-            isOpen={showExitDialog}
-            onExit={handleExitApp}
-            onStay={handleStayInApp}
-          />
-        </>
-      ) : (
-        <WebsiteLayout onNavigate={navigateToPage} currentPage={currentPage}>
-          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('home')}>
-            <Suspense fallback={<PageLoader />}>
-              {renderPage()}
-            </Suspense>
-          </ErrorBoundary>
-        </WebsiteLayout>
-      )}
+    <div style={{ background: 'white', minHeight: '100vh', padding: '20px' }}>
+      <h1 style={{ color: 'black', fontSize: '24px' }}>TESTING - App is rendering</h1>
+      <p style={{ color: 'black' }}>Current page: {currentPage}</p>
+      <p style={{ color: 'black' }}>Is in app: {isInApp.toString()}</p>
       
-      {/* Performance monitoring tools - only in development */}
-      {process.env.NODE_ENV === 'development' && (
-        <ErrorBoundary FallbackComponent={() => null} onReset={() => {}}>
-          <Suspense fallback={null}>
-            <PerformanceMonitor />
-            <BundleAnalyzer />
-          </Suspense>
-        </ErrorBoundary>
-      )}
-    </>
+      <div style={{ background: 'lightblue', padding: '20px', margin: '20px 0' }}>
+        <h2 style={{ color: 'black' }}>Testing direct content render</h2>
+        <button 
+          onClick={handleCTAClick}
+          style={{ background: 'blue', color: 'white', padding: '10px', border: 'none' }}
+        >
+          Test CTA Click
+        </button>
+      </div>
+    </div>
   );
 }
