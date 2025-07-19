@@ -1,6 +1,6 @@
 import React from 'react';
-import PageHeader from '../PageHeader';
-import OptimizedCube from '../OptimizedCube';
+import PageHeader from '../components/sections/PageHeader';
+import OptimizedCube from '../components/sections/OptimizedCube';
 
 const TheBoxPage: React.FC = () => {
   return (

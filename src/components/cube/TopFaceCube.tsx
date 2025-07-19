@@ -1,4 +1,4 @@
-import TopFace from '../../imports/TopFace-16-245';
+import TopFace from '../../imports/TopFace-16-245.tsx';
 
 const TopFaceCube: React.FC = () => {
   return (

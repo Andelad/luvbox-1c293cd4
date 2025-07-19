@@ -1,5 +1,5 @@
 import React from 'react';
-import svgPaths from "../imports/svg-15aegztapr";
+import svgPaths from "../../imports/svg-15aegztapr";
 
 interface WebsiteHeaderProps {
   onNavigate: (page: string) => void;

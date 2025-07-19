@@ -1,3 +1,6 @@
+/* Import custom styles including ticker animations */
+@import './styles/globals.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

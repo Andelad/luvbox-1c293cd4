@@ -1,4 +1,4 @@
-import RightFaceImport from '../../imports/RightFace-16-251';
+import RightFaceImport from '../../imports/RightFace-16-251.tsx';
 
 const RightFace: React.FC = () => {
   return (

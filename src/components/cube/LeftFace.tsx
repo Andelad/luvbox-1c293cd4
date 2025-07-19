@@ -1,4 +1,4 @@
-import FrontFace from '../../imports/FrontFace-16-236';
+import FrontFace from '../../imports/FrontFace-16-236.tsx';
 
 const LeftFace: React.FC = () => {
   return (

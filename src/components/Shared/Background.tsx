@@ -1,4 +1,4 @@
-import AppCube from '../imports/AppCube-2-477';
+import AppCube from '../../imports/AppCube-2-477';
 
 export default function Background() {
   return (

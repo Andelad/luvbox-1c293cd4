@@ -1,4 +1,4 @@
-import svgPaths from "../../imports/svg-15aegztapr";
+import svgPaths from "../imports/svg-15aegztapr";
 
 function Layer1() {
   return (
