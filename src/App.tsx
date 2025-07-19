@@ -1,23 +1,26 @@
-import { useState, lazy, Suspense } from 'react';
-import Background from './components/Background';
-import WebsiteLayout from './components/WebsiteLayout';
-import AppLayout from './components/AppLayout';
-import ExitAppDialog from './components/ExitAppDialog';
+import { useState, lazy, Suspense, useCallback } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import Background from './components/Shared/Background';
+import WebsiteLayout from './components/Layout/WebsiteLayout';
+import AppLayout from './components/Layout/AppLayout';
+import ExitAppDialog from './components/Shared/ExitAppDialog';
+import { PageType } from './types/app';
+
 // Performance monitoring tools (only in development)
-const PerformanceMonitor = lazy(() => import('./components/PerformanceMonitor'));
-const BundleAnalyzer = lazy(() => import('./components/BundleAnalyzer'));
+const PerformanceMonitor = lazy(() => import('./components/sections/PerformanceMonitor'));
+const BundleAnalyzer = lazy(() => import('./components/sections/BundleAnalyzer'));
 
 // Lazy load page components to reduce initial bundle size
-const HomePage = lazy(() => import('./components/HomePage'));
-const AboutPage = lazy(() => import('./components/pages/AboutPage'));
-const ContactPage = lazy(() => import('./components/pages/ContactPage'));
-const TheBoxPage = lazy(() => import('./components/pages/TheBoxPage'));
-const TheMapPage = lazy(() => import('./components/pages/TheMapPage'));
-const MySnapshotsPage = lazy(() => import('./components/pages/MySnapshotsPage'));
-const CommunityPage = lazy(() => import('./components/pages/CommunityPage'));
-const TutorialPage = lazy(() => import('./components/pages/TutorialPage'));
-const SettingsPage = lazy(() => import('./components/pages/SettingsPage'));
-const FeedbackPage = lazy(() => import('./components/pages/FeedbackPage'));
+const HomePage = lazy(() => import('./pages/Index'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const TheBoxPage = lazy(() => import('./pages/TheBoxPage'));
+const TheMapPage = lazy(() => import('./pages/TheMapPage'));
+const MySnapshotsPage = lazy(() => import('./pages/MySnapshotsPage'));
+const CommunityPage = lazy(() => import('./pages/CommunityPage'));
+const TutorialPage = lazy(() => import('./pages/TutorialPage'));
+const SettingsPage = lazy(() => import('./pages/SettingsPage'));
+const FeedbackPage = lazy(() => import('./pages/FeedbackPage'));
 
 // Loading component for better UX during code splitting
 const PageLoader = () => (
@@ -29,8 +32,24 @@ const PageLoader = () => (
   </div>
 );
 
+// Error fallback component
+const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) => (
+  <div className="content-area">
+    <div className="text-center">
+      <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
+      <p className="text-body opacity-60 mb-4">{error.message}</p>
+      <button 
+        onClick={resetErrorBoundary}
+        className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
+      >
+        Try again
+      </button>
+    </div>
+  </div>
+);
+
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [isInApp, setIsInApp] = useState(false);
   const [showExitDialog, setShowExitDialog] = useState(false);
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
@@ -54,7 +73,7 @@ export default function App() {
     setShowExitDialog(false);
   };
 
-  const navigateToPage = (page: string) => {
+  const navigateToPage = (page: PageType) => {
     setCurrentPage(page);
   };
 
@@ -62,7 +81,7 @@ export default function App() {
     setSidebarExpanded(!sidebarExpanded);
   };
 
-  const renderPage = () => {
+  const renderPage = useCallback(() => {
     switch (currentPage) {
       case 'home':
         return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} />;
@@ -87,7 +106,7 @@ export default function App() {
       default:
         return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} />;
     }
-  };
+  }, [currentPage, navigateToPage, handleCTAClick]);
 
   return (
     <>
@@ -101,9 +120,11 @@ export default function App() {
             sidebarExpanded={sidebarExpanded}
             onToggleSidebar={toggleSidebar}
           >
-            <Suspense fallback={<PageLoader />}>
-              {renderPage()}
-            </Suspense>
+            <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('the-box')}>
+              <Suspense fallback={<PageLoader />}>
+                {renderPage()}
+              </Suspense>
+            </ErrorBoundary>
           </AppLayout>
           <ExitAppDialog 
             isOpen={showExitDialog}
@@ -113,18 +134,22 @@ export default function App() {
         </>
       ) : (
         <WebsiteLayout onNavigate={navigateToPage} currentPage={currentPage}>
-          <Suspense fallback={<PageLoader />}>
-            {renderPage()}
-          </Suspense>
+          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('home')}>
+            <Suspense fallback={<PageLoader />}>
+              {renderPage()}
+            </Suspense>
+          </ErrorBoundary>
         </WebsiteLayout>
       )}
       
       {/* Performance monitoring tools - only in development */}
       {process.env.NODE_ENV === 'development' && (
-        <Suspense fallback={null}>
-          <PerformanceMonitor />
-          <BundleAnalyzer />
-        </Suspense>
+        <ErrorBoundary FallbackComponent={() => null} onReset={() => {}}>
+          <Suspense fallback={null}>
+            <PerformanceMonitor />
+            <BundleAnalyzer />
+          </Suspense>
+        </ErrorBoundary>
       )}
     </>
   );

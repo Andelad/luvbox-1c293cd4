@@ -1,6 +1,6 @@
 import React from 'react';
 import FeatureCard from './FeatureCard';
-import Button from '../Button';
+import Button from './Button';
 
 interface StaggeredSectionProps {
   onCTAClick: () => void;

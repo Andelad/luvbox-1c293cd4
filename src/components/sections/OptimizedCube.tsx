@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo, memo } from 'react';
-import LeftFace from './cube/LeftFace';
-import RightFace from './cube/RightFace';
-import TopFaceCube from './cube/TopFaceCube';
+import LeftFace from '../cube/LeftFace';
+import RightFace from '../cube/RightFace';
+import TopFaceCube from '../cube/TopFaceCube';
 
 // Memoized face components to prevent unnecessary re-renders
 const MemoizedLeftFace = memo(LeftFace);

@@ -1,5 +1,5 @@
-import svgPaths from "../imports/svg-0o2cpb82qi";
-import headerSvgPaths from "../imports/svg-4ufkzakjbw";
+import svgPaths from "../../imports/svg-0o2cpb82qi";
+import headerSvgPaths from "../../imports/svg-4ufkzakjbw";
 
 interface AppLayoutProps {
   children: React.ReactNode;
