@@ -15,39 +15,57 @@ interface HomePageProps {
 }
 
 export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
-  console.log('HomePage rendering');
-  
-  try {
-    return (
-      <div className="min-h-screen w-full p-8">
-        <h1 className="text-4xl font-bold text-center mb-8">Welcome to LuvBox</h1>
-        <div className="text-center">
-          <button 
-            onClick={onCTAClick}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-          >
-            Get Started
-          </button>
+  return (
+    <div className="relative size-full" data-name="Home Page">
+      <div className="flex flex-row justify-center relative size-full">
+        <div className="[flex-flow:wrap] box-border content-start flex gap-0 items-start justify-center pl-4 pr-[55px] py-0 relative size-full">
+          {/* Header */}
+          <WebsiteHeader onNavigate={onNavigate} currentPage="home" />
+          
+          {/* Ticker Tape - 24px gap from header, extends to viewport edges */}
+          <div className="w-screen relative left-1/2 transform -translate-x-1/2" style={{ marginTop: '107px', marginBottom: '24px' }}>
+            <TickerTape />
+          </div>
+
+          {/* Hero Section - positioned to center content in viewport */}
+          <div className="w-full relative">
+            <HeroSection onCTAClick={onCTAClick} />
+          </div>
+
+          {/* Main Content Sections */}
+          <div className="w-full">
+            {/* Horizontal Divider */}
+            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            
+            {/* Staggered Features Section */}
+            <StaggeredSection onCTAClick={onCTAClick} />
+            
+            {/* Horizontal Divider */}
+            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            
+            {/* Diagnostic Section */}
+            <DiagnosticSection onCTAClick={onCTAClick} />
+            
+            {/* Horizontal Divider */}
+            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            
+            {/* Testimonial Section */}
+            <TestimonialSection />
+            
+            {/* Horizontal Divider */}
+            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            
+            {/* Map Section */}
+            <MapSection />
+            
+            {/* Horizontal Divider */}
+            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            
+            {/* Story Section */}
+            <StorySection onCTAClick={onCTAClick} />
+          </div>
         </div>
-        
-        {/* Temporarily comment out complex components */}
-        {/* <WebsiteHeader onNavigate={onNavigate} currentPage="home" />
-        <TickerTape />
-        <HeroSection onCTAClick={onCTAClick} />
-        <StaggeredSection onCTAClick={onCTAClick} />
-        <DiagnosticSection onCTAClick={onCTAClick} />
-        <TestimonialSection />
-        <MapSection />
-        <StorySection onCTAClick={onCTAClick} /> */}
       </div>
-    );
-  } catch (error) {
-    console.error('HomePage error:', error);
-    return (
-      <div className="min-h-screen w-full p-8">
-        <h1 className="text-4xl font-bold text-center text-red-600">Error in HomePage</h1>
-        <p className="text-center mt-4">{error instanceof Error ? error.message : 'Unknown error'}</p>
-      </div>
-    );
-  }
+    </div>
+  );
 }
