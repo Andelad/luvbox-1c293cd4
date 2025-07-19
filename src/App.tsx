@@ -49,10 +49,13 @@ const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetError
 );
 
 export default function App() {
+  console.log('App component rendering');
   const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [isInApp, setIsInApp] = useState(false);
   const [showExitDialog, setShowExitDialog] = useState(false);
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
+  
+  console.log('App state:', { currentPage, isInApp, showExitDialog });
 
   const handleCTAClick = () => {
     setIsInApp(true);

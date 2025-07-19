@@ -26,9 +26,10 @@ function WebsiteFooter() {
 }
 
 export default function WebsiteLayout({ children, onNavigate, currentPage }: WebsiteLayoutProps) {
+  console.log('WebsiteLayout rendering', { currentPage });
   return (
-    <div className="website-layout">
-      <div className="website-layout-content">
+    <div className="relative min-h-screen w-full">
+      <div className="relative z-10">
         {children}
       </div>
       <WebsiteFooter />
