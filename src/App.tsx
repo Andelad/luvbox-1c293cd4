@@ -23,30 +23,36 @@ const SettingsPage = lazy(() => import('./pages/SettingsPage'));
 const FeedbackPage = lazy(() => import('./pages/FeedbackPage'));
 
 // Loading component for better UX during code splitting
-const PageLoader = () => (
-  <div className="content-area">
-    <div className="text-center">
-      <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-current"></div>
-      <p className="mt-2 text-body opacity-60">Loading...</p>
+const PageLoader = () => {
+  console.log('PageLoader rendering');
+  return (
+    <div className="content-area">
+      <div className="text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-current"></div>
+        <p className="mt-2 text-body opacity-60">Loading...</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Error fallback component
-const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) => (
-  <div className="content-area">
-    <div className="text-center">
-      <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
-      <p className="text-body opacity-60 mb-4">{error.message}</p>
-      <button 
-        onClick={resetErrorBoundary}
-        className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
-      >
-        Try again
-      </button>
+const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) => {
+  console.error('ErrorFallback triggered:', error);
+  return (
+    <div className="content-area">
+      <div className="text-center">
+        <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
+        <p className="text-body opacity-60 mb-4">{error.message}</p>
+        <button 
+          onClick={resetErrorBoundary}
+          className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
+        >
+          Try again
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function App() {
   console.log('App component rendering');
@@ -85,6 +91,7 @@ export default function App() {
   };
 
   const renderPage = useCallback(() => {
+    console.log('renderPage called for:', currentPage);
     switch (currentPage) {
       case 'home':
         return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} />;
