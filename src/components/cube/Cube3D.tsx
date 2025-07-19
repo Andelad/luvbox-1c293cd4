@@ -1,0 +1,199 @@
+import React, { useState, useRef, useCallback } from 'react';
+import LeftFace from './LeftFace';
+import RightFace from './RightFace';
+import TopFaceCube from './TopFaceCube';
+import Button from '../Button';
+
+interface Cube3DProps {}
+
+const Cube3D: React.FC<Cube3DProps> = () => {
+  // Start with an angled position showing all three faces equally
+  const [rotation, setRotation] = useState({ x: -30, y: 45 });
+  const [personName, setPersonName] = useState('');
+  const [dateOfReading, setDateOfReading] = useState('');
+  
+  // Drag state
+  const [isDragging, setIsDragging] = useState(false);
+  const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 });
+  const cubeRef = useRef<HTMLDivElement>(null);
+
+
+
+  // Constrain rotation to only show the three visible faces
+  const constrainRotation = (x: number, y: number) => {
+    // Constrain X rotation (vertical) - only allow 0 to -90 degrees
+    const constrainedX = Math.max(-90, Math.min(0, x));
+    
+    // Constrain Y rotation (horizontal) - only allow 0 to 90 degrees
+    const constrainedY = Math.max(0, Math.min(90, y));
+    
+    return { x: constrainedX, y: constrainedY };
+  };
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    setIsDragging(true);
+    setLastMousePos({ x: e.clientX, y: e.clientY });
+    e.preventDefault();
+  }, []);
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (!isDragging) return;
+
+    const deltaX = e.clientX - lastMousePos.x;
+    const deltaY = e.clientY - lastMousePos.y;
+
+    // Convert mouse movement to rotation (adjust sensitivity)
+    const sensitivity = 0.25;
+    const newRotationY = rotation.y + deltaX * sensitivity;
+    const newRotationX = rotation.x - deltaY * sensitivity;
+
+    // Apply constraints
+    const constrainedRotation = constrainRotation(newRotationX, newRotationY);
+    setRotation(constrainedRotation);
+    
+    setLastMousePos({ x: e.clientX, y: e.clientY });
+  }, [isDragging, lastMousePos, rotation]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  // Add global mouse event listeners
+  React.useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isDragging, handleMouseMove, handleMouseUp]);
+
+  const handleStartNow = () => {
+    console.log('Starting with:', { personName, dateOfReading });
+    // Add your logic here for what happens when "Start Now" is clicked
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center w-full px-4 py-8">
+      {/* Cube Container */}
+      <div className="mb-18">
+        <div 
+          ref={cubeRef}
+          className="relative mx-auto cursor-grab"
+          style={{ 
+            width: '160px',
+            height: '160px',
+            perspective: '1000px',
+            perspectiveOrigin: '50% 50%'
+          }}
+          onMouseDown={handleMouseDown}
+        >
+          <div 
+            className="relative preserve-3d transition-transform duration-100 ease-out"
+            style={{
+              width: '160px',
+              height: '160px',
+              transformStyle: 'preserve-3d',
+              transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+              transformOrigin: '50% 50%'
+            }}
+          >
+            {/* Front Face - TopFace design */}
+            <div 
+              className="cube-face bg-white"
+              style={{
+                transform: 'translateZ(80px)'
+              }}
+            >
+              <TopFaceCube />
+            </div>
+            
+            {/* Back Face (hidden) */}
+            <div 
+              className="cube-face bg-gray-200"
+              style={{
+                transform: 'translateZ(-80px) rotateY(180deg)'
+              }}
+            />
+            
+            {/* Left Face - FrontFace design */}
+            <div 
+              className="cube-face bg-white"
+              style={{
+                transform: 'rotateY(-90deg) translateZ(80px)'
+              }}
+            >
+              <LeftFace />
+            </div>
+            
+            {/* Right Face - RightFace design */}
+            <div 
+              className="cube-face bg-white"
+              style={{
+                transform: 'rotateY(90deg) translateZ(80px)'
+              }}
+            >
+              <RightFace />
+            </div>
+            
+            {/* Top Face - TopFace design */}
+            <div 
+              className="cube-face bg-white"
+              style={{
+                transform: 'rotateX(90deg) translateZ(80px)'
+              }}
+            >
+              <TopFaceCube />
+            </div>
+            
+            {/* Bottom Face (hidden) */}
+            <div 
+              className="cube-face bg-gray-200"
+              style={{
+                transform: 'rotateX(-90deg) translateZ(80px)'
+              }}
+            />
+          </div>
+        </div>
+        
+
+      </div>
+      
+      {/* Title */}
+      <h1 className="text-4xl mb-8 text-center luvbox-brand">
+        Take a snapshot of a relationship past or present
+      </h1>
+      
+      {/* Input Fields - Centered */}
+      <div className="space-y-4 w-full max-w-sm mx-auto">
+        <input
+          type="text"
+          placeholder="Name of person"
+          value={personName}
+          onChange={(e) => setPersonName(e.target.value)}
+          className="w-full px-4 py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
+        />
+        
+        <input
+          type="text"
+          placeholder="Date of reading"
+          value={dateOfReading}
+          onChange={(e) => setDateOfReading(e.target.value)}
+          className="w-full px-4 py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
+        />
+      </div>
+      
+      {/* Start Button - Centered */}
+      <div className="flex justify-center mt-6">
+        <Button onClick={handleStartNow}>
+          Start Now
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Cube3D;
