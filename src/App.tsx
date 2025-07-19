@@ -8,10 +8,9 @@ import { PageType } from './types/app';
 
 // Performance monitoring tools (only in development)
 const PerformanceMonitor = lazy(() => import('./components/sections/PerformanceMonitor'));
-const BundleAnalyzer = lazy(() => import('./components/sections/BundleAnalyzer'));
 
 // Lazy load page components to reduce initial bundle size
-import HomePage from './pages/Index';
+const HomePage = lazy(() => import('./pages/Index'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const TheBoxPage = lazy(() => import('./pages/TheBoxPage'));
@@ -147,7 +146,6 @@ export default function App() {
         <ErrorBoundary FallbackComponent={() => null} onReset={() => {}}>
           <Suspense fallback={null}>
             <PerformanceMonitor />
-            <BundleAnalyzer />
           </Suspense>
         </ErrorBoundary>
       )}
