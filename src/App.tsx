@@ -11,7 +11,7 @@ const PerformanceMonitor = lazy(() => import('./components/sections/PerformanceM
 const BundleAnalyzer = lazy(() => import('./components/sections/BundleAnalyzer'));
 
 // Lazy load page components to reduce initial bundle size
-const HomePage = lazy(() => import('./pages/Index'));
+import HomePage from './pages/Index';
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const TheBoxPage = lazy(() => import('./pages/TheBoxPage'));
