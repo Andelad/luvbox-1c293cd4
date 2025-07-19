@@ -1,4 +1,4 @@
-import imgRectangle5 from "figma:asset/dd2291a1fc061d58d3477c7019769b1f233d5586.png";
+const imgRectangle5 = "/placeholder.svg";
 
 export default function TopFace() {
   return (

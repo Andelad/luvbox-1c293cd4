@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import LeftFace from './LeftFace';
 import RightFace from './RightFace';
 import TopFaceCube from './TopFaceCube';
-import Button from '../Button';
+import { Button } from '../ui/button';
 
 interface Cube3DProps {}
 

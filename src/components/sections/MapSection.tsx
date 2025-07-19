@@ -174,25 +174,25 @@ export default function MapSection() {
                       strokeWidth="2"
                     />
                     <path
-                      d={mapSvgPaths.p27b41680}
+                      d={mapSvgPaths.p24697500}
                       stroke="#3D3535"
                       strokeMiterlimit="10"
                       strokeWidth="2"
                     />
                     <path
-                      d={mapSvgPaths.pe4e0980}
+                      d={mapSvgPaths.p24d78300}
                       stroke="#3D3535"
                       strokeMiterlimit="10"
                       strokeWidth="2"
                     />
                     <path
-                      d={mapSvgPaths.p2c21db80}
+                      d={mapSvgPaths.p26ecf1e0}
                       stroke="#3D3535"
                       strokeMiterlimit="10"
                       strokeWidth="2"
                     />
                     <path
-                      d={mapSvgPaths.p1b9b9100}
+                      d={mapSvgPaths.p27748580}
                       stroke="#3D3535"
                       strokeMiterlimit="10"
                       strokeWidth="2"
