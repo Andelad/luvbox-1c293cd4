@@ -23,45 +23,36 @@ const SettingsPage = lazy(() => import('./pages/SettingsPage'));
 const FeedbackPage = lazy(() => import('./pages/FeedbackPage'));
 
 // Loading component for better UX during code splitting
-const PageLoader = () => {
-  console.log('PageLoader rendering');
-  return (
-    <div className="content-area">
-      <div className="text-center">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-current"></div>
-        <p className="mt-2 text-body opacity-60">Loading...</p>
-      </div>
+const PageLoader = () => (
+  <div className="content-area">
+    <div className="text-center">
+      <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-current"></div>
+      <p className="mt-2 text-body opacity-60">Loading...</p>
     </div>
-  );
-};
+  </div>
+);
 
 // Error fallback component
-const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) => {
-  console.error('ErrorFallback triggered:', error);
-  return (
-    <div className="content-area">
-      <div className="text-center">
-        <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
-        <p className="text-body opacity-60 mb-4">{error.message}</p>
-        <button 
-          onClick={resetErrorBoundary}
-          className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
-        >
-          Try again
-        </button>
-      </div>
+const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) => (
+  <div className="content-area">
+    <div className="text-center">
+      <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
+      <p className="text-body opacity-60 mb-4">{error.message}</p>
+      <button 
+        onClick={resetErrorBoundary}
+        className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
+      >
+        Try again
+      </button>
     </div>
-  );
-};
+  </div>
+);
 
 export default function App() {
-  console.log('App component rendering');
   const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [isInApp, setIsInApp] = useState(false);
   const [showExitDialog, setShowExitDialog] = useState(false);
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
-  
-  console.log('App state:', { currentPage, isInApp, showExitDialog });
 
   const handleCTAClick = () => {
     setIsInApp(true);
@@ -91,10 +82,8 @@ export default function App() {
   };
 
   const renderPage = useCallback(() => {
-    console.log('renderPage called for:', currentPage);
     switch (currentPage) {
       case 'home':
-        console.log('About to render HomePage');
         return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} />;
       case 'about':
         return <AboutPage onNavigate={navigateToPage} />;
@@ -120,20 +109,48 @@ export default function App() {
   }, [currentPage, navigateToPage, handleCTAClick]);
 
   return (
-    <div style={{ background: 'white', minHeight: '100vh', padding: '20px' }}>
-      <h1 style={{ color: 'black', fontSize: '24px' }}>TESTING - App is rendering</h1>
-      <p style={{ color: 'black' }}>Current page: {currentPage}</p>
-      <p style={{ color: 'black' }}>Is in app: {isInApp.toString()}</p>
+    <>
+      <Background />
+      {isInApp ? (
+        <>
+          <AppLayout 
+            onNavigate={navigateToPage} 
+            onGlobeClick={handleGlobeClick}
+            currentPage={currentPage}
+            sidebarExpanded={sidebarExpanded}
+            onToggleSidebar={toggleSidebar}
+          >
+            <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('the-box')}>
+              <Suspense fallback={<PageLoader />}>
+                {renderPage()}
+              </Suspense>
+            </ErrorBoundary>
+          </AppLayout>
+          <ExitAppDialog 
+            isOpen={showExitDialog}
+            onExit={handleExitApp}
+            onStay={handleStayInApp}
+          />
+        </>
+      ) : (
+        <WebsiteLayout onNavigate={navigateToPage} currentPage={currentPage}>
+          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('home')}>
+            <Suspense fallback={<PageLoader />}>
+              {renderPage()}
+            </Suspense>
+          </ErrorBoundary>
+        </WebsiteLayout>
+      )}
       
-      <div style={{ background: 'lightblue', padding: '20px', margin: '20px 0' }}>
-        <h2 style={{ color: 'black' }}>Testing direct content render</h2>
-        <button 
-          onClick={handleCTAClick}
-          style={{ background: 'blue', color: 'white', padding: '10px', border: 'none' }}
-        >
-          Test CTA Click
-        </button>
-      </div>
-    </div>
+      {/* Performance monitoring tools - only in development */}
+      {process.env.NODE_ENV === 'development' && (
+        <ErrorBoundary FallbackComponent={() => null} onReset={() => {}}>
+          <Suspense fallback={null}>
+            <PerformanceMonitor />
+            <BundleAnalyzer />
+          </Suspense>
+        </ErrorBoundary>
+      )}
+    </>
   );
 }
