@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from 'react';
 import svgPaths from "../../imports/svg-0o2cpb82qi";
 import headerSvgPaths from "../../imports/svg-4ufkzakjbw";
+import PageSideMenu from "../sections/PageSideMenu";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -8,6 +10,8 @@ interface AppLayoutProps {
   currentPage: string;
   sidebarExpanded: boolean;
   onToggleSidebar: () => void;
+  pageSideMenuTitle?: string;
+  pageSideMenuContent?: React.ReactNode;
 }
 
 function Layer1() {
@@ -65,14 +69,14 @@ function LogoFrame() {
   );
 }
 
-function AppHeaderLogo() {
+function AppHeaderLogo({ onClick }: { onClick: () => void }) {
   return (
-    <div className="app-header-logo">
+    <button onClick={onClick} className="app-header-logo">
       <LogoFrame />
       <div className="app-header-logo-text">
         <p>LuvBox 1.0</p>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -123,24 +127,148 @@ function GlobeButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-function AppHeaderActions({ onGlobeClick }: { onGlobeClick: () => void }) {
+// Mobile menu button component
+function MobileMenuButton({ onToggleSidebar, expanded }: { onToggleSidebar: () => void; expanded: boolean }) {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Only show on small screens
+  if (isLargeScreen) {
+    return null;
+  }
+
+  const getIcon = () => {
+    if (expanded) {
+      return <LeftArrowIcon />;
+    }
+    if (isHovered) {
+      return <RightArrowIcon />;
+    }
+    return <SideMenuIcon />;
+  };
+
+  return (
+    <button 
+      onClick={onToggleSidebar}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="globe-button mobile-menu-button"
+      title="Menu"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {getIcon()}
+    </button>
+  );
+}
+
+function AppHeaderActions({ onGlobeClick, onNavigate, currentPage, onToggleSidebar, sidebarExpanded }: { 
+  onGlobeClick: () => void; 
+  onNavigate: (page: string) => void; 
+  currentPage: string;
+  onToggleSidebar: () => void;
+  sidebarExpanded: boolean;
+}) {
   return (
     <div className="app-header-actions">
-      <GlobeButton onClick={onGlobeClick} />
+      <MobileMenuButton onToggleSidebar={onToggleSidebar} expanded={sidebarExpanded} />
+      <button 
+        onClick={() => onNavigate('settings')} 
+        className={`globe-button ${currentPage === 'settings' ? 'active' : ''}`}
+        title="Settings"
+      >
+        <AccountCircle />
+      </button>
     </div>
   );
 }
 
-function AppHeader({ onGlobeClick, sidebarExpanded }: { onGlobeClick: () => void; sidebarExpanded: boolean }) {
+function AppHeader({ onGlobeClick, sidebarExpanded, onNavigate, currentPage, onToggleSidebar }: { 
+  onGlobeClick: () => void; 
+  sidebarExpanded: boolean; 
+  onNavigate: (page: string) => void; 
+  currentPage: string;
+  onToggleSidebar: () => void;
+}) {
   return (
     <div className="app-header">
       <div className="app-header-content">
         <div className={`app-header-inner ${sidebarExpanded ? 'sidebar-expanded' : ''}`}>
-          <AppHeaderLogo />
-          <AppHeaderActions onGlobeClick={onGlobeClick} />
+          <div className="app-header-left" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <MobileMenuButton onToggleSidebar={onToggleSidebar} expanded={sidebarExpanded} />
+            <AppHeaderLogo onClick={onGlobeClick} />
+          </div>
+          <div className="app-header-right">
+            <button 
+              onClick={() => onNavigate('settings')} 
+              className={`globe-button ${currentPage === 'settings' ? 'active' : ''}`}
+              title="Settings"
+            >
+              <AccountCircle />
+            </button>
+          </div>
         </div>
       </div>
       <div className="app-header-border" />
+    </div>
+  );
+}
+
+function SideMenuIcon() {
+  return (
+    <div className="relative shrink-0 size-6" data-name="side_menu">
+      <svg
+        className="block size-full"
+        fill="none"
+        preserveAspectRatio="none"
+        viewBox="0 0 24 24"
+      >
+        {/* Outer box */}
+        <rect x="3" y="5" width="18" height="14" stroke="var(--text-color)" strokeWidth="1.5" fill="none"/>
+        {/* Left sidebar panel line */}
+        <line x1="8" y1="5" x2="8" y2="19" stroke="var(--text-color)" strokeWidth="1.5"/>
+      </svg>
+    </div>
+  );
+}
+
+function RightArrowIcon() {
+  return (
+    <div className="relative shrink-0 size-6" data-name="right_arrow">
+      <svg
+        className="block size-full"
+        fill="none"
+        preserveAspectRatio="none"
+        viewBox="0 0 24 24"
+      >
+        <path d="M9 6l6 6-6 6" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </div>
+  );
+}
+
+function LeftArrowIcon() {
+  return (
+    <div className="relative shrink-0 size-6" data-name="left_arrow">
+      <svg
+        className="block size-full"
+        fill="none"
+        preserveAspectRatio="none"
+        viewBox="0 0 24 24"
+      >
+        <path d="M15 6l-6 6 6 6" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
     </div>
   );
 }
@@ -225,9 +353,45 @@ function LeftPanelClose() {
 }
 
 function SidebarLogo({ expanded, onToggle }: { expanded: boolean; onToggle: () => void }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Hide on small screens
+  if (!isLargeScreen) {
+    return null;
+  }
+
   return (
-    <button className="sidebar-logo" onClick={onToggle}>
-      {expanded ? <LeftPanelClose /> : <LeftPanelOpen />}
+    <button 
+      className={`sidebar-logo transition-all duration-500 ease-out ${isHovered ? 'bg-purple-500/20' : ''}`}
+      onClick={onToggle}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {expanded ? (
+        <LeftArrowIcon />
+      ) : (
+        <div className="relative size-6">
+          <div 
+            className={`absolute inset-0 transition-all duration-200 ease-out ${isHovered ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
+          >
+            <SideMenuIcon />
+          </div>
+          <div 
+            className={`absolute inset-0 transition-all duration-500 ease-out ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+          >
+            <RightArrowIcon />
+          </div>
+        </div>
+      )}
     </button>
   );
 }
@@ -703,8 +867,6 @@ function TechButtons({ onNavigate, currentPage, expanded }: {
     <div className="sidebar-menu-section">
       <TutorialButton isActive={currentPage === 'tutorial'} onClick={() => onNavigate('tutorial')} expanded={expanded} />
       <SidebarSeparator />
-      <SettingsButton isActive={currentPage === 'settings'} onClick={() => onNavigate('settings')} expanded={expanded} />
-      <SidebarSeparator />
       <FeedbackButton isActive={currentPage === 'feedback'} onClick={() => onNavigate('feedback')} expanded={expanded} />
     </div>
   );
@@ -716,6 +878,21 @@ function Sidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
   expanded: boolean;
   onToggleSidebar: () => void;
 }) {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Hide sidebar on small screens
+  if (!isLargeScreen) {
+    return null;
+  }
+
   return (
     <div className={`app-sidebar ${expanded ? 'expanded' : ''}`}>
       <div className="app-sidebar-content">
@@ -727,6 +904,91 @@ function Sidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
       </div>
       <div className="app-sidebar-border" />
     </div>
+  );
+}
+
+// Mobile overlay sidebar
+function MobileSidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: { 
+  onNavigate: (page: string) => void; 
+  currentPage: string;
+  expanded: boolean;
+  onToggleSidebar: () => void;
+}) {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Only show on small screens
+  if (isLargeScreen || !expanded) {
+    return null;
+  }
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 999,
+        }}
+        onClick={onToggleSidebar}
+      />
+      
+      {/* Mobile Sidebar */}
+      <div 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          height: '100vh',
+          width: '280px',
+          backgroundColor: 'white',
+          border: '1px solid rgba(61,53,53,0.4)',
+          zIndex: 1000,
+          transform: expanded ? 'translateX(0)' : 'translateX(-100%)',
+          transition: 'transform 0.3s ease',
+          boxShadow: '4px 0 16px rgba(0,0,0,0.15)',
+        }}
+        className="app-sidebar mobile-sidebar"
+      >
+        <div className="app-sidebar-content">
+          <div className="app-sidebar-inner">
+            <div className="sidebar-logo" style={{ padding: '16px' }}>
+              <button 
+                onClick={onToggleSidebar}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '4px',
+                }}
+                className="hover:bg-gray-100 transition-colors"
+              >
+                <LeftArrowIcon />
+              </button>
+            </div>
+            <MenuButtons onNavigate={onNavigate} currentPage={currentPage} expanded={true} />
+            <TechButtons onNavigate={onNavigate} currentPage={currentPage} expanded={true} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -749,11 +1011,17 @@ function AppFooter({ sidebarExpanded }: { sidebarExpanded: boolean }) {
   );
 }
 
-export default function AppLayout({ children, onNavigate, onGlobeClick, currentPage, sidebarExpanded, onToggleSidebar }: AppLayoutProps) {
+export default function AppLayout({ children, onNavigate, onGlobeClick, currentPage, sidebarExpanded, onToggleSidebar, pageSideMenuTitle, pageSideMenuContent }: AppLayoutProps) {
   return (
     <div className="app-layout">
       <div className="app-layout-header">
-        <AppHeader onGlobeClick={onGlobeClick} sidebarExpanded={sidebarExpanded} />
+        <AppHeader 
+          onGlobeClick={onGlobeClick} 
+          sidebarExpanded={sidebarExpanded} 
+          onNavigate={onNavigate} 
+          currentPage={currentPage}
+          onToggleSidebar={onToggleSidebar}
+        />
       </div>
       <div className="app-layout-content">
         <Sidebar 
@@ -762,11 +1030,24 @@ export default function AppLayout({ children, onNavigate, onGlobeClick, currentP
           expanded={sidebarExpanded}
           onToggleSidebar={onToggleSidebar}
         />
+        <MobileSidebar 
+          onNavigate={onNavigate} 
+          currentPage={currentPage} 
+          expanded={sidebarExpanded}
+          onToggleSidebar={onToggleSidebar}
+        />
         <main className={`app-layout-main ${sidebarExpanded ? 'sidebar-expanded' : ''}`}>
           <div className="app-content-wrapper">
             <div className="app-content-container">
-              <div className="app-content-card">
-                <div className="app-content-inner">
+              <div className="app-content-card" style={{ position: 'relative' }}>
+                <PageSideMenu title={pageSideMenuTitle} content={pageSideMenuContent} />
+                <div 
+                  className="app-content-inner" 
+                  style={{ 
+                    marginLeft: '48px',
+                    transition: 'margin-left 0.3s ease',
+                  }}
+                >
                   <div className="app-content-padding">
                     {children}
                   </div>

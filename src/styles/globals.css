@@ -586,7 +586,6 @@ html {
   max-width: 1200px;
   min-height: 600px;
   min-width: 1px;
-  margin-right: -39px;
   position: relative;
   border-radius: 24px;
   flex-shrink: 0;
@@ -755,6 +754,14 @@ html {
   background-color: rgba(181, 182, 233, 0.2);
 }
 
+.globe-button.active {
+  background-color: rgba(181, 182, 233, 0.4);
+}
+
+.globe-button.active svg path {
+  fill: #8881cc;
+}
+
 .globe-icon {
   position: relative;
   flex-shrink: 0;
@@ -866,8 +873,8 @@ html {
    ========================================================================== */
 
 .app-footer {
-  background-color: rgba(255,255,255,0.6);
-  height: 80px;
+  background-color: rgba(255,255,255,0.4);
+  height: 96px;
   width: 100%;
 }
 

@@ -21,13 +21,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ breadcrumbs, title, actionIcon,
             </React.Fragment>
           ))}
         </nav>
-        {actionIcon && (
-          <button className="action-button" onClick={onActionClick}>
-            <div className="action-button-icon">
-              {actionIcon}
-            </div>
-          </button>
-        )}
+        {/* Removed the action button/icon to fix pink icon and overflow issues */}
       </div>
       
       {/* Optional Title */}

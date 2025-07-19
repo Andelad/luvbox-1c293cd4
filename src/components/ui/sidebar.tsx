@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { PanelLeftIcon } from "lucide-react";
+import { PanelLeftIcon, ChevronLeftIcon } from "lucide-react";
 
 import { useIsMobile } from "./use-mobile";
 import { cn } from "./utils";
@@ -259,6 +259,7 @@ function SidebarTrigger({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar } = useSidebar();
+  const [isHovered, setIsHovered] = React.useState(false);
 
   return (
     <Button
@@ -266,14 +267,29 @@ function SidebarTrigger({
       data-slot="sidebar-trigger"
       variant="ghost"
       size="icon"
-      className={cn("size-7", className)}
+      className={cn("size-7 transition-colors duration-200", isHovered && "bg-purple-500/20", className)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
       }}
       {...props}
     >
-      <PanelLeftIcon />
+      <div className="relative size-4">
+        <PanelLeftIcon 
+          className={cn(
+            "absolute inset-0 size-4 transition-opacity duration-200",
+            isHovered ? "opacity-0" : "opacity-100"
+          )} 
+        />
+        <ChevronLeftIcon 
+          className={cn(
+            "absolute inset-0 size-4 transition-opacity duration-200",
+            isHovered ? "opacity-100" : "opacity-0"
+          )} 
+        />
+      </div>
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );

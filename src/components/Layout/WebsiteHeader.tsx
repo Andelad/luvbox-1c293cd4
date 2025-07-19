@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import svgPaths from "../../imports/svg-15aegztapr";
 
 interface WebsiteHeaderProps {
@@ -114,16 +114,41 @@ function Frame31({ onNavigate, currentPage }: { onNavigate: (page: string) => vo
 }
 
 export default function WebsiteHeader({ onNavigate, currentPage }: WebsiteHeaderProps) {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show header if scrolling up or at the top
+      if (currentScrollY < lastScrollY || currentScrollY < 10) {
+        setIsVisible(true);
+      } 
+      // Hide header if scrolling down and past threshold
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   return (
     <div
-      className="absolute bg-gradient-to-r from-[#ffd1d11f] h-20 left-0 right-0 to-[#8881cc1f] top-[3px] z-20"
+      className={`fixed bg-white bg-gradient-to-r from-[#ffd1d11f] h-20 left-0 right-0 to-[#8881cc1f] top-0 z-20 transition-transform duration-300 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
       data-name="Website Header"
     >
       <div className="box-border content-stretch flex flex-row items-center justify-between overflow-clip pl-4 pr-8 py-4 relative size-full">
         <Frame33 onNavigate={onNavigate} />
         <Frame31 onNavigate={onNavigate} currentPage={currentPage} />
       </div>
-      <div className="absolute border-[0px_0px_1px] border-[rgba(0,0,0,0.2)] border-solid inset-0 pointer-events-none" />
+      <div className="absolute border-b border-[rgba(0,0,0,0.2)] inset-x-0 bottom-0 pointer-events-none" />
     </div>
   );
 }

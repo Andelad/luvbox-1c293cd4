@@ -1,11 +1,42 @@
 import React from 'react';
 import PageHeader from '../components/sections/PageHeader';
+import PageWrapperWithSideMenu from '../components/sections/PageWrapperWithSideMenu';
 
 export default function SettingsPage() {
+  const sideMenuContent = (
+    <div>
+      <p style={{ 
+        fontSize: '14px', 
+        color: '#3d3535', 
+        opacity: 0.8, 
+        lineHeight: '1.5',
+        fontFamily: "'Source Sans 3', sans-serif",
+        marginBottom: '12px'
+      }}>
+        Configure your account preferences, privacy settings, and application behavior.
+      </p>
+      <ul style={{
+        fontSize: '14px',
+        color: '#3d3535',
+        opacity: 0.8,
+        fontFamily: "'Source Sans 3', sans-serif",
+        listStyle: 'disc',
+        paddingLeft: '16px'
+      }}>
+        <li>Account information</li>
+        <li>Privacy controls</li>
+        <li>Notification preferences</li>
+      </ul>
+    </div>
+  );
+
   return (
-    <div className="page-wrapper">
+    <PageWrapperWithSideMenu 
+      sideMenuTitle="Settings Help"
+      sideMenuContent={sideMenuContent}
+    >
       <PageHeader 
-        breadcrumbs={['Settings', 'Sub Page']}
+        breadcrumbs={['Settings']}
         actionIcon={
           <svg fill="none" viewBox="0 0 24 24">
             <g>
@@ -25,6 +56,6 @@ export default function SettingsPage() {
           </p>
         </div>
       </div>
-    </div>
+    </PageWrapperWithSideMenu>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import WebsiteHeader from '../components/Layout/WebsiteHeader';
+import WebsiteHeader from '../../components/Layout/WebsiteHeader';
 
 function Section({ onNavigate }: { onNavigate: (page: string) => void }) {
   return (

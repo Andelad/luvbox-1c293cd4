@@ -1,13 +1,13 @@
 import React from 'react';
-import WebsiteHeader from '../components/Layout/WebsiteHeader';
-import TickerTape from '../components/sections/TickerTape';
-import HeroSection from '../components/sections/HeroSection';
-import StaggeredSection from '../components/sections/StaggeredSection';
-import DiagnosticSection from '../components/sections/DiagnosticSection';
-import TestimonialSection from '../components/sections/TestimonialSection';
-import MapSection from '../components/sections/MapSection';
-import StorySection from '../components/sections/StorySection';
-import { PageType } from '../types/app';
+import WebsiteHeader from '../../components/Layout/WebsiteHeader';
+import TickerTape from '../../components/sections/TickerTape';
+import HeroSection from '../../components/sections/HeroSection';
+import StaggeredSection from '../../components/sections/StaggeredSection';
+import DiagnosticSection from '../../components/sections/DiagnosticSection';
+import TestimonialSection from '../../components/sections/TestimonialSection';
+import MapSection from '../../components/sections/MapSection';
+import StorySection from '../../components/sections/StorySection';
+import { PageType } from '../../types/app';
 
 interface HomePageProps {
   onCTAClick: () => void;

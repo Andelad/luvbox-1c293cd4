@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background: #f0f0f0;
+        }
+        
+        .test-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: transparent;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s ease;
+        }
+        
+        .test-button:hover {
+            background: #e0e0e0;
+        }
+        
+        .icon-container {
+            position: relative;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .panel-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .chevron-icon {
+            opacity: 0;
+            transform: scale(1.1);
+        }
+        
+        .test-button:hover .panel-icon {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        
+        .test-button:hover .chevron-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Sidebar Trigger Animation Test</h2>
+    <p>Hover over the button below to see the smooth icon transition:</p>
+    
+    <button class="test-button">
+        <div class="icon-container">
+            <!-- Panel Icon (sidebar with arrow) -->
+            <svg class="icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+            
+            <!-- Chevron Icon -->
+            <svg class="icon chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m15 18-6-6 6-6"/>
+            </svg>
+        </div>
+    </button>
+    
+    <p style="margin-top: 20px;">If this works, then the issue is with React/Tailwind. If not, it's a CSS problem.</p>
+</body>
+</html>

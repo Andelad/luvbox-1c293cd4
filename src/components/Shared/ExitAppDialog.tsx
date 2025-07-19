@@ -12,9 +12,9 @@ export default function ExitAppDialog({ isOpen, onExit, onStay }: ExitAppDialogP
     <Dialog open={isOpen} onOpenChange={onStay}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-[#3d3535]">Exit LuvBox App?</DialogTitle>
+          <DialogTitle className="text-[#3d3535]">Return to Website?</DialogTitle>
           <DialogDescription className="text-[#3d3535] opacity-80">
-            Are you sure you want to exit the app and return to the main website?
+            Are you sure you want to exit the app and return to the website home page?
           </DialogDescription>
         </DialogHeader>
         <div className="flex gap-3 justify-end pt-4">

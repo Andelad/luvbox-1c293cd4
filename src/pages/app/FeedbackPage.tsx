@@ -1,18 +1,11 @@
 import React from 'react';
-import PageHeader from '../components/sections/PageHeader';
+import PageHeader from '../../components/sections/PageHeader';
 
 export default function FeedbackPage() {
   return (
     <div className="page-wrapper">
       <PageHeader 
         breadcrumbs={['Feedback']}
-        actionIcon={
-          <svg fill="none" viewBox="0 0 24 24">
-            <g>
-              <path d="M2 17V4C2 3.45 2.19583 2.97917 2.5875 2.5875C2.97917 2.19583 3.45 2 4 2H20C20.55 2 21.0208 2.19583 21.4125 2.5875C21.8042 2.97917 22 3.45 22 4V14C22 14.55 21.8042 15.0208 21.4125 15.4125C21.0208 15.8042 20.55 16 20 16H6L2 20V17ZM4 14H20V4H4V14Z" fill="#1C1B1F" />
-            </g>
-          </svg>
-        }
       />
       
       <div className="mb-8">

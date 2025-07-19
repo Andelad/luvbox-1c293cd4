@@ -10,16 +10,19 @@ import { PageType } from './types/app';
 const PerformanceMonitor = lazy(() => import('./components/sections/PerformanceMonitor'));
 
 // Lazy load page components to reduce initial bundle size
-const HomePage = lazy(() => import('./pages/Index'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
-const TheBoxPage = lazy(() => import('./pages/TheBoxPage'));
-const TheMapPage = lazy(() => import('./pages/TheMapPage'));
-const MySnapshotsPage = lazy(() => import('./pages/MySnapshotsPage'));
-const CommunityPage = lazy(() => import('./pages/CommunityPage'));
-const TutorialPage = lazy(() => import('./pages/TutorialPage'));
-const SettingsPage = lazy(() => import('./pages/SettingsPage'));
-const FeedbackPage = lazy(() => import('./pages/FeedbackPage'));
+// Website pages - public marketing
+const HomePage = lazy(() => import('./pages/website/HomePage'));
+const AboutPage = lazy(() => import('./pages/website/AboutPage'));
+const ContactPage = lazy(() => import('./pages/website/ContactPage'));
+
+// App pages - private application functionality  
+const TheBoxPage = lazy(() => import('./pages/app/TheBoxPage'));
+const TheMapPage = lazy(() => import('./pages/app/TheMapPage'));
+const MySnapshotsPage = lazy(() => import('./pages/app/MySnapshotsPage'));
+const CommunityPage = lazy(() => import('./pages/app/CommunityPage'));
+const TutorialPage = lazy(() => import('./pages/app/TutorialPage'));
+const SettingsPage = lazy(() => import('./pages/app/SettingsPage'));
+const FeedbackPage = lazy(() => import('./pages/app/FeedbackPage'));
 
 // Loading component for better UX during code splitting
 const PageLoader = () => (
@@ -107,6 +110,74 @@ export default function App() {
     }
   }, [currentPage, navigateToPage, handleCTAClick]);
 
+  // Get side menu content based on current page
+  const getPageSideMenuContent = useCallback(() => {
+    switch (currentPage) {
+      case 'settings':
+        return {
+          title: 'Settings Help',
+          content: (
+            <div>
+              <p style={{ 
+                fontSize: '14px', 
+                color: '#3d3535', 
+                opacity: 0.8, 
+                lineHeight: '1.5',
+                fontFamily: "'Source Sans 3', sans-serif",
+                marginBottom: '12px'
+              }}>
+                Configure your account preferences, privacy settings, and application behavior.
+              </p>
+              <ul style={{
+                fontSize: '14px',
+                color: '#3d3535',
+                opacity: 0.8,
+                fontFamily: "'Source Sans 3', sans-serif",
+                listStyle: 'disc',
+                paddingLeft: '16px'
+              }}>
+                <li>Account information</li>
+                <li>Privacy controls</li>
+                <li>Notification preferences</li>
+              </ul>
+            </div>
+          )
+        };
+      case 'feedback':
+        return {
+          title: 'Feedback Guide',
+          content: (
+            <p style={{ 
+              fontSize: '14px', 
+              color: '#3d3535', 
+              opacity: 0.8, 
+              lineHeight: '1.5',
+              fontFamily: "'Source Sans 3', sans-serif"
+            }}>
+              Help us improve by sharing your thoughts and reporting issues.
+            </p>
+          )
+        };
+      default:
+        return {
+          title: 'In this section',
+          content: (
+            <p style={{ 
+              fontSize: '14px', 
+              color: '#3d3535', 
+              opacity: 0.8, 
+              lineHeight: '1.5',
+              fontFamily: "'Source Sans 3', sans-serif"
+            }}>
+              This section contains helpful information and quick actions related to the current page.
+            </p>
+          )
+        };
+    }
+  }, [currentPage]);
+
+  const sideMenuConfig = getPageSideMenuContent();
+
   return (
     <>
       <Background />
@@ -118,6 +189,8 @@ export default function App() {
             currentPage={currentPage}
             sidebarExpanded={sidebarExpanded}
             onToggleSidebar={toggleSidebar}
+            pageSideMenuTitle={sideMenuConfig.title}
+            pageSideMenuContent={sideMenuConfig.content}
           >
             <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('the-box')}>
               <Suspense fallback={<PageLoader />}>
