@@ -8,20 +8,19 @@ interface WebsiteLayoutProps {
 
 function WebsiteFooter() {
   return (
-    <div className="app-footer">
-      <div className="app-footer-content">
-        <div className="app-footer-item wide">
-          <p>© All Rights Reserved</p>
+    <footer className="w-full py-8 px-4 border-t border-gray-200">
+      <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-4">
+        <div className="flex-1">
+          <p className="text-sm text-gray-600">© All Rights Reserved</p>
         </div>
-        <div className="app-footer-item">
-          <p>Design by Eido</p>
+        <div>
+          <p className="text-sm text-gray-600">Design by Eido</p>
         </div>
-        <div className="app-footer-item">
-          <p>Buy me Coffee</p>
+        <div>
+          <p className="text-sm text-gray-600">Buy me Coffee</p>
         </div>
       </div>
-      <div className="app-footer-border" />
-    </div>
+    </footer>
   );
 }
 
