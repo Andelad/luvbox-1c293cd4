@@ -54,7 +54,8 @@ export default function PageSideMenu({ title = "In this section", content }: Pag
       if (isLargeScreen) {
         contentElement.style.marginLeft = isOpen ? '240px' : '48px';
       } else {
-        contentElement.style.marginLeft = '48px';
+        // On small screens, give content enough margin to clear the closed menu (48px)
+        contentElement.style.marginLeft = isOpen ? '0' : '48px';
       }
     }
   }, [isOpen, isLargeScreen]);
@@ -71,11 +72,7 @@ export default function PageSideMenu({ title = "In this section", content }: Pag
     }
   }, [isOpen]);
 
-  // Don't render on small screens (will be handled by header button)
-  if (!isLargeScreen) {
-    return null;
-  }
-
+  // Show on all screen sizes, but behave differently
   return (
     <div 
       style={{

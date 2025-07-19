@@ -925,25 +925,30 @@ function MobileSidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
   }, []);
 
   // Only show on small screens
-  if (isLargeScreen || !expanded) {
+  if (isLargeScreen) {
     return null;
   }
 
+  // Always render when on small screens, but control visibility with transform and opacity
   return (
     <>
-      {/* Backdrop */}
-      <div 
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 999,
-        }}
-        onClick={onToggleSidebar}
-      />
+      {/* Backdrop - only visible when expanded */}
+      {expanded && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            zIndex: 999,
+            opacity: 1,
+            animation: 'backdropFadeIn 0.3s ease',
+          }}
+          onClick={onToggleSidebar}
+        />
+      )}
       
       {/* Mobile Sidebar */}
       <div 
@@ -1043,10 +1048,6 @@ export default function AppLayout({ children, onNavigate, onGlobeClick, currentP
                 <PageSideMenu title={pageSideMenuTitle} content={pageSideMenuContent} />
                 <div 
                   className="app-content-inner" 
-                  style={{ 
-                    marginLeft: '48px',
-                    transition: 'margin-left 0.3s ease',
-                  }}
                 >
                   <div className="app-content-padding">
                     {children}
