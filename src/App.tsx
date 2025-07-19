@@ -94,7 +94,9 @@ export default function App() {
     console.log('renderPage called for:', currentPage);
     switch (currentPage) {
       case 'home':
-        return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} />;
+        console.log('About to render HomePage');
+        return <div style={{ background: 'red', color: 'white', padding: '20px' }}>TEST HOME PAGE WORKING</div>;
+        // return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} />;
       case 'about':
         return <AboutPage onNavigate={navigateToPage} />;
       case 'contact':
