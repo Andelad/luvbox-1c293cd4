@@ -1,5 +1,5 @@
 import React from 'react';
-import PageHeader from '../../components/sections/PageHeader';
+import { PageHeader } from '@/app/components';
 
 export default function CommunityPage() {
   return (

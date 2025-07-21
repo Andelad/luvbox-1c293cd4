@@ -23,7 +23,22 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/components": ["./src/shared/components"],
+      "@/components/*": ["./src/shared/components/*"],
+      "@/app/components": ["./src/app/components"],
+      "@/app/components/*": ["./src/app/components/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/website/*": ["./src/website/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/icons": ["./src/assets/icons"],
+      "@/icons/*": ["./src/assets/icons/*"],
+      "@/hooks": ["./src/shared/hooks"],
+      "@/hooks/*": ["./src/shared/hooks/*"],
+      "@/types": ["./src/shared/types"],
+      "@/types/*": ["./src/shared/types/*"],
+      "@/lib": ["./src/shared/lib"],
+      "@/lib/*": ["./src/shared/lib/*"]
     }
   },
   "include": ["src"]

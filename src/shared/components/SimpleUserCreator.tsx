@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useAuth, useUser } from '../../lib/storage/hooks';
-import { createEqualizerScores } from '../../types/storage';
+import { useAuth, useUser } from '@/hooks';
+import { createEqualizerScores } from '@/types/storage';
 
 const SimpleUserCreator: React.FC = () => {
   const { currentUserId, register } = useAuth();

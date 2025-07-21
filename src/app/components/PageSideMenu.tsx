@@ -150,6 +150,7 @@ export default function PageSideMenu({
         boxShadow: isOpen && !isLargeScreen ? '2px 0 8px rgba(0,0,0,0.1)' : 'none',
       }}
     >
+      {/* Toggle button - always at the same position */}
       <button
         onClick={handleToggle}
         style={{
@@ -165,30 +166,59 @@ export default function PageSideMenu({
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: '4px',
-          zIndex: 100, // Ensure button is always on top
+          zIndex: 100,
+          transition: 'background-color 0.2s ease',
         }}
-        className="hover:bg-gray-100 transition-colors"
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = 'rgba(181, 182, 233, 0.2)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = 'transparent';
+        }}
       >
         {isOpen ? <CloseIcon /> : <HamburgerIcon />}
       </button>
-      
+
+      {/* Header section with title at the same height as close icon */}
       {showContent && (
-        <div style={{ 
-          padding: '0 16px', 
-          paddingTop: '56px',
-          opacity: showContent ? 1 : 0,
-          transition: isPageChange ? 'none' : 'opacity 0.25s ease-in',
-          animation: isPageChange ? 'none' : (showContent ? 'fadeIn 0.25s ease-in forwards' : 'none')
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 16px',
+          paddingRight: '52px', // Make room for the close button
+          marginBottom: '12px',
+          height: '24px', // Same height as the button
+          marginTop: '16px', // Match the button's top position
         }}>
           <h3 style={{
             fontSize: '16px',
             fontWeight: '600',
             color: '#3d3535',
-            marginBottom: '12px',
+            margin: 0,
             fontFamily: "'Source Sans 3', sans-serif",
+            lineHeight: '24px', // Match button height for perfect alignment
           }}>
             {title}
           </h3>
+        </div>
+      )}
+
+      {/* Separator line */}
+      {showContent && (
+        <div style={{
+          margin: '0 16px 16px 16px',
+          height: '1px',
+          backgroundColor: 'rgba(61,53,53,0.2)',
+        }} />
+      )}
+      
+      {showContent && (
+        <div style={{ 
+          padding: '0 16px', 
+          opacity: showContent ? 1 : 0,
+          transition: isPageChange ? 'none' : 'opacity 0.25s ease-in',
+          animation: isPageChange ? 'none' : (showContent ? 'fadeIn 0.25s ease-in forwards' : 'none')
+        }}>
           
           {/* Menu Items */}
           {menuItems && menuItems.length > 0 ? (
@@ -196,19 +226,21 @@ export default function PageSideMenu({
               {menuItems.map((item) => (
                 <button
                   key={item.id}
+                  data-menu-item={item.id}
                   onClick={() => {
                     onMenuItemChange?.(item.id);
-                    // Dispatch event for settings page
                     window.dispatchEvent(new CustomEvent('settingsMenuChange', { detail: item.id }));
+                    if (window.innerWidth < 1024) {
+                      setIsOpen(false);
+                    }
                   }}
                   style={{
                     display: 'block',
                     width: '100%',
                     padding: '12px 16px',
                     marginBottom: '8px',
-                    border: 'none',
                     borderRadius: '8px',
-                    backgroundColor: activeMenuItem === item.id ? '#f3f4f6' : 'transparent',
+                    backgroundColor: activeMenuItem === item.id ? 'rgba(181, 182, 233, 0.4)' : 'transparent',
                     color: '#3d3535',
                     fontSize: '14px',
                     fontFamily: "'Source Sans 3', sans-serif",
@@ -216,8 +248,18 @@ export default function PageSideMenu({
                     textAlign: 'left',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
+                    border: 'none',
                   }}
-                  className="hover:bg-gray-100"
+                  onMouseEnter={(e) => {
+                    if (activeMenuItem !== item.id) {
+                      e.currentTarget.style.setProperty('background-color', 'rgba(181, 182, 233, 0.2)', 'important');
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (activeMenuItem !== item.id) {
+                      e.currentTarget.style.removeProperty('background-color');
+                    }
+                  }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {item.icon && <span>{item.icon}</span>}

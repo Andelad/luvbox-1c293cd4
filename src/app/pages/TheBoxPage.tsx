@@ -1,6 +1,6 @@
 import React from 'react';
-import PageHeader from '../../components/sections/PageHeader';
-import Cube3D from '../../components/cube/Cube3D';
+import { PageHeader } from '@/app/components';
+import { Cube3D } from '@/shared/components/cube';
 
 const TheBoxPage: React.FC = () => {
   return (

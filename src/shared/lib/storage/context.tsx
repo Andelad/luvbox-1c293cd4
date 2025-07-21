@@ -1,5 +1,5 @@
 import React, { createContext, useContext, ReactNode } from 'react';
-import { StorageOperations } from '../../types/storage';
+import { StorageOperations } from '@/types/storage';
 import { storageService } from './localStorage';
 
 interface StorageContextValue {

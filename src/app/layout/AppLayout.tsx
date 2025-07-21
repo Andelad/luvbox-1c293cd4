@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import svgPaths from "../../imports/svg-0o2cpb82qi";
-import headerSvgPaths from "../../imports/svg-4ufkzakjbw";
-import PageSideMenu from "../sections/PageSideMenu";
+import { useState, useEffect } from 'react';
+import { SidebarIcons as svgPaths, SvgIcon4 as headerSvgPaths } from '../../assets/icons';
+import { PageSideMenu } from '@/app/components';
+import { PageType } from '@/shared/types/app';
 
 interface MenuItem {
   id: string;
@@ -11,15 +11,16 @@ interface MenuItem {
 
 interface AppLayoutProps {
   children: React.ReactNode;
-  onNavigate: (page: string) => void;
+  onNavigate: (page: PageType) => void;
   onGlobeClick: () => void;
-  currentPage: string;
+  currentPage: PageType;
   sidebarExpanded: boolean;
   onToggleSidebar: () => void;
   pageSideMenuTitle?: string;
   pageSideMenuContent?: React.ReactNode;
   pageSideMenuItems?: MenuItem[];
   pageSideMenuDefaultOpen?: boolean;
+  pageSideMenuActiveItem?: string;
 }
 
 function Layer1() {
@@ -1059,7 +1060,7 @@ function AppFooter({ sidebarExpanded }: { sidebarExpanded: boolean }) {
   );
 }
 
-export default function AppLayout({ children, onNavigate, onGlobeClick, currentPage, sidebarExpanded, onToggleSidebar, pageSideMenuTitle, pageSideMenuContent, pageSideMenuItems, pageSideMenuDefaultOpen }: AppLayoutProps) {
+export default function AppLayout({ children, onNavigate, onGlobeClick, currentPage, sidebarExpanded, onToggleSidebar, pageSideMenuTitle, pageSideMenuContent, pageSideMenuItems, pageSideMenuDefaultOpen, pageSideMenuActiveItem }: AppLayoutProps) {
   return (
     <div className="app-layout">
       <div className="app-layout-header">
@@ -1094,6 +1095,12 @@ export default function AppLayout({ children, onNavigate, onGlobeClick, currentP
                   content={pageSideMenuContent}
                   menuItems={pageSideMenuItems}
                   defaultOpenOnLargeScreen={pageSideMenuDefaultOpen}
+                  activeMenuItem={pageSideMenuActiveItem}
+                  onMenuItemChange={(itemId) => {
+                    if (currentPage === 'settings') {
+                      window.dispatchEvent(new CustomEvent('settingsMenuChange', { detail: itemId }));
+                    }
+                  }}
                 />
                 <div 
                   className="app-content-inner" 

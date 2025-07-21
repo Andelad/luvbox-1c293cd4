@@ -1,13 +1,14 @@
-import React from 'react';
-import WebsiteHeader from '../../components/Layout/WebsiteHeader';
-import TickerTape from '../../components/sections/TickerTape';
-import HeroSection from '../../components/sections/HeroSection';
-import StaggeredSection from '../../components/sections/StaggeredSection';
-import DiagnosticSection from '../../components/sections/DiagnosticSection';
-import TestimonialSection from '../../components/sections/TestimonialSection';
-import MapSection from '../../components/sections/MapSection';
-import StorySection from '../../components/sections/StorySection';
-import { PageType } from '../../types/app';
+import WebsiteHeader from '../layout/WebsiteHeader';
+import { 
+  TickerTape, 
+  HeroSection, 
+  StaggeredSection, 
+  TestimonialSection, 
+  MapSection, 
+  StorySection 
+} from '@/website/components';
+import DiagnosticSection from '@/app/components/DiagnosticSection';
+import type { PageType } from '../../shared/types/app';
 
 interface HomePageProps {
   onCTAClick: () => void;
@@ -47,7 +48,6 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
             
             {/* Diagnostic Section */}
             <DiagnosticSection onCTAClick={onCTAClick} />
-            
             {/* Horizontal Divider */}
             <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
             

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PageHeader from '../../components/sections/PageHeader';
+import { PageHeader } from '@/app/components';
 
 export default function FeedbackPage() {
   const [name, setName] = useState('');

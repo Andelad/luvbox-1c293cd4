@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useSnapshots, useAuth, EqualizerScores, arrayToEqualizerScores, equalizerScoresToArray } from '../../lib/storage';
+import { useSnapshots, useAuth, EqualizerScores, arrayToEqualizerScores, equalizerScoresToArray } from '@/lib/storage';
 import './EqualizerFace.css';
 
 interface EqualizerFaceWithStorageProps {

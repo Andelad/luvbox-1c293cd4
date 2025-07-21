@@ -1,6 +1,7 @@
-import React from 'react';
-import diagnosticSvgPaths from "../../imports/svg-uxz7wvt32b";
-import Button from './Button';
+import Button from '@/shared/components/Button';
+import SvgIcon5 from '@/assets/icons/svg-uxz7wvt32b';
+
+const diagnosticSvgPaths = SvgIcon5;
 
 interface DiagnosticSectionProps {
   onCTAClick: () => void;

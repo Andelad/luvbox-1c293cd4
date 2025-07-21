@@ -1,6 +1,5 @@
-import React from 'react';
-import WebsiteHeader from '../../components/Layout/WebsiteHeader';
-import svgPaths from "../../imports/svg-15aegztapr";
+import WebsiteHeader from '../layout/WebsiteHeader';
+import svgPaths from "@/assets/icons/svg-15aegztapr";
 
 function Layer1() {
   return (

@@ -1,29 +1,29 @@
-import { useState, lazy, Suspense, useCallback } from 'react';
+import { useState, lazy, Suspense, useCallback, useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import Background from './components/Shared/Background';
-import WebsiteLayout from './components/Layout/WebsiteLayout';
-import AppLayout from './components/Layout/AppLayout';
-import ExitAppDialog from './components/Shared/ExitAppDialog';
-import { StorageProvider } from './lib/storage';
-import { PageType } from './types/app';
+import Background from './shared/components/Background';
+import WebsiteLayout from './website/layout/WebsiteLayout';
+import AppLayout from './app/layout/AppLayout';
+import ExitAppDialog from './shared/components/ExitAppDialog';
+import { StorageProvider } from './shared/lib/storage';
+import { PageType } from './shared/types/app';
 
 // Performance monitoring tools (only in development)
-const PerformanceMonitor = lazy(() => import('./components/sections/PerformanceMonitor'));
+const PerformanceMonitor = lazy(() => import('./shared/components/PerformanceMonitor'));
 
 // Lazy load page components to reduce initial bundle size
 // Website pages - public marketing
-const HomePage = lazy(() => import('./pages/website/HomePage'));
-const AboutPage = lazy(() => import('./pages/website/AboutPage'));
-const ContactPage = lazy(() => import('./pages/website/ContactPage'));
+const HomePage = lazy(() => import('./website/pages/HomePage'));
+const AboutPage = lazy(() => import('./website/pages/AboutPage'));
+const ContactPage = lazy(() => import('./website/pages/ContactPage'));
 
 // App pages - private application functionality  
-const TheBoxPage = lazy(() => import('./pages/app/TheBoxPage'));
-const TheMapPage = lazy(() => import('./pages/app/TheMapPage'));
-const MySnapshotsPage = lazy(() => import('./pages/app/MySnapshotsPage'));
-const CommunityPage = lazy(() => import('./pages/app/CommunityPage'));
-const TutorialPage = lazy(() => import('./pages/app/TutorialPage'));
-const SettingsPage = lazy(() => import('./pages/app/SettingsPage'));
-const FeedbackPage = lazy(() => import('./pages/app/FeedbackPage'));
+const TheBoxPage = lazy(() => import('./app/pages/TheBoxPage'));
+const TheMapPage = lazy(() => import('./app/pages/TheMapPage'));
+const MySnapshotsPage = lazy(() => import('./app/pages/MySnapshotsPage'));
+const CommunityPage = lazy(() => import('./app/pages/CommunityPage'));
+const TutorialPage = lazy(() => import('./app/pages/TutorialPage'));
+const SettingsPage = lazy(() => import('./app/pages/SettingsPage'));
+const FeedbackPage = lazy(() => import('./app/pages/FeedbackPage'));
 
 // Loading component for better UX during code splitting
 const PageLoader = () => (
@@ -56,6 +56,7 @@ export default function App() {
   const [isInApp, setIsInApp] = useState(false);
   const [showExitDialog, setShowExitDialog] = useState(false);
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
+  const [settingsActiveMenuItem, setSettingsActiveMenuItem] = useState('profile');
 
   const handleCTAClick = () => {
     setIsInApp(true);
@@ -83,6 +84,26 @@ export default function App() {
   const toggleSidebar = () => {
     setSidebarExpanded(!sidebarExpanded);
   };
+
+  // Listen for settings menu changes
+  useEffect(() => {
+    const handleSettingsMenuChange = (event: CustomEvent) => {
+      setSettingsActiveMenuItem(event.detail);
+    };
+    
+    window.addEventListener('settingsMenuChange', handleSettingsMenuChange as EventListener);
+    return () => window.removeEventListener('settingsMenuChange', handleSettingsMenuChange as EventListener);
+  }, []);
+
+  // Sync active menu item when navigating to settings page
+  useEffect(() => {
+    if (currentPage === 'settings') {
+      // Dispatch current active menu item to settings page
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('settingsMenuChange', { detail: settingsActiveMenuItem }));
+      }, 0);
+    }
+  }, [currentPage, settingsActiveMenuItem]);
 
   const renderPage = useCallback(() => {
     switch (currentPage) {
@@ -186,6 +207,7 @@ export default function App() {
             pageSideMenuContent={sideMenuConfig.content}
             pageSideMenuItems={sideMenuConfig.menuItems}
             pageSideMenuDefaultOpen={sideMenuConfig.defaultOpen}
+            pageSideMenuActiveItem={currentPage === 'settings' ? settingsActiveMenuItem : undefined}
           >
             <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('the-box')}>
               <Suspense fallback={<PageLoader />}>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth, createEqualizerScores } from '../../lib/storage';
+import { useAuth, createEqualizerScores } from '@/lib/storage';
 
 export default function UserRegistrationDemo() {
   const { register, currentUserId } = useAuth();

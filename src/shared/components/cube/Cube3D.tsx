@@ -2,8 +2,8 @@ import React, { useState, useCallback, useRef } from 'react';
 import EqualizerFace from './EqualizerFace';
 import RightFace from './RightFace';
 import TopFaceCube from './TopFaceCube';
-import FrontFace from '../../imports/FrontFace-16-236';
-import { Button } from '../ui/button';
+import LeftFace from './LeftFace';
+import Button from '../Button';
 
 interface Cube3DProps {}
 
@@ -112,7 +112,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'translateZ(80px)'
               }}
             >
-              <FrontFace />
+              <LeftFace />
             </div>
 
             {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face */}

@@ -1,5 +1,5 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
-import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../../assets/ui/dialog";
+import { Button } from "../../assets/ui/button";
 
 interface ExitAppDialogProps {
   isOpen: boolean;

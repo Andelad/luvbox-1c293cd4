@@ -1,6 +1,6 @@
 import React from 'react';
 import OptimizedCube from './OptimizedCube';
-import Button from './Button';
+import Button from '@/shared/components/Button';
 
 interface HeroSectionProps {
   onCTAClick: () => void;
