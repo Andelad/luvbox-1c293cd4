@@ -660,20 +660,29 @@ function SidebarSeparator() {
   );
 }
 
-function MenuButtons({ onNavigate, currentPage, expanded }: { 
+function MenuButtons({ onNavigate, currentPage, expanded, onToggleSidebar }: { 
   onNavigate: (page: string) => void; 
   currentPage: string;
   expanded: boolean;
+  onToggleSidebar?: () => void;
 }) {
+  const handleNavigate = (page: string) => {
+    onNavigate(page);
+    // Close mobile sidebar if it's open
+    if (onToggleSidebar && window.innerWidth < 1024) {
+      onToggleSidebar();
+    }
+  };
+
   return (
     <div className="sidebar-menu-section">
-      <CubeButton isActive={currentPage === 'the-box'} onClick={() => onNavigate('the-box')} expanded={expanded} />
+      <CubeButton isActive={currentPage === 'the-box'} onClick={() => handleNavigate('the-box')} expanded={expanded} />
       <SidebarSeparator />
-      <MapButton isActive={currentPage === 'the-map'} onClick={() => onNavigate('the-map')} expanded={expanded} />
+      <MapButton isActive={currentPage === 'the-map'} onClick={() => handleNavigate('the-map')} expanded={expanded} />
       <SidebarSeparator />
-      <SnapshotsButton isActive={currentPage === 'my-snapshots'} onClick={() => onNavigate('my-snapshots')} expanded={expanded} />
+      <SnapshotsButton isActive={currentPage === 'my-snapshots'} onClick={() => handleNavigate('my-snapshots')} expanded={expanded} />
       <SidebarSeparator />
-      <CommunityButton isActive={currentPage === 'community'} onClick={() => onNavigate('community')} expanded={expanded} />
+      <CommunityButton isActive={currentPage === 'community'} onClick={() => handleNavigate('community')} expanded={expanded} />
     </div>
   );
 }
@@ -858,16 +867,25 @@ function FeedbackButton({ isActive, onClick, expanded }: { isActive: boolean; on
   );
 }
 
-function TechButtons({ onNavigate, currentPage, expanded }: { 
+function TechButtons({ onNavigate, currentPage, expanded, onToggleSidebar }: { 
   onNavigate: (page: string) => void; 
   currentPage: string;
   expanded: boolean;
+  onToggleSidebar?: () => void;
 }) {
+  const handleNavigate = (page: string) => {
+    onNavigate(page);
+    // Close mobile sidebar if it's open
+    if (onToggleSidebar && window.innerWidth < 1024) {
+      onToggleSidebar();
+    }
+  };
+
   return (
     <div className="sidebar-menu-section">
-      <TutorialButton isActive={currentPage === 'tutorial'} onClick={() => onNavigate('tutorial')} expanded={expanded} />
+      <TutorialButton isActive={currentPage === 'tutorial'} onClick={() => handleNavigate('tutorial')} expanded={expanded} />
       <SidebarSeparator />
-      <FeedbackButton isActive={currentPage === 'feedback'} onClick={() => onNavigate('feedback')} expanded={expanded} />
+      <FeedbackButton isActive={currentPage === 'feedback'} onClick={() => handleNavigate('feedback')} expanded={expanded} />
     </div>
   );
 }
@@ -898,8 +916,8 @@ function Sidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
       <div className="app-sidebar-content">
         <div className="app-sidebar-inner">
           <SidebarLogo expanded={expanded} onToggle={onToggleSidebar} />
-          <MenuButtons onNavigate={onNavigate} currentPage={currentPage} expanded={expanded} />
-          <TechButtons onNavigate={onNavigate} currentPage={currentPage} expanded={expanded} />
+          <MenuButtons onNavigate={onNavigate} currentPage={currentPage} expanded={expanded} onToggleSidebar={onToggleSidebar} />
+          <TechButtons onNavigate={onNavigate} currentPage={currentPage} expanded={expanded} onToggleSidebar={onToggleSidebar} />
         </div>
       </div>
       <div className="app-sidebar-border" />
@@ -988,8 +1006,8 @@ function MobileSidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
                 <LeftArrowIcon />
               </button>
             </div>
-            <MenuButtons onNavigate={onNavigate} currentPage={currentPage} expanded={true} />
-            <TechButtons onNavigate={onNavigate} currentPage={currentPage} expanded={true} />
+            <MenuButtons onNavigate={onNavigate} currentPage={currentPage} expanded={true} onToggleSidebar={onToggleSidebar} />
+            <TechButtons onNavigate={onNavigate} currentPage={currentPage} expanded={true} onToggleSidebar={onToggleSidebar} />
           </div>
         </div>
       </div>
