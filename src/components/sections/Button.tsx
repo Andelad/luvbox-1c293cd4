@@ -20,12 +20,12 @@ export default function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`luvbox-button ${className}`}
+      className={`luvmap-button ${className}`}
     >
-      <div className="luvbox-button-border" />
-      <div className="luvbox-button-content">
-        <div className="luvbox-button-inner">
-          <div className="luvbox-button-text">
+      <div className="luvmap-button-border" />
+      <div className="luvmap-button-content">
+        <div className="luvmap-button-inner">
+          <div className="luvmap-button-text">
             {children}
           </div>
         </div>

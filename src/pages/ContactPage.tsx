@@ -66,7 +66,7 @@ function Frame33({ onNavigate }: { onNavigate: (page: string) => void }) {
       <button onClick={() => onNavigate('home')} className="flex items-center gap-2">
         <LogoFrame />
         <div className="font-['EB_Garamond'] font-semibold italic leading-[0] relative shrink-0 text-[#3d3535] text-[24px] text-left text-nowrap">
-          <p className="block leading-[normal] whitespace-pre">LuvBox 1.0</p>
+          <p className="block leading-[normal] whitespace-pre">LuvMap 1.0</p>
         </div>
       </button>
     </div>

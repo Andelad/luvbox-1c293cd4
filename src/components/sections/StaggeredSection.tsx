@@ -7,7 +7,7 @@ interface StaggeredSectionProps {
 }
 
 export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) {
-  const description = "Love is beautiful when it feels effortless. But, what about when its difficult, you feel confused, or you can't let go? LuvBox is your tool for assessing what is happening, what is inspiring your feelings and what to do about them.";
+  const description = "Love is beautiful when it feels effortless. But, what about when its difficult, you feel confused, or you can't let go? LuvMap is your tool for assessing what is happening, what is inspiring your feelings and what to do about them.";
   
   const features = [
     "Untangle mixed feelings",

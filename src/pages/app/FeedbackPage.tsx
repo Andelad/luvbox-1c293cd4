@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHeader from '../../components/sections/PageHeader';
 
 export default function FeedbackPage() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [feedback, setFeedback] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Feedback submitted:', { name, email, feedback });
+    alert('Thank you for your feedback!');
+    setName('');
+    setEmail('');
+    setFeedback('');
+  };
+
   return (
     <div className="page-wrapper">
       <PageHeader 
@@ -9,11 +22,66 @@ export default function FeedbackPage() {
       />
       
       <div className="mb-8">
-        <h1 className="page-title text-[48px] luvbox-brand">
+                <h1 className="page-title text-[48px] luvmap-brand">
           Feedback
         </h1>
-        <p className="text-body max-w-[600px]">
-          We'd love to hear your thoughts and suggestions. Your feedback helps us improve LuvBox and create a better experience for everyone.
+        <p className="text-lg text-gray-600 max-w-2xl text-center">
+          We'd love to hear your thoughts and suggestions. Your feedback helps us improve LuvMap and create a better experience for everyone.
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label htmlFor="name" className="text-sm font-medium">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              placeholder="Your Name"
+            />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="email" className="text-sm font-medium">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              placeholder="your.email@example.com"
+            />
+          </div>
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="feedback" className="text-sm font-medium">
+            Feedback
+          </label>
+          <textarea
+            id="feedback"
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 h-32"
+            placeholder="Tell us what you think..."
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Submit Feedback
+        </button>
+      </form>
+
+      <div className="text-center text-sm text-gray-500">
+        <p>
+          Your feedback is important to us and helps shape the future of LuvMap. Thank you for taking the time to share your thoughts!
         </p>
       </div>
       

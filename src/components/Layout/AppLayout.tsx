@@ -74,7 +74,7 @@ function AppHeaderLogo({ onClick }: { onClick: () => void }) {
     <button onClick={onClick} className="app-header-logo">
       <LogoFrame />
       <div className="app-header-logo-text">
-        <p>LuvBox 1.0</p>
+        <p>LuvMap 1.0</p>
       </div>
     </button>
   );
@@ -210,13 +210,7 @@ function AppHeader({ onGlobeClick, sidebarExpanded, onNavigate, currentPage, onT
             <AppHeaderLogo onClick={onGlobeClick} />
           </div>
           <div className="app-header-right">
-            <button 
-              onClick={() => onNavigate('settings')} 
-              className={`globe-button ${currentPage === 'settings' ? 'active' : ''}`}
-              title="Settings"
-            >
-              <AccountCircle />
-            </button>
+            {/* Profile button moved to sidebar */}
           </div>
         </div>
       </div>
@@ -867,6 +861,27 @@ function FeedbackButton({ isActive, onClick, expanded }: { isActive: boolean; on
   );
 }
 
+function ProfileButton({ isActive, onClick, expanded }: { isActive: boolean; onClick: () => void; expanded: boolean }) {
+  return (
+    <div
+      className={`sidebar-button rounded-xl ${isActive ? 'active' : ''}`}
+      onClick={onClick}
+      data-name="Profile Button"
+    >
+      <div className="sidebar-button-content">
+        <div className="sidebar-button-inner">
+          <AccountCircle />
+          {expanded && (
+            <div className="sidebar-button-text">
+              <p>Profile</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TechButtons({ onNavigate, currentPage, expanded, onToggleSidebar }: { 
   onNavigate: (page: string) => void; 
   currentPage: string;
@@ -886,6 +901,8 @@ function TechButtons({ onNavigate, currentPage, expanded, onToggleSidebar }: {
       <TutorialButton isActive={currentPage === 'tutorial'} onClick={() => handleNavigate('tutorial')} expanded={expanded} />
       <SidebarSeparator />
       <FeedbackButton isActive={currentPage === 'feedback'} onClick={() => handleNavigate('feedback')} expanded={expanded} />
+      <SidebarSeparator />
+      <ProfileButton isActive={currentPage === 'settings'} onClick={() => handleNavigate('settings')} expanded={expanded} />
     </div>
   );
 }

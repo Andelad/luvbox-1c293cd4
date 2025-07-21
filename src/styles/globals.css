@@ -231,16 +231,16 @@
   }
 }
 
-/* Custom LuvBox branding class */
-.luvbox-brand {
+/* Custom LuvMap branding class */
+.luvmap-brand {
   font-family: 'EB Garamond', serif;
   font-weight: 600;
   font-style: italic;
   color: var(--text-color);
 }
 
-/* Custom LuvBox Button Component */
-.luvbox-button {
+/* Custom LuvMap Button Component */
+.luvmap-button {
   background: linear-gradient(to right, #c0e1ed, #aca7e0);
   position: relative;
   border-radius: 12px;
@@ -254,7 +254,7 @@
   transform: translateY(0);
 }
 
-.luvbox-button::before {
+.luvmap-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -268,41 +268,41 @@
   pointer-events: none;
 }
 
-.luvbox-button:hover::before {
+.luvmap-button:hover::before {
   opacity: 1;
 }
 
-.luvbox-button:hover {
+.luvmap-button:hover {
   box-shadow: 0px 6px 16px 0px rgba(0,0,0,0.3);
 }
 
-.luvbox-button:active {
+.luvmap-button:active {
   box-shadow: none;
   transform: translateY(2px);
   transition: all 0.1s ease;
 }
 
-.luvbox-button:disabled {
+.luvmap-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: translateY(0);
 }
 
-.luvbox-button:disabled::before {
+.luvmap-button:disabled::before {
   opacity: 0;
 }
 
-.luvbox-button:disabled:hover {
+.luvmap-button:disabled:hover {
   box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
   transform: translateY(0);
 }
 
-.luvbox-button:disabled:active {
+.luvmap-button:disabled:active {
   box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
   transform: translateY(0);
 }
 
-.luvbox-button-border {
+.luvmap-button-border {
   position: absolute;
   border: 1px solid rgba(61,53,53,0.16);
   border-radius: 12px;
@@ -311,7 +311,7 @@
   z-index: 2;
 }
 
-.luvbox-button-content {
+.luvmap-button-content {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -322,7 +322,7 @@
   z-index: 2;
 }
 
-.luvbox-button-inner {
+.luvmap-button-inner {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -335,7 +335,7 @@
   min-height: 58px;
 }
 
-.luvbox-button-text {
+.luvmap-button-text {
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
   line-height: normal;
@@ -588,6 +588,7 @@ html {
 
 .app-content-wrapper {
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: center;
 }
@@ -595,10 +596,11 @@ html {
 .app-content-container {
   box-sizing: border-box;
   display: flex;
+  flex: 1;
   gap: 0;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
-  padding: 112px 16px 112px 16px;
+  padding: 32px 16px 72px 16px;
   position: relative;
   width: 100%;
 }
@@ -608,7 +610,7 @@ html {
   background-color: #ffffff;
   flex-grow: 1;
   max-width: 1200px;
-  min-height: 600px;
+  min-height: calc(100vh - 80px - 96px - 32px - 72px);
   min-width: 1px;
   position: relative;
   border-radius: 24px;
@@ -644,6 +646,7 @@ html {
   padding: 24px 24px;
   position: relative;
   width: 100%;
+  min-height: 100%;
 }
 
 .app-content-border {
@@ -812,11 +815,12 @@ html {
 /* Mobile menu button specific styling */
 .globe-button.mobile-menu-button {
   border: 1px solid rgba(61, 53, 53, 0.3);
+  background-color: #e0ffe4;
 }
 
 .globe-button.mobile-menu-button:hover {
   border-color: rgba(61, 53, 53, 0.5);
-  background-color: rgba(181, 182, 233, 0.2);
+  background-color: #d4ffd8;
 }
 
 .globe-icon {
@@ -930,6 +934,7 @@ html {
    ========================================================================== */
 
 .app-footer {
+  position: relative;
   background-color: rgba(255,255,255,0.4);
   height: 96px;
   width: 100%;
@@ -1066,7 +1071,7 @@ html {
    ========================================================================== */
 
 /* Add hardware acceleration to frequently animated elements */
-.luvbox-button,
+.luvmap-button,
 .sidebar-button,
 .staggered-card {
   will-change: transform;

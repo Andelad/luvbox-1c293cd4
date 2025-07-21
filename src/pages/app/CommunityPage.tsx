@@ -10,7 +10,7 @@ export default function CommunityPage() {
       
       <div className="content-area">
         <div className="text-center">
-          <h2 className="text-heading text-[32px] mb-4 luvbox-brand">
+          <h2 className="text-heading text-[32px] mb-4 luvmap-brand">
             Community
           </h2>
           <p className="text-body opacity-60">
