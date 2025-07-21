@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useMemo, memo } from 'react';
-import LeftFace from '../cube/LeftFace';
+import EqualizerFace from '../cube/EqualizerFace';
 import RightFace from '../cube/RightFace';
 import TopFaceCube from '../cube/TopFaceCube';
 
 // Memoized face components to prevent unnecessary re-renders
-const MemoizedLeftFace = memo(LeftFace);
+const MemoizedEqualizerFace = memo(EqualizerFace);
 const MemoizedRightFace = memo(RightFace);
 const MemoizedTopFace = memo(TopFaceCube);
 
@@ -134,7 +134,7 @@ const OptimizedCube = memo(() => {
           }}
         />
         
-        {/* Left Face - LeftFace design */}
+        {/* Left Face - EqualizerFace design */}
         <div 
           className="cube-face bg-white"
           style={{
@@ -143,7 +143,7 @@ const OptimizedCube = memo(() => {
             transform: 'rotateY(-90deg) translateZ(100px)'
           }}
         >
-          <MemoizedLeftFace />
+          <MemoizedEqualizerFace />
         </div>
         
         {/* Right Face - This is actually the true right side (hidden in this view) */}

@@ -628,6 +628,11 @@ html {
   transition: margin-left 0.3s ease;
 }
 
+/* Disable transitions during page changes */
+.app-content-inner.no-transition {
+  transition: none !important;
+}
+
 /* Remove content margin on mobile screens */
 @media (max-width: 1023px) {
   .app-content-inner {

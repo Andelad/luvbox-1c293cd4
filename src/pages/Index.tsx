@@ -7,6 +7,7 @@ import DiagnosticSection from '../components/sections/DiagnosticSection';
 import TestimonialSection from '../components/sections/TestimonialSection';
 import MapSection from '../components/sections/MapSection';
 import StorySection from '../components/sections/StorySection';
+import SimpleUserCreator from '../components/demo/SimpleUserCreator';
 import { PageType } from '../types/app';
 
 interface HomePageProps {
@@ -23,6 +24,11 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
       <div className="flex flex-row justify-center relative size-full">        
         {/* Main content with top padding to account for fixed header */}
         <div className="[flex-flow:wrap] box-border content-start flex gap-0 items-start justify-center pl-4 pr-0 py-0 relative size-full pt-20">
+          
+          {/* User Account Creation - for testing settings */}
+          <div className="w-full max-w-4xl mx-auto px-4" style={{ marginTop: '20px', marginBottom: '20px' }}>
+            <SimpleUserCreator />
+          </div>
           
           {/* Ticker Tape - 24px gap from header, extends to viewport edges */}
           <div className="w-screen relative left-1/2 transform -translate-x-1/2" style={{ marginTop: '27px', marginBottom: '24px' }}>

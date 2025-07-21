@@ -1,10 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth, useUser } from '../../lib/storage/hooks';
+import { useUser } from '../../lib/storage/hooks';
 import { EqualizerArea, EqualizerScores, createEqualizerScores } from '../../types/storage';
+import PageWrapperWithSideMenu from '../../components/sections/PageWrapperWithSideMenu';
+
+// Icons for menu items
+const UserIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M8 8a3 3 0 100-6 3 3 0 000 6zM8 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+  </svg>
+);
+
+const EqualizerIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <rect x="2" y="4" width="2" height="8" fill="currentColor"/>
+    <rect x="6" y="2" width="2" height="12" fill="currentColor"/>
+    <rect x="10" y="6" width="2" height="8" fill="currentColor"/>
+    <rect x="14" y="3" width="2" height="10" fill="currentColor"/>
+  </svg>
+);
+
+const menuItems = [
+  { id: 'profile', label: 'User Profile', icon: <UserIcon /> },
+  { id: 'dealbreakers', label: 'Dealbreaker Lines', icon: <EqualizerIcon /> },
+];
 
 const SettingsPage: React.FC = () => {
-  const { currentUserId } = useAuth();
-  const { user, updateUser } = useUser(currentUserId || undefined);
+  const { currentUser, updateCurrentUser } = useUser();
   const [activeSection, setActiveSection] = useState('profile');
   
   // Form states
@@ -15,33 +36,23 @@ const SettingsPage: React.FC = () => {
     createEqualizerScores()
   );
 
-  // Listen for side menu changes from the AppLayout
-  useEffect(() => {
-    const handleMenuChange = (event: CustomEvent) => {
-      setActiveSection(event.detail);
-    };
-    
-    window.addEventListener('settingsMenuChange', handleMenuChange as EventListener);
-    return () => window.removeEventListener('settingsMenuChange', handleMenuChange as EventListener);
-  }, []);
-
   // Load user data when user changes
   useEffect(() => {
-    if (user) {
-      setName(user.name || '');
-      setEmail(user.email || '');
-      setDateOfBirth(user.dateOfBirth ? 
-        new Date(user.dateOfBirth).toISOString().split('T')[0] : ''
+    if (currentUser) {
+      setName(currentUser.name || '');
+      setEmail(currentUser.email || '');
+      setDateOfBirth(currentUser.dateOfBirth ? 
+        new Date(currentUser.dateOfBirth).toISOString().split('T')[0] : ''
       );
-      setDealbreakerScores(user.dealbreakerScores || createEqualizerScores());
+      setDealbreakerScores(currentUser.dealbreakerScores || createEqualizerScores());
     }
-  }, [user]);
+  }, [currentUser]);
 
   const handleSaveProfile = async () => {
-    if (!user) return;
+    if (!currentUser) return;
     
     try {
-      await updateUser({
+      await updateCurrentUser({
         name,
         email,
         dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : new Date(),
@@ -54,10 +65,10 @@ const SettingsPage: React.FC = () => {
   };
 
   const handleSaveDealbreakers = async () => {
-    if (!user) return;
+    if (!currentUser) return;
     
     try {
-      await updateUser({
+      await updateCurrentUser({
         dealbreakerScores,
       });
       alert('Dealbreaker lines updated successfully!');
@@ -78,7 +89,7 @@ const SettingsPage: React.FC = () => {
     <div className="max-w-2xl">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">User Profile</h2>
       
-      {!user ? (
+      {!currentUser ? (
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
           <p className="text-yellow-800">
             No user account found. Please create an account first.
@@ -139,7 +150,7 @@ const SettingsPage: React.FC = () => {
       <div className="max-w-2xl">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Dealbreaker Lines</h2>
         
-        {!user ? (
+        {!currentUser ? (
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
             <p className="text-yellow-800">
               No user account found. Please create an account first.
@@ -191,37 +202,40 @@ const SettingsPage: React.FC = () => {
   };
 
   return (
-    <div className="content-area">
+    <PageWrapperWithSideMenu
+      title="Settings"
+      menuItems={menuItems}
+      activeMenuItem={activeSection}
+      onMenuItemChange={setActiveSection}
+      defaultOpenOnLargeScreen={true} // Only settings page defaults to open
+    >
       <div className="p-6">
         {activeSection === 'profile' && renderUserProfileSection()}
         {activeSection === 'dealbreakers' && renderDealbreakerSection()}
       </div>
       
-      {/* Add CSS as an inline style tag */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          .slider::-webkit-slider-thumb {
-            appearance: none;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: #3b82f6;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          }
-          
-          .slider::-moz-range-thumb {
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: #3b82f6;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          }
-        `
-      }} />
-    </div>
+      <style jsx>{`
+        .slider::-webkit-slider-thumb {
+          appearance: none;
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: #3b82f6;
+          cursor: pointer;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .slider::-moz-range-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: #3b82f6;
+          cursor: pointer;
+          border: none;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+      `}</style>
+    </PageWrapperWithSideMenu>
   );
 };
 

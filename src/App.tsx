@@ -4,6 +4,7 @@ import Background from './components/Shared/Background';
 import WebsiteLayout from './components/Layout/WebsiteLayout';
 import AppLayout from './components/Layout/AppLayout';
 import ExitAppDialog from './components/Shared/ExitAppDialog';
+import { StorageProvider } from './lib/storage';
 import { PageType } from './types/app';
 
 // Performance monitoring tools (only in development)
@@ -115,33 +116,23 @@ export default function App() {
     switch (currentPage) {
       case 'settings':
         return {
-          title: 'Settings Help',
-          content: (
-            <div>
-              <p style={{ 
-                fontSize: '14px', 
-                color: '#3d3535', 
-                opacity: 0.8, 
-                lineHeight: '1.5',
-                fontFamily: "'Source Sans 3', sans-serif",
-                marginBottom: '12px'
-              }}>
-                Configure your account preferences, privacy settings, and application behavior.
-              </p>
-              <ul style={{
-                fontSize: '14px',
-                color: '#3d3535',
-                opacity: 0.8,
-                fontFamily: "'Source Sans 3', sans-serif",
-                listStyle: 'disc',
-                paddingLeft: '16px'
-              }}>
-                <li>Account information</li>
-                <li>Privacy controls</li>
-                <li>Notification preferences</li>
-              </ul>
-            </div>
-          )
+          title: 'Settings',
+          menuItems: [
+            { id: 'profile', label: 'User Profile', icon: (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 8a3 3 0 100-6 3 3 0 000 6zM8 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+              </svg>
+            )},
+            { id: 'dealbreakers', label: 'Dealbreaker Lines', icon: (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="4" width="2" height="8" fill="currentColor"/>
+                <rect x="6" y="2" width="2" height="12" fill="currentColor"/>
+                <rect x="10" y="6" width="2" height="8" fill="currentColor"/>
+                <rect x="14" y="3" width="2" height="10" fill="currentColor"/>
+              </svg>
+            )}
+          ],
+          defaultOpen: true
         };
       case 'feedback':
         return {
@@ -156,7 +147,8 @@ export default function App() {
             }}>
               Help us improve by sharing your thoughts and reporting issues.
             </p>
-          )
+          ),
+          defaultOpen: false
         };
       default:
         return {
@@ -171,7 +163,8 @@ export default function App() {
             }}>
               This section contains helpful information and quick actions related to the current page.
             </p>
-          )
+          ),
+          defaultOpen: false
         };
     }
   }, [currentPage]);
@@ -179,7 +172,7 @@ export default function App() {
   const sideMenuConfig = getPageSideMenuContent();
 
   return (
-    <>
+    <StorageProvider>
       <Background />
       {isInApp ? (
         <>
@@ -191,6 +184,8 @@ export default function App() {
             onToggleSidebar={toggleSidebar}
             pageSideMenuTitle={sideMenuConfig.title}
             pageSideMenuContent={sideMenuConfig.content}
+            pageSideMenuItems={sideMenuConfig.menuItems}
+            pageSideMenuDefaultOpen={sideMenuConfig.defaultOpen}
           >
             <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('the-box')}>
               <Suspense fallback={<PageLoader />}>
@@ -222,6 +217,6 @@ export default function App() {
           </Suspense>
         </ErrorBoundary>
       )}
-    </>
+    </StorageProvider>
   );
 }

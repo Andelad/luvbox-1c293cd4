@@ -1,7 +1,8 @@
-import React, { useState, useRef, useCallback } from 'react';
-import LeftFace from './LeftFace';
+import React, { useState, useCallback, useRef } from 'react';
+import EqualizerFace from './EqualizerFace';
 import RightFace from './RightFace';
 import TopFaceCube from './TopFaceCube';
+import FrontFace from '../../imports/FrontFace-16-236';
 import { Button } from '../ui/button';
 
 interface Cube3DProps {}
@@ -102,7 +103,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             }}
           >
 
-            {/* Face 1: translateZ(80px) */}
+            {/* Face 1: translateZ(80px) - Front Face */}
             <div 
               className="cube-face"
               style={{
@@ -111,10 +112,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'translateZ(80px)'
               }}
             >
-              <LeftFace />
+              <FrontFace />
             </div>
 
-            {/* Face 2: rotateY(-90deg) translateZ(80px) */}
+            {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face */}
             <div 
               className="cube-face"
               style={{
@@ -123,10 +124,22 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(-90deg) translateZ(80px)'
               }}
             >
+              <EqualizerFace />
+            </div>
+
+            {/* Face 3: rotateY(90deg) translateZ(80px) - Right Face */}
+            <div 
+              className="cube-face"
+              style={{
+                width: '160px',
+                height: '160px',
+                transform: 'rotateY(90deg) translateZ(80px)'
+              }}
+            >
               <RightFace />
             </div>
 
-            {/* Face 3: rotateX(90deg) translateZ(80px) */}
+            {/* Face 4: rotateX(90deg) translateZ(80px) - Top Face */}
             <div 
               className="cube-face"
               style={{

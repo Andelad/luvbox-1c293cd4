@@ -3,6 +3,12 @@ import svgPaths from "../../imports/svg-0o2cpb82qi";
 import headerSvgPaths from "../../imports/svg-4ufkzakjbw";
 import PageSideMenu from "../sections/PageSideMenu";
 
+interface MenuItem {
+  id: string;
+  label: string;
+  icon?: React.ReactNode;
+}
+
 interface AppLayoutProps {
   children: React.ReactNode;
   onNavigate: (page: string) => void;
@@ -12,6 +18,8 @@ interface AppLayoutProps {
   onToggleSidebar: () => void;
   pageSideMenuTitle?: string;
   pageSideMenuContent?: React.ReactNode;
+  pageSideMenuItems?: MenuItem[];
+  pageSideMenuDefaultOpen?: boolean;
 }
 
 function Layer1() {
@@ -1051,7 +1059,7 @@ function AppFooter({ sidebarExpanded }: { sidebarExpanded: boolean }) {
   );
 }
 
-export default function AppLayout({ children, onNavigate, onGlobeClick, currentPage, sidebarExpanded, onToggleSidebar, pageSideMenuTitle, pageSideMenuContent }: AppLayoutProps) {
+export default function AppLayout({ children, onNavigate, onGlobeClick, currentPage, sidebarExpanded, onToggleSidebar, pageSideMenuTitle, pageSideMenuContent, pageSideMenuItems, pageSideMenuDefaultOpen }: AppLayoutProps) {
   return (
     <div className="app-layout">
       <div className="app-layout-header">
@@ -1080,7 +1088,13 @@ export default function AppLayout({ children, onNavigate, onGlobeClick, currentP
           <div className="app-content-wrapper">
             <div className="app-content-container">
               <div className="app-content-card" style={{ position: 'relative' }}>
-                <PageSideMenu title={pageSideMenuTitle} content={pageSideMenuContent} />
+                <PageSideMenu 
+                  key={currentPage} // Force remount when page changes
+                  title={pageSideMenuTitle} 
+                  content={pageSideMenuContent}
+                  menuItems={pageSideMenuItems}
+                  defaultOpenOnLargeScreen={pageSideMenuDefaultOpen}
+                />
                 <div 
                   className="app-content-inner" 
                 >

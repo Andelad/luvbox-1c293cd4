@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
+interface MenuItem {
+  id: string;
+  label: string;
+  icon?: React.ReactNode;
+}
+
 interface PageSideMenuProps {
   title?: string;
   content?: React.ReactNode;
+  menuItems?: MenuItem[];
+  activeMenuItem?: string;
+  onMenuItemChange?: (itemId: string) => void;
+  defaultOpenOnLargeScreen?: boolean; // New prop to control default behavior
 }
 
 const HamburgerIcon: React.FC = () => (
@@ -17,10 +27,46 @@ const CloseIcon: React.FC = () => (
   </svg>
 );
 
-export default function PageSideMenu({ title = "In this section", content }: PageSideMenuProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [showContent, setShowContent] = useState(false);
+export default function PageSideMenu({ 
+  title = "In this section", 
+  content, 
+  menuItems, 
+  activeMenuItem, 
+  onMenuItemChange,
+  defaultOpenOnLargeScreen = false // Default to false, only settings page will set to true
+}: PageSideMenuProps) {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+  // Use the prop to determine default open state
+  const [isOpen, setIsOpen] = useState(defaultOpenOnLargeScreen && window.innerWidth >= 1024);
+  const [showContent, setShowContent] = useState(defaultOpenOnLargeScreen && window.innerWidth >= 1024);
+  const [isPageChange, setIsPageChange] = useState(false);
+
+  // Reset side menu state when defaultOpenOnLargeScreen changes (page changes)
+  useEffect(() => {
+    setIsPageChange(true);
+    const shouldBeOpen = defaultOpenOnLargeScreen && window.innerWidth >= 1024;
+    setIsOpen(shouldBeOpen);
+    setShowContent(shouldBeOpen);
+    
+    // Immediately update margin without transition during page change
+    const contentElement = document.querySelector('.app-content-inner') as HTMLElement;
+    if (contentElement) {
+      // Add no-transition class to disable CSS transitions
+      contentElement.classList.add('no-transition');
+      
+      if (window.innerWidth >= 1024) {
+        contentElement.style.marginLeft = shouldBeOpen ? '240px' : '48px';
+      } else {
+        contentElement.style.marginLeft = shouldBeOpen ? '0' : '48px';
+      }
+      
+      // Remove no-transition class and mark page change as complete
+      setTimeout(() => {
+        contentElement.classList.remove('no-transition');
+        setIsPageChange(false);
+      }, 100);
+    }
+  }, [defaultOpenOnLargeScreen]);
 
   // Add CSS animation for fade-in
   useEffect(() => {
@@ -42,23 +88,36 @@ export default function PageSideMenu({ title = "In this section", content }: Pag
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
+      const newIsLargeScreen = window.innerWidth >= 1024;
+      setIsLargeScreen(newIsLargeScreen);
+      
+      // Only auto-open/close if defaultOpenOnLargeScreen is true
+      if (defaultOpenOnLargeScreen) {
+        if (newIsLargeScreen && !isOpen) {
+          setIsOpen(true);
+        } else if (!newIsLargeScreen && isOpen) {
+          setIsOpen(false);
+        }
+      }
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [isOpen, defaultOpenOnLargeScreen]);
 
   useEffect(() => {
     const contentElement = document.querySelector('.app-content-inner') as HTMLElement;
     if (contentElement) {
-      if (isLargeScreen) {
-        contentElement.style.marginLeft = isOpen ? '240px' : '48px';
-      } else {
-        // On small screens, give content enough margin to clear the closed menu (48px)
-        contentElement.style.marginLeft = isOpen ? '0' : '48px';
+      // Only set margin during manual toggles (when not in page change)
+      if (!isPageChange) {
+        if (isLargeScreen) {
+          contentElement.style.marginLeft = isOpen ? '240px' : '48px';
+        } else {
+          // On small screens, give content enough margin to clear the closed menu (48px)
+          contentElement.style.marginLeft = isOpen ? '0' : '48px';
+        }
       }
     }
-  }, [isOpen, isLargeScreen]);
+  }, [isOpen, isLargeScreen, isPageChange]);
 
   // Handle content visibility timing
   useEffect(() => {
@@ -86,7 +145,7 @@ export default function PageSideMenu({ title = "In this section", content }: Pag
         borderTopLeftRadius: '24px',
         borderBottomLeftRadius: '24px',
         paddingTop: '16px',
-        transition: 'width 0.3s ease',
+        transition: isPageChange ? 'none' : 'width 0.3s ease',
         zIndex: isLargeScreen ? 10 : 20,
         boxShadow: isOpen && !isLargeScreen ? '2px 0 8px rgba(0,0,0,0.1)' : 'none',
       }}
@@ -118,8 +177,8 @@ export default function PageSideMenu({ title = "In this section", content }: Pag
           padding: '0 16px', 
           paddingTop: '56px',
           opacity: showContent ? 1 : 0,
-          transition: 'opacity 0.25s ease-in',
-          animation: showContent ? 'fadeIn 0.25s ease-in forwards' : 'none'
+          transition: isPageChange ? 'none' : 'opacity 0.25s ease-in',
+          animation: isPageChange ? 'none' : (showContent ? 'fadeIn 0.25s ease-in forwards' : 'none')
         }}>
           <h3 style={{
             fontSize: '16px',
@@ -130,6 +189,46 @@ export default function PageSideMenu({ title = "In this section", content }: Pag
           }}>
             {title}
           </h3>
+          
+          {/* Menu Items */}
+          {menuItems && menuItems.length > 0 ? (
+            <div style={{ marginBottom: '20px' }}>
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    onMenuItemChange?.(item.id);
+                    // Dispatch event for settings page
+                    window.dispatchEvent(new CustomEvent('settingsMenuChange', { detail: item.id }));
+                  }}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: '12px 16px',
+                    marginBottom: '8px',
+                    border: 'none',
+                    borderRadius: '8px',
+                    backgroundColor: activeMenuItem === item.id ? '#f3f4f6' : 'transparent',
+                    color: '#3d3535',
+                    fontSize: '14px',
+                    fontFamily: "'Source Sans 3', sans-serif",
+                    fontWeight: activeMenuItem === item.id ? '600' : '400',
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                  }}
+                  className="hover:bg-gray-100"
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    {item.icon && <span>{item.icon}</span>}
+                    <span>{item.label}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          ) : null}
+          
+          {/* Custom Content */}
           {content || (
             <p style={{
               fontSize: '14px',
