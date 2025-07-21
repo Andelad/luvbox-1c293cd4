@@ -101,58 +101,49 @@ const Cube3D: React.FC<Cube3DProps> = () => {
               transformOrigin: '50% 50%'
             }}
           >
-            {/* Front Face - TopFace design */}
+
+            {/* Face 1: translateZ(80px) */}
             <div 
-              className="cube-face bg-white"
+              className="cube-face"
               style={{
+                width: '160px',
+                height: '160px',
                 transform: 'translateZ(80px)'
-              }}
-            >
-              <TopFaceCube />
-            </div>
-            
-            {/* Back Face (hidden) */}
-            <div 
-              className="cube-face bg-gray-200"
-              style={{
-                transform: 'translateZ(-80px) rotateY(180deg)'
-              }}
-            />
-            
-            {/* Left Face - FrontFace design */}
-            <div 
-              className="cube-face bg-white"
-              style={{
-                transform: 'rotateY(-90deg) translateZ(80px)'
               }}
             >
               <LeftFace />
             </div>
-            
-            {/* Right Face - RightFace design */}
+
+            {/* Face 2: rotateY(-90deg) translateZ(80px) */}
             <div 
-              className="cube-face bg-white"
+              className="cube-face"
               style={{
-                transform: 'rotateY(90deg) translateZ(80px)'
+                width: '160px',
+                height: '160px',
+                transform: 'rotateY(-90deg) translateZ(80px)'
               }}
             >
               <RightFace />
             </div>
-            
-            {/* Top Face - TopFace design */}
+
+            {/* Face 3: rotateX(90deg) translateZ(80px) */}
             <div 
-              className="cube-face bg-white"
+              className="cube-face"
               style={{
+                width: '160px',
+                height: '160px',
                 transform: 'rotateX(90deg) translateZ(80px)'
               }}
             >
               <TopFaceCube />
             </div>
-            
+
             {/* Bottom Face (hidden) */}
             <div 
-              className="cube-face bg-gray-200"
+              className="cube-face"
               style={{
+                width: '160px',
+                height: '160px',
                 transform: 'rotateX(-90deg) translateZ(80px)'
               }}
             />

@@ -112,7 +112,7 @@ const OptimizedCube = memo(() => {
           ...transformStyle
         }}
       >
-        {/* Front Face - TopFace design */}
+        {/* Front Face - RightFace design */}
         <div 
           className="cube-face bg-white"
           style={{
@@ -121,9 +121,7 @@ const OptimizedCube = memo(() => {
             transform: 'translateZ(100px)'
           }}
         >
-          <div style={{ transform: 'scale(1.25)' }}>
-            <MemoizedTopFace />
-          </div>
+          <MemoizedRightFace />
         </div>
         
         {/* Back Face (hidden) */}
@@ -145,12 +143,10 @@ const OptimizedCube = memo(() => {
             transform: 'rotateY(-90deg) translateZ(100px)'
           }}
         >
-          <div style={{ transform: 'scale(1.25)' }}>
-            <MemoizedLeftFace />
-          </div>
+          <MemoizedLeftFace />
         </div>
         
-        {/* Right Face - RightFace design */}
+        {/* Right Face - This is actually the true right side (hidden in this view) */}
         <div 
           className="cube-face bg-white"
           style={{
@@ -159,9 +155,7 @@ const OptimizedCube = memo(() => {
             transform: 'rotateY(90deg) translateZ(100px)'
           }}
         >
-          <div style={{ transform: 'scale(1.25)' }}>
-            <MemoizedRightFace />
-          </div>
+          <MemoizedRightFace />
         </div>
         
         {/* Top Face - TopFace design */}
@@ -173,9 +167,7 @@ const OptimizedCube = memo(() => {
             transform: 'rotateX(90deg) translateZ(100px)'
           }}
         >
-          <div style={{ transform: 'scale(1.25)' }}>
-            <MemoizedTopFace />
-          </div>
+          <MemoizedTopFace />
         </div>
         
         {/* Bottom Face (hidden) */}

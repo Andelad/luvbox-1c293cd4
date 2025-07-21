@@ -3,7 +3,7 @@ const imgRectangle5 = "/placeholder.svg";
 export default function TopFace() {
   return (
     <div
-      className="bg-gradient-to-b from-[#ffffff] relative rounded size-full to-[#e2fee666]"
+      className="bg-gradient-to-b from-[#ffffff] relative rounded to-[#e2fee666] w-full h-full"
       data-name="Top Face"
     >
       <div className="overflow-clip relative size-full">

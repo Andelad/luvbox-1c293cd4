@@ -1,6 +1,6 @@
 import React from 'react';
 import PageHeader from '../../components/sections/PageHeader';
-import OptimizedCube from '../../components/sections/OptimizedCube';
+import Cube3D from '../../components/cube/Cube3D';
 
 const TheBoxPage: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const TheBoxPage: React.FC = () => {
         breadcrumbs={['The Box', 'Sub Page']}
       />
       <div className="flex justify-center py-8">
-        <OptimizedCube />
+        <Cube3D />
       </div>
     </div>
   );
