@@ -60,6 +60,7 @@
 | `animation`, `motion`, `scroll`, `fade`, `slide` | [🎬 Animation Standards](#-animation--motion-standards) | Use `<AnimatedSection>`, respect `prefers-reduced-motion` |
 | `font`, `text`, `typography`, `size` | [🔤 Typography](#-typography-system-standards) | Use `text-app-*` or `text-web-*` classes |
 | `component`, `create`, `new`, `build` | [🧩 Component Development](#-component-development-standards) | Follow template, use TypeScript, barrel exports |
+| `dev server`, `npm run`, `port`, `terminal` | [⚡ Development Server](#-development-server-standards) | Check existing server first, use smart restart commands |
 | `folder`, `import`, `path`, `organize` | [📁 Folder Structure](#-folder-structure-standards) | `shared/` for reusable, `app/` vs `website/` specific |
 | `css`, `styles`, `class`, `globals` | [📝 CSS Organization](#-css-organization-standards) | Use CSS variables, follow naming conventions |
 | `content`, `text`, `copy`, `strings` | [📄 Content Management](#-content-management-standards) | Centralized in `/content`, no hardcoded text |
@@ -106,10 +107,11 @@ This handbook ensures all developers follow### 📋 Before You Start Checklist
 2. **[🎨 Color System Standards](#-color-system-standards)** - OKLCH palette, transparency, CSS variables usage
 3. **[🔤 Typography System Standards](#-typography-system-standards)** - Dual-scale system, app vs website typography
 4. **[🧩 Component Development Standards](#-component-development-standards)** - Creation patterns, TypeScript, file naming
-5. **[🎬 Animation & Motion Standards](#-animation--motion-standards)** - Performance, accessibility, animation components
-6. **[📝 CSS Organization Standards](#-css-organization-standards)** - CSS structure, naming conventions, modularity
-7. **[📄 Content Management Standards](#-content-management-standards)** - Centralized content, text management
-8. **[🖼️ Asset Management Standards](#-asset-management-standards)** - Icons, images, fonts organization
+5. **[⚡ Development Server Standards](#-development-server-standards)** - Server management, port usage, efficient workflows
+6. **[🎬 Animation & Motion Standards](#-animation--motion-standards)** - Performance, accessibility, animation components
+7. **[📝 CSS Organization Standards](#-css-organization-standards)** - CSS structure, naming conventions, modularity
+8. **[📄 Content Management Standards](#-content-management-standards)** - Centralized content, text management
+9. **[🖼️ Asset Management Standards](#-asset-management-standards)** - Icons, images, fonts organization
 
 ---
 
@@ -542,6 +544,86 @@ export default Component;
 - **PascalCase**: `ComponentName.tsx`
 - **Descriptive names**: `UserProfileCard.tsx` not `Card.tsx`
 - **Location-specific**: Place in appropriate folder hierarchy
+
+## ⚡ Development Server Standards
+
+### Server Management Philosophy
+**Never waste resources or create port conflicts. Always check for existing servers before starting new ones.**
+
+### 🚨 CRITICAL RULES FOR AI AGENTS
+
+#### **❌ NEVER DO:**
+- Run `npm run dev` without checking if server already exists
+- Start multiple development servers on same port
+- Ignore existing running processes
+- Kill terminals with running servers unnecessarily
+
+#### **✅ ALWAYS DO:**
+- Check server status before starting new one
+- Use `npm run dev:restart` when you need to restart
+- Use `npm run dev:check` for smart server management
+- Preserve existing server sessions when possible
+
+### 🔧 Available Commands
+
+#### **Smart Development Commands**
+```bash
+# ✅ Preferred: Check if server running, start only if needed
+npm run dev:check
+
+# ✅ Check server status without starting
+npm run dev:status  
+
+# ✅ Force restart when needed (kills existing + starts new)
+npm run dev:restart
+
+# ❌ Avoid: Blind start (may conflict with existing server)
+npm run dev
+```
+
+#### **Manual Server Management**
+```bash
+# Check if server is running
+curl -s http://localhost:8080 > /dev/null && echo "Running" || echo "Stopped"
+
+# Find development server process
+ps aux | grep -E "(vite|node.*vite)" | grep -v grep
+
+# Kill existing server (if restart needed)
+pkill -f 'vite'
+```
+
+### 🎯 AI Agent Decision Tree
+
+#### **"User wants to see changes/run development server"**
+```
+1. Is server already running? → Check with npm run dev:status
+   ✅ YES: Inform user server is available at http://localhost:8080
+   ❌ NO: Run npm run dev:check (smart start)
+
+2. User reports issues with server → Run npm run dev:restart
+
+3. Need to run server for testing changes → Use npm run dev:check first
+```
+
+#### **"Making code changes"**
+```
+1. Server running? → Changes auto-reload, no action needed
+2. Server not running? → Use npm run dev:check
+3. Server issues? → Use npm run dev:restart
+```
+
+### 📋 Port Configuration
+- **Development Server**: Port 8080 (configured in `vite.config.ts`)
+- **Host**: `::` (all interfaces, includes IPv4/IPv6)
+- **URL**: http://localhost:8080
+
+### 🚀 Best Practices for AI Agents
+1. **Always check first**: Use `npm run dev:status` or `dev:check` instead of blind `npm run dev`
+2. **Preserve sessions**: Don't kill running servers unless necessary
+3. **Use smart commands**: Leverage the helper scripts in `package.json`
+4. **Inform users**: Tell them the server URL when it's running
+5. **Resource efficiency**: Avoid duplicate servers consuming system resources
 
 ## 🎬 Animation & Motion Standards
 

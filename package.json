@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:check": "./scripts/dev-server.sh",
+    "dev:restart": "pkill -f 'vite' && npm run dev",
+    "dev:status": "curl -s http://localhost:8080 > /dev/null && echo 'Server running on http://localhost:8080' || echo 'Server not running'",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
