@@ -1,4 +1,5 @@
 import mapSvgPaths from "@/assets/icons/MapSectionIcons";
+import { CONTENT } from '@/content';
 
 export default function MapSection() {
   return (
@@ -7,7 +8,7 @@ export default function MapSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-web-hero text-[var(--lb-black-800)] italic mb-6">
-            Our Luvbox Map
+            {CONTENT.website.map.title}
           </h2>
           <p className="text-web-body text-[var(--lb-black-800)] max-w-2xl mx-auto">
             Our environment shapes our expectations of love. Learn to build a map of your love environment so that you can make better choices.

@@ -2,12 +2,33 @@
 applyTo: '**'
 ---
 
+🚨 STOP CONDITIONS - Check BEFORE I respond:
+• If I'm about to suggest "npm run" → ASK USER: "Check status or restart server?"
+• If user asks for "options/ways to" → PRESENT CHOICES, never implement  
+• If I'm about to use any color → MUST use var(--color-name) only
+• If I'm about to run a terminal command → ASK USER permission first
+
+🚨 INSTANT FAILS (automatic violation):
+• ME suggesting terminal commands without asking permission first
+• ME implementing when user requested options/choices
+• ME using any hardcoded color (#, rgba, rgb, hsl)
+• ME mentioning "npm run" without asking user first
+
 # Developers Handbook Guidance
 
 ## Primary Directive
 Always check the developers handbook for established patterns, conventions, and guidelines before suggesting code changes or architectural decisions.
 
 **📖 Developers Handbook Location: `/docs/developers-handbook.md`**
+
+## Quick Reference - Common File Locations
+For faster navigation to frequently accessed files:
+
+• **Content Management**: `/src/content/index.ts` - All text content, titles, labels
+• **CSS Variables**: `/src/styles/globals.css` - Color system and design tokens  
+• **Animation Components**: `/src/shared/components/AnimatedSection.tsx` - Standard animations
+• **Page Components**: `/src/app/pages/` (app) and `/src/website/pages/` (website)
+• **Layout Components**: `/src/website/layout/WebsiteLayout.tsx` - Website structure
 
 ## Handbook Maintenance Responsibilities
 

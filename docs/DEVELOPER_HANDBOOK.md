@@ -604,19 +604,18 @@ pkill -f 'vite'
 
 #### **"User wants to see changes/run development server"**
 
-**Option 1: User doesn't know server status**
+**ALWAYS present options first - never auto-execute terminal commands**
 ```
-1. Check server status first → Use npm run dev:status or npm run dev:check
-2. If not running → Start with npm run dev:check
-```
-
-**Option 2: User knows server is running**
-```
-1. Changes auto-reload → Inform user server is at http://localhost:8080
-2. If user wants fresh restart → Offer npm run dev:restart
+1. Present choice → "I can check server status or restart it. Which would you prefer?"
+2. If user chooses check → Use npm run dev:status  
+3. If user chooses restart → Use npm run dev:restart
+4. If user specifies → Follow their exact preference
 ```
 
-**Option 3: User knows server needs restart**
+**Option details:**
+- **Check status**: `npm run dev:status` - shows if server is running
+- **Smart start**: `npm run dev:check` - starts only if not running  
+- **Force restart**: `npm run dev:restart` - kills existing and starts fresh
 ```
 1. Direct restart → Use npm run dev:restart
 2. Skip status check when user is certain

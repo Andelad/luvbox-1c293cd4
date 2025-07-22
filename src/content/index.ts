@@ -19,7 +19,7 @@ export const CONTENT: AppContent = {
     },
 
     theMap: {
-      title: "Mapping Love",
+      title: "Reflect on Love",
       subtitle: "Our experience of love is shaped by the information we observe, the narratives we believe, our unique preferences, and the community that surrounds us.",
       footer: "P.S. While love always involves other people, LuvBox focuses on helping you understand and navigate your own experience of love."
     },
@@ -127,6 +127,10 @@ export const CONTENT: AppContent = {
         description: "Transform dating from guesswork into intentional choices. LuvBox helps you think through what value you can offer and receive, and shows you caution zones to navigate thoughtfully."
       }
     ],
+    map: {
+      title: "Reflect on Love",
+      description: "Our environment shapes our expectations of love. Learn to build a map of your love environment so that you can make better choices."
+    },
     ticker: [
       "I think I love her, but I'm not sure.",
       "What am I looking for?",

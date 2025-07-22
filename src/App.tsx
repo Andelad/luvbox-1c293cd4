@@ -58,6 +58,7 @@ export default function App() {
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
   const [settingsActiveMenuItem, setSettingsActiveMenuItem] = useState('profile');
   const [mapActiveMenuItem, setMapActiveMenuItem] = useState('overview');
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const handleCTAClick = () => {
     setIsInApp(true);
@@ -80,6 +81,7 @@ export default function App() {
 
   const navigateToPage = (page: PageType) => {
     setCurrentPage(page);
+    setIsInitialLoad(false);
   };
 
   const toggleSidebar = () => {
@@ -129,7 +131,7 @@ export default function App() {
   const renderPage = useCallback(() => {
     switch (currentPage) {
       case 'home':
-        return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} />;
+        return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} isInitialLoad={isInitialLoad && currentPage === 'home'} />;
       case 'about':
         return <AboutPage onNavigate={navigateToPage} />;
       case 'contact':
@@ -149,9 +151,9 @@ export default function App() {
       case 'feedback':
         return <FeedbackPage />;
       default:
-        return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} />;
+        return <HomePage onCTAClick={handleCTAClick} onNavigate={navigateToPage} isInitialLoad={isInitialLoad && currentPage === 'home'} />;
     }
-  }, [currentPage, navigateToPage, handleCTAClick]);
+  }, [currentPage, navigateToPage, handleCTAClick, isInitialLoad]);
 
   // Get side menu content based on current page
   const getPageSideMenuContent = useCallback(() => {
@@ -301,7 +303,7 @@ export default function App() {
           />
         </>
       ) : (
-        <WebsiteLayout onNavigate={navigateToPage} currentPage={currentPage}>
+        <WebsiteLayout onNavigate={navigateToPage} currentPage={currentPage} isInitialLoad={isInitialLoad}>
           <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('home')}>
             <Suspense fallback={<PageLoader />}>
               {renderPage()}

@@ -9,23 +9,18 @@ import {
   TickerTape
 } from '@/website/components';
 import type { PageType } from '../../shared/types/app';
-import WebsiteHeader from '../components/WebsiteHeader';
 
 interface HomePageProps {
   onCTAClick: () => void;
   onNavigate: (page: PageType) => void;
+  isInitialLoad?: boolean;
 }
 
-export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
+export default function HomePage({ onCTAClick, onNavigate, isInitialLoad = false }: HomePageProps) {
   return (
     <div className="relative size-full" data-name="Home Page">
       {/* Bubble Animation - Hidden for now */}
       {/* <BubbleAnimation isActive={true} /> */}
-
-      {/* Header - now fixed at top */}
-      <AnimatedSection animation="fade" delay={0} threshold={0} triggerOnce={true}>
-        <WebsiteHeader onNavigate={onNavigate} currentPage="home" />
-      </AnimatedSection>
 
       <div className="flex flex-row justify-center relative size-full">
         {/* Main content with top padding to account for fixed header */}

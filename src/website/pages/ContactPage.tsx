@@ -1,6 +1,5 @@
 import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
 import { CONTENT } from '@/content';
-import WebsiteHeader from '../components/WebsiteHeader';
 
 function Layer1() {
   return (
@@ -139,18 +138,18 @@ function Section({ onNavigate }: { onNavigate: (page: string) => void }) {
       className="h-[1117px] mr-[-39px] overflow-clip relative shrink-0 w-[1728px]"
       data-name="Section"
     >
-      <div className="absolute text-web-hero h-[153px] left-[294px] text-left top-[342px] w-[574px]">
+      <div className="absolute text-web-hero h-[153px] left-[294px] text-left top-[120px] w-[574px]">
         <p className="block leading-[64px]">
           Contact Us
         </p>
       </div>
-      <div className="absolute text-web-body h-[100px] left-[295px] text-left top-[517px] w-[517px]">
+      <div className="absolute text-web-body h-[100px] left-[295px] text-left top-[295px] w-[517px]">
         <p className="block leading-[24px]">
           Get in touch with our team. We'd love to hear from you and help you
           on your journey to understanding love and building meaningful relationships.
         </p>
       </div>
-      <div className="absolute bg-[#f8f8f8] left-[295px] min-h-[300px] rounded-lg top-[650px] w-[800px] flex items-center justify-center">
+      <div className="absolute bg-[#f8f8f8] left-[295px] min-h-[300px] rounded-lg top-[428px] w-[800px] flex items-center justify-center">
         <p className="text-[var(--lb-black-800)] text-web-small opacity-60">
           Contact form coming soon...
         </p>
@@ -161,40 +160,9 @@ function Section({ onNavigate }: { onNavigate: (page: string) => void }) {
 
 export default function ContactPage({ onNavigate }: { onNavigate: (page: string) => void }) {
   return (
-    <div className="bg-[#ffffff] relative size-full" data-name="Contact Page">
-      <WebsiteHeader onNavigate={onNavigate} currentPage="contact" />
+    <div className="relative size-full" data-name="Contact Page">
       <div className="flex flex-row justify-center relative size-full">
-        <div className="[flex-flow:wrap] box-border content-start flex gap-0 items-start justify-center pl-4 pr-[55px] py-28 pt-48 relative size-full">
-          <div className="absolute bottom-[-1003px] left-1/2 size-[2012px] translate-x-[-50%]">
-            <svg
-              className="block size-full"
-              fill="none"
-              preserveAspectRatio="none"
-              viewBox="0 0 2012 2012"
-            >
-              <circle
-                cx="1006"
-                cy="1006"
-                fill="url(#paint0_radial_1_571)"
-                id="Ellipse 8"
-                r="1006"
-              />
-              <defs>
-                <radialGradient
-                  cx="0"
-                  cy="0"
-                  gradientTransform="translate(1006 1006) rotate(90) scale(1006)"
-                  gradientUnits="userSpaceOnUse"
-                  id="paint0_radial_1_571"
-                  r="1"
-                >
-                  <stop stopColor="var(--purple-200)" />
-                  <stop offset="0.576923" stopColor="var(--pink-100)" />
-                  <stop offset="1" stopColor="white" />
-                </radialGradient>
-              </defs>
-            </svg>
-          </div>
+        <div className="[flex-flow:wrap] box-border content-start flex gap-0 items-start justify-center pl-4 pr-[55px] py-28 pt-24 relative size-full">
           <Section onNavigate={onNavigate} />
         </div>
       </div>

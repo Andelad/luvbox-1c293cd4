@@ -1,9 +1,11 @@
 import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
+import { AnimatedSection } from '@/shared/components';
 import { useEffect, useState } from 'react';
 
 interface WebsiteHeaderProps {
   onNavigate: (page: string) => void;
   currentPage: string;
+  isInitialLoad?: boolean;
 }
 
 function Layer1() {
@@ -112,11 +114,15 @@ function Frame31({ onNavigate, currentPage }: { onNavigate: (page: string) => vo
   );
 }
 
-export default function WebsiteHeader({ onNavigate, currentPage }: WebsiteHeaderProps) {
+export default function WebsiteHeader({ onNavigate, currentPage, isInitialLoad = false }: WebsiteHeaderProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [hasInitialized, setHasInitialized] = useState(false);
 
   useEffect(() => {
+    // Mark as initialized after first render to enable transitions
+    setHasInitialized(true);
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
@@ -136,9 +142,10 @@ export default function WebsiteHeader({ onNavigate, currentPage }: WebsiteHeader
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  return (
+  const headerContent = (
     <div
-      className={`fixed bg-white bg-gradient-to-r from-[var(--pink-50)] h-20 left-0 right-0 to-[var(--purple-100)] top-0 z-20 transition-transform duration-300 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] ${isVisible ? 'translate-y-0' : '-translate-y-full'
+      className={`fixed bg-white bg-gradient-to-r from-[var(--pink-50)] h-20 left-0 right-0 to-[var(--purple-100)] top-0 z-20 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] ${hasInitialized ? 'transition-transform duration-300' : ''
+        } ${hasInitialized && !isVisible ? '-translate-y-full' : 'translate-y-0'
         }`}
       data-name="Website Header"
     >
@@ -149,4 +156,15 @@ export default function WebsiteHeader({ onNavigate, currentPage }: WebsiteHeader
       <div className="absolute border-b border-[rgba(0,0,0,0.2)] inset-x-0 bottom-0 pointer-events-none" />
     </div>
   );
+
+  // If it's homepage initial load, wrap with animated section for fade-in
+  if (isInitialLoad && currentPage === 'home') {
+    return (
+      <AnimatedSection animation="fade" delay={0} threshold={0} triggerOnce={true}>
+        {headerContent}
+      </AnimatedSection>
+    );
+  }
+
+  return headerContent;
 }

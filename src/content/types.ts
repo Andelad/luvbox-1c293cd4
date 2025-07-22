@@ -74,6 +74,10 @@ export interface WebsiteContent {
     title: string;
     description: string;
   }>;
+  map: {
+    title: string;
+    description: string;
+  };
   ticker: string[];
 }
 

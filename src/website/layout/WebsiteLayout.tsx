@@ -1,9 +1,11 @@
-import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
+import { PageTransition } from '@/shared/components';
+import WebsiteHeader from '../components/WebsiteHeader';
 
 interface WebsiteLayoutProps {
   children: React.ReactNode;
   onNavigate: (page: string) => void;
   currentPage: string;
+  isInitialLoad?: boolean;
 }
 
 function WebsiteFooter() {
@@ -25,11 +27,14 @@ function WebsiteFooter() {
   );
 }
 
-export default function WebsiteLayout({ children, onNavigate, currentPage }: WebsiteLayoutProps) {
+export default function WebsiteLayout({ children, onNavigate, currentPage, isInitialLoad = false }: WebsiteLayoutProps) {
   return (
     <div className="website-layout">
+      <WebsiteHeader onNavigate={onNavigate} currentPage={currentPage} isInitialLoad={isInitialLoad} />
       <div className="website-layout-content">
-        {children}
+        <PageTransition pageKey={currentPage}>
+          {children}
+        </PageTransition>
       </div>
       <WebsiteFooter />
     </div>
