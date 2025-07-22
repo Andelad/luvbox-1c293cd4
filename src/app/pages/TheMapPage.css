@@ -1,0 +1,252 @@
+/* Map Page Styles */
+@keyframes float-cube {
+  0% { transform: translateY(0px) translateX(-50%); }
+  50% { transform: translateY(-8px) translateX(-50%); }
+  100% { transform: translateY(0px) translateX(-50%); }
+}
+
+@keyframes float-simple {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes float-community {
+  0% { transform: translateY(0px) translateX(-50%); }
+  40% { transform: translateY(-8px) translateX(-50%); }
+  60% { transform: translateY(-6px) translateX(-50%); }
+  100% { transform: translateY(0px) translateX(-50%); }
+}
+
+.animate-float-cube {
+  animation: float-cube 5.8s ease-in-out infinite;
+}
+
+.animate-float-simple {
+  animation: float-simple 6s ease-in-out infinite;
+}
+
+.animate-float-community {
+  animation: float-community 6.1s ease-in-out infinite;
+}
+
+/* Map page specific styles */
+.map-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+}
+
+.map-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page content styles for subpages */
+.page-content {
+  padding: 2rem;
+  background-color: var(--background);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--lb-black-100-alpha-20);
+  margin-top: 2rem;
+}
+
+.content-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--purple-500);
+  font-size: var(--app-text-base);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+  color: var(--purple-700);
+}
+
+.map-title {
+  font-size: var(--app-text-3xl);
+  margin-top: 5vh;
+  margin-bottom: 1.5vh;
+  color: var(--text-color);
+  text-align: center;
+  font-weight: 600;
+}
+
+.map-subtitle {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  color: var(--lb-black-600);
+  padding: 0 1rem;
+}
+
+.map-subtitle p {
+  font-size: var(--app-text-lg);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.map-content {
+  padding: 2rem;
+}
+
+.visual-content {
+  flex: 1;
+  position: relative;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diagram {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 500px;
+  margin: 0 auto;
+}
+
+.diamond-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.diagram-element {
+  position: absolute;
+  z-index: 2;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+}
+
+.diagram-element:hover {
+  cursor: pointer;
+}
+
+.diagram-element:hover img {
+  opacity: 0.8;
+}
+
+.diagram-element img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.element-label {
+  font-weight: 600;
+  font-style: italic;
+  font-size: var(--app-text-lg);
+  color: var(--text-color);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.diagram-cube img {
+  max-width: 120px;
+}
+
+.book img {
+  max-width: 100px;
+}
+
+.person img {
+  max-width: 80px;
+}
+
+.community img {
+  max-width: 90px;
+}
+
+.map-footer {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.ps-note {
+  font-style: italic;
+  color: var(--lb-black-500);
+  font-size: var(--app-text-sm);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .map-container {
+    padding: 1rem;
+  }
+  
+  .map-content {
+    padding: 1.5rem;
+  }
+  
+  .map-title {
+    font-size: var(--app-text-2xl);
+  }
+  
+  .map-subtitle p {
+    font-size: var(--app-text-base);
+    line-height: 1.4;
+  }
+  
+  .visual-content {
+    height: 400px;
+  }
+  
+  .diagram-cube {
+    width: 60px !important;
+    top: 30px;
+  }
+  
+  .book {
+    width: 70px !important;
+    top: 160px;
+    left: 15% !important;
+  }
+  
+  .person {
+    width: 60px !important;
+    top: 160px;
+    right: 15% !important;
+  }
+  
+  .community {
+    width: 65px !important;
+    bottom: 30px;
+  }
+  
+  .element-label {
+    font-size: var(--app-text-base);
+  }
+  
+  .ps-note {
+    font-size: var(--app-text-xs);
+  }
+}

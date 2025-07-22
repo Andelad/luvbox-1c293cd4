@@ -19,8 +19,9 @@ export const CONTENT: AppContent = {
     },
 
     theMap: {
-      title: "The Map",
-      subtitle: "Your relationship mapping experience coming soon..."
+      title: "Mapping Love",
+      subtitle: "Our experience of love is shaped by the information we observe, the narratives we believe, our unique preferences, and the community that surrounds us.",
+      footer: "P.S. While love always involves other people, LuvBox focuses on helping you understand and navigate your own experience of love."
     },
 
     feedback: {

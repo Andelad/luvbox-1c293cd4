@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface MenuItem {
   id: string;
@@ -17,21 +17,21 @@ interface PageSideMenuProps {
 
 const HamburgerIcon: React.FC = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M3 10h14M3 5h14M3 15h14" stroke="var(--text-color)" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M3 10h14M3 5h14M3 15h14" stroke="var(--text-color)" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
 
 const CloseIcon: React.FC = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M15 5L5 15M5 5l10 10" stroke="var(--text-color)" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M15 5L5 15M5 5l10 10" stroke="var(--text-color)" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
 
-export default function PageSideMenu({ 
-  title = "In this section", 
-  content, 
-  menuItems, 
-  activeMenuItem, 
+export default function PageSideMenu({
+  title = "In this section",
+  content,
+  menuItems,
+  activeMenuItem,
   onMenuItemChange,
   defaultOpenOnLargeScreen = false // Default to false, only settings page will set to true
 }: PageSideMenuProps) {
@@ -47,19 +47,19 @@ export default function PageSideMenu({
     const shouldBeOpen = defaultOpenOnLargeScreen && window.innerWidth >= 1024;
     setIsOpen(shouldBeOpen);
     setShowContent(shouldBeOpen);
-    
+
     // Immediately update margin without transition during page change
     const contentElement = document.querySelector('.app-content-inner') as HTMLElement;
     if (contentElement) {
       // Add no-transition class to disable CSS transitions
       contentElement.classList.add('no-transition');
-      
+
       if (window.innerWidth >= 1024) {
         contentElement.style.marginLeft = shouldBeOpen ? '240px' : '48px';
       } else {
         contentElement.style.marginLeft = shouldBeOpen ? '0' : '48px';
       }
-      
+
       // Remove no-transition class and mark page change as complete
       setTimeout(() => {
         contentElement.classList.remove('no-transition');
@@ -90,7 +90,7 @@ export default function PageSideMenu({
     const handleResize = () => {
       const newIsLargeScreen = window.innerWidth >= 1024;
       setIsLargeScreen(newIsLargeScreen);
-      
+
       // Only auto-open/close if defaultOpenOnLargeScreen is true
       if (defaultOpenOnLargeScreen) {
         if (newIsLargeScreen && !isOpen) {
@@ -133,7 +133,7 @@ export default function PageSideMenu({
 
   // Show on all screen sizes, but behave differently
   return (
-    <div 
+    <div
       style={{
         position: 'absolute',
         top: 0,
@@ -211,15 +211,15 @@ export default function PageSideMenu({
           backgroundColor: 'rgba(61,53,53,0.2)',
         }} />
       )}
-      
+
       {showContent && (
-        <div style={{ 
-          padding: '0 16px', 
+        <div style={{
+          padding: '0 16px',
           opacity: showContent ? 1 : 0,
           transition: isPageChange ? 'none' : 'opacity 0.25s ease-in',
           animation: isPageChange ? 'none' : (showContent ? 'fadeIn 0.25s ease-in forwards' : 'none')
         }}>
-          
+
           {/* Menu Items */}
           {menuItems && menuItems.length > 0 ? (
             <div style={{ marginBottom: '20px' }}>
@@ -229,7 +229,6 @@ export default function PageSideMenu({
                   data-menu-item={item.id}
                   onClick={() => {
                     onMenuItemChange?.(item.id);
-                    window.dispatchEvent(new CustomEvent('settingsMenuChange', { detail: item.id }));
                     if (window.innerWidth < 1024) {
                       setIsOpen(false);
                     }
@@ -269,7 +268,7 @@ export default function PageSideMenu({
               ))}
             </div>
           ) : null}
-          
+
           {/* Custom Content */}
           {content || (
             <p style={{

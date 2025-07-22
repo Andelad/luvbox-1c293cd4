@@ -14,6 +14,7 @@ export interface PageContent {
   title: string;
   description?: string;
   subtitle?: string;
+  footer?: string;
 }
 
 export interface FeedbackContent extends PageContent {

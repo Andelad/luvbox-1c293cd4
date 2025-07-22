@@ -184,6 +184,8 @@ export default function AppLayout({ children, onNavigate, onGlobeClick, currentP
                   onMenuItemChange={(itemId) => {
                     if (currentPage === 'settings') {
                       window.dispatchEvent(new CustomEvent('settingsMenuChange', { detail: itemId }));
+                    } else if (currentPage === 'the-map') {
+                      window.dispatchEvent(new CustomEvent('mapMenuChange', { detail: itemId }));
                     }
                   }}
                 />
