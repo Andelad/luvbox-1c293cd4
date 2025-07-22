@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import './EqualizerFace.css';
+import './CubeFace.css';
 
 const QualityFace: React.FC = () => {
     // Default values for the equalizer (7 points, 0-10 scale)

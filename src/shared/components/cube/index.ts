@@ -1,9 +1,5 @@
 export { default as Cube3D } from './Cube3D';
-export { default as EqualizerFace } from './EqualizerFace';
-export { default as LeftFace } from './LeftFace';
 export { default as PurposeFace } from './PurposeFace';
 export { default as QualityFace } from './QualityFace';
-export { default as QualityFaceWithStorage } from './QualityFaceWithStorage';
-export { default as RightFace } from './RightFace';
 export { default as TimeFace } from './TimeFace';
-export { default as TopFaceCube } from './TopFaceCube';
+
