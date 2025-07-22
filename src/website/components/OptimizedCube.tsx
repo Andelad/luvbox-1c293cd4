@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useMemo, memo } from 'react';
+import PurposeFace from '@/shared/components/cube/PurposeFace';
 import QualityFace from '@/shared/components/cube/QualityFace';
 import TimeFace from '@/shared/components/cube/TimeFace';
-import PurposeFace from '@/shared/components/cube/PurposeFace';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 
 // Memoized face components to prevent unnecessary re-renders
 const MemoizedQualityFace = memo(QualityFace);
@@ -25,7 +25,7 @@ const OptimizedCube = memo(() => {
     const constrainedX = Math.max(-90, Math.min(0, x));
     // Constrain Y rotation (horizontal) - only allow 0 to 90 degrees
     const constrainedY = Math.max(0, Math.min(90, y));
-    
+
     return { x: constrainedX, y: constrainedY };
   }, []);
 
@@ -38,10 +38,10 @@ const OptimizedCube = memo(() => {
   // Throttled mouse move handler for better performance
   const throttledMouseMove = useMemo(() => {
     let timeoutId: NodeJS.Timeout | null = null;
-    
+
     return (e: MouseEvent) => {
       if (timeoutId) return; // Skip if already processing
-      
+
       timeoutId = setTimeout(() => {
         if (!isDragging) {
           timeoutId = null;
@@ -60,7 +60,7 @@ const OptimizedCube = memo(() => {
         const constrainedRotation = constrainRotation(newRotationX, newRotationY);
         setRotation(constrainedRotation);
         setLastMousePos({ x: e.clientX, y: e.clientY });
-        
+
         timeoutId = null;
       }, 16); // ~60fps throttling
     };
@@ -75,7 +75,7 @@ const OptimizedCube = memo(() => {
     if (isDragging) {
       document.addEventListener('mousemove', throttledMouseMove, { passive: true });
       document.addEventListener('mouseup', handleMouseUp, { passive: true });
-      
+
       return () => {
         document.removeEventListener('mousemove', throttledMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
@@ -98,12 +98,12 @@ const OptimizedCube = memo(() => {
   }), []);
 
   return (
-    <div 
+    <div
       className="relative mx-auto cursor-grab cube-container"
       style={containerStyle}
       onMouseDown={handleMouseDown}
     >
-      <div 
+      <div
         className="relative preserve-3d transition-transform duration-75 ease-out"
         style={{
           width: '200px',
@@ -113,7 +113,7 @@ const OptimizedCube = memo(() => {
         }}
       >
         {/* Front Face - TimeFace design */}
-        <div 
+        <div
           className="cube-face bg-white"
           style={{
             width: '200px',
@@ -123,9 +123,9 @@ const OptimizedCube = memo(() => {
         >
           <MemoizedTimeFace />
         </div>
-        
+
         {/* Back Face (hidden) */}
-        <div 
+        <div
           className="cube-face bg-gray-200"
           style={{
             width: '200px',
@@ -133,9 +133,9 @@ const OptimizedCube = memo(() => {
             transform: 'translateZ(-100px) rotateY(180deg)'
           }}
         />
-        
+
         {/* Left Face - QualityFace design */}
-        <div 
+        <div
           className="cube-face bg-white"
           style={{
             width: '200px',
@@ -145,9 +145,9 @@ const OptimizedCube = memo(() => {
         >
           <MemoizedQualityFace />
         </div>
-        
+
         {/* Right Face - This is actually the true right side (hidden in this view) */}
-        <div 
+        <div
           className="cube-face bg-white"
           style={{
             width: '200px',
@@ -157,9 +157,9 @@ const OptimizedCube = memo(() => {
         >
           <MemoizedTimeFace />
         </div>
-        
+
         {/* Top Face - PurposeFace design */}
-        <div 
+        <div
           className="cube-face bg-white"
           style={{
             width: '200px',
@@ -169,9 +169,9 @@ const OptimizedCube = memo(() => {
         >
           <MemoizedPurposeFace />
         </div>
-        
+
         {/* Bottom Face (hidden) */}
-        <div 
+        <div
           className="cube-face bg-white"
           style={{
             width: '200px',

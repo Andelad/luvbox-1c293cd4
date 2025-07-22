@@ -1,17 +1,17 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import Button from '../Button';
+import PurposeFace from './PurposeFace';
 import QualityFace from './QualityFace';
 import TimeFace from './TimeFace';
-import PurposeFace from './PurposeFace';
-import Button from '../Button';
 
-interface Cube3DProps {}
+interface Cube3DProps { }
 
 const Cube3D: React.FC<Cube3DProps> = () => {
   // Start with an angled position showing all three faces equally
   const [rotation, setRotation] = useState({ x: -30, y: 45 });
   const [personName, setPersonName] = useState('');
   const [dateOfReading, setDateOfReading] = useState('');
-  
+
   // Drag state
   const [isDragging, setIsDragging] = useState(false);
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 });
@@ -23,10 +23,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
   const constrainRotation = (x: number, y: number) => {
     // Constrain X rotation (vertical) - only allow 0 to -90 degrees
     const constrainedX = Math.max(-90, Math.min(0, x));
-    
+
     // Constrain Y rotation (horizontal) - only allow 0 to 90 degrees
     const constrainedY = Math.max(0, Math.min(90, y));
-    
+
     return { x: constrainedX, y: constrainedY };
   };
 
@@ -50,7 +50,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
     // Apply constraints
     const constrainedRotation = constrainRotation(newRotationX, newRotationY);
     setRotation(constrainedRotation);
-    
+
     setLastMousePos({ x: e.clientX, y: e.clientY });
   }, [isDragging, lastMousePos, rotation]);
 
@@ -63,7 +63,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
-      
+
       return () => {
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
@@ -80,10 +80,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
     <div className="flex flex-col items-center justify-center w-full px-4 py-8">
       {/* Cube Container */}
       <div className="mb-18">
-        <div 
+        <div
           ref={cubeRef}
           className="relative mx-auto cursor-grab"
-          style={{ 
+          style={{
             width: '160px',
             height: '160px',
             perspective: '1000px',
@@ -91,7 +91,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
           }}
           onMouseDown={handleMouseDown}
         >
-          <div 
+          <div
             className="relative preserve-3d transition-transform duration-100 ease-out"
             style={{
               width: '160px',
@@ -103,7 +103,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
           >
 
             {/* Face 1: translateZ(80px) - Front Face - TimeFace */}
-            <div 
+            <div
               className="cube-face"
               style={{
                 width: '160px',
@@ -115,7 +115,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             </div>
 
             {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face - QualityFace */}
-            <div 
+            <div
               className="cube-face"
               style={{
                 width: '160px',
@@ -127,7 +127,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             </div>
 
             {/* Face 3: rotateY(90deg) translateZ(80px) - Right Face - TimeFace */}
-            <div 
+            <div
               className="cube-face"
               style={{
                 width: '160px',
@@ -139,7 +139,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             </div>
 
             {/* Face 4: rotateX(90deg) translateZ(80px) - Top Face - PurposeFace */}
-            <div 
+            <div
               className="cube-face"
               style={{
                 width: '160px',
@@ -151,7 +151,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             </div>
 
             {/* Bottom Face (hidden) */}
-            <div 
+            <div
               className="cube-face"
               style={{
                 width: '160px',
@@ -161,15 +161,15 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             />
           </div>
         </div>
-        
+
 
       </div>
-      
+
       {/* Title */}
       <h1 className="text-4xl mb-8 text-center luvbox-brand">
         Take a snapshot of a relationship past or present
       </h1>
-      
+
       {/* Input Fields - Centered */}
       <div className="space-y-4 w-full max-w-sm mx-auto">
         <input
@@ -179,7 +179,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
           onChange={(e) => setPersonName(e.target.value)}
           className="w-full px-4 py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
         />
-        
+
         <input
           type="text"
           placeholder="Date of reading"
@@ -188,7 +188,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
           className="w-full px-4 py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
         />
       </div>
-      
+
       {/* Start Button - Centered */}
       <div className="flex justify-center mt-6">
         <Button onClick={handleStartNow}>
