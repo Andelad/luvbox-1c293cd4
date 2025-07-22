@@ -107,7 +107,7 @@ export const CONTENT: AppContent = {
         description: "Map out how your relationships unfolded and where key feelings developed. LuvBox helps you organize this history so you can understand your patterns and find appropriate support."
       },
       {
-        title: "Stop repeating patterns",
+        title: "Stop repeating bad patterns",
         description: "See the cycles in your relationships clearly mapped out. LuvBox helps you recognize what's happening so you can seek the right guidance to break unhelpful patterns."
       },
       {

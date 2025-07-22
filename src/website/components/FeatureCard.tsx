@@ -1,4 +1,6 @@
 
+import { useCenterViewport } from '@/shared/hooks/useCenterViewport';
+
 interface FeatureCardProps {
   title: string;
   description: string;
@@ -7,16 +9,20 @@ interface FeatureCardProps {
 }
 
 export default function FeatureCard({ title, description, gridRow, className = "" }: FeatureCardProps) {
+  const { elementRef, isInCenter } = useCenterViewport<HTMLDivElement>();
+
   return (
     <div
-      className={`bg-[rgba(255,255,255,0.1)] rounded-2xl p-8 relative staggered-card ${className}`}
+      ref={elementRef}
+      className={`rounded-2xl p-8 relative staggered-card transition-all duration-400 ease-out ${className}`}
       style={{
         gridRow,
-        boxShadow: '0px 4px 12px 0px rgba(0,0,0,0.25)'
+        backgroundColor: isInCenter ? 'var(--lb-black-0-alpha-15)' : 'var(--lb-black-0-alpha-10)',
+        boxShadow: '0px 4px 12px 0px var(--lb-black-900-alpha-25)'
       }}
     >
       <div className="space-y-4">
-        <h3 className="text-web-heading text-[var(--lb-black-800)]">
+        <h3 className="text-web-heading text-[var(--lb-black-800)] italic">
           {title}
         </h3>
         <p className="text-web-body text-[var(--lb-black-800)]">

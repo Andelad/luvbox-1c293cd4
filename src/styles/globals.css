@@ -134,6 +134,7 @@ html {
 
   --lb-black-0-alpha-40: color(from var(--lb-black-0) srgb r g b / 0.4);
   --lb-black-0-alpha-10: color(from var(--lb-black-0) srgb r g b / 0.1);
+  --lb-black-0-alpha-15: color(from var(--lb-black-0) srgb r g b / 0.15);
 
   /* Purple transparency variants */
   --purple-200-alpha-40: color(from var(--purple-200) srgb r g b / 0.4);

@@ -1,6 +1,7 @@
 // Shared hooks barrel export
 export { useIsMobile } from './use-mobile';
 export * from './use-toast';
+export { useCenterViewport } from './useCenterViewport';
 export { useScrollAnimation } from './useScrollAnimation';
 
 // Re-export storage hooks for convenience

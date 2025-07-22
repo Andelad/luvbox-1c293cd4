@@ -37,15 +37,15 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
           </div>
 
           {/* Hero Section - positioned to center content in viewport */}
-          <AnimatedSection animation="slideUp" delay={400} className="w-full relative" style={{ zIndex: 2 }}>
+          <AnimatedSection animation="slideUp" delay={0} className="w-full relative" style={{ zIndex: 2 }}>
             <HeroSection onCTAClick={onCTAClick} />
           </AnimatedSection>
 
           {/* Main Content Sections */}
           <div className="w-full relative" style={{ zIndex: 2 }}>
             {/* Horizontal Divider */}
-            <AnimatedSection animation="fade" delay={600}>
-              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            <AnimatedSection animation="fade" delay={100}>
+              <div className="w-full border-t border-[var(--lb-black-900-alpha-20)] my-0" />
             </AnimatedSection>
 
             {/* Staggered Features Section */}
@@ -55,7 +55,7 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
 
             {/* Horizontal Divider */}
             <AnimatedSection animation="fade" delay={200}>
-              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+              <div className="w-full border-t border-[var(--lb-black-900-alpha-20)] my-0" />
             </AnimatedSection>
 
             {/* Diagnostic Section */}
@@ -65,7 +65,7 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
 
             {/* Horizontal Divider */}
             <AnimatedSection animation="fade" delay={200}>
-              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+              <div className="w-full border-t border-[var(--lb-black-900-alpha-20)] my-0" />
             </AnimatedSection>
 
             {/* Testimonial Section */}
@@ -75,7 +75,7 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
 
             {/* Horizontal Divider */}
             <AnimatedSection animation="fade" delay={200}>
-              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+              <div className="w-full border-t border-[var(--lb-black-900-alpha-20)] my-0" />
             </AnimatedSection>
 
             {/* Map Section */}
@@ -85,7 +85,7 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
 
             {/* Horizontal Divider */}
             <AnimatedSection animation="fade" delay={200}>
-              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+              <div className="w-full border-t border-[var(--lb-black-900-alpha-20)] my-0" />
             </AnimatedSection>
 
             {/* Story Section */}
