@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useMemo, memo } from 'react';
-import EqualizerFace from '@/shared/components/cube/EqualizerFace';
-import RightFace from '@/shared/components/cube/RightFace';
-import TopFaceCube from '@/shared/components/cube/TopFaceCube';
+import QualityFace from '@/shared/components/cube/QualityFace';
+import TimeFace from '@/shared/components/cube/TimeFace';
+import PurposeFace from '@/shared/components/cube/PurposeFace';
 
 // Memoized face components to prevent unnecessary re-renders
-const MemoizedEqualizerFace = memo(EqualizerFace);
-const MemoizedRightFace = memo(RightFace);
-const MemoizedTopFace = memo(TopFaceCube);
+const MemoizedQualityFace = memo(QualityFace);
+const MemoizedTimeFace = memo(TimeFace);
+const MemoizedPurposeFace = memo(PurposeFace);
 
 interface CubeRotation {
   x: number;
@@ -112,7 +112,7 @@ const OptimizedCube = memo(() => {
           ...transformStyle
         }}
       >
-        {/* Front Face - RightFace design */}
+        {/* Front Face - TimeFace design */}
         <div 
           className="cube-face bg-white"
           style={{
@@ -121,7 +121,7 @@ const OptimizedCube = memo(() => {
             transform: 'translateZ(100px)'
           }}
         >
-          <MemoizedRightFace />
+          <MemoizedTimeFace />
         </div>
         
         {/* Back Face (hidden) */}
@@ -134,7 +134,7 @@ const OptimizedCube = memo(() => {
           }}
         />
         
-        {/* Left Face - EqualizerFace design */}
+        {/* Left Face - QualityFace design */}
         <div 
           className="cube-face bg-white"
           style={{
@@ -143,7 +143,7 @@ const OptimizedCube = memo(() => {
             transform: 'rotateY(-90deg) translateZ(100px)'
           }}
         >
-          <MemoizedEqualizerFace />
+          <MemoizedQualityFace />
         </div>
         
         {/* Right Face - This is actually the true right side (hidden in this view) */}
@@ -155,10 +155,10 @@ const OptimizedCube = memo(() => {
             transform: 'rotateY(90deg) translateZ(100px)'
           }}
         >
-          <MemoizedRightFace />
+          <MemoizedTimeFace />
         </div>
         
-        {/* Top Face - TopFace design */}
+        {/* Top Face - PurposeFace design */}
         <div 
           className="cube-face bg-white"
           style={{
@@ -167,7 +167,7 @@ const OptimizedCube = memo(() => {
             transform: 'rotateX(90deg) translateZ(100px)'
           }}
         >
-          <MemoizedTopFace />
+          <MemoizedPurposeFace />
         </div>
         
         {/* Bottom Face (hidden) */}

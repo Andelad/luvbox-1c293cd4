@@ -3,3 +3,7 @@ export { default as EqualizerFace } from './EqualizerFace';
 export { default as RightFace } from './RightFace';
 export { default as TopFaceCube } from './TopFaceCube';
 export { default as LeftFace } from './LeftFace';
+export { default as QualityFace } from './QualityFace';
+export { default as PurposeFace } from './PurposeFace';
+export { default as TimeFace } from './TimeFace';
+export { default as QualityFaceWithStorage } from './QualityFaceWithStorage';

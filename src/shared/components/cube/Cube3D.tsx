@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
-import EqualizerFace from './EqualizerFace';
-import RightFace from './RightFace';
-import TopFaceCube from './TopFaceCube';
-import LeftFace from './LeftFace';
+import QualityFace from './QualityFace';
+import TimeFace from './TimeFace';
+import PurposeFace from './PurposeFace';
 import Button from '../Button';
 
 interface Cube3DProps {}
@@ -103,7 +102,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             }}
           >
 
-            {/* Face 1: translateZ(80px) - Front Face */}
+            {/* Face 1: translateZ(80px) - Front Face - TimeFace */}
             <div 
               className="cube-face"
               style={{
@@ -112,10 +111,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'translateZ(80px)'
               }}
             >
-              <LeftFace />
+              <TimeFace />
             </div>
 
-            {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face */}
+            {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face - QualityFace */}
             <div 
               className="cube-face"
               style={{
@@ -124,10 +123,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(-90deg) translateZ(80px)'
               }}
             >
-              <EqualizerFace />
+              <QualityFace />
             </div>
 
-            {/* Face 3: rotateY(90deg) translateZ(80px) - Right Face */}
+            {/* Face 3: rotateY(90deg) translateZ(80px) - Right Face - TimeFace */}
             <div 
               className="cube-face"
               style={{
@@ -136,10 +135,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(90deg) translateZ(80px)'
               }}
             >
-              <RightFace />
+              <TimeFace />
             </div>
 
-            {/* Face 4: rotateX(90deg) translateZ(80px) - Top Face */}
+            {/* Face 4: rotateX(90deg) translateZ(80px) - Top Face - PurposeFace */}
             <div 
               className="cube-face"
               style={{
@@ -148,7 +147,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateX(90deg) translateZ(80px)'
               }}
             >
-              <TopFaceCube />
+              <PurposeFace />
             </div>
 
             {/* Bottom Face (hidden) */}
