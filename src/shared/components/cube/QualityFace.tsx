@@ -3,7 +3,7 @@ import './CubeFace.css';
 
 const QualityFace: React.FC = () => {
     // Default values for the equalizer (7 points, 0-10 scale)
-    const [values] = useState<number[]>([5, 7, 6, 8, 5, 6, 7]);
+    const [values] = useState<number[]>([5, 7, 6, 8, 3, 3.5, 7]); // 5th handle (index 4) moved to 3 (1 below dealbreaker), 6th handle (index 5) moved to 3.5 (0.5 below dealbreaker value of 4)
     const [dealbreakerValues] = useState<number[]>([3, 4, 3, 5, 4, 4, 5]);
     const [activeDot, setActiveDot] = useState<number | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -70,7 +70,7 @@ const QualityFace: React.FC = () => {
                     <polygon
                         key={`segment-${i}`}
                         points={`${prevX},${prevY} ${currX},${currY} ${currX},${dbCurrY} ${prevX},${dbPrevY}`}
-                        fill={isAbove ? 'var(--success-green-400)' : 'var(--caution-red-400)'}
+                        fill={isAbove ? 'var(--success-green-200)' : 'var(--caution-red-300)'}
                         stroke={isAbove ? 'var(--success-green-500)' : 'var(--caution-red-500)'}
                         strokeWidth="0.5"
                     />
@@ -98,7 +98,7 @@ const QualityFace: React.FC = () => {
                     <polygon
                         key={`segment-${i}-1`}
                         points={`${prevX},${prevY} ${intersectX},${intersectY} ${intersectX},${dbIntersectY} ${prevX},${dbPrevY}`}
-                        fill={prevPointAbove ? 'var(--success-green-400)' : 'var(--caution-red-400)'}
+                        fill={prevPointAbove ? 'var(--success-green-200)' : 'var(--caution-red-300)'}
                         stroke={prevPointAbove ? 'var(--success-green-500)' : 'var(--caution-red-500)'}
                         strokeWidth="0.5"
                     />
@@ -109,7 +109,7 @@ const QualityFace: React.FC = () => {
                     <polygon
                         key={`segment-${i}-2`}
                         points={`${intersectX},${intersectY} ${currX},${currY} ${currX},${dbCurrY} ${intersectX},${dbIntersectY}`}
-                        fill={currPointAbove ? 'var(--success-green-400)' : 'var(--caution-red-400)'}
+                        fill={currPointAbove ? 'var(--success-green-200)' : 'var(--caution-red-300)'}
                         stroke={currPointAbove ? 'var(--success-green-500)' : 'var(--caution-red-500)'}
                         strokeWidth="0.5"
                     />
@@ -127,7 +127,6 @@ const QualityFace: React.FC = () => {
             padding: 0,
             background: 'linear-gradient(to top, var(--lime-50), white)', // Gradient from lime to white, bottom to top
             border: '1px solid var(--lb-black-400)', // Using LB Black for border
-            borderRadius: '6px', // Add slight border radius for softer appearance
             position: 'relative',
             overflow: 'visible' // Let content overflow
         }}>
@@ -138,8 +137,8 @@ const QualityFace: React.FC = () => {
                     position: 'relative',
                     height: '100%',
                     width: '100%',
-                    padding: 0,
-                    overflow: 'visible' // Let content overflow
+                    padding: 0
+                    // overflow removed to allow handles to be fully visible
                 }}
             >
                 <svg

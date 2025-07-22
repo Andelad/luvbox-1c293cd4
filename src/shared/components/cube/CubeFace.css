@@ -7,7 +7,7 @@
   overflow: visible !important; /* Critical for allowing dots to be visible beyond edges */
   background-color: #f0e9e2; /* Match page background */
   border: 1px solid #666; /* Softer outline */
-  border-radius: 6px; /* Slight border radius */
+  border-radius: 2px; /* 2px rounded corners for consistency */
 }
 
 /* Style for active dot when being dragged - more subtle size increase */

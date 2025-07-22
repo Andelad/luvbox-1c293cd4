@@ -624,7 +624,7 @@ html {
 
 /* Cube faces - ensure they are perfectly square and positioned correctly */
 .cube-face {
-  overflow: hidden;
+  overflow: visible; /* Allow handles to be visible beyond face boundaries */
   position: absolute;
   background-color: white;
   /* Ensure solid background to prevent transparency */
