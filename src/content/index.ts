@@ -143,7 +143,6 @@ export const CONTENT: AppContent = {
     breadcrumbs: {
       separator: "/"
     },
-    loading: "Loading...",
     error: "An error occurred",
     save: "Save",
     cancel: "Cancel",

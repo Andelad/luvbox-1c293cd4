@@ -97,7 +97,6 @@ export interface AppContent {
     breadcrumbs: {
       separator: string;
     };
-    loading: string;
     error: string;
     save: string;
     cancel: string;

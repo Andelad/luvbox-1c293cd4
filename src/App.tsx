@@ -25,15 +25,8 @@ const TutorialPage = lazy(() => import('./app/pages/TutorialPage'));
 const SettingsPage = lazy(() => import('./app/pages/SettingsPage'));
 const FeedbackPage = lazy(() => import('./app/pages/FeedbackPage'));
 
-// Loading component for better UX during code splitting
-const PageLoader = () => (
-  <div className="content-area">
-    <div className="text-center">
-      <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-current"></div>
-      <p className="mt-2 text-body opacity-60">Loading...</p>
-    </div>
-  </div>
-);
+// Minimal fallback for code splitting - no loading animation to prevent flash
+const PageLoader = () => null;
 
 // Error fallback component
 const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) => (
