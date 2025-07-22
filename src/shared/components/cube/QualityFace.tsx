@@ -214,6 +214,17 @@ const QualityFace: React.FC = () => {
                         />
                     ))}
 
+                    {/* Red ring around 5th handle (index 4) */}
+                    <circle
+                        cx={4 * (100 / 6)}
+                        cy={100 - (values[4] * 10)}
+                        r="6.2" // 4px bigger than handle (2.2 + 4)
+                        fill="none"
+                        stroke="var(--caution-red-300)"
+                        strokeWidth="2"
+                        filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.3))"
+                    />
+
                     {/* Draw the draggable user dots - refined style with improved visibility */}
                     {values.map((val, index) => (
                         <circle

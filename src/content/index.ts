@@ -87,6 +87,9 @@ export const CONTENT: AppContent = {
   },
 
   website: {
+    staggeredSection: {
+      title: "Take control of your experience"
+    },
     header: {
       logo: "LuvMap 1.0",
       menu: {

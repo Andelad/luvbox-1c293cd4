@@ -9,12 +9,12 @@ interface HeroSectionProps {
 export default function HeroSection({ onCTAClick }: HeroSectionProps) {
   return (
     <div className="w-full relative">
-      {/* Hero content positioned to center in viewport */}
+      {/* Hero content positioned to center between header and bottom of screen */}
       <div
         className="w-full flex items-center justify-center absolute"
         style={{
           height: '100vh',
-          top: 'calc(-107px - 24px)', // Offset to account for ticker margins
+          top: '-200px', // Adjusted offset for header centering
           left: 0,
           right: 0,
           zIndex: 1

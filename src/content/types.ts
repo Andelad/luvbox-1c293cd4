@@ -60,6 +60,9 @@ export interface SettingsContent extends PageContent {
 }
 
 export interface WebsiteContent {
+  staggeredSection: {
+    title: string;
+  };
   header: {
     logo: string;
     menu: {

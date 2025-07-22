@@ -1,49 +1,11 @@
 import SvgIcon5 from '@/assets/icons/DiagnosticIcons';
 import Button from '@/shared/components/Button';
+import OptimizedCube from '@/website/components/OptimizedCube';
 
 const diagnosticSvgPaths = SvgIcon5;
 
 interface DiagnosticSectionProps {
   onCTAClick: () => void;
-}
-
-function DiagnosticCube() {
-  return (
-    <div className="w-80 h-80 flex items-center justify-center">
-      <svg
-        className="w-full h-full"
-        fill="none"
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 319 353"
-      >
-        <g id="Layer_1">
-          <path
-            d={diagnosticSvgPaths.p202c5580}
-            id="Vector"
-            stroke="var(--stroke-0, #3D3535)"
-            strokeMiterlimit="10"
-            strokeWidth="4"
-          />
-          <path
-            d={diagnosticSvgPaths.p4b9d580}
-            id="Vector_2"
-            stroke="var(--stroke-0, #3D3535)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-          />
-          <path
-            d={diagnosticSvgPaths.p207fbf60}
-            id="Vector_3"
-            stroke="var(--stroke-0, #3D3535)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-          />
-        </g>
-      </svg>
-    </div>
-  );
 }
 
 export default function DiagnosticSection({ onCTAClick }: DiagnosticSectionProps) {
@@ -54,14 +16,10 @@ export default function DiagnosticSection({ onCTAClick }: DiagnosticSectionProps
           {/* Left Column - Content */}
           <div className="space-y-8">
             <h2 className="text-web-hero luvmap-brand text-center lg:text-left">
-              Diagnose what's working and what's not
+              Assess past or current relationships
             </h2>
 
             <div className="space-y-6">
-              <h3 className="text-web-heading" style={{ color: 'var(--lb-black-800)' }}>
-                Assess past or current relationships
-              </h3>
-
               <p className="text-web-body" style={{ color: 'var(--lb-black-800)' }}>
                 Our diagnostic tool helps you think through your relationship, understanding sticking points and why you might not feel 'in love'. It will help you see where things are wrong, and what you could do to improve
               </p>
@@ -76,7 +34,7 @@ export default function DiagnosticSection({ onCTAClick }: DiagnosticSectionProps
 
           {/* Right Column - Illustration */}
           <div className="flex justify-center lg:justify-end">
-            <DiagnosticCube />
+            <OptimizedCube />
           </div>
         </div>
       </div>
