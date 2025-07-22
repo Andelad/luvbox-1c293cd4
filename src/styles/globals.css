@@ -12,23 +12,9 @@
   }
 }
 
-/* Font-face with performance optimizations */
-@font-face {
-  font-family: 'EB Garamond';
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Source Sans 3';
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Spline Sans Mono';
-  font-display: swap;
-}
-
-@custom-variant dark (&:is(.dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Responsive Root Font Size System */
 html {
