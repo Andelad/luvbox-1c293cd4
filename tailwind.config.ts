@@ -15,6 +15,31 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'serif': ['EB Garamond', 'serif'],
+				'sans': ['Source Sans 3', 'sans-serif'],
+				'mono': ['Spline Sans Mono', 'monospace'],
+			},
+			fontSize: {
+				// App Typography Scale
+				'app-xs': ['var(--app-text-xs)', { lineHeight: 'var(--app-leading-xs)' }],
+				'app-sm': ['var(--app-text-sm)', { lineHeight: 'var(--app-leading-sm)' }],
+				'app-base': ['var(--app-text-base)', { lineHeight: 'var(--app-leading-base)' }],
+				'app-lg': ['var(--app-text-lg)', { lineHeight: 'var(--app-leading-lg)' }],
+				'app-xl': ['var(--app-text-xl)', { lineHeight: 'var(--app-leading-xl)' }],
+				'app-2xl': ['var(--app-text-2xl)', { lineHeight: 'var(--app-leading-2xl)' }],
+				'app-3xl': ['var(--app-text-3xl)', { lineHeight: 'var(--app-leading-3xl)' }],
+
+				// Website Typography Scale (larger)
+				'web-xs': ['var(--web-text-xs)', { lineHeight: 'var(--web-leading-xs)' }],
+				'web-sm': ['var(--web-text-sm)', { lineHeight: 'var(--web-leading-sm)' }],
+				'web-base': ['var(--web-text-base)', { lineHeight: 'var(--web-leading-base)' }],
+				'web-lg': ['var(--web-text-lg)', { lineHeight: 'var(--web-leading-lg)' }],
+				'web-xl': ['var(--web-text-xl)', { lineHeight: 'var(--web-leading-xl)' }],
+				'web-2xl': ['var(--web-text-2xl)', { lineHeight: 'var(--web-leading-2xl)' }],
+				'web-3xl': ['var(--web-text-3xl)', { lineHeight: 'var(--web-leading-3xl)' }],
+				'web-4xl': ['var(--web-text-4xl)', { lineHeight: 'var(--web-leading-4xl)' }],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

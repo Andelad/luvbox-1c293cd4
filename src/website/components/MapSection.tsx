@@ -1,4 +1,3 @@
-import React from 'react';
 import mapSvgPaths from "@/assets/icons/MapSectionIcons";
 
 export default function MapSection() {
@@ -7,10 +6,10 @@ export default function MapSection() {
       <div className="container mx-auto px-8 max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-['EB_Garamond'] font-semibold italic text-[#3d3535] text-5xl lg:text-6xl mb-6">
-            Map the love experience
+          <h2 className="text-web-hero text-5xl lg:text-6xl mb-6">
+            Our Luvbox Map
           </h2>
-          <p className="font-['Source_Sans_3'] font-normal text-[#3d3535] text-lg max-w-2xl mx-auto">
+          <p className="text-web-body text-lg max-w-2xl mx-auto">
             Our environment shapes our expectations of love. Learn to build a map of your love environment so that you can make better choices.
           </p>
         </div>
@@ -61,7 +60,7 @@ export default function MapSection() {
                   </defs>
                 </svg>
               </div>
-              <p className="font-['EB_Garamond'] font-semibold italic text-[#3d3535] text-xl">The Box</p>
+              <p className="text-web-subtitle text-xl">The Box</p>
             </div>
           </div>
 
@@ -113,7 +112,7 @@ export default function MapSection() {
                   </defs>
                 </svg>
               </div>
-              <p className="font-['EB_Garamond'] font-semibold italic text-[#3d3535] text-xl">My Love Scripts</p>
+              <p className="text-web-subtitle text-xl">My Love Scripts</p>
             </div>
           </div>
 
@@ -151,7 +150,7 @@ export default function MapSection() {
                   </defs>
                 </svg>
               </div>
-              <p className="font-['EB_Garamond'] font-semibold italic text-[#3d3535] text-xl">My Self</p>
+              <p className="text-web-subtitle text-xl">My Self</p>
             </div>
           </div>
 
@@ -205,7 +204,7 @@ export default function MapSection() {
                   </defs>
                 </svg>
               </div>
-              <p className="font-['EB_Garamond'] font-semibold italic text-[#3d3535] text-xl">My Community</p>
+              <p className="text-web-subtitle text-xl">My Community</p>
             </div>
           </div>
         </div>

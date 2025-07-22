@@ -1,4 +1,3 @@
-import React from 'react';
 import LightCarousel from './LightCarousel';
 
 export default function TestimonialSection() {
@@ -29,15 +28,15 @@ export default function TestimonialSection() {
     <div className="min-h-screen w-full py-20 flex items-center">
       <div className="container mx-auto px-8 max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="font-['EB_Garamond'] font-semibold italic text-[#3d3535] text-5xl lg:text-6xl mb-6">
-            What our users say
+          <h2 className="text-web-hero text-5xl lg:text-6xl mb-6">
+            What People Say
           </h2>
-          <p className="font-['Source_Sans_3'] font-normal text-[#3d3535] text-lg max-w-2xl mx-auto">
+          <p className="text-web-body text-lg max-w-2xl mx-auto">
             Discover how LuvBox has helped people gain clarity and understanding in their love lives.
           </p>
         </div>
 
-        <LightCarousel 
+        <LightCarousel
           items={testimonials}
           slidesToShow={3}
           autoplay={true}

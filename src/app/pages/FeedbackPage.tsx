@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
 import { PageHeader } from '@/app/components';
+import { CONTENT } from '@/content';
+import React, { useState } from 'react';
 
 export default function FeedbackPage() {
+  const content = CONTENT.pages.feedback;
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [feedback, setFeedback] = useState('');
@@ -9,7 +11,7 @@ export default function FeedbackPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Feedback submitted:', { name, email, feedback });
-    alert('Thank you for your feedback!');
+    alert(content.thankYou);
     setName('');
     setEmail('');
     setFeedback('');
@@ -17,85 +19,98 @@ export default function FeedbackPage() {
 
   return (
     <div className="page-wrapper">
-      <PageHeader 
-        breadcrumbs={['Feedback']}
+      <PageHeader
+        breadcrumbs={[content.title]}
       />
-      
+
       <div className="mb-8">
-                <h1 className="page-title text-[48px] luvmap-brand">
-          Feedback
+        <h1 className="page-title text-[48px] luvmap-brand">
+          {content.title}
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl text-center">
-          We'd love to hear your thoughts and suggestions. Your feedback helps us improve LuvMap and create a better experience for everyone.
+        <p className="text-app-body opacity-60 max-w-2xl text-center" style={{ color: 'var(--lb-black-700)' }}>
+          {content.description}
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium">
-              Name
+            <label htmlFor="name" className="text-app-caption font-medium" style={{ color: 'var(--lb-black-800)' }}>
+              {content.form.name}
             </label>
             <input
               type="text"
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-              placeholder="Your Name"
+              className="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-app-body focus:ring-purple-500"
+              style={{ 
+                border: '1px solid var(--lb-black-200)', 
+                backgroundColor: 'var(--lb-black-0)'
+              }}
+              placeholder={content.form.placeholders.name}
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium">
-              Email
+            <label htmlFor="email" className="text-app-caption font-medium" style={{ color: 'var(--lb-black-800)' }}>
+              {content.form.email}
             </label>
             <input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-              placeholder="your.email@example.com"
+              className="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-app-body focus:ring-purple-500"
+              style={{ 
+                border: '1px solid var(--lb-black-200)', 
+                backgroundColor: 'var(--lb-black-0)'
+              }}
+              placeholder={content.form.placeholders.email}
             />
           </div>
         </div>
         <div className="space-y-2">
-          <label htmlFor="feedback" className="text-sm font-medium">
-            Feedback
+          <label htmlFor="feedback" className="text-app-caption font-medium" style={{ color: 'var(--lb-black-800)' }}>
+            {content.form.feedback}
           </label>
           <textarea
             id="feedback"
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 h-32"
-            placeholder="Tell us what you think..."
+            className="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent h-32 text-app-body focus:ring-purple-500"
+            style={{ 
+              border: '1px solid var(--lb-black-200)', 
+              backgroundColor: 'var(--lb-black-0)'
+            }}
+            placeholder={content.form.placeholders.feedback}
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors"
+          className="w-full font-semibold py-3 rounded-lg transition-colors hover:opacity-90 text-app-body"
+          style={{ backgroundColor: 'var(--purple-500)', color: 'var(--lb-black-0)' }}
         >
-          Submit Feedback
+          {content.form.submit}
         </button>
       </form>
 
-      <div className="text-center text-sm text-gray-500">
-        <p>
-          Your feedback is important to us and helps shape the future of LuvMap. Thank you for taking the time to share your thoughts!
+      <div className="text-center opacity-60">
+        <p className="text-app-caption" style={{ color: 'var(--lb-black-600)' }}>
+          {content.footerNote}
         </p>
       </div>
-      
-      <div className="bg-[#f8f8f8] rounded-lg p-8 max-w-[700px]">
+
+      <div style={{ backgroundColor: 'var(--lb-black-50)' }} className="rounded-lg p-8 max-w-[700px]">
         <div className="space-y-6">
           <div>
-            <label className="block font-['Source_Sans_3'] font-semibold text-[#3d3535] text-[16px] mb-2">
-              How would you rate your experience?
+            <label className="block text-app-body font-semibold mb-2" style={{ color: 'var(--lb-black-800)' }}>
+              {content.rating.label}
             </label>
             <div className="flex gap-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
-                  className="w-8 h-8 text-[#8881cc] hover:text-[#6f67b8] transition-colors"
+                  className="w-8 h-8 text-[var(--purple-500)] hover:text-[var(--purple-600)] transition-colors"
                 >
                   ⭐
                 </button>
@@ -104,35 +119,46 @@ export default function FeedbackPage() {
           </div>
 
           <div>
-            <label className="block font-['Source_Sans_3'] font-semibold text-[#3d3535] text-[16px] mb-2">
-              What's on your mind?
+            <label className="block text-app-body font-semibold mb-2" style={{ color: 'var(--lb-black-800)' }}>
+              {content.additional.thoughts}
             </label>
             <textarea
-              className="w-full h-32 p-4 rounded-lg border border-[rgba(61,53,53,0.2)] bg-white resize-none focus:outline-none focus:ring-2 focus:ring-[#8881cc] focus:border-transparent"
-              placeholder="Share your thoughts, suggestions, or report any issues..."
+              className="w-full h-32 p-4 rounded-lg resize-none focus:outline-none focus:ring-2 focus:border-transparent text-app-body focus:ring-purple-500"
+              style={{
+                border: '1px solid var(--lb-black-200)',
+                backgroundColor: 'var(--lb-black-0)'
+              }}
+              placeholder={content.form.placeholders.thoughts}
             />
           </div>
 
           <div>
-            <label className="block font-['Source_Sans_3'] font-semibold text-[#3d3535] text-[16px] mb-2">
-              Contact Email (Optional)
+            <label className="block text-app-body font-semibold mb-2" style={{ color: 'var(--lb-black-800)' }}>
+              {content.additional.email}
             </label>
             <input
               type="email"
-              className="w-full p-4 rounded-lg border border-[rgba(61,53,53,0.2)] bg-white focus:outline-none focus:ring-2 focus:ring-[#8881cc] focus:border-transparent"
-              placeholder="your.email@example.com"
+              className="w-full p-4 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-app-body focus:ring-purple-500"
+              style={{
+                border: '1px solid var(--lb-black-200)',
+                backgroundColor: 'var(--lb-black-0)'
+              }}
+              placeholder={content.form.placeholders.email}
             />
           </div>
 
-          <button className="bg-[#8881cc] text-white px-8 py-3 rounded-lg font-['Source_Sans_3'] font-semibold hover:bg-[#6f67b8] transition-colors">
-            Send Feedback
+          <button
+            className="px-8 py-3 rounded-lg text-app-body font-semibold transition-colors hover:opacity-90"
+            style={{ backgroundColor: 'var(--purple-500)', color: 'var(--lb-black-0)' }}
+          >
+            {content.additional.submit}
           </button>
         </div>
       </div>
 
-      <div className="mt-8 text-[#3d3535] opacity-60">
-        <p className="font-['Source_Sans_3'] text-[14px]">
-          Your feedback is important to us and helps shape the future of LuvBox. Thank you for taking the time to share your thoughts!
+      <div className="mt-8 opacity-60">
+        <p className="text-app-caption" style={{ color: 'var(--lb-black-800)' }}>
+          {content.footerNote}
         </p>
       </div>
     </div>

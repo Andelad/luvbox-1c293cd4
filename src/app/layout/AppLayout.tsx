@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { PageSideMenu, AppHeader, Sidebar, MenuButtons, TechButtons } from '@/app/components';
+import { AppHeader, MenuButtons, PageSideMenu, Sidebar, TechButtons } from '@/app/components';
 import { PageType } from '@/shared/types/app';
+import { useEffect, useState } from 'react';
 
 interface MenuItem {
   id: string;
@@ -31,14 +31,14 @@ function LeftArrowIcon() {
         preserveAspectRatio="none"
         viewBox="0 0 24 24"
       >
-        <path d="M15 6l-6 6 6 6" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M15 6l-6 6 6 6" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
   );
 }
 
-function MobileSidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: { 
-  onNavigate: (page: string) => void; 
+function MobileSidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
+  onNavigate: (page: string) => void;
   currentPage: string;
   expanded: boolean;
   onToggleSidebar: () => void;
@@ -63,7 +63,7 @@ function MobileSidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
     <>
       {/* Backdrop - only visible when expanded */}
       {expanded && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0,
@@ -78,9 +78,9 @@ function MobileSidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
           onClick={onToggleSidebar}
         />
       )}
-      
+
       {/* Mobile Sidebar */}
-      <div 
+      <div
         style={{
           position: 'fixed',
           top: 0,
@@ -99,7 +99,7 @@ function MobileSidebar({ onNavigate, currentPage, expanded, onToggleSidebar }: {
         <div className="app-sidebar-content">
           <div className="app-sidebar-inner">
             <div className="sidebar-logo" style={{ padding: '16px' }}>
-              <button 
+              <button
                 onClick={onToggleSidebar}
                 style={{
                   background: 'none',
@@ -149,24 +149,24 @@ export default function AppLayout({ children, onNavigate, onGlobeClick, currentP
   return (
     <div className="app-layout">
       <div className="app-layout-header">
-        <AppHeader 
-          onGlobeClick={onGlobeClick} 
-          sidebarExpanded={sidebarExpanded} 
-          onNavigate={onNavigate} 
+        <AppHeader
+          onGlobeClick={onGlobeClick}
+          sidebarExpanded={sidebarExpanded}
+          onNavigate={onNavigate}
           currentPage={currentPage}
           onToggleSidebar={onToggleSidebar}
         />
       </div>
       <div className="app-layout-content">
-        <Sidebar 
-          onNavigate={onNavigate} 
-          currentPage={currentPage} 
+        <Sidebar
+          onNavigate={onNavigate}
+          currentPage={currentPage}
           expanded={sidebarExpanded}
           onToggleSidebar={onToggleSidebar}
         />
-        <MobileSidebar 
-          onNavigate={onNavigate} 
-          currentPage={currentPage} 
+        <MobileSidebar
+          onNavigate={onNavigate}
+          currentPage={currentPage}
           expanded={sidebarExpanded}
           onToggleSidebar={onToggleSidebar}
         />
@@ -174,9 +174,9 @@ export default function AppLayout({ children, onNavigate, onGlobeClick, currentP
           <div className="app-content-wrapper">
             <div className="app-content-container">
               <div className="app-content-card" style={{ position: 'relative' }}>
-                <PageSideMenu 
+                <PageSideMenu
                   key={currentPage} // Force remount when page changes
-                  title={pageSideMenuTitle} 
+                  title={pageSideMenuTitle}
                   content={pageSideMenuContent}
                   menuItems={pageSideMenuItems}
                   defaultOpenOnLargeScreen={pageSideMenuDefaultOpen}
@@ -187,9 +187,7 @@ export default function AppLayout({ children, onNavigate, onGlobeClick, currentP
                     }
                   }}
                 />
-                <div 
-                  className="app-content-inner" 
-                >
+                <div className="app-content-inner">
                   <div className="app-content-padding">
                     {children}
                   </div>

@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
-import { 
+import {
   AppHeaderLogo,
-  SideMenuIcon,
+  LeftArrowIcon,
   RightArrowIcon,
-  LeftArrowIcon
+  SideMenuIcon
 } from '@/assets/icons';
+import { CONTENT } from '@/content';
+import { useEffect, useState } from 'react';
 import { AccountCircle } from "./SidebarNavigation";
 
 // Mobile menu button component
@@ -36,12 +37,12 @@ function MobileMenuButton({ onToggleSidebar, expanded }: { onToggleSidebar: () =
   };
 
   return (
-    <button 
+    <button
       onClick={onToggleSidebar}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="globe-button mobile-menu-button"
-      title="Menu"
+      title={CONTENT.common.menu}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -53,9 +54,9 @@ function MobileMenuButton({ onToggleSidebar, expanded }: { onToggleSidebar: () =
   );
 }
 
-function AppHeaderActions({ onGlobeClick, onNavigate, currentPage, onToggleSidebar, sidebarExpanded }: { 
-  onGlobeClick: () => void; 
-  onNavigate: (page: string) => void; 
+function AppHeaderActions({ onGlobeClick, onNavigate, currentPage, onToggleSidebar, sidebarExpanded }: {
+  onGlobeClick: () => void;
+  onNavigate: (page: string) => void;
   currentPage: string;
   onToggleSidebar: () => void;
   sidebarExpanded: boolean;
@@ -63,8 +64,8 @@ function AppHeaderActions({ onGlobeClick, onNavigate, currentPage, onToggleSideb
   return (
     <div className="app-header-actions">
       <MobileMenuButton onToggleSidebar={onToggleSidebar} expanded={sidebarExpanded} />
-      <button 
-        onClick={() => onNavigate('settings')} 
+      <button
+        onClick={() => onNavigate('settings')}
         className={`globe-button ${currentPage === 'settings' ? 'active' : ''}`}
         title="Settings"
       >

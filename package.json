@@ -8,7 +8,13 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "preview": "vite preview",
+    "check:colors": "grep -r '#[0-9a-fA-F]' src/ --exclude-dir=node_modules || echo 'No hardcoded colors found ✅'",
+    "check:hardcoded-text": "grep -r 'Welcome\\|Login\\|Sign up\\|Submit\\|Cancel' src/components/ src/app/ src/website/ || echo 'No obvious hardcoded text found ✅'",
+    "pre-commit": "npm run type-check && npm run lint && npm run check:colors",
+    "standards-check": "npm run check:colors && npm run check:hardcoded-text && npm run type-check && npm run lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

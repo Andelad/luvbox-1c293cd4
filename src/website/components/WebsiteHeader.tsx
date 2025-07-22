@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
+import { useEffect, useState } from 'react';
 
 interface WebsiteHeaderProps {
   onNavigate: (page: string) => void;
@@ -69,7 +69,7 @@ function Frame33({ onNavigate }: { onNavigate: (page: string) => void }) {
     <div className="basis-0 box-border content-stretch flex flex-row grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
       <button onClick={() => onNavigate('home')} className="flex items-center gap-2">
         <LogoFrame />
-        <div className="font-['EB_Garamond'] font-semibold italic leading-[0] relative shrink-0 text-[#3d3535] text-[24px] text-left text-nowrap">
+        <div className="text-web-brand relative shrink-0 text-left text-nowrap">
           <p className="block leading-[normal] whitespace-pre">LuvMap 1.0</p>
         </div>
       </button>
@@ -85,16 +85,15 @@ function WebsiteMenu({ onNavigate, currentPage }: { onNavigate: (page: string) =
 
   return (
     <div
-      className="box-border content-stretch flex flex-row font-['Source_Sans_3'] font-normal gap-8 items-center justify-start leading-[0] p-0 relative shrink-0 text-[#3d3535] text-[20px] text-left text-nowrap"
+      className="box-border content-stretch flex flex-row text-web-body gap-8 items-center justify-start p-0 relative shrink-0 text-left text-nowrap"
       data-name="Website Menu"
     >
       {menuItems.map((item) => (
         <button
           key={item.key}
           onClick={() => onNavigate(item.key)}
-          className={`relative shrink-0 hover:text-[#8881cc] transition-colors ${
-            currentPage === item.key ? 'text-[#8881cc]' : ''
-          }`}
+          className={`relative shrink-0 hover:text-[var(--lb-purple)] transition-colors ${currentPage === item.key ? 'text-[var(--lb-purple)]' : ''
+            }`}
         >
           <p className="block leading-[normal] text-nowrap whitespace-pre">
             {item.label}
@@ -120,16 +119,16 @@ export default function WebsiteHeader({ onNavigate, currentPage }: WebsiteHeader
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Show header if scrolling up or at the top
       if (currentScrollY < lastScrollY || currentScrollY < 10) {
         setIsVisible(true);
-      } 
+      }
       // Hide header if scrolling down and past threshold
       else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -139,9 +138,8 @@ export default function WebsiteHeader({ onNavigate, currentPage }: WebsiteHeader
 
   return (
     <div
-      className={`fixed bg-white bg-gradient-to-r from-[#ffd1d11f] h-20 left-0 right-0 to-[#8881cc1f] top-0 z-20 transition-transform duration-300 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}
+      className={`fixed bg-white bg-gradient-to-r from-[var(--pink-50)] h-20 left-0 right-0 to-[var(--purple-100)] top-0 z-20 transition-transform duration-300 shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] ${isVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
       data-name="Website Header"
     >
       <div className="box-border content-stretch flex flex-row items-center justify-between overflow-clip pl-4 pr-8 py-4 relative size-full">

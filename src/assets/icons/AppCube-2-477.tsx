@@ -26,8 +26,8 @@ export default function AppCube() {
             id="paint0_radial_2_481"
             r="1"
           >
-            <stop stopColor="#B5B6E9" />
-            <stop offset="0.576923" stopColor="#FFDCCE" />
+            <stop stopColor="var(--purple-200)" />
+            <stop offset="0.576923" stopColor="var(--pink-100)" />
             <stop offset="1" stopColor="white" />
           </radialGradient>
           <clipPath id="clip0_2_481">

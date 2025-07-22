@@ -1,5 +1,6 @@
-import WebsiteHeader from '../components/WebsiteHeader';
 import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
+import { CONTENT } from '@/content';
+import WebsiteHeader from '../components/WebsiteHeader';
 
 function Layer1() {
   return (
@@ -60,12 +61,14 @@ function LogoFrame() {
 }
 
 function Frame33({ onNavigate }: { onNavigate: (page: string) => void }) {
+
+
   return (
     <div className="basis-0 box-border content-stretch flex flex-row grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
       <button onClick={() => onNavigate('home')} className="flex items-center gap-2">
         <LogoFrame />
-        <div className="font-['EB_Garamond'] font-semibold italic leading-[0] relative shrink-0 text-[#3d3535] text-[24px] text-left text-nowrap">
-          <p className="block leading-[normal] whitespace-pre">LuvMap 1.0</p>
+        <div className="text-web-brand relative shrink-0 text-left text-nowrap">
+          Luvbox
         </div>
       </button>
     </div>
@@ -73,26 +76,27 @@ function Frame33({ onNavigate }: { onNavigate: (page: string) => void }) {
 }
 
 function WebsiteMenu({ onNavigate, currentPage }: { onNavigate: (page: string) => void; currentPage: string }) {
+
+
   const menuItems = [
-    { key: 'blog', label: 'Blog' },
-    { key: 'about', label: 'About' },
-    { key: 'pricing', label: 'Pricing' },
-    { key: 'contact', label: 'Contact' },
-    { key: 'login', label: 'Login' }
+    { key: 'blog', label: CONTENT.website.header.menu.blog },
+    { key: 'about', label: CONTENT.website.header.menu.about },
+    { key: 'pricing', label: CONTENT.website.header.menu.pricing },
+    { key: 'contact', label: CONTENT.website.header.menu.contact },
+    { key: 'login', label: CONTENT.website.header.menu.login }
   ];
 
   return (
     <div
-      className="box-border content-stretch flex flex-row font-['Source_Sans_3'] font-normal gap-8 items-center justify-start leading-[0] p-0 relative shrink-0 text-[#3d3535] text-[20px] text-left text-nowrap"
+      className="box-border content-stretch flex flex-row text-web-body gap-8 items-center justify-start p-0 relative shrink-0 text-left text-nowrap"
       data-name="Website Menu"
     >
       {menuItems.map((item) => (
         <button
           key={item.key}
           onClick={() => onNavigate(item.key)}
-          className={`relative shrink-0 hover:text-[#8881cc] transition-colors ${
-            currentPage === item.key ? 'text-[#8881cc]' : ''
-          }`}
+          className={`relative shrink-0 hover:text-[var(--purple-500)] transition-colors ${currentPage === item.key ? 'text-[var(--purple-500)]' : ''
+            }`}
         >
           <p className="block leading-[normal] text-nowrap whitespace-pre">
             {item.label}
@@ -114,7 +118,10 @@ function Frame31({ onNavigate, currentPage }: { onNavigate: (page: string) => vo
 function AppHeader({ onNavigate, currentPage }: { onNavigate: (page: string) => void; currentPage: string }) {
   return (
     <div
-      className="absolute bg-gradient-to-r from-[#ffd1d11f] h-20 left-0 right-0 to-[#8881cc1f] top-[3px]"
+      className="absolute h-20 left-0 right-0 top-[3px]"
+      style={{
+        background: 'linear-gradient(to right, oklch(92% 0.0435 43.03 / 0.12), oklch(74.89% 0.086 284.3 / 0.12))'
+      }}
       data-name="App Header"
     >
       <div className="box-border content-stretch flex flex-row items-center justify-between overflow-clip pl-4 pr-8 py-4 relative size-full">
@@ -132,19 +139,19 @@ function Section({ onNavigate }: { onNavigate: (page: string) => void }) {
       className="h-[1117px] mr-[-39px] overflow-clip relative shrink-0 w-[1728px]"
       data-name="Section"
     >
-      <div className="absolute font-['EB_Garamond'] font-semibold italic h-[153px] leading-[0] left-[294px] text-[#3d3535] text-[64px] text-left top-[342px] w-[574px]">
+      <div className="absolute text-web-hero h-[153px] left-[294px] text-left top-[342px] w-[574px]">
         <p className="block leading-[64px]">
           Contact Us
         </p>
       </div>
-      <div className="absolute font-['Source_Sans_3'] font-normal h-[100px] leading-[0] left-[295px] text-[#3d3535] text-[20px] text-left top-[517px] w-[517px]">
+      <div className="absolute text-web-body h-[100px] left-[295px] text-left top-[517px] w-[517px]">
         <p className="block leading-[24px]">
-          Get in touch with our team. We'd love to hear from you and help you 
+          Get in touch with our team. We'd love to hear from you and help you
           on your journey to understanding love and building meaningful relationships.
         </p>
       </div>
       <div className="absolute bg-[#f8f8f8] left-[295px] min-h-[300px] rounded-lg top-[650px] w-[800px] flex items-center justify-center">
-        <p className="text-[#3d3535] text-[18px] font-['Source_Sans_3'] opacity-60">
+        <p className="text-[var(--lb-black-800)] text-web-small opacity-60">
           Contact form coming soon...
         </p>
       </div>
@@ -181,8 +188,8 @@ export default function ContactPage({ onNavigate }: { onNavigate: (page: string)
                   id="paint0_radial_1_571"
                   r="1"
                 >
-                  <stop stopColor="#B5B6E9" />
-                  <stop offset="0.576923" stopColor="#FFDCCE" />
+                  <stop stopColor="var(--purple-200)" />
+                  <stop offset="0.576923" stopColor="var(--pink-100)" />
                   <stop offset="1" stopColor="white" />
                 </radialGradient>
               </defs>

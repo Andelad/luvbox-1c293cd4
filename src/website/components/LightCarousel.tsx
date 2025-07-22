@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface CarouselItem {
   quote: string;
@@ -12,11 +12,11 @@ interface LightCarouselProps {
   autoplaySpeed?: number;
 }
 
-export default function LightCarousel({ 
-  items, 
-  slidesToShow = 3, 
-  autoplay = true, 
-  autoplaySpeed = 4000 
+export default function LightCarousel({
+  items,
+  slidesToShow = 3,
+  autoplay = true,
+  autoplaySpeed = 4000
 }: LightCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleSlides, setVisibleSlides] = useState(slidesToShow);
@@ -43,7 +43,7 @@ export default function LightCarousel({
     if (!autoplay) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => 
+      setCurrentSlide((prev) =>
         prev + visibleSlides >= items.length ? 0 : prev + 1
       );
     }, autoplaySpeed);
@@ -70,26 +70,26 @@ export default function LightCarousel({
     <div className="w-full">
       {/* Slides Container */}
       <div className="relative overflow-hidden">
-        <div 
+        <div
           className="flex transition-transform duration-500 ease-in-out will-change-transform"
-          style={{ 
+          style={{
             transform: `translate3d(-${(currentSlide * 100) / visibleSlides}%, 0, 0)`,
             width: `${(items.length * 100) / visibleSlides}%`
           }}
         >
           {items.map((item, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="px-4"
               style={{ width: `${100 / items.length}%` }}
             >
               <div className="bg-[rgba(255,255,255,0.1)] rounded-2xl p-8 relative h-64">
                 <div className="space-y-4 h-full flex flex-col justify-between">
-                  <p className="font-['Source_Sans_3'] font-normal text-[#3d3535] text-lg leading-relaxed italic flex-grow">
+                  <p className="text-web-body text-[var(--lb-black-800)] italic flex-grow">
                     "{item.quote}"
                   </p>
                   <div className="text-right">
-                    <p className="font-['EB_Garamond'] font-semibold text-[#3d3535] text-xl">
+                    <p className="text-web-subheading text-[var(--lb-black-800)]">
                       — {item.author}
                     </p>
                   </div>
@@ -107,11 +107,10 @@ export default function LightCarousel({
           <button
             key={index}
             onClick={() => goToSlide(index * visibleSlides)}
-            className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-              Math.floor(currentSlide / visibleSlides) === index
+            className={`w-3 h-3 rounded-full transition-colors duration-200 ${Math.floor(currentSlide / visibleSlides) === index
                 ? 'bg-[#3d3535]'
                 : 'bg-[rgba(61,53,53,0.3)]'
-            }`}
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

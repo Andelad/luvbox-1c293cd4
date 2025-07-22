@@ -4,7 +4,10 @@ const imgRectangle5 = "/placeholder.svg";
 export default function FrontFace() {
   return (
     <div
-      className="bg-gradient-to-b from-[#ffffff] relative rounded size-full to-[#e2fee666]"
+      className="relative rounded size-full"
+      style={{
+        background: 'linear-gradient(to bottom, #ffffff, oklch(97.05% 0.0481 148.92 / 0.4))'
+      }}
       data-name="Front Face"
     >
       <div className="overflow-clip relative size-full">

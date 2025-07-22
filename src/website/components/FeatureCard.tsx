@@ -1,4 +1,3 @@
-import React from 'react';
 
 interface FeatureCardProps {
   title: string;
@@ -9,18 +8,18 @@ interface FeatureCardProps {
 
 export default function FeatureCard({ title, description, gridRow, className = "" }: FeatureCardProps) {
   return (
-    <div 
+    <div
       className={`bg-[rgba(255,255,255,0.1)] rounded-2xl p-8 relative staggered-card ${className}`}
-      style={{ 
+      style={{
         gridRow,
         boxShadow: '0px 4px 12px 0px rgba(0,0,0,0.25)'
       }}
     >
       <div className="space-y-4">
-        <h3 className="font-['EB_Garamond'] font-semibold text-[#3d3535] text-4xl leading-tight">
+        <h3 className="text-web-heading text-[var(--lb-black-800)]">
           {title}
         </h3>
-        <p className="font-['Source_Sans_3'] font-normal text-[#3d3535] text-lg leading-relaxed">
+        <p className="text-web-body text-[var(--lb-black-800)]">
           {description}
         </p>
       </div>

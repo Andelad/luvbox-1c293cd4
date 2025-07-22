@@ -1,23 +1,13 @@
-import React from 'react';
-import FeatureCard from './FeatureCard';
+import { CONTENT } from '@/content';
 import Button from '@/shared/components/Button';
+import FeatureCard from './FeatureCard';
 
 interface StaggeredSectionProps {
   onCTAClick: () => void;
 }
 
 export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) {
-  const description = "Love is beautiful when it feels effortless. But, what about when its difficult, you feel confused, or you can't let go? LuvMap is your tool for assessing what is happening, what is inspiring your feelings and what to do about them.";
-  
-  const features = [
-    "Untangle mixed feelings",
-    "Make sense of past relationships",
-    "Learn how to build love", 
-    "Overcome repeating patterns",
-    "Celebrate your unique love story",
-    "Be purposeful in future dating",
-    "Set loving boundaries"
-  ];
+  const features = CONTENT.website.features;
 
   return (
     <div className="min-h-screen w-full py-20">
@@ -25,52 +15,52 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
         {/* CSS Grid with 2 columns and 8 rows for staggered effect */}
         <div className="staggered-grid-extended">
           {/* First column cards - position 1, 3, 5, 7 */}
-          <FeatureCard 
-            title={features[0]}
-            description={description}
+          <FeatureCard
+            title={features[0].title}
+            description={features[0].description}
             gridRow="1 / 3"
             className="col-start-1"
           />
-          
-          <FeatureCard 
-            title={features[2]}
-            description={description}
+
+          <FeatureCard
+            title={features[2].title}
+            description={features[2].description}
             gridRow="3 / 5"
             className="col-start-1"
           />
-          
-          <FeatureCard 
-            title={features[4]}
-            description={description}
+
+          <FeatureCard
+            title={features[4].title}
+            description={features[4].description}
             gridRow="5 / 7"
             className="col-start-1"
           />
 
-          <FeatureCard 
-            title={features[6]}
-            description={description}
+          <FeatureCard
+            title={features[6].title}
+            description={features[6].description}
             gridRow="7 / 9"
             className="col-start-1"
           />
 
           {/* Second column cards - position 2, 4, 6 */}
-          <FeatureCard 
-            title={features[1]}
-            description={description}
+          <FeatureCard
+            title={features[1].title}
+            description={features[1].description}
             gridRow="2 / 4"
             className="col-start-2"
           />
-          
-          <FeatureCard 
-            title={features[3]}
-            description={description}
+
+          <FeatureCard
+            title={features[3].title}
+            description={features[3].description}
             gridRow="4 / 6"
             className="col-start-2"
           />
-          
-          <FeatureCard 
-            title={features[5]}
-            description={description}
+
+          <FeatureCard
+            title={features[5].title}
+            description={features[5].description}
             gridRow="6 / 8"
             className="col-start-2"
           />

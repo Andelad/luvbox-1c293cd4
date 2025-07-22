@@ -1,20 +1,22 @@
-import React from 'react';
 import { PageHeader } from '@/app/components';
+import { CONTENT } from '@/content';
 
 export default function TutorialPage() {
+  const content = CONTENT.pages.tutorial;
+
   return (
-        <div className="page-wrapper">
-      <PageHeader 
-        breadcrumbs={['Tutorial']}
+    <div className="page-wrapper">
+      <PageHeader
+        breadcrumbs={[content.title]}
       />
-      
+
       <div className="empty-page-content">
         <div className="empty-page-inner">
           <h2 className="page-title text-[32px] luvbox-brand">
-            Tutorial
+            {content.title}
           </h2>
           <p className="page-subtitle">
-            Learn how to use LuvBox effectively...
+            {content.description}
           </p>
         </div>
       </div>

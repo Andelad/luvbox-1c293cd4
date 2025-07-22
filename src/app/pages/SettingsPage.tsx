@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { DealbreakerSliders } from '@/app/components';
+import { CONTENT } from '@/content';
 import { useAuth, useUser } from '@/shared/lib/storage';
 import { EqualizerArea, EqualizerScores, createEqualizerScores } from '@/shared/types/storage';
-import { DealbreakerSliders } from '@/app/components';
+import { useEffect, useState } from 'react';
 
 const SettingsPage: React.FC = () => {
+  const content = CONTENT.pages.settings;
   const { currentUserId } = useAuth();
   const { user, updateUser } = useUser(currentUserId || undefined);
   const [activeSection, setActiveSection] = useState('profile');
-  
+
   // Form states
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,7 +23,7 @@ const SettingsPage: React.FC = () => {
     const handleMenuChange = (event: CustomEvent) => {
       setActiveSection(event.detail);
     };
-    
+
     window.addEventListener('settingsMenuChange', handleMenuChange as EventListener);
     return () => window.removeEventListener('settingsMenuChange', handleMenuChange as EventListener);
   }, []);
@@ -31,7 +33,7 @@ const SettingsPage: React.FC = () => {
     if (user) {
       setName(user.name || '');
       setEmail(user.email || '');
-      setDateOfBirth(user.dateOfBirth ? 
+      setDateOfBirth(user.dateOfBirth ?
         new Date(user.dateOfBirth).toISOString().split('T')[0] : ''
       );
       setDealbreakerScores(user.dealbreakerScores || createEqualizerScores());
@@ -40,31 +42,31 @@ const SettingsPage: React.FC = () => {
 
   const handleSaveProfile = async () => {
     if (!user) return;
-    
+
     try {
       await updateUser({
         name,
         email,
         dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : new Date(),
       });
-      alert('Profile updated successfully!');
+      alert(content.profile.updateSuccess);
     } catch (error) {
       console.error('Error updating profile:', error);
-      alert('Error updating profile');
+      alert(content.profile.updateError);
     }
   };
 
   const handleSaveDealbreakers = async () => {
     if (!user) return;
-    
+
     try {
       await updateUser({
         dealbreakerScores,
       });
-      alert('Dealbreaker lines updated successfully!');
+      alert(content.dealbreakers.updateSuccess);
     } catch (error) {
       console.error('Error updating dealbreakers:', error);
-      alert('Error updating dealbreakers');
+      alert(content.dealbreakers.updateError);
     }
   };
 
@@ -77,12 +79,12 @@ const SettingsPage: React.FC = () => {
 
   const renderUserProfileSection = () => (
     <div className="max-w-2xl">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">User Profile</h2>
-      
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">{content.profile.title}</h2>
+
       <div className="space-y-6">
         <div>
           <label htmlFor="name" className="block text-base font-medium text-gray-700 mb-2">
-            Name
+            {content.profile.name}
           </label>
           <input
             type="text"
@@ -90,13 +92,13 @@ const SettingsPage: React.FC = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter your name"
+            placeholder={content.profile.placeholders.name}
           />
         </div>
 
         <div>
           <label htmlFor="dateOfBirth" className="block text-base font-medium text-gray-700 mb-2">
-            Date of Birth
+            {content.profile.dateOfBirth}
           </label>
           <input
             type="date"
@@ -129,7 +131,7 @@ const SettingsPage: React.FC = () => {
     return (
       <div className="max-w-2xl">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Dealbreaker Lines</h2>
-        
+
         <div className="space-y-6">
           <DealbreakerSliders
             scores={dealbreakerScores}

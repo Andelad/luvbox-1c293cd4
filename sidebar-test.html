@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Test</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .test-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .overlay-controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 10000;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 2px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .status {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <iframe id="appFrame" src="http://localhost:8084"></iframe>
+
+        <div class="overlay-controls">
+            <div><strong>Sidebar Test Controls</strong></div>
+            <button class="control-button" onclick="injectTestScript()">Inject Test Script</button>
+            <button class="control-button" onclick="simulateAppNavigation()">Go to App</button>
+            <button class="control-button" onclick="testSidebarToggle()">Toggle Sidebar</button>
+            <div class="status" id="status">Ready for testing</div>
+        </div>
+    </div>
+
+    <script>
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+        }
+
+        function injectTestScript() {
+            const iframe = document.getElementById('appFrame');
+            const script = `
+                console.log('🧪 Test script injected');
+                
+                // Add visual indicators
+                window.addSidebarTestIndicators = function() {
+                    const style = document.createElement('style');
+                    style.textContent = \`
+                        .app-layout-main { border: 3px solid red !important; }
+                        .app-content-wrapper { border: 3px solid blue !important; }
+                        .app-sidebar { border: 3px solid green !important; }
+                        .mobile-sidebar { border: 3px solid orange !important; }
+                    \`;
+                    document.head.appendChild(style);
+                    console.log('✅ Visual indicators added');
+                };
+                
+                // Test sidebar toggle
+                window.testSidebarToggle = function() {
+                    const buttons = document.querySelectorAll('button');
+                    let menuButton = null;
+                    
+                    buttons.forEach(btn => {
+                        if (btn.textContent.includes('☰') || 
+                            btn.querySelector('[data-name="side_menu"]') ||
+                            btn.className.includes('mobile-menu-button')) {
+                            menuButton = btn;
+                        }
+                    });
+                    
+                    if (menuButton) {
+                        console.log('🎯 Found menu button:', menuButton);
+                        menuButton.click();
+                        console.log('🔄 Clicked menu button');
+                        return true;
+                    } else {
+                        console.log('❌ No menu button found');
+                        console.log('Available buttons:', Array.from(buttons).map(b => b.textContent || b.className));
+                        return false;
+                    }
+                };
+                
+                // Navigate to app
+                window.goToApp = function() {
+                    // Look for CTA button or directly set app state
+                    const buttons = document.querySelectorAll('button');
+                    let ctaButton = null;
+                    
+                    buttons.forEach(btn => {
+                        if (btn.textContent.includes('Get Started') || 
+                            btn.textContent.includes('Enter') ||
+                            btn.textContent.includes('Try')) {
+                            ctaButton = btn;
+                        }
+                    });
+                    
+                    if (ctaButton) {
+                        console.log('🚀 Found CTA button:', ctaButton);
+                        ctaButton.click();
+                        return true;
+                    } else {
+                        console.log('❌ No CTA button found, trying direct state manipulation');
+                        // Try to directly manipulate React state
+                        return false;
+                    }
+                };
+                
+                window.addSidebarTestIndicators();
+            `;
+
+            try {
+                iframe.contentWindow.eval(script);
+                updateStatus('Test script injected successfully');
+            } catch (e) {
+                updateStatus('Failed to inject script: ' + e.message);
+            }
+        }
+
+        function simulateAppNavigation() {
+            const iframe = document.getElementById('appFrame');
+            try {
+                const success = iframe.contentWindow.goToApp();
+                updateStatus(success ? 'Navigated to app' : 'Failed to find navigation button');
+            } catch (e) {
+                updateStatus('Navigation error: ' + e.message);
+            }
+        }
+
+        function testSidebarToggle() {
+            const iframe = document.getElementById('appFrame');
+            try {
+                const success = iframe.contentWindow.testSidebarToggle();
+                updateStatus(success ? 'Sidebar toggle attempted' : 'Failed to find sidebar button');
+            } catch (e) {
+                updateStatus('Toggle error: ' + e.message);
+            }
+        }
+
+        // Auto-inject after iframe loads
+        setTimeout(() => {
+            injectTestScript();
+        }, 2000);
+    </script>
+</body>
+
+</html>

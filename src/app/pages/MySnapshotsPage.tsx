@@ -1,20 +1,23 @@
-import React from 'react';
 import { PageHeader } from '@/app/components';
+import { CONTENT } from '@/content';
+import React from 'react';
 
 const MySnapshotsPage: React.FC = () => {
+  const content = CONTENT.pages.mySnapshots;
+
   return (
-        <div className="page-wrapper">
-      <PageHeader 
-        breadcrumbs={['My Snapshots']}
+    <div className="page-wrapper">
+      <PageHeader
+        breadcrumbs={[content.title]}
       />
-      
+
       <div className="empty-page-content">
         <div className="empty-page-inner">
           <h2 className="page-title text-[32px] luvmap-brand">
-            My Snapshots
+            {content.title}
           </h2>
           <p className="page-subtitle">
-            Your relationship snapshots will appear here.
+            {content.description}
           </p>
         </div>
       </div>

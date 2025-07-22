@@ -1,5 +1,5 @@
-import Button from '@/shared/components/Button';
 import SvgIcon5 from '@/assets/icons/DiagnosticIcons';
+import Button from '@/shared/components/Button';
 
 const diagnosticSvgPaths = SvgIcon5;
 
@@ -53,16 +53,16 @@ export default function DiagnosticSection({ onCTAClick }: DiagnosticSectionProps
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8">
-            <h2 className="font-['EB_Garamond'] font-semibold italic text-[#3d3535] text-5xl lg:text-6xl leading-tight text-center lg:text-left">
+            <h2 className="text-web-hero luvmap-brand text-center lg:text-left">
               Diagnose what's working and what's not
             </h2>
-            
+
             <div className="space-y-6">
-              <h3 className="font-['EB_Garamond'] font-semibold text-[#3d3535] text-2xl">
+              <h3 className="text-web-heading" style={{ color: 'var(--lb-black-800)' }}>
                 Assess past or current relationships
               </h3>
-              
-              <p className="font-['Source_Sans_3'] font-normal text-[#3d3535] text-lg leading-relaxed">
+
+              <p className="text-web-body" style={{ color: 'var(--lb-black-800)' }}>
                 Our diagnostic tool helps you think through your relationship, understanding sticking points and why you might not feel 'in love'. It will help you see where things are wrong, and what you could do to improve
               </p>
             </div>

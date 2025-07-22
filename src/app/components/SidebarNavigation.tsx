@@ -1,5 +1,6 @@
 
 import { SidebarIcons as svgPaths } from '@/assets/icons';
+import { CONTENT } from '@/content';
 
 // Icon components
 function DeployedCode() {
@@ -279,17 +280,16 @@ function ChatBubble() {
 function CubeButton({ isActive, onClick, expanded }: { isActive: boolean; onClick: () => void; expanded: boolean }) {
   return (
     <div
-      className={`sidebar-button rounded-lg ${isActive ? 'active' : ''}`}
+      className={`sidebar-button rounded-xl ${isActive ? 'active' : ''}`}
       onClick={onClick}
       data-name="Cube Button"
-      style={isActive ? { backgroundColor: 'rgba(181,182,233,0.4)' } : {}}
     >
       <div className="sidebar-button-content">
         <div className="sidebar-button-inner">
           <DeployedCode />
           {expanded && (
             <div className="sidebar-button-text">
-              <p>The Box</p>
+              <p>{CONTENT.navigation.theBox}</p>
             </div>
           )}
         </div>
@@ -310,7 +310,7 @@ function MapButton({ isActive, onClick, expanded }: { isActive: boolean; onClick
           <Map />
           {expanded && (
             <div className="sidebar-button-text">
-              <p>The Map</p>
+              <p>{CONTENT.navigation.theMap}</p>
             </div>
           )}
         </div>
@@ -320,6 +320,8 @@ function MapButton({ isActive, onClick, expanded }: { isActive: boolean; onClick
 }
 
 function SnapshotsButton({ isActive, onClick, expanded }: { isActive: boolean; onClick: () => void; expanded: boolean }) {
+
+
   return (
     <div
       className={`sidebar-button rounded-xl ${isActive ? 'active' : ''}`}
@@ -331,7 +333,7 @@ function SnapshotsButton({ isActive, onClick, expanded }: { isActive: boolean; o
           <Bookmarks />
           {expanded && (
             <div className="sidebar-button-text">
-              <p>My Snapshots</p>
+              <p>{CONTENT.navigation.mySnapshots}</p>
             </div>
           )}
         </div>
@@ -341,6 +343,8 @@ function SnapshotsButton({ isActive, onClick, expanded }: { isActive: boolean; o
 }
 
 function CommunityButton({ isActive, onClick, expanded }: { isActive: boolean; onClick: () => void; expanded: boolean }) {
+
+
   return (
     <div
       className={`sidebar-button rounded-xl ${isActive ? 'active' : ''}`}
@@ -352,7 +356,7 @@ function CommunityButton({ isActive, onClick, expanded }: { isActive: boolean; o
           <Diversity4 />
           {expanded && (
             <div className="sidebar-button-text">
-              <p>Community</p>
+              <p>{CONTENT.navigation.community}</p>
             </div>
           )}
         </div>
@@ -362,6 +366,8 @@ function CommunityButton({ isActive, onClick, expanded }: { isActive: boolean; o
 }
 
 function TutorialButton({ isActive, onClick, expanded }: { isActive: boolean; onClick: () => void; expanded: boolean }) {
+
+
   return (
     <div
       className={`sidebar-button rounded-xl ${isActive ? 'active' : ''}`}
@@ -373,7 +379,7 @@ function TutorialButton({ isActive, onClick, expanded }: { isActive: boolean; on
           <Tutorial />
           {expanded && (
             <div className="sidebar-button-text">
-              <p>Tutorial</p>
+              <p>{CONTENT.navigation.tutorial}</p>
             </div>
           )}
         </div>
@@ -383,6 +389,8 @@ function TutorialButton({ isActive, onClick, expanded }: { isActive: boolean; on
 }
 
 function FeedbackButton({ isActive, onClick, expanded }: { isActive: boolean; onClick: () => void; expanded: boolean }) {
+
+
   return (
     <div
       className={`sidebar-button rounded-xl ${isActive ? 'active' : ''}`}
@@ -394,7 +402,7 @@ function FeedbackButton({ isActive, onClick, expanded }: { isActive: boolean; on
           <ChatBubble />
           {expanded && (
             <div className="sidebar-button-text">
-              <p>Feedback</p>
+              <p>{CONTENT.navigation.feedback}</p>
             </div>
           )}
         </div>
@@ -404,6 +412,8 @@ function FeedbackButton({ isActive, onClick, expanded }: { isActive: boolean; on
 }
 
 function ProfileButton({ isActive, onClick, expanded }: { isActive: boolean; onClick: () => void; expanded: boolean }) {
+
+
   return (
     <div
       className={`sidebar-button rounded-xl ${isActive ? 'active' : ''}`}
@@ -415,7 +425,7 @@ function ProfileButton({ isActive, onClick, expanded }: { isActive: boolean; onC
           <AccountCircle />
           {expanded && (
             <div className="sidebar-button-text">
-              <p>Profile</p>
+              <p>{CONTENT.navigation.profile}</p>
             </div>
           )}
         </div>
@@ -448,8 +458,8 @@ function SidebarSeparator() {
 }
 
 // Main navigation sections
-export function MenuButtons({ onNavigate, currentPage, expanded, onToggleSidebar }: { 
-  onNavigate: (page: string) => void; 
+export function MenuButtons({ onNavigate, currentPage, expanded, onToggleSidebar }: {
+  onNavigate: (page: string) => void;
   currentPage: string;
   expanded: boolean;
   onToggleSidebar?: () => void;
@@ -475,8 +485,8 @@ export function MenuButtons({ onNavigate, currentPage, expanded, onToggleSidebar
   );
 }
 
-export function TechButtons({ onNavigate, currentPage, expanded, onToggleSidebar }: { 
-  onNavigate: (page: string) => void; 
+export function TechButtons({ onNavigate, currentPage, expanded, onToggleSidebar }: {
+  onNavigate: (page: string) => void;
   currentPage: string;
   expanded: boolean;
   onToggleSidebar?: () => void;

@@ -6,19 +6,19 @@ function Section({ onNavigate }: { onNavigate: (page: string) => void }) {
       className="h-[1117px] mr-[-39px] overflow-clip relative shrink-0 w-[1728px]"
       data-name="Section"
     >
-      <div className="absolute font-['EB_Garamond'] font-semibold italic h-[153px] leading-[0] left-[294px] text-[#3d3535] text-[64px] text-left top-[342px] w-[574px]">
-        <p className="block leading-[64px]">
+      <div className="absolute h-[153px] left-[294px] top-[342px] w-[574px]">
+        <p className="text-web-hero text-[var(--lb-black-800)] italic block">
           About LuvBox
         </p>
       </div>
-      <div className="absolute font-['Source_Sans_3'] font-normal h-[100px] leading-[0] left-[295px] text-[#3d3535] text-[20px] text-left top-[517px] w-[517px]">
-        <p className="block leading-[24px]">
-          Learn about our mission to help people understand love and build meaningful relationships. 
+      <div className="absolute h-[100px] left-[295px] top-[517px] w-[517px]">
+        <p className="text-web-body text-[var(--lb-black-800)] block">
+          Learn about our mission to help people understand love and build meaningful relationships.
           LuvBox is your tool for navigating the complex world of emotions and connections.
         </p>
       </div>
       <div className="absolute bg-[#f8f8f8] left-[295px] min-h-[300px] rounded-lg top-[650px] w-[800px] flex items-center justify-center">
-        <p className="text-[#3d3535] text-[18px] font-['Source_Sans_3'] opacity-60">
+        <p className="text-web-caption text-[var(--lb-black-800)] opacity-60">
           About content coming soon...
         </p>
       </div>
