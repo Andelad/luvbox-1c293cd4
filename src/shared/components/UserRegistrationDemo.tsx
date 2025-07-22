@@ -1,5 +1,5 @@
+import { createEqualizerScores, useAuth } from '@/shared/lib/storage';
 import React, { useState } from 'react';
-import { useAuth, createEqualizerScores } from '@/lib/storage';
 
 export default function UserRegistrationDemo() {
   const { register, currentUserId } = useAuth();
@@ -47,7 +47,7 @@ export default function UserRegistrationDemo() {
     <div style={{ padding: '20px', maxWidth: '400px', margin: '0 auto' }}>
       <h3>Demo User Registration</h3>
       <p>Register a demo user to test the settings functionality:</p>
-      
+
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div>
           <label>Name:</label>
@@ -58,7 +58,7 @@ export default function UserRegistrationDemo() {
             style={{ width: '100%', padding: '8px', marginTop: '4px' }}
           />
         </div>
-        
+
         <div>
           <label>Email:</label>
           <input
@@ -68,7 +68,7 @@ export default function UserRegistrationDemo() {
             style={{ width: '100%', padding: '8px', marginTop: '4px' }}
           />
         </div>
-        
+
         <div>
           <label>Date of Birth:</label>
           <input
@@ -78,7 +78,7 @@ export default function UserRegistrationDemo() {
             style={{ width: '100%', padding: '8px', marginTop: '4px' }}
           />
         </div>
-        
+
         <button
           type="submit"
           disabled={isLoading}

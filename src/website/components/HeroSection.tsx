@@ -1,3 +1,4 @@
+import { AnimatedSection } from '@/shared/components';
 import Button from '@/shared/components/Button';
 import OptimizedCube from './OptimizedCube';
 
@@ -23,27 +24,37 @@ export default function HeroSection({ onCTAClick }: HeroSectionProps) {
           {/* Left Column - Content */}
           <div className="flex flex-col space-y-6">
             <div className="space-y-4">
-              <h1 className="text-web-hero text-[var(--lb-black-800)] italic">
-                Do I love<br />them?
-              </h1>
-              <div className="text-web-caption text-[var(--lb-black-800)] uppercase tracking-wide">
-                LUVBOX IS YOUR LOVE & DATING DIAGNOSTICS TOOL
+              <AnimatedSection animation="slideLeft" delay={800} threshold={0.2}>
+                <h1 className="text-web-hero text-[var(--lb-black-800)] italic">
+                  Do I love<br />them?
+                </h1>
+              </AnimatedSection>
+              <AnimatedSection animation="slideLeft" delay={1000} threshold={0.2}>
+                <div className="text-web-caption text-[var(--lb-black-800)] uppercase tracking-wide">
+                  LUVBOX IS YOUR LOVE & DATING DIAGNOSTICS TOOL
+                </div>
+              </AnimatedSection>
+              <AnimatedSection animation="slideUp" delay={1200} threshold={0.2}>
+                <p className="text-web-body text-[var(--lb-black-800)] max-w-lg">
+                  Can't find it? Had it but lost it? Not sure if it exists? LuvBox is your tool to assess relationships past and present, and your beliefs about love so you can take charge and write your own love story.
+                </p>
+              </AnimatedSection>
+            </div>
+            <AnimatedSection animation="slideUp" delay={1400} threshold={0.2}>
+              <div className="pt-4">
+                <Button onClick={onCTAClick}>
+                  Make sense of love today
+                </Button>
               </div>
-              <p className="text-web-body text-[var(--lb-black-800)] max-w-lg">
-                Can't find it? Had it but lost it? Not sure if it exists? LuvBox is your tool to assess relationships past and present, and your beliefs about love so you can take charge and write your own love story.
-              </p>
-            </div>
-            <div className="pt-4">
-              <Button onClick={onCTAClick}>
-                Make sense of love today
-              </Button>
-            </div>
+            </AnimatedSection>
           </div>
 
           {/* Right Column - Cube */}
-          <div className="flex justify-center lg:justify-end">
-            <OptimizedCube />
-          </div>
+          <AnimatedSection animation="slideRight" delay={900} threshold={0.2}>
+            <div className="flex justify-center lg:justify-end">
+              <OptimizedCube />
+            </div>
+          </AnimatedSection>
         </div>
       </div>
 

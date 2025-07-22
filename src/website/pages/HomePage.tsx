@@ -1,4 +1,5 @@
 import DiagnosticSection from '@/app/components/DiagnosticSection';
+import { AnimatedSection } from '@/shared/components';
 import {
   HeroSection,
   MapSection,
@@ -22,7 +23,9 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
       {/* <BubbleAnimation isActive={true} /> */}
 
       {/* Header - now fixed at top */}
-      <WebsiteHeader onNavigate={onNavigate} currentPage="home" />
+      <AnimatedSection animation="fade" delay={0} threshold={0} triggerOnce={true}>
+        <WebsiteHeader onNavigate={onNavigate} currentPage="home" />
+      </AnimatedSection>
 
       <div className="flex flex-row justify-center relative size-full">
         {/* Main content with top padding to account for fixed header */}
@@ -34,40 +37,61 @@ export default function HomePage({ onCTAClick, onNavigate }: HomePageProps) {
           </div>
 
           {/* Hero Section - positioned to center content in viewport */}
-          <div className="w-full relative" style={{ zIndex: 2 }}>
+          <AnimatedSection animation="slideUp" delay={400} className="w-full relative" style={{ zIndex: 2 }}>
             <HeroSection onCTAClick={onCTAClick} />
-          </div>
+          </AnimatedSection>
 
           {/* Main Content Sections */}
           <div className="w-full relative" style={{ zIndex: 2 }}>
             {/* Horizontal Divider */}
-            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            <AnimatedSection animation="fade" delay={600}>
+              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            </AnimatedSection>
 
             {/* Staggered Features Section */}
-            <StaggeredSection onCTAClick={onCTAClick} />
+            <AnimatedSection animation="slideUp" delay={100}>
+              <StaggeredSection onCTAClick={onCTAClick} />
+            </AnimatedSection>
 
             {/* Horizontal Divider */}
-            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            <AnimatedSection animation="fade" delay={200}>
+              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            </AnimatedSection>
 
             {/* Diagnostic Section */}
-            <DiagnosticSection onCTAClick={onCTAClick} />
+            <AnimatedSection animation="slideLeft" delay={100}>
+              <DiagnosticSection onCTAClick={onCTAClick} />
+            </AnimatedSection>
+
             {/* Horizontal Divider */}
-            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            <AnimatedSection animation="fade" delay={200}>
+              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            </AnimatedSection>
 
             {/* Testimonial Section */}
-            <TestimonialSection />
+            <AnimatedSection animation="slideRight" delay={100}>
+              <TestimonialSection />
+            </AnimatedSection>
 
             {/* Horizontal Divider */}
-            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            <AnimatedSection animation="fade" delay={200}>
+              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            </AnimatedSection>
 
             {/* Map Section */}
-            <MapSection />
+            <AnimatedSection animation="slideUp" delay={100}>
+              <MapSection />
+            </AnimatedSection>
 
             {/* Horizontal Divider */}
-            <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            <AnimatedSection animation="fade" delay={200}>
+              <div className="w-full border-t border-[rgba(0,0,0,0.2)] my-0" />
+            </AnimatedSection>
 
             {/* Story Section */}
-            <StorySection onCTAClick={onCTAClick} />
+            <AnimatedSection animation="slideUp" delay={100}>
+              <StorySection onCTAClick={onCTAClick} />
+            </AnimatedSection>
           </div>
         </div>
       </div>

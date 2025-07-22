@@ -1,12 +1,14 @@
 // Shared components barrel export
+export { default as AnimatedSection } from './AnimatedSection';
 export { default as Background } from './Background';
 export { default as Button } from './Button';
+export * from './cube';
 export { default as ExitAppDialog } from './ExitAppDialog';
 export { ImageWithFallback } from './ImageWithFallback';
 export { default as PerformanceMonitor } from './PerformanceMonitor';
 export { default as SimpleUserCreator } from './SimpleUserCreator';
+export { default as StaggeredAnimatedSection } from './StaggeredAnimatedSection';
 export { default as UserRegistrationDemo } from './UserRegistrationDemo';
-export * from './cube';
 
 // UI Components from assets/ui
 export { Badge } from '../../assets/ui/badge';
@@ -16,3 +18,4 @@ export { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 export { Input } from '../../assets/ui/input';
 export { Label } from '../../assets/ui/label';
 export { Separator } from '../../assets/ui/separator';
+

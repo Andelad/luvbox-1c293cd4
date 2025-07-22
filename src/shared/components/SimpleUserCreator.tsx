@@ -1,6 +1,6 @@
+import { useAuth, useUser } from '@/shared/hooks';
+import { createEqualizerScores } from '@/shared/types/storage';
 import React, { useState } from 'react';
-import { useAuth, useUser } from '@/hooks';
-import { createEqualizerScores } from '@/types/storage';
 
 const SimpleUserCreator: React.FC = () => {
   const { currentUserId, register } = useAuth();
@@ -52,7 +52,7 @@ const SimpleUserCreator: React.FC = () => {
       <p className="text-blue-700 mb-4">
         Create a user account to test the settings functionality.
       </p>
-      
+
       <form onSubmit={handleCreateUser} className="space-y-4">
         <div>
           <label htmlFor="create-name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -68,7 +68,7 @@ const SimpleUserCreator: React.FC = () => {
             required
           />
         </div>
-        
+
         <div>
           <label htmlFor="create-email" className="block text-sm font-medium text-gray-700 mb-1">
             Email
@@ -83,7 +83,7 @@ const SimpleUserCreator: React.FC = () => {
             required
           />
         </div>
-        
+
         <button
           type="submit"
           disabled={isCreating || !name.trim() || !email.trim()}
