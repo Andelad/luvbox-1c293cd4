@@ -1,5 +1,5 @@
 import { CONTENT } from '@/content';
-import { AnimatedSection, StaggeredAnimatedSection } from '@/shared/components';
+import { AnimatedSection } from '@/shared/components';
 import Button from '@/shared/components/Button';
 import FeatureCard from './FeatureCard';
 
@@ -13,92 +13,135 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
   return (
     <div className="min-h-screen w-full py-20">
       <div className="container mx-auto px-8 max-w-6xl">
-        {/* Use StaggeredAnimatedSection for individual card animations */}
-        <StaggeredAnimatedSection
-          staggerDelay={100}
-          animation="slideUp"
-          baseDelay={0}
-          threshold={0.1}
-          className="staggered-grid-extended"
-        >
+        {/* Use individual AnimatedSection for each card to trigger based on individual scroll position */}
+        <div className="staggered-grid-extended">
           {/* Cards in order of appearance */}
           <div
             className="col-start-1 staggered-card-scroll"
             style={{ gridRow: "1 / 3" }}
           >
-            <FeatureCard
-              title={features[0].title}
-              description={features[0].description}
-              gridRow=""
-            />
+            <AnimatedSection
+              animation="slideRight"
+              delay={0}
+              duration={800}
+              threshold={0.8}
+              triggerOnce={false}
+            >
+              <FeatureCard
+                title={features[0].title}
+                description={features[0].description}
+              />
+            </AnimatedSection>
           </div>
 
           <div
             className="col-start-2 staggered-card-scroll"
             style={{ gridRow: "2 / 4" }}
           >
-            <FeatureCard
-              title={features[1].title}
-              description={features[1].description}
-              gridRow=""
-            />
+            <AnimatedSection
+              animation="slideLeft"
+              delay={0}
+              duration={800}
+              threshold={0.8}
+              triggerOnce={false}
+            >
+              <FeatureCard
+                title={features[1].title}
+                description={features[1].description}
+              />
+            </AnimatedSection>
           </div>
 
           <div
             className="col-start-1 staggered-card-scroll"
             style={{ gridRow: "3 / 5" }}
           >
-            <FeatureCard
-              title={features[2].title}
-              description={features[2].description}
-              gridRow=""
-            />
+            <AnimatedSection
+              animation="slideRight"
+              delay={0}
+              duration={800}
+              threshold={0.8}
+              triggerOnce={false}
+            >
+              <FeatureCard
+                title={features[2].title}
+                description={features[2].description}
+              />
+            </AnimatedSection>
           </div>
 
           <div
             className="col-start-2 staggered-card-scroll"
             style={{ gridRow: "4 / 6" }}
           >
-            <FeatureCard
-              title={features[3].title}
-              description={features[3].description}
-              gridRow=""
-            />
+            <AnimatedSection
+              animation="slideLeft"
+              delay={0}
+              duration={800}
+              threshold={0.8}
+              triggerOnce={false}
+            >
+              <FeatureCard
+                title={features[3].title}
+                description={features[3].description}
+              />
+            </AnimatedSection>
           </div>
 
           <div
             className="col-start-1 staggered-card-scroll"
             style={{ gridRow: "5 / 7" }}
           >
-            <FeatureCard
-              title={features[4].title}
-              description={features[4].description}
-              gridRow=""
-            />
+            <AnimatedSection
+              animation="slideRight"
+              delay={0}
+              duration={800}
+              threshold={0.8}
+              triggerOnce={false}
+            >
+              <FeatureCard
+                title={features[4].title}
+                description={features[4].description}
+              />
+            </AnimatedSection>
           </div>
 
           <div
             className="col-start-2 staggered-card-scroll"
             style={{ gridRow: "6 / 8" }}
           >
-            <FeatureCard
-              title={features[5].title}
-              description={features[5].description}
-              gridRow=""
-            />
+            <AnimatedSection
+              animation="slideLeft"
+              delay={0}
+              duration={800}
+              threshold={0.8}
+              triggerOnce={false}
+            >
+              <FeatureCard
+                title={features[5].title}
+                description={features[5].description}
+              />
+            </AnimatedSection>
           </div>
 
           <div
             className="col-start-1 staggered-card-scroll"
             style={{ gridRow: "7 / 9" }}
           >
-            <FeatureCard
-              title={features[6].title}
-              description={features[6].description}
-              gridRow=""
-            />
+            <AnimatedSection
+              animation="slideRight"
+              delay={0}
+              duration={800}
+              threshold={0.8}
+              triggerOnce={false}
+            >
+              <FeatureCard
+                title={features[6].title}
+                description={features[6].description}
+              />
+            </AnimatedSection>
           </div>
-        </StaggeredAnimatedSection>
+        </div>
 
         {/* CTA Button centered below grid */}
         <div className="flex justify-center mt-16">

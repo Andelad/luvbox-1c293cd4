@@ -4,21 +4,25 @@ import { useCenterViewport } from '@/shared/hooks/useCenterViewport';
 interface FeatureCardProps {
   title: string;
   description: string;
-  gridRow: string;
+  gridRow?: string;
   className?: string;
 }
 
 export default function FeatureCard({ title, description, gridRow, className = "" }: FeatureCardProps) {
-  const { elementRef, isInCenter } = useCenterViewport<HTMLDivElement>();
+  const { elementRef, isInCenter, centerProgress } = useCenterViewport<HTMLDivElement>();
+
+  // Calculate dynamic background opacity based on center proximity
+  // Ranges from 0.05 (far from center) to 0.25 (at center)
+  const backgroundOpacity = 0.05 + (centerProgress * 0.2);
 
   return (
     <div
       ref={elementRef}
-      className={`rounded-2xl p-8 relative staggered-card transition-all duration-400 ease-out ${className}`}
+      className={`rounded-2xl p-8 relative staggered-card transition-all duration-500 ease-out ${className}`}
       style={{
         gridRow,
-        backgroundColor: isInCenter ? 'var(--lb-black-0-alpha-15)' : 'var(--lb-black-0-alpha-10)',
-        boxShadow: '0px 4px 12px 0px var(--lb-black-900-alpha-25)'
+        backgroundColor: `color(from var(--lb-black-0) srgb r g b / ${backgroundOpacity})`,
+        boxShadow: '0px 4px 12px 0px var(--lb-black-900-alpha-15)'
       }}
     >
       <div className="space-y-4">
@@ -29,7 +33,6 @@ export default function FeatureCard({ title, description, gridRow, className = "
           {description}
         </p>
       </div>
-      <div className="absolute border border-[rgba(61,53,53,0.16)] border-solid inset-0 pointer-events-none rounded-2xl" />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
  */
 export function useCenterViewport<T extends HTMLElement = HTMLDivElement>() {
     const [isInCenter, setIsInCenter] = useState(false);
+    const [centerProgress, setCenterProgress] = useState(0);
     const elementRef = useRef<T | null>(null);
 
     useEffect(() => {
@@ -29,7 +30,28 @@ export function useCenterViewport<T extends HTMLElement = HTMLDivElement>() {
                 const elementCenter = elementRect.top + (elementRect.height / 2);
                 const inCenter = elementCenter >= centerStart && elementCenter <= centerEnd;
 
+                // Calculate progress from 0 to 1 based on how close to center
+                let progress = 0;
+                if (elementCenter < centerStart) {
+                    // Above center zone
+                    const distance = Math.abs(elementCenter - centerStart);
+                    const maxDistance = viewportHeight * 0.5; // Half viewport height
+                    progress = Math.max(0, 1 - (distance / maxDistance));
+                } else if (elementCenter > centerEnd) {
+                    // Below center zone
+                    const distance = Math.abs(elementCenter - centerEnd);
+                    const maxDistance = viewportHeight * 0.5; // Half viewport height
+                    progress = Math.max(0, 1 - (distance / maxDistance));
+                } else {
+                    // In center zone - calculate exact position
+                    const centerZoneHeight = centerEnd - centerStart;
+                    const centerPoint = centerStart + (centerZoneHeight / 2);
+                    const distanceFromCenter = Math.abs(elementCenter - centerPoint);
+                    progress = Math.max(0.7, 1 - (distanceFromCenter / (centerZoneHeight / 2)));
+                }
+
                 setIsInCenter(inCenter);
+                setCenterProgress(progress);
             },
             {
                 threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
@@ -44,5 +66,5 @@ export function useCenterViewport<T extends HTMLElement = HTMLDivElement>() {
         };
     }, []);
 
-    return { elementRef, isInCenter };
+    return { elementRef, isInCenter, centerProgress };
 }

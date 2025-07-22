@@ -43,19 +43,19 @@ export default function StaggeredAnimatedSection({
         if (!isVisible) {
             switch (animation) {
                 case 'slideUp':
-                    return `${baseClasses} ${durationClass} opacity-0 translate-y-8`;
+                    return `${baseClasses} ${durationClass} opacity-0 translate-y-12 scale-95`;
                 case 'slideDown':
-                    return `${baseClasses} ${durationClass} opacity-0 -translate-y-8`;
+                    return `${baseClasses} ${durationClass} opacity-0 -translate-y-12 scale-95`;
                 case 'slideLeft':
-                    return `${baseClasses} ${durationClass} opacity-0 translate-x-8`;
+                    return `${baseClasses} ${durationClass} opacity-0 translate-x-12 scale-95`;
                 case 'slideRight':
-                    return `${baseClasses} ${durationClass} opacity-0 -translate-x-8`;
+                    return `${baseClasses} ${durationClass} opacity-0 -translate-x-12 scale-95`;
                 case 'fade':
                 default:
-                    return `${baseClasses} ${durationClass} opacity-0`;
+                    return `${baseClasses} ${durationClass} opacity-0 scale-95`;
             }
         } else {
-            return `${baseClasses} ${durationClass} opacity-100 translate-x-0 translate-y-0`;
+            return `${baseClasses} ${durationClass} opacity-100 translate-x-0 translate-y-0 scale-100`;
         }
     };
 

@@ -28,11 +28,17 @@
    - Add non-standard CSS classes or approaches
    - **✅ ALWAYS:** Use existing LuvBox components and patterns
 
+5. **⚡ DEVELOPMENT SERVER** - NEVER:
+   - Run `npm run dev` without checking if server exists
+   - Start multiple servers on same port
+   - **✅ ALWAYS:** Use `npm run dev:check` (smart start)
+
 ### **🎯 BEFORE EVERY CODE CHANGE - ASK:**
 - [ ] Am I using `var(--color-name)` for ALL colors?
 - [ ] Did the user explicitly ask for this complexity?
 - [ ] Am I presenting options or implementing without permission?
 - [ ] Can I use existing components instead of creating new ones?
+- [ ] Should I check if dev server is running before starting new one?
 
 ### **🔍 MANDATORY VALIDATION STEPS:**
 1. **Color Check:** Search your code for `rgba(`, `#`, `rgb(`, `hsl(` - If found, STOP and use CSS variables
@@ -46,6 +52,7 @@
 - Creating new animation systems when LuvBox ones exist
 - Adding visual effects not explicitly requested
 - Bypassing established component patterns
+- Running `npm run dev` without checking existing server first
 
 ---
 
@@ -596,21 +603,38 @@ pkill -f 'vite'
 ### 🎯 AI Agent Decision Tree
 
 #### **"User wants to see changes/run development server"**
+
+**Option 1: User doesn't know server status**
 ```
-1. Is server already running? → Check with npm run dev:status
-   ✅ YES: Inform user server is available at http://localhost:8080
-   ❌ NO: Run npm run dev:check (smart start)
+1. Check server status first → Use npm run dev:status or npm run dev:check
+2. If not running → Start with npm run dev:check
+```
 
-2. User reports issues with server → Run npm run dev:restart
+**Option 2: User knows server is running**
+```
+1. Changes auto-reload → Inform user server is at http://localhost:8080
+2. If user wants fresh restart → Offer npm run dev:restart
+```
 
-3. Need to run server for testing changes → Use npm run dev:check first
+**Option 3: User knows server needs restart**
+```
+1. Direct restart → Use npm run dev:restart
+2. Skip status check when user is certain
 ```
 
 #### **"Making code changes"**
 ```
 1. Server running? → Changes auto-reload, no action needed
-2. Server not running? → Use npm run dev:check
-3. Server issues? → Use npm run dev:restart
+2. Server not running? → Offer: npm run dev:check or npm run dev:restart
+3. Server issues? → Offer: npm run dev:restart or npm run dev:status first
+```
+
+#### **"User Reports Server Issues"**
+```
+Present options:
+- "Check status first": npm run dev:status
+- "Force restart": npm run dev:restart
+- "Smart start": npm run dev:check
 ```
 
 ### 📋 Port Configuration
