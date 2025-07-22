@@ -1,5 +1,5 @@
 
-import { SidebarIcons as svgPaths } from '@/icons';
+import { SidebarIcons as svgPaths } from '@/assets/icons';
 
 // Icon components
 function DeployedCode() {

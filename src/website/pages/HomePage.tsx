@@ -1,4 +1,4 @@
-import WebsiteHeader from '../layout/WebsiteHeader';
+import WebsiteHeader from '../components/WebsiteHeader';
 import { 
   TickerTape, 
   HeroSection, 

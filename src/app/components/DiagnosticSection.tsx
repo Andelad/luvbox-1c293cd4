@@ -1,5 +1,5 @@
 import Button from '@/shared/components/Button';
-import SvgIcon5 from '@/assets/icons/svg-uxz7wvt32b';
+import SvgIcon5 from '@/assets/icons/DiagnosticIcons';
 
 const diagnosticSvgPaths = SvgIcon5;
 

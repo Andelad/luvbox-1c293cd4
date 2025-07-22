@@ -1,4 +1,4 @@
-import WebsiteHeader from '../layout/WebsiteHeader';
+import WebsiteHeader from '../components/WebsiteHeader';
 
 function Section({ onNavigate }: { onNavigate: (page: string) => void }) {
   return (

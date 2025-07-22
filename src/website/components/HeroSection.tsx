@@ -25,7 +25,7 @@ export default function HeroSection({ onCTAClick }: HeroSectionProps) {
           <div className="flex flex-col space-y-6">
             <div className="space-y-4">
               <h1 className="font-['EB_Garamond'] font-semibold italic text-[#3d3535] text-5xl lg:text-6xl leading-tight">
-                Confused<br />by love?
+                Do I love<br />them?
               </h1>
               <div className="font-['Source_Sans_3'] font-semibold text-[#3d3535] text-lg uppercase tracking-wide">
                 LUVBOX IS YOUR LOVE & DATING DIAGNOSTICS TOOL

@@ -1,5 +1,5 @@
-import WebsiteHeader from '../layout/WebsiteHeader';
-import svgPaths from "@/assets/icons/svg-15aegztapr";
+import WebsiteHeader from '../components/WebsiteHeader';
+import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
 
 function Layer1() {
   return (

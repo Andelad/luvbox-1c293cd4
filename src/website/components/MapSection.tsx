@@ -1,5 +1,5 @@
 import React from 'react';
-import mapSvgPaths from "@/assets/icons/svg-0q0nylxg4v";
+import mapSvgPaths from "@/assets/icons/MapSectionIcons";
 
 export default function MapSection() {
   return (

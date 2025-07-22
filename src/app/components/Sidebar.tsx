@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SidebarIcons as svgPaths } from '@/icons';
+import { SidebarIcons as svgPaths } from '@/assets/icons';
 import { MenuButtons, TechButtons } from "./SidebarNavigation";
 
 function SideMenuIcon() {

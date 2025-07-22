@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import svgPaths from "@/assets/icons/svg-15aegztapr";
+import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
 
 interface WebsiteHeaderProps {
   onNavigate: (page: string) => void;

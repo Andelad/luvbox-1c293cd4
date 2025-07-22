@@ -1,4 +1,4 @@
-import svgPaths from "./svg-x3k22qd8ut";
+import svgPaths from "./FrontFaceIcons";
 const imgRectangle5 = "/placeholder.svg";
 
 export default function FrontFace() {

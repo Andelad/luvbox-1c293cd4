@@ -8,3 +8,4 @@ export { default as StaggeredSection } from './StaggeredSection';
 export { default as StorySection } from './StorySection';
 export { default as TestimonialSection } from './TestimonialSection';
 export { default as TickerTape } from './TickerTape';
+export { default as WebsiteHeader } from './WebsiteHeader';

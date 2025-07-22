@@ -1,4 +1,4 @@
-import svgPaths from "@/assets/icons/svg-15aegztapr";
+import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
 
 interface WebsiteLayoutProps {
   children: React.ReactNode;
