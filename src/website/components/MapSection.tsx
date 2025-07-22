@@ -6,10 +6,10 @@ export default function MapSection() {
       <div className="container mx-auto px-8 max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-web-hero text-5xl lg:text-6xl mb-6">
+          <h2 className="text-web-hero text-[var(--lb-black-800)] italic mb-6">
             Our Luvbox Map
           </h2>
-          <p className="text-web-body text-lg max-w-2xl mx-auto">
+          <p className="text-web-body text-[var(--lb-black-800)] max-w-2xl mx-auto">
             Our environment shapes our expectations of love. Learn to build a map of your love environment so that you can make better choices.
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function MapSection() {
                   </defs>
                 </svg>
               </div>
-              <p className="text-web-subtitle text-xl">The Box</p>
+              <p className="text-web-subheading text-[var(--lb-black-800)]">The Box</p>
             </div>
           </div>
 
@@ -112,7 +112,7 @@ export default function MapSection() {
                   </defs>
                 </svg>
               </div>
-              <p className="text-web-subtitle text-xl">My Love Scripts</p>
+              <p className="text-web-subheading text-[var(--lb-black-800)]">My Love Scripts</p>
             </div>
           </div>
 
@@ -150,7 +150,7 @@ export default function MapSection() {
                   </defs>
                 </svg>
               </div>
-              <p className="text-web-subtitle text-xl">My Self</p>
+              <p className="text-web-subheading text-[var(--lb-black-800)]">My Self</p>
             </div>
           </div>
 
@@ -204,7 +204,7 @@ export default function MapSection() {
                   </defs>
                 </svg>
               </div>
-              <p className="text-web-subtitle text-xl">My Community</p>
+              <p className="text-web-subheading text-[var(--lb-black-800)]">My Community</p>
             </div>
           </div>
         </div>

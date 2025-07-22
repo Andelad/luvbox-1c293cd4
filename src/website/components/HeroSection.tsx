@@ -26,7 +26,7 @@ export default function HeroSection({ onCTAClick }: HeroSectionProps) {
               <h1 className="text-web-hero text-[var(--lb-black-800)] italic">
                 Do I love<br />them?
               </h1>
-              <div className="text-web-caption text-[var(--lb-black-800)] font-semibold uppercase tracking-wide">
+              <div className="text-web-caption text-[var(--lb-black-800)] uppercase tracking-wide">
                 LUVBOX IS YOUR LOVE & DATING DIAGNOSTICS TOOL
               </div>
               <p className="text-web-body text-[var(--lb-black-800)] max-w-lg">

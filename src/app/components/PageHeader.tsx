@@ -26,7 +26,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ breadcrumbs, title, actionIcon,
       
       {/* Optional Title */}
       {title && (
-        <h1 className="text-heading text-3xl mb-4">
+        <h1 className="text-heading text-app-display mb-4">
           {title}
         </h1>
       )}

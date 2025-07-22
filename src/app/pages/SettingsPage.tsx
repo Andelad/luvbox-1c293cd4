@@ -79,11 +79,11 @@ const SettingsPage: React.FC = () => {
 
   const renderUserProfileSection = () => (
     <div className="max-w-2xl">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">{content.profile.title}</h2>
+      <h2 className="text-app-display text-[var(--lb-black-900)] mb-6">{content.profile.title}</h2>
 
       <div className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-base font-medium text-gray-700 mb-2">
+          <label htmlFor="name" className="block text-app-label text-[var(--lb-black-700)] mb-2">
             {content.profile.name}
           </label>
           <input
@@ -97,7 +97,7 @@ const SettingsPage: React.FC = () => {
         </div>
 
         <div>
-          <label htmlFor="dateOfBirth" className="block text-base font-medium text-gray-700 mb-2">
+          <label htmlFor="dateOfBirth" className="block text-app-label text-[var(--lb-black-700)] mb-2">
             {content.profile.dateOfBirth}
           </label>
           <input
@@ -118,7 +118,7 @@ const SettingsPage: React.FC = () => {
           </button>
         ) : (
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p className="text-blue-800 text-base">
+            <p className="text-[var(--blue-800)] text-app-body">
               <strong>Note:</strong> Your profile information is saved locally. Create an account to save it permanently.
             </p>
           </div>
@@ -130,7 +130,7 @@ const SettingsPage: React.FC = () => {
   const renderDealbreakerSection = () => {
     return (
       <div className="max-w-2xl">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Dealbreaker Lines</h2>
+        <h2 className="text-app-display text-[var(--lb-black-900)] mb-6">Dealbreaker Lines</h2>
 
         <div className="space-y-6">
           <DealbreakerSliders
@@ -148,7 +148,7 @@ const SettingsPage: React.FC = () => {
             </button>
           ) : (
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-blue-800 text-base">
+              <p className="text-[var(--blue-800)] text-app-body">
                 <strong>Note:</strong> Your dealbreaker settings are saved locally. Create an account to save them permanently.
               </p>
             </div>

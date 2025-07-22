@@ -53,8 +53,8 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
   return (
     <div className="space-y-6">
       <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-3">Set Your Dealbreaker Lines</h3>
-        <p className="text-gray-600 text-base">
+        <h3 className="text-app-heading text-[var(--lb-black-900)] mb-3">Set Your Dealbreaker Lines</h3>
+        <p className="text-[var(--lb-black-600)] text-app-body">
           Set your minimum acceptable scores (0-10) for each area. These represent your personal dealbreaker lines - 
           the lowest score you'd accept in a potential partner.
         </p>
@@ -64,9 +64,9 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
         <div key={key} className="space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
-              <h4 className="text-xl font-medium text-gray-900">{label}</h4>
+              <h4 className="text-app-heading text-[var(--lb-black-900)]">{label}</h4>
               <div className="flex flex-col">
-                <p className="text-base text-gray-500 mt-1">{description}</p>
+                <p className="text-app-body text-[var(--lb-black-500)] mt-1">{description}</p>
               </div>
             </div>
             <div className="flex items-center space-x-2">
@@ -83,10 +83,10 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
                   }
                 }}
                 disabled={disabled}
-                className="w-16 px-2 py-1 text-2xl font-bold text-gray-900 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-16 px-2 py-1 text-app-input text-[var(--lb-black-900)] text-center border border-[var(--lb-black-300)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--blue-500)] focus:border-[var(--lb-black-0)]"
               />
               <div className="flex items-center justify-center">
-                <p className="text-base text-gray-500">min score</p>
+                <p className="text-app-body text-[var(--lb-black-500)]">min score</p>
               </div>
             </div>
           </div>
@@ -94,17 +94,17 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
           <div className="relative">
             <div className="relative">
               {/* Background track */}
-              <div className="w-full h-2 bg-gray-200 rounded-lg"></div>
+              <div className="w-full h-2 bg-[var(--lb-black-200)] rounded-lg"></div>
               
               {/* Acceptable zone (0 to selected value) - green */}
               <div 
-                className="absolute top-0 left-0 h-2 bg-green-500 rounded-lg transition-all duration-200"
+                className="absolute top-0 left-0 h-2 bg-[var(--success-green-500)] rounded-lg transition-all duration-200"
                 style={{ width: `${(scores[key] / 10) * 100}%` }}
               ></div>
               
               {/* Above selector zone (selected value to 10) - grey */}
               <div 
-                className="absolute top-0 h-2 bg-gray-300 rounded-lg transition-all duration-200"
+                className="absolute top-0 h-2 bg-[var(--lb-black-300)] rounded-lg transition-all duration-200"
                 style={{ 
                   left: `${(scores[key] / 10) * 100}%`,
                   width: `${((10 - scores[key]) / 10) * 100}%`
@@ -123,7 +123,7 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
               className={`absolute top-0 w-full h-8 bg-transparent rounded-lg appearance-none cursor-grab active:cursor-grabbing slider ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
               style={{ marginTop: '-12px' }}
             />
-            <div className="flex justify-between text-base text-gray-400 mt-2">
+            <div className="flex justify-between text-app-body text-[var(--lb-black-400)] mt-2">
               <span>0</span>
               <span>1</span>
               <span>2</span>
@@ -139,15 +139,15 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
           </div>
           
           {/* Visual indicator */}
-          <div className="flex items-center space-x-2 text-base">
+          <div className="flex items-center space-x-2 text-app-body">
             <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 rounded-full bg-green-500"></div>
-              <span className="text-gray-500">Acceptable (0-{scores[key]})</span>
+              <div className="w-2 h-2 rounded-full bg-[var(--success-green-500)]"></div>
+              <span className="text-[var(--lb-black-500)]">Acceptable (0-{scores[key]})</span>
             </div>
-            <div className="flex-1 border-t border-gray-200"></div>
+            <div className="flex-1 border-t border-[var(--lb-black-200)]"></div>
             <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-              <span className="text-gray-500">Above minimum ({scores[key]}-10)</span>
+              <div className="w-2 h-2 rounded-full bg-[var(--lb-black-400)]"></div>
+              <span className="text-[var(--lb-black-500)]">Above minimum ({scores[key]}-10)</span>
             </div>
           </div>
         </div>
@@ -165,10 +165,10 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
             height: 20px;
             width: 20px;
             border-radius: 50%;
-            background: #1f2937;
+            background: var(--lb-black-800);
             cursor: grab;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            border: 2px solid white;
+            box-shadow: 0 2px 6px var(--lb-black-900-alpha-30);
+            border: 2px solid var(--lb-black-0);
             position: relative;
             z-index: 30;
             transition: all 0.2s ease;
@@ -176,23 +176,23 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
           
           .slider:hover::-webkit-slider-thumb {
             transform: scale(1.1);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+            box-shadow: 0 3px 8px var(--lb-black-900-alpha-40);
           }
           
           .slider:active::-webkit-slider-thumb {
             cursor: grabbing;
             transform: scale(1.2);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 10px var(--lb-black-900-alpha-50);
           }
           
           .slider::-moz-range-thumb {
             height: 20px;
             width: 20px;
             border-radius: 50%;
-            background: #1f2937;
+            background: var(--lb-black-800);
             cursor: grab;
-            border: 2px solid white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border: 2px solid var(--lb-black-0);
+            box-shadow: 0 2px 6px var(--lb-black-900-alpha-30);
             position: relative;
             z-index: 30;
             transition: all 0.2s ease;
@@ -200,24 +200,24 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
 
           .slider:hover::-moz-range-thumb {
             transform: scale(1.1);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+            box-shadow: 0 3px 8px var(--lb-black-900-alpha-40);
           }
 
           .slider:active::-moz-range-thumb {
             cursor: grabbing;
             transform: scale(1.2);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 10px var(--lb-black-900-alpha-50);
           }
 
           .slider:disabled::-webkit-slider-thumb {
             cursor: not-allowed;
-            background: #9ca3af;
+            background: var(--lb-black-400);
             transform: none;
           }
 
           .slider:disabled::-moz-range-thumb {
             cursor: not-allowed;
-            background: #9ca3af;
+            background: var(--lb-black-400);
             transform: none;
           }
 
