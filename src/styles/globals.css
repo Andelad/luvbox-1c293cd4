@@ -1521,13 +1521,14 @@ body {
   font-size: var(--web-text-base);
   line-height: var(--web-leading-base);
   font-weight: var(--font-weight-normal);
+  opacity: 0.75;
 }
 
 .text-web-caption {
   font-family: 'Source Sans 3', sans-serif;
   font-size: var(--web-text-sm);
   line-height: var(--web-leading-sm);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-semibold);
 }
 
 .text-web-code {

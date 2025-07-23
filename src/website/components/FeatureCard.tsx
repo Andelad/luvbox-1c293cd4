@@ -25,8 +25,8 @@ export default function FeatureCard({ title, description, gridRow, className = "
         boxShadow: '0px 4px 12px 0px var(--lb-black-900-alpha-15)'
       }}
     >
-      <div className="space-y-4">
-        <h3 className="text-web-heading text-[var(--lb-black-800)] italic">
+      <div className="space-y-6">
+        <h3 className="text-web-heading text-[var(--lb-black-800)]">
           {title}
         </h3>
         <p className="text-web-body text-[var(--lb-black-800)]">

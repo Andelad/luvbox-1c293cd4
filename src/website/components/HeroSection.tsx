@@ -1,3 +1,4 @@
+import { CONTENT } from '@/content';
 import { AnimatedSection } from '@/shared/components';
 import Button from '@/shared/components/Button';
 import OptimizedCube from './OptimizedCube';
@@ -7,6 +8,8 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onCTAClick }: HeroSectionProps) {
+  const heroContent = CONTENT.website.heroSection;
+
   return (
     <div className="w-full relative">
       {/* Hero content positioned to center between header and bottom of screen */}
@@ -26,24 +29,24 @@ export default function HeroSection({ onCTAClick }: HeroSectionProps) {
             <div className="space-y-4">
               <AnimatedSection animation="slideLeft" delay={0} threshold={0.2}>
                 <h1 className="text-web-hero text-[var(--lb-black-800)] italic">
-                  Do I love<br />them?
+                  {heroContent.title}
                 </h1>
               </AnimatedSection>
               <AnimatedSection animation="slideLeft" delay={100} threshold={0.2}>
                 <div className="text-web-caption text-[var(--lb-black-800)] uppercase tracking-wide">
-                  LUVBOX IS YOUR LOVE & DATING DIAGNOSTICS TOOL
+                  {heroContent.subtitle}
                 </div>
               </AnimatedSection>
               <AnimatedSection animation="slideUp" delay={200} threshold={0.2}>
                 <p className="text-web-body text-[var(--lb-black-800)] max-w-lg">
-                  Can't find it? Had it but lost it? Not sure if it exists? LuvBox is your tool to assess relationships past and present, and your beliefs about love so you can take charge and write your own love story.
+                  {heroContent.description}
                 </p>
               </AnimatedSection>
             </div>
             <AnimatedSection animation="slideUp" delay={300} threshold={0.2}>
               <div className="pt-4">
                 <Button onClick={onCTAClick}>
-                  Make sense of love today
+                  {heroContent.cta}
                 </Button>
               </div>
             </AnimatedSection>

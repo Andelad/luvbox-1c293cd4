@@ -60,8 +60,30 @@ export interface SettingsContent extends PageContent {
 }
 
 export interface WebsiteContent {
+  heroSection: {
+    title: string;
+    subtitle: string;
+    description: string;
+    cta: string;
+  };
   staggeredSection: {
     title: string;
+  };
+  whoSection: {
+    title: string;
+    whoFor: {
+      title: string;
+      items: string[];
+    };
+    whoNot: {
+      title: string;
+      items: string[];
+    };
+  };
+  diagnosticSection: {
+    title: string;
+    description: string;
+    cta: string;
   };
   header: {
     logo: string;

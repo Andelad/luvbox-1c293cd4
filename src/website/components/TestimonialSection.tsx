@@ -25,7 +25,7 @@ export default function TestimonialSection() {
   ];
 
   return (
-    <div className="min-h-screen w-full py-20 flex items-center">
+    <div className="min-h-[50vh] w-full py-20 flex items-center">
       <div className="container mx-auto px-8 max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-web-hero text-[var(--lb-black-800)] italic mb-6">

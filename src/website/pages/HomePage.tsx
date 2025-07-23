@@ -6,7 +6,8 @@ import {
   StaggeredSection,
   StorySection,
   TestimonialSection,
-  TickerTape
+  TickerTape,
+  WhoSection
 } from '@/website/components';
 import type { PageType } from '../../shared/types/app';
 
@@ -86,6 +87,16 @@ export default function HomePage({ onCTAClick, onNavigate, isInitialLoad = false
             {/* Story Section */}
             <AnimatedSection animation="slideUp" delay={100}>
               <StorySection onCTAClick={onCTAClick} />
+            </AnimatedSection>
+
+            {/* Horizontal Divider */}
+            <AnimatedSection animation="fade" delay={200}>
+              <div className="w-full border-t border-[var(--lb-black-900-alpha-20)] my-0" />
+            </AnimatedSection>
+
+            {/* Who Section */}
+            <AnimatedSection animation="slideUp" delay={100}>
+              <WhoSection />
             </AnimatedSection>
           </div>
         </div>

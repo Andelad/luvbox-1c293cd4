@@ -87,8 +87,42 @@ export const CONTENT: AppContent = {
   },
 
   website: {
+    heroSection: {
+      title: "Do I love them?",
+      subtitle: "LUVBOX IS YOUR LOVE & DATING DIAGNOSTICS TOOL",
+      description: "Can't find it? Had it but lost it? Not sure if it exists? LuvBox is your tool to assess relationships past and present, and your beliefs about love so you can take charge and write your own love story.",
+      cta: "Make sense of love today"
+    },
     staggeredSection: {
       title: "Take control of your experience"
+    },
+    whoSection: {
+      title: "Who is it for?",
+      whoFor: {
+        title: "Who this is for",
+        items: [
+          "People who want to understand their relationship patterns",
+          "Those seeking clarity about their emotions and feelings",
+          "Individuals ready to make intentional choices in love",
+          "People willing to look honestly at their experiences",
+          "Those committed to personal growth and self-reflection"
+        ]
+      },
+      whoNot: {
+        title: "Who this isn't for",
+        items: [
+          "People looking for quick fixes or instant solutions",
+          "Those unwilling to do self-reflection work",
+          "Individuals seeking immediate relationship results",
+          "People not ready for honest self-examination",
+          "Those expecting a replacement for professional therapy"
+        ]
+      }
+    },
+    diagnosticSection: {
+      title: "Make sense of past or current relationships",
+      description: "Our diagnostic tool helps you think through your relationship, understanding sticking points and why you might not feel 'in love'. It will help you see where things are wrong, and what you could do to improve",
+      cta: "Make sense of love today"
     },
     header: {
       logo: "LuvMap 1.0",

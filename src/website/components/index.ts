@@ -10,4 +10,6 @@ export { default as StorySection } from './StorySection';
 export { default as TestimonialSection } from './TestimonialSection';
 export { default as TickerTape } from './TickerTape';
 export { default as WebsiteHeader } from './WebsiteHeader';
+export { default as WhoCard } from './WhoCard';
+export { default as WhoSection } from './WhoSection';
 
