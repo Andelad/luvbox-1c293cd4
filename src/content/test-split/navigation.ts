@@ -1,4 +1,4 @@
-import type { NavigationContent } from './types';
+import type { NavigationContent } from '../types';
 
 export const NAVIGATION: NavigationContent = {
     theBox: "The Box",

@@ -1,4 +1,4 @@
-import type { WebsiteContent } from './types';
+import type { WebsiteContent } from '../types';
 
 export const WEBSITE: WebsiteContent = {
     heroSection: {

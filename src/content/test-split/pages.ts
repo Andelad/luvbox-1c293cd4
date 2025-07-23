@@ -1,6 +1,6 @@
-import type { FeedbackContent, PageContent, SettingsContent } from './types';
+import type { FeedbackContent, PageContent, SettingsContent } from '../types';
 
-// Individual page contents for easy editing
+// Individual page contents for easier editing
 export const FEEDBACK: FeedbackContent = {
     title: "Feedback",
     description: "We'd love to hear your thoughts and suggestions. Your feedback helps us improve LuvMap and create a better experience for everyone.",

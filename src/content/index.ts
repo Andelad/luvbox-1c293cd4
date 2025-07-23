@@ -1,13 +1,13 @@
-import type { AppContent } from './types';
-import { NAVIGATION } from './navigation';
-import { WEBSITE } from './website';
-import { FEEDBACK, SETTINGS, THE_BOX, THE_MAP, TUTORIAL, COMMUNITY, MY_SNAPSHOTS } from './pages';
 import { COMMON } from './common';
+import { NAVIGATION } from './navigation';
+import { COMMUNITY, FEEDBACK, MY_SNAPSHOTS, SETTINGS, THE_BOX, THE_MAP, TUTORIAL } from './pages';
+import type { AppContent } from './types';
+import { WEBSITE } from './website';
 
 // Content assembled from organized files for better maintainability
 export const CONTENT: AppContent = {
   navigation: NAVIGATION,
-  
+
   pages: {
     theBox: THE_BOX,
     theMap: THE_MAP,
@@ -17,9 +17,9 @@ export const CONTENT: AppContent = {
     feedback: FEEDBACK,
     settings: SETTINGS
   },
-  
+
   website: WEBSITE,
-  
+
   common: COMMON
 };
 
