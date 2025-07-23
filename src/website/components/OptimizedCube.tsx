@@ -1,12 +1,10 @@
-import PurposeFace from '@/shared/components/cube/PurposeFace';
-import QualityFace from '@/shared/components/cube/QualityFace';
-import TimeFace from '@/shared/components/cube/TimeFace';
+import { DisplayPurposeFace, DisplayQualityFace, DisplayTimeFace } from '@/shared/components/cube/faces/display';
 import React, { memo, useCallback, useMemo, useState } from 'react';
 
 // Memoized face components to prevent unnecessary re-renders
-const MemoizedQualityFace = memo(QualityFace);
-const MemoizedTimeFace = memo(TimeFace);
-const MemoizedPurposeFace = memo(PurposeFace);
+const MemoizedQualityFace = memo(DisplayQualityFace);
+const MemoizedTimeFace = memo(DisplayTimeFace);
+const MemoizedPurposeFace = memo(DisplayPurposeFace);
 
 interface CubeRotation {
   x: number;

@@ -1,8 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Button from '../Button';
-import PurposeFace from './PurposeFace';
-import QualityFace from './QualityFace';
-import TimeFace from './TimeFace';
+import { InteractivePurposeFace, InteractiveQualityFace, InteractiveTimeFace } from './faces/interactive';
 
 interface Cube3DProps { }
 
@@ -102,7 +100,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             }}
           >
 
-            {/* Face 1: translateZ(80px) - Front Face - TimeFace */}
+            {/* Face 1: translateZ(80px) - Front Face - InteractiveTimeFace */}
             <div
               className="cube-face"
               style={{
@@ -111,10 +109,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'translateZ(80px)'
               }}
             >
-              <TimeFace />
+              <InteractiveTimeFace />
             </div>
 
-            {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face - QualityFace */}
+            {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face - InteractiveQualityFace */}
             <div
               className="cube-face"
               style={{
@@ -123,10 +121,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(-90deg) translateZ(80px)'
               }}
             >
-              <QualityFace />
+              <InteractiveQualityFace />
             </div>
 
-            {/* Face 3: rotateY(90deg) translateZ(80px) - Right Face - TimeFace */}
+            {/* Face 3: rotateY(90deg) translateZ(80px) - Right Face - InteractiveTimeFace */}
             <div
               className="cube-face"
               style={{
@@ -135,10 +133,10 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(90deg) translateZ(80px)'
               }}
             >
-              <TimeFace />
+              <InteractiveTimeFace />
             </div>
 
-            {/* Face 4: rotateX(90deg) translateZ(80px) - Top Face - PurposeFace */}
+            {/* Face 4: rotateX(90deg) translateZ(80px) - Top Face - InteractivePurposeFace */}
             <div
               className="cube-face"
               style={{
@@ -147,7 +145,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateX(90deg) translateZ(80px)'
               }}
             >
-              <PurposeFace />
+              <InteractivePurposeFace />
             </div>
 
             {/* Bottom Face (hidden) */}
