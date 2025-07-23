@@ -917,15 +917,6 @@ Both scales automatically adapt to screen size through the responsive rem system
 <h1 className="text-app-heading">App Section Title</h1>
 <p className="text-app-body">App interface content</p>
 <h1 className="text-web-hero">Website Hero Title</h1>
-<p className="text-web-body">Website marketing content</p>
-
-// ✅ CORRECT - Use Tailwind with custom scales
-<span className="text-app-lg font-serif font-medium">Custom app text</span>
-<span className="text-web-xl font-sans">Custom website text</span>
-
-// ❌ INCORRECT - Never hardcode fonts or sizes
-<h1 style={{ fontSize: '24px', fontFamily: 'Arial' }}>Title</h1>
-<p className="text-lg">Generic size without context</p>
 ```
 
 #### Available Semantic Classes

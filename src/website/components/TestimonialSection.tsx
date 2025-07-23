@@ -21,11 +21,15 @@ export default function TestimonialSection() {
     {
       quote: "LuvBox gave me the clarity I needed to have better conversations with my partner about our future.",
       author: "Amanda K."
+    },
+    {
+      quote: "This app helped me realize what I truly value in a relationship. The insights were eye-opening and practical.",
+      author: "Rachel S."
     }
   ];
 
   return (
-    <div className="min-h-[50vh] w-full py-20 flex items-center">
+    <div className="min-h-[50vh] w-full py-20 flex items-center bg-gradient-to-r from-[color:oklch(91.57%_0.042_284.9_/_0.2)] to-transparent">
       <div className="container mx-auto px-8 max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-web-hero text-[var(--lb-black-800)] italic mb-6">
@@ -39,7 +43,7 @@ export default function TestimonialSection() {
         <LightCarousel
           items={testimonials}
           slidesToShow={3}
-          autoplay={true}
+          autoplay={false}
           autoplaySpeed={4000}
         />
       </div>

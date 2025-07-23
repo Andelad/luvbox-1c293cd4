@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface CarouselItem {
   quote: string;
@@ -8,112 +8,86 @@ interface CarouselItem {
 interface LightCarouselProps {
   items: CarouselItem[];
   slidesToShow?: number;
-  autoplay?: boolean;
-  autoplaySpeed?: number;
 }
 
 export default function LightCarousel({
   items,
   slidesToShow = 3,
-  autoplay = true,
-  autoplaySpeed = 4000
 }: LightCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleSlides, setVisibleSlides] = useState(slidesToShow);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  // Responsive breakpoints
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setVisibleSlides(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleSlides(2);
-      } else {
-        setVisibleSlides(slidesToShow);
-      }
+      setVisibleSlides(window.innerWidth < 768 ? 1 : 3);
     };
-
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [slidesToShow]);
+  }, []);
 
-  // Autoplay functionality
-  useEffect(() => {
-    if (!autoplay) return;
+  const maxSlide = Math.max(0, items.length - visibleSlides);
 
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) =>
-        prev + visibleSlides >= items.length ? 0 : prev + 1
-      );
-    }, autoplaySpeed);
+  const nextSlide = () => setCurrentSlide(prev => Math.min(prev + 1, maxSlide));
+  const prevSlide = () => setCurrentSlide(prev => Math.max(prev - 1, 0));
 
-    return () => clearInterval(interval);
-  }, [autoplay, autoplaySpeed, items.length, visibleSlides]);
-
-  const getVisibleItems = () => {
-    const result = [];
-    for (let i = 0; i < visibleSlides; i++) {
-      const index = (currentSlide + i) % items.length;
-      result.push(items[index]);
-    }
-    return result;
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  const totalDots = Math.ceil(items.length / visibleSlides);
+  const slideWidth = 100 / visibleSlides;
 
   return (
-    <div className="w-full">
-      {/* Slides Container */}
-      <div className="relative overflow-hidden">
+    <div className="relative w-full">
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        disabled={currentSlide === 0}
+        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+        aria-label="Previous slide"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8L10 4" stroke="#3d3535" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+      <button
+        onClick={nextSlide}
+        disabled={currentSlide >= maxSlide}
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+        aria-label="Next slide"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 4L10 8L6 12" stroke="#3d3535" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {/* Carousel Container */}
+      <div className="overflow-hidden py-4">
         <div
-          className="flex transition-transform duration-500 ease-in-out will-change-transform"
-          style={{
-            transform: `translate3d(-${(currentSlide * 100) / visibleSlides}%, 0, 0)`,
-            width: `${(items.length * 100) / visibleSlides}%`
-          }}
+          ref={trackRef}
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * slideWidth}%)` }}
         >
           {items.map((item, index) => (
             <div
               key={index}
-              className="px-4"
-              style={{ width: `${100 / items.length}%` }}
+              className="flex-shrink-0 w-full"
+              style={{ flexBasis: `${slideWidth}%` }}
             >
-              <div className="bg-[rgba(255,255,255,0.1)] rounded-2xl p-8 relative h-64">
-                <div className="space-y-4 h-full flex flex-col justify-between">
-                  <p className="text-web-body text-[var(--lb-black-800)] italic flex-grow">
-                    "{item.quote}"
-                  </p>
-                  <div className="text-right">
-                    <p className="text-web-subheading text-[var(--lb-black-800)]">
-                      — {item.author}
+              <div className="h-full mx-3">
+                <div className="bg-[rgba(255,255,255,0.1)] rounded-2xl p-8 shadow-[0px_4px_12px_0px_rgba(0,0,0,0.25)] border border-[rgba(61,53,53,0.16)] h-full">
+                  <div className="space-y-4">
+                    <p className="text-web-body text-[var(--lb-black-800)] italic">
+                      "{item.quote}"
                     </p>
+                    <div className="text-right">
+                      <p className="text-web-subheading text-[var(--lb-black-800)]">
+                        — {item.author}
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="absolute border border-[rgba(61,53,53,0.16)] border-solid inset-0 pointer-events-none rounded-2xl shadow-[0px_4px_12px_0px_rgba(0,0,0,0.25)]" />
               </div>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Dots Navigation */}
-      <div className="flex justify-center mt-8 space-x-2">
-        {Array.from({ length: totalDots }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index * visibleSlides)}
-            className={`w-3 h-3 rounded-full transition-colors duration-200 ${Math.floor(currentSlide / visibleSlides) === index
-                ? 'bg-[#3d3535]'
-                : 'bg-[rgba(61,53,53,0.3)]'
-              }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
       </div>
     </div>
   );
