@@ -41,6 +41,24 @@ export default function PageSideMenu({
   const [showContent, setShowContent] = useState(defaultOpenOnLargeScreen && window.innerWidth >= 1024);
   const [isPageChange, setIsPageChange] = useState(false);
 
+  // Initialize content margin on mount
+  useEffect(() => {
+    const contentElement = document.querySelector('.app-content-inner') as HTMLElement;
+    if (contentElement) {
+      const isLarge = window.innerWidth >= 1024;
+      const shouldBeOpen = defaultOpenOnLargeScreen && isLarge;
+
+      if (isLarge) {
+        const marginLeft = shouldBeOpen ? '240px' : '48px';
+        contentElement.style.marginLeft = marginLeft;
+        contentElement.style.width = `calc(100% - ${marginLeft})`;
+      } else {
+        contentElement.style.marginLeft = '48px';
+        contentElement.style.width = 'calc(100% - 48px)';
+      }
+    }
+  }, []);
+
   // Reset side menu state when defaultOpenOnLargeScreen changes (page changes)
   useEffect(() => {
     setIsPageChange(true);
@@ -55,9 +73,13 @@ export default function PageSideMenu({
       contentElement.classList.add('no-transition');
 
       if (window.innerWidth >= 1024) {
-        contentElement.style.marginLeft = shouldBeOpen ? '240px' : '48px';
+        const marginLeft = shouldBeOpen ? '240px' : '48px';
+        contentElement.style.marginLeft = marginLeft;
+        contentElement.style.width = `calc(100% - ${marginLeft})`;
       } else {
-        contentElement.style.marginLeft = shouldBeOpen ? '0' : '48px';
+        // On mobile, we always need 48px margin for the closed menu button
+        contentElement.style.marginLeft = '48px';
+        contentElement.style.width = 'calc(100% - 48px)';
       }
 
       // Remove no-transition class and mark page change as complete
@@ -110,10 +132,13 @@ export default function PageSideMenu({
       // Only set margin during manual toggles (when not in page change)
       if (!isPageChange) {
         if (isLargeScreen) {
-          contentElement.style.marginLeft = isOpen ? '240px' : '48px';
+          const marginLeft = isOpen ? '240px' : '48px';
+          contentElement.style.marginLeft = marginLeft;
+          contentElement.style.width = `calc(100% - ${marginLeft})`;
         } else {
-          // On small screens, give content enough margin to clear the closed menu (48px)
-          contentElement.style.marginLeft = isOpen ? '0' : '48px';
+          // On mobile/tablet, we need 48px margin for the sidebar toggle button
+          contentElement.style.marginLeft = '48px';
+          contentElement.style.width = 'calc(100% - 48px)';
         }
       }
     }

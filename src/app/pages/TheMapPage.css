@@ -250,3 +250,19 @@
     font-size: var(--app-text-xs);
   }
 }
+
+/* Extra small screens - further reduce padding */
+@media (max-width: 480px) {
+  .map-container {
+    padding: 0.5rem;
+  }
+  
+  .map-content {
+    padding: 1rem;
+  }
+  
+  .page-content {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+}

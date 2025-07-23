@@ -7,7 +7,7 @@ const TheBoxPage: React.FC = () => {
   const content = CONTENT.pages.theBox;
 
   return (
-    <div className="w-full">
+    <div className="page-wrapper">
       <PageHeader
         breadcrumbs={[content.title, 'Sub Page']}
       />

@@ -554,6 +554,66 @@ export default Component;
 - **Descriptive names**: `UserProfileCard.tsx` not `Card.tsx`
 - **Location-specific**: Place in appropriate folder hierarchy
 
+## 📱 Responsive Design Standards
+
+### Philosophy: Mobile-First, Accessibility-Focused
+**All components and pages must work seamlessly across all device sizes without content overflow or usability issues. Prioritize touch-friendly interfaces and readable content on all screen sizes.**
+
+### 🚨 CRITICAL RESPONSIVE RULES FOR AI AGENTS
+
+#### **❌ NEVER CREATE:**
+- Pages that add extra padding (`px-4 sm:px-6 lg:px-8`) on top of layout padding
+- Components with fixed widths that don't scale down
+- Content that extends beyond container edges on small screens
+- Touch targets smaller than 44px on mobile devices
+- Text that becomes unreadable on mobile
+
+#### **✅ ALWAYS ENSURE:**
+- **Layout Padding**: Use the app layout's built-in responsive padding system
+- **Container Strategy**: Use `max-w-*` classes WITHOUT additional `px-*` for page-level containers
+- **Content Fit**: Test all components at 320px width (smallest mobile)
+- **Touch Targets**: Minimum 44px hit area for all interactive elements
+- **Readable Text**: Minimum 16px font size on mobile to prevent zoom
+
+### 📏 Responsive Layout Guidelines
+
+#### **Page Container Strategy**
+```tsx
+// ✅ CORRECT - Let layout handle padding
+<div className="max-w-4xl mx-auto">
+  <div className="w-full max-w-2xl">
+    {/* Content */}
+  </div>
+</div>
+
+// ❌ WRONG - Double padding causes overflow
+<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  {/* Content may overflow on small screens */}
+</div>
+```
+
+#### **Responsive Breakpoints**
+- **Mobile**: `max-width: 640px` - Priority for touch interaction
+- **Tablet**: `641px - 1023px` - Hybrid touch/mouse interface  
+- **Desktop**: `1024px+` - Full feature set with sidebar
+
+#### **Testing Requirements**
+- [ ] **320px width**: Content fits without horizontal scroll
+- [ ] **Touch targets**: All interactive elements ≥ 44px
+- [ ] **Text readability**: No text smaller than 16px on mobile
+- [ ] **Container overflow**: No content extends beyond edges
+- [ ] **Navigation usability**: All features accessible on mobile
+
+### 🎯 Quick Validation Checklist
+
+Before implementing any page or component:
+
+- [ ] **No extra padding**: Component relies on layout's responsive padding
+- [ ] **Container strategy**: Uses `max-w-*` without `px-*` for page containers  
+- [ ] **Mobile testing**: Verified at 320px, 640px, and 1024px widths
+- [ ] **Touch friendly**: All buttons/links meet 44px minimum
+- [ ] **Accessible text**: Minimum 16px font size maintained on mobile
+
 ## 🎯 UI & Form Standards
 
 ### Philosophy: Accessibility-First Interactive Design

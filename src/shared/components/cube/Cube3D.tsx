@@ -77,7 +77,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full px-4 py-8">
+    <div className="flex flex-col items-center justify-center w-full py-8">
       {/* Cube Container */}
       <div className="mb-18">
         <div
@@ -177,7 +177,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
           placeholder="Name of person"
           value={personName}
           onChange={(e) => setPersonName(e.target.value)}
-          className="w-full px-4 py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
+          className="w-full py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
         />
 
         <input
@@ -185,7 +185,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
           placeholder="Date of reading"
           value={dateOfReading}
           onChange={(e) => setDateOfReading(e.target.value)}
-          className="w-full px-4 py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
+          className="w-full py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
         />
       </div>
 

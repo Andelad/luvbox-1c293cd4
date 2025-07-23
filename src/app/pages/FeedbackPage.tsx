@@ -49,7 +49,7 @@ export default function FeedbackPage() {
         breadcrumbs={[content.title]}
       />
 
-      <div className="flex flex-col items-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col items-center max-w-4xl mx-auto">
         {/* Main Content */}
         <div className="w-full max-w-2xl">
           {/* Header */}

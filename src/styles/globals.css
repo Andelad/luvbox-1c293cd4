@@ -835,6 +835,19 @@ html {
   width: 100%;
 }
 
+/* Responsive padding adjustments for app content container */
+@media (max-width: 640px) {
+  .app-content-container {
+    padding: 24px 12px 72px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-content-container {
+    padding: 16px 8px 72px 8px;
+  }
+}
+
 .app-content-card {
   flex-basis: 0;
   background-color: var(--lb-black-0);
@@ -854,8 +867,9 @@ html {
   position: relative;
   width: 100%;
   height: 100%;
-  margin-left: 48px;
+  margin-left: 0; /* Let PageSideMenu JavaScript handle margin dynamically */
   transition: margin-left 0.3s ease;
+  box-sizing: border-box; /* Ensure padding doesn't add to width */
 }
 
 /* Disable transitions during page changes */
@@ -882,6 +896,19 @@ html {
   position: relative;
   width: 100%;
   min-height: 100%;
+}
+
+/* Responsive padding adjustments for app content */
+@media (max-width: 640px) {
+  .app-content-padding {
+    padding: 16px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-content-padding {
+    padding: 12px 12px;
+  }
 }
 
 .app-content-border {
