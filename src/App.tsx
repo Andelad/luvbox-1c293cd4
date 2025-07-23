@@ -25,6 +25,9 @@ const TutorialPage = lazy(() => import('./app/pages/TutorialPage'));
 const SettingsPage = lazy(() => import('./app/pages/SettingsPage'));
 const FeedbackPage = lazy(() => import('./app/pages/FeedbackPage'));
 
+// Import QuestionnairePage directly to avoid dynamic import issues
+import QuestionnairePage from './app/pages/QuestionnairePage';
+
 // Minimal fallback for code splitting - no loading animation to prevent flash
 const PageLoader = () => null;
 
@@ -52,11 +55,43 @@ export default function App() {
   const [settingsActiveMenuItem, setSettingsActiveMenuItem] = useState('profile');
   const [mapActiveMenuItem, setMapActiveMenuItem] = useState('overview');
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleCTAClick = () => {
     setIsInApp(true);
-    setCurrentPage('the-box');
+    
+    // Check if questionnaire has been completed
+    const questionnaireCompleted = localStorage.getItem('luvbox_questionnaire_completed');
+    if (!questionnaireCompleted) {
+      setShowQuestionnaire(true);
+    } else {
+      setCurrentPage('the-box');
+    }
   };
+
+  const handleQuestionnaireComplete = () => {
+    setShowQuestionnaire(false);
+    setShowSuccessMessage(true);
+    setCurrentPage('the-box');
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 3000);
+  };
+
+  const handleRetakeQuestionnaire = () => {
+    setShowQuestionnaire(true);
+  };
+
+  // Expose retake questionnaire function globally for settings page
+  useEffect(() => {
+    (window as any).retakeQuestionnaire = handleRetakeQuestionnaire;
+    return () => {
+      delete (window as any).retakeQuestionnaire;
+    };
+  }, []);
 
   const handleGlobeClick = () => {
     setShowExitDialog(true);
@@ -267,33 +302,53 @@ export default function App() {
       <Background />
       {isInApp ? (
         <>
-          <AppLayout
-            onNavigate={navigateToPage}
-            onGlobeClick={handleGlobeClick}
-            currentPage={currentPage}
-            sidebarExpanded={sidebarExpanded}
-            onToggleSidebar={toggleSidebar}
-            pageSideMenuTitle={sideMenuConfig.title}
-            pageSideMenuContent={sideMenuConfig.content}
-            pageSideMenuItems={sideMenuConfig.menuItems}
-            pageSideMenuDefaultOpen={sideMenuConfig.defaultOpen}
-            pageSideMenuActiveItem={
-              currentPage === 'settings' ? settingsActiveMenuItem :
-                currentPage === 'the-map' ? mapActiveMenuItem :
-                  undefined
-            }
-          >
-            <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('the-box')}>
-              <Suspense fallback={<PageLoader />}>
-                {renderPage()}
-              </Suspense>
+          {showQuestionnaire ? (
+            <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setShowQuestionnaire(false)}>
+              <QuestionnairePage onComplete={handleQuestionnaireComplete} />
             </ErrorBoundary>
-          </AppLayout>
-          <ExitAppDialog
-            isOpen={showExitDialog}
-            onExit={handleExitApp}
-            onStay={handleStayInApp}
-          />
+          ) : (
+            <>
+              {/* Success Message */}
+              {showSuccessMessage && (
+                <div className="fixed top-4 right-4 z-50 bg-[var(--success-green-300)] text-[var(--lb-black-900)] px-6 py-3 rounded-lg shadow-lg border border-[var(--success-green-400)] animate-slide-in">
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-app-body font-medium">Your dealbreaker information has been saved!</span>
+                  </div>
+                </div>
+              )}
+              
+              <AppLayout
+                onNavigate={navigateToPage}
+                onGlobeClick={handleGlobeClick}
+                currentPage={currentPage}
+                sidebarExpanded={sidebarExpanded}
+                onToggleSidebar={toggleSidebar}
+                pageSideMenuTitle={sideMenuConfig.title}
+                pageSideMenuContent={sideMenuConfig.content}
+                pageSideMenuItems={sideMenuConfig.menuItems}
+                pageSideMenuDefaultOpen={sideMenuConfig.defaultOpen}
+                pageSideMenuActiveItem={
+                  currentPage === 'settings' ? settingsActiveMenuItem :
+                    currentPage === 'the-map' ? mapActiveMenuItem :
+                      undefined
+                }
+              >
+                <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setCurrentPage('the-box')}>
+                  <Suspense fallback={<PageLoader />}>
+                    {renderPage()}
+                  </Suspense>
+                </ErrorBoundary>
+              </AppLayout>
+              <ExitAppDialog
+                isOpen={showExitDialog}
+                onExit={handleExitApp}
+                onStay={handleStayInApp}
+              />
+            </>
+          )}
         </>
       ) : (
         <WebsiteLayout onNavigate={navigateToPage} currentPage={currentPage} isInitialLoad={isInitialLoad}>

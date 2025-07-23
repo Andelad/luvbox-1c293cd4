@@ -40,6 +40,20 @@ const SettingsPage: React.FC = () => {
     }
   }, [user]);
 
+  // Load dealbreaker scores from localStorage (works with or without user account)
+  useEffect(() => {
+    const savedScores = localStorage.getItem('luvbox_dealbreaker_scores');
+    if (savedScores) {
+      try {
+        const parsedScores = JSON.parse(savedScores);
+        setDealbreakerScores(parsedScores);
+        console.log('✅ Loaded dealbreaker scores from localStorage in Settings:', parsedScores);
+      } catch (error) {
+        console.error('❌ Error parsing saved dealbreaker scores:', error);
+      }
+    }
+  }, []);
+
   const handleSaveProfile = async () => {
     if (!user) return;
 
@@ -57,12 +71,19 @@ const SettingsPage: React.FC = () => {
   };
 
   const handleSaveDealbreakers = async () => {
-    if (!user) return;
-
     try {
-      await updateUser({
-        dealbreakerScores,
-      });
+      // Always save to localStorage for consistency with questionnaire
+      localStorage.setItem('luvbox_dealbreaker_scores', JSON.stringify(dealbreakerScores));
+      console.log('✅ Dealbreaker scores saved to localStorage:', dealbreakerScores);
+      
+      // If user is logged in, also save to user account
+      if (user) {
+        await updateUser({
+          dealbreakerScores,
+        });
+        console.log('✅ Dealbreaker scores also saved to user account');
+      }
+      
       alert(content.dealbreakers.updateSuccess);
     } catch (error) {
       console.error('Error updating dealbreakers:', error);
@@ -71,10 +92,15 @@ const SettingsPage: React.FC = () => {
   };
 
   const handleDealbreakerChange = (area: EqualizerArea, value: number) => {
-    setDealbreakerScores(prev => ({
-      ...prev,
+    const newScores = {
+      ...dealbreakerScores,
       [area]: value,
-    }));
+    };
+    setDealbreakerScores(newScores);
+    
+    // Auto-save to localStorage on every change for instant persistence
+    localStorage.setItem('luvbox_dealbreaker_scores', JSON.stringify(newScores));
+    console.log('✅ Auto-saved dealbreaker change to localStorage:', { area, value });
   };
 
   const renderUserProfileSection = () => (
@@ -132,6 +158,24 @@ const SettingsPage: React.FC = () => {
       <div className="max-w-2xl">
         <h2 className="text-app-display text-[var(--lb-black-900)] mb-6">Dealbreaker Lines</h2>
 
+        <div className="mb-6">
+          <p className="text-app-body text-[var(--lb-black-600)] mb-4">
+            Your dealbreaker lines help you identify potential compatibility issues early. You can adjust these anytime.
+          </p>
+          
+          {/* Retake Questionnaire Button */}
+          <button
+            onClick={() => {
+              if ((window as any).retakeQuestionnaire) {
+                (window as any).retakeQuestionnaire();
+              }
+            }}
+            className="mb-4 px-4 py-2 bg-[var(--lime-500)] text-[var(--lb-black-900)] rounded-md hover:bg-[var(--lime-600)] focus:outline-none focus:ring-2 focus:ring-[var(--lime-500)] focus:ring-offset-2 transition-colors text-app-button"
+          >
+            Retake Questionnaire
+          </button>
+        </div>
+
         <div className="space-y-6">
           <DealbreakerSliders
             scores={dealbreakerScores}
@@ -139,17 +183,17 @@ const SettingsPage: React.FC = () => {
             disabled={false}
           />
 
-          {user ? (
-            <button
-              onClick={handleSaveDealbreakers}
-              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-            >
-              Save Dealbreaker Lines
-            </button>
-          ) : (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <button
+            onClick={handleSaveDealbreakers}
+            className="px-6 py-2 bg-[var(--blue-500)] text-[var(--lb-black-0)] rounded-md hover:bg-[var(--blue-600)] focus:outline-none focus:ring-2 focus:ring-[var(--blue-500)] focus:ring-offset-2 transition-colors text-app-button"
+          >
+            Save Dealbreaker Lines
+          </button>
+          
+          {!user && (
+            <div className="bg-[var(--blue-50)] border border-[var(--blue-200)] rounded-lg p-4 mt-4">
               <p className="text-[var(--blue-800)] text-app-body">
-                <strong>Note:</strong> Your dealbreaker settings are saved locally. Create an account to save them permanently.
+                <strong>Note:</strong> Your dealbreaker settings are saved locally. Create an account to save them permanently across devices.
               </p>
             </div>
           )}

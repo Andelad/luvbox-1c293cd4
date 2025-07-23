@@ -6,6 +6,7 @@ interface WebsiteHeaderProps {
   onNavigate: (page: string) => void;
   currentPage: string;
   isInitialLoad?: boolean;
+  hideNavigation?: boolean;
 }
 
 function Layer1() {
@@ -114,7 +115,7 @@ function Frame31({ onNavigate, currentPage }: { onNavigate: (page: string) => vo
   );
 }
 
-export default function WebsiteHeader({ onNavigate, currentPage, isInitialLoad = false }: WebsiteHeaderProps) {
+export default function WebsiteHeader({ onNavigate, currentPage, isInitialLoad = false, hideNavigation = false }: WebsiteHeaderProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hasInitialized, setHasInitialized] = useState(false);
@@ -151,7 +152,7 @@ export default function WebsiteHeader({ onNavigate, currentPage, isInitialLoad =
     >
       <div className="box-border content-stretch flex flex-row items-center justify-between overflow-clip pl-4 pr-8 py-4 relative size-full">
         <Frame33 onNavigate={onNavigate} />
-        <Frame31 onNavigate={onNavigate} currentPage={currentPage} />
+        {!hideNavigation && <Frame31 onNavigate={onNavigate} currentPage={currentPage} />}
       </div>
       <div className="absolute border-b border-[rgba(0,0,0,0.2)] inset-x-0 bottom-0 pointer-events-none" />
     </div>

@@ -6,6 +6,7 @@ interface WebsiteLayoutProps {
   onNavigate: (page: string) => void;
   currentPage: string;
   isInitialLoad?: boolean;
+  hideNavigation?: boolean;
 }
 
 function WebsiteFooter() {
@@ -27,10 +28,10 @@ function WebsiteFooter() {
   );
 }
 
-export default function WebsiteLayout({ children, onNavigate, currentPage, isInitialLoad = false }: WebsiteLayoutProps) {
+export default function WebsiteLayout({ children, onNavigate, currentPage, isInitialLoad = false, hideNavigation = false }: WebsiteLayoutProps) {
   return (
     <div className="website-layout">
-      <WebsiteHeader onNavigate={onNavigate} currentPage={currentPage} isInitialLoad={isInitialLoad} />
+      <WebsiteHeader onNavigate={onNavigate} currentPage={currentPage} isInitialLoad={isInitialLoad} hideNavigation={hideNavigation} />
       <div className="website-layout-content">
         <PageTransition pageKey={currentPage}>
           {children}
