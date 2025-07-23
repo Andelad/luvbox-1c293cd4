@@ -75,7 +75,7 @@ const SettingsPage: React.FC = () => {
       // Always save to localStorage for consistency with questionnaire
       localStorage.setItem('luvbox_dealbreaker_scores', JSON.stringify(dealbreakerScores));
       console.log('✅ Dealbreaker scores saved to localStorage:', dealbreakerScores);
-      
+
       // If user is logged in, also save to user account
       if (user) {
         await updateUser({
@@ -83,7 +83,7 @@ const SettingsPage: React.FC = () => {
         });
         console.log('✅ Dealbreaker scores also saved to user account');
       }
-      
+
       alert(content.dealbreakers.updateSuccess);
     } catch (error) {
       console.error('Error updating dealbreakers:', error);
@@ -97,7 +97,7 @@ const SettingsPage: React.FC = () => {
       [area]: value,
     };
     setDealbreakerScores(newScores);
-    
+
     // Auto-save to localStorage on every change for instant persistence
     localStorage.setItem('luvbox_dealbreaker_scores', JSON.stringify(newScores));
     console.log('✅ Auto-saved dealbreaker change to localStorage:', { area, value });
@@ -162,7 +162,7 @@ const SettingsPage: React.FC = () => {
           <p className="text-app-body text-[var(--lb-black-600)] mb-4">
             Your dealbreaker lines help you identify potential compatibility issues early. You can adjust these anytime.
           </p>
-          
+
           {/* Retake Questionnaire Button */}
           <button
             onClick={() => {
@@ -189,7 +189,7 @@ const SettingsPage: React.FC = () => {
           >
             Save Dealbreaker Lines
           </button>
-          
+
           {!user && (
             <div className="bg-[var(--blue-50)] border border-[var(--blue-200)] rounded-lg p-4 mt-4">
               <p className="text-[var(--blue-800)] text-app-body">

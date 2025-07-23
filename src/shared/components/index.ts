@@ -7,6 +7,7 @@ export { default as ExitAppDialog } from './ExitAppDialog';
 export { ImageWithFallback } from './ImageWithFallback';
 export { default as PageTransition } from './PageTransition';
 export { default as PerformanceMonitor } from './PerformanceMonitor';
+export { default as QuestionnaireChoiceDialog } from './QuestionnaireChoiceDialog';
 export { default as SimpleUserCreator } from './SimpleUserCreator';
 export { default as StaggeredAnimatedSection } from './StaggeredAnimatedSection';
 export { default as UserRegistrationDemo } from './UserRegistrationDemo';

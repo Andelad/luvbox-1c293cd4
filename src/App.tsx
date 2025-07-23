@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import AppLayout from './app/layout/AppLayout';
 import Background from './shared/components/Background';
 import ExitAppDialog from './shared/components/ExitAppDialog';
+import QuestionnaireChoiceDialog from './shared/components/QuestionnaireChoiceDialog';
 import { StorageProvider } from './shared/lib/storage';
 import { PageType } from './shared/types/app';
 import WebsiteLayout from './website/layout/WebsiteLayout';
@@ -57,16 +58,19 @@ export default function App() {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showQuestionnaireChoice, setShowQuestionnaireChoice] = useState(false);
 
   const handleCTAClick = () => {
-    setIsInApp(true);
-    
     // Check if questionnaire has been completed
     const questionnaireCompleted = localStorage.getItem('luvbox_questionnaire_completed');
+
     if (!questionnaireCompleted) {
+      // First time - go straight to questionnaire
+      setIsInApp(true);
       setShowQuestionnaire(true);
     } else {
-      setCurrentPage('the-box');
+      // Show dialog over homepage asking if they want to use existing data or start fresh
+      setShowQuestionnaireChoice(true);
     }
   };
 
@@ -74,11 +78,26 @@ export default function App() {
     setShowQuestionnaire(false);
     setShowSuccessMessage(true);
     setCurrentPage('the-box');
-    
+
     // Hide success message after 3 seconds
     setTimeout(() => {
       setShowSuccessMessage(false);
     }, 3000);
+  };
+
+  const handleUseExistingSettings = () => {
+    setShowQuestionnaireChoice(false);
+    setIsInApp(true);
+    setCurrentPage('the-box');
+  };
+
+  const handleRecompleteQuestionnaire = () => {
+    setShowQuestionnaireChoice(false);
+    setIsInApp(true);
+    // Clear existing data and start fresh
+    localStorage.removeItem('luvbox_questionnaire_completed');
+    localStorage.removeItem('luvbox_dealbreaker_scores');
+    setShowQuestionnaire(true);
   };
 
   const handleRetakeQuestionnaire = () => {
@@ -319,7 +338,7 @@ export default function App() {
                   </div>
                 </div>
               )}
-              
+
               <AppLayout
                 onNavigate={navigateToPage}
                 onGlobeClick={handleGlobeClick}
@@ -368,6 +387,14 @@ export default function App() {
           </Suspense>
         </ErrorBoundary>
       )}
+
+      {/* Global dialogs that can appear over any page */}
+      <QuestionnaireChoiceDialog
+        isOpen={showQuestionnaireChoice}
+        onUseExisting={handleUseExistingSettings}
+        onRecomplete={handleRecompleteQuestionnaire}
+        hasScores={!!localStorage.getItem('luvbox_dealbreaker_scores')}
+      />
     </StorageProvider>
   );
 }
