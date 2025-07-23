@@ -12,6 +12,38 @@
   }
 }
 
+/* Floating animations for map elements */
+@keyframes float-cube {
+  0% { transform: translateY(0px) translateX(-50%); }
+  50% { transform: translateY(-8px) translateX(-50%); }
+  100% { transform: translateY(0px) translateX(-50%); }
+}
+
+@keyframes float-simple {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes float-community {
+  0% { transform: translateY(0px) translateX(-50%); }
+  40% { transform: translateY(-8px) translateX(-50%); }
+  60% { transform: translateY(-6px) translateX(-50%); }
+  100% { transform: translateY(0px) translateX(-50%); }
+}
+
+.animate-float-cube {
+  animation: float-cube 5.8s ease-in-out infinite;
+}
+
+.animate-float-simple {
+  animation: float-simple 6s ease-in-out infinite;
+}
+
+.animate-float-community {
+  animation: float-community 6.1s ease-in-out infinite;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,7 +1,27 @@
-import mapSvgPaths from "@/assets/icons/MapSectionIcons";
 import { CONTENT } from '@/content';
+import { useState } from 'react';
+
+// Import map section images
+import bookImage from '@/assets/icons/book.png';
+import communityImage from '@/assets/icons/community.png';
+import cubeImage from '@/assets/icons/cube.png';
+import personImage from '@/assets/icons/person.png';
 
 export default function MapSection() {
+  const [imagesLoaded, setImagesLoaded] = useState({
+    cube: false,
+    book: false,
+    person: false,
+    community: false
+  });
+
+  const handleImageLoad = (imageName: string) => {
+    setImagesLoaded(prev => ({
+      ...prev,
+      [imageName]: true
+    }));
+  };
+
   return (
     <div className="min-h-screen w-full py-20 flex items-center">
       <div className="container mx-auto px-8 max-w-6xl">
@@ -11,201 +31,128 @@ export default function MapSection() {
             {CONTENT.website.map.title}
           </h2>
           <p className="text-web-body text-[var(--lb-black-800)] max-w-2xl mx-auto">
-            Our environment shapes our expectations of love. Learn to build a map of your love environment so that you can make better choices.
+            {CONTENT.website.map.description}
           </p>
         </div>
 
-        {/* Interactive Map */}
-        <div className="relative max-w-5xl mx-auto" style={{ height: '600px' }}>
-          {/* The Box */}
-          <div className="absolute" style={{ left: '45%', top: '20%', transform: 'translateX(-50%)' }}>
-            <div className="text-center">
-              <div className="w-24 h-24 mb-4 flex items-center justify-center">
-                <svg className="w-full h-full" fill="none" viewBox="0 0 105 135">
-                  <g clipPath="url(#clip0_1_773)">
-                    <path
-                      d={mapSvgPaths.p141e4500}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                    <path
-                      d={mapSvgPaths.p237a7600}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                    <path
-                      d={mapSvgPaths.pce226c0}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p1a5ab6c0}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                    <path
-                      d={mapSvgPaths.p2f36c00}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_1_773">
-                      <rect fill="white" height="134.111" width="104.533" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <p className="text-web-subheading text-[var(--lb-black-800)]">The Box</p>
-            </div>
-          </div>
+        {/* Interactive Map with Floating Images */}
+        <div className="relative max-w-5xl mx-auto" style={{ height: '500px' }}>
+          <div className="relative w-full h-full max-w-800px max-h-500px mx-auto">
 
-          {/* My Love Scripts */}
-          <div className="absolute" style={{ left: '20%', top: '50%', transform: 'translateX(-50%)' }}>
-            <div className="text-center">
-              <div className="w-24 h-24 mb-4 flex items-center justify-center">
-                <svg className="w-full h-full" fill="none" viewBox="0 0 135 81">
-                  <g clipPath="url(#clip0_1_761)">
-                    <path
-                      d={mapSvgPaths.p28600100}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                    <path
-                      d={mapSvgPaths.p6a3eb80}
-                      stroke="#3D3535"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p38018680}
-                      stroke="#3D3535"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p30e70f00}
-                      stroke="#3D3535"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p233d2880}
-                      stroke="#3D3535"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_1_761">
-                      <rect fill="white" height="80.989" width="134.418" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <p className="text-web-subheading text-[var(--lb-black-800)]">My Love Scripts</p>
+            {/* The LuvBox - Top Center */}
+            <div
+              className="absolute animate-float-cube z-2 text-center"
+              style={{
+                width: '100px',
+                top: '40px',
+                left: '50%',
+                transform: 'translateX(-50%)'
+              }}
+            >
+              <span className="block font-semibold italic text-lg text-[var(--text-color)] mb-2.5">
+                The LuvBox
+              </span>
+              <img
+                src={cubeImage}
+                alt="The LuvBox Cube"
+                draggable={false}
+                onLoad={() => handleImageLoad('cube')}
+                style={{
+                  opacity: imagesLoaded.cube ? 1 : 0,
+                  display: 'block',
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '120px',
+                  transition: 'opacity 0.3s ease'
+                }}
+              />
             </div>
-          </div>
 
-          {/* My Self */}
-          <div className="absolute" style={{ left: '70%', top: '35%', transform: 'translateX(-50%)' }}>
-            <div className="text-center">
-              <div className="w-24 h-24 mb-4 flex items-center justify-center">
-                <svg className="w-full h-full" fill="none" viewBox="0 0 94 103">
-                  <g clipPath="url(#clip0_1_768)">
-                    <path
-                      d={mapSvgPaths.p3069c3c0}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="4"
-                    />
-                    <path
-                      d={mapSvgPaths.p163e7600}
-                      stroke="#3D3535"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M46.506 48.42L91.012 26.785"
-                      stroke="#3D3535"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_1_768">
-                      <rect fill="white" height="102.786" width="93.012" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <p className="text-web-subheading text-[var(--lb-black-800)]">My Self</p>
+            {/* My Scripts - Left Side */}
+            <div
+              className="absolute animate-float-simple z-2 text-center"
+              style={{
+                width: '100px',
+                top: '200px',
+                left: '20%',
+                animationDelay: '1.5s'
+              }}
+            >
+              <span className="block font-semibold italic text-lg text-[var(--text-color)] mb-2.5">
+                My Scripts
+              </span>
+              <img
+                src={bookImage}
+                alt="My Scripts Book"
+                draggable={false}
+                onLoad={() => handleImageLoad('book')}
+                style={{
+                  opacity: imagesLoaded.book ? 1 : 0,
+                  display: 'block',
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '100px',
+                  transition: 'opacity 0.3s ease'
+                }}
+              />
             </div>
-          </div>
 
-          {/* My Community */}
-          <div className="absolute" style={{ left: '50%', top: '70%', transform: 'translateX(-50%)' }}>
-            <div className="text-center">
-              <div className="w-24 h-24 mb-4 flex items-center justify-center">
-                <svg className="w-full h-full" fill="none" viewBox="0 0 112 110">
-                  <g clipPath="url(#clip0_1_780)">
-                    <path
-                      d={mapSvgPaths.p28e835c0}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p160d1a00}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p24697500}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p24d78300}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p26ecf1e0}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={mapSvgPaths.p27748580}
-                      stroke="#3D3535"
-                      strokeMiterlimit="10"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_1_780">
-                      <rect fill="white" height="109.617" width="111.729" />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </div>
-              <p className="text-web-subheading text-[var(--lb-black-800)]">My Community</p>
+            {/* Myself - Right Side */}
+            <div
+              className="absolute animate-float-simple z-2 text-center"
+              style={{
+                width: '80px',
+                top: '200px',
+                right: '20%',
+                animationDelay: '3s'
+              }}
+            >
+              <span className="block font-semibold italic text-lg text-[var(--text-color)] mb-2.5">
+                Myself
+              </span>
+              <img
+                src={personImage}
+                alt="Myself"
+                draggable={false}
+                onLoad={() => handleImageLoad('person')}
+                style={{
+                  opacity: imagesLoaded.person ? 1 : 0,
+                  display: 'block',
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '80px',
+                  transition: 'opacity 0.3s ease'
+                }}
+              />
+            </div>
+
+            {/* Community - Bottom Center */}
+            <div
+              className="absolute animate-float-community z-2 text-center"
+              style={{
+                width: '90px',
+                bottom: '40px',
+                left: '50%',
+                transform: 'translateX(-50%)'
+              }}
+            >
+              <span className="block font-semibold italic text-lg text-[var(--text-color)] mb-2.5">
+                Community
+              </span>
+              <img
+                src={communityImage}
+                alt="Community"
+                draggable={false}
+                onLoad={() => handleImageLoad('community')}
+                style={{
+                  opacity: imagesLoaded.community ? 1 : 0,
+                  display: 'block',
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '90px',
+                  transition: 'opacity 0.3s ease'
+                }}
+              />
             </div>
           </div>
         </div>

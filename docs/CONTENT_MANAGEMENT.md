@@ -1,45 +1,45 @@
 # Content Management System
 
 ## Overview
-The LuvBox application now uses a centralized content management system that makes text updates easy and maintainable.
+The LuvBox application uses an organized content management system split across focused files for easy editing and maintenance.
 
 ## How It Works
 
-### 1. Content Structure
-All text content is centralized in `/src/content/index.ts` with the following structure:
+### 1. Content Structure (NEW: Split Files)
+Content is now organized in separate files for better maintainability:
 
+```
+📁 /src/content/
+├── 📄 navigation.ts    ← Navigation menu items
+├── 📄 website.ts       ← Website/marketing content  
+├── 📄 pages.ts         ← App page content
+├── 📄 common.ts        ← Common UI elements
+├── 📄 types.ts         ← TypeScript interfaces
+└── 📄 index.ts         ← Combines all content
+```
+
+### 2. Editing Content
+**To edit website content:** Open `/src/content/website.ts`
+**To edit app pages:** Open `/src/content/pages.ts`  
+**To edit navigation:** Open `/src/content/navigation.ts`
+**To edit common text:** Open `/src/content/common.ts`
+
+### 3. Example Usage
 ```typescript
-export const CONTENT = {
-  navigation: {
-    theBox: "The Box",
-    theMap: "The Map",
-    mySnapshots: "My Snapshots",
-    // ... etc
-  },
-  pages: {
-    feedback: {
-      title: "Feedback",
-      subtitle: "Help us improve LuvBox",
-      // ... etc
-    },
-    settings: {
-      title: "Settings",
-      // ... etc
-    }
-  },
-  website: {
-    header: {
-      logoText: "LuvBox",
-      // ... etc
-    }
-  },
-  common: {
-    buttons: {
-      submit: "Submit",
-      cancel: "Cancel",
-      // ... etc
-    }
+// website.ts - focused on just website content
+export const WEBSITE: WebsiteContent = {
+  heroSection: {
+    title: "Do I love them?",
+    subtitle: "LUVBOX IS YOUR LOVE & DATING DIAGNOSTICS TOOL",
+    // ... rest of website content
   }
+};
+
+// pages.ts - focused on just app pages
+export const FEEDBACK: FeedbackContent = {
+  title: "Feedback",
+  description: "We'd love to hear...",
+  // ... rest of feedback page content
 };
 ```
 
