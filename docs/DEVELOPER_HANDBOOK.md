@@ -66,6 +66,7 @@
 | `color`, `styling`, `hex`, `background` | [🎨 Color System](#-color-system-standards) | Use `var(--color-name)`, never hardcoded colors |
 | `animation`, `motion`, `scroll`, `fade`, `slide` | [🎬 Animation Standards](#-animation--motion-standards) | Use `<AnimatedSection>`, respect `prefers-reduced-motion` |
 | `font`, `text`, `typography`, `size` | [🔤 Typography](#-typography-system-standards) | Use `text-app-*` or `text-web-*` classes |
+| `form`, `input`, `button`, `UI`, `interface`, `height` | [🎯 UI & Form Standards](#-ui--form-standards) | 40px+ minimum height, generous sizing, accessibility-first |
 | `component`, `create`, `new`, `build` | [🧩 Component Development](#-component-development-standards) | Follow template, use TypeScript, barrel exports |
 | `dev server`, `npm run`, `port`, `terminal` | [⚡ Development Server](#-development-server-standards) | Check existing server first, use smart restart commands |
 | `folder`, `import`, `path`, `organize` | [📁 Folder Structure](#-folder-structure-standards) | `shared/` for reusable, `app/` vs `website/` specific |
@@ -113,8 +114,9 @@ This handbook ensures all developers follow### 📋 Before You Start Checklist
 1. **[📁 Folder Structure Standards](#-folder-structure-standards)** - File organization, path mapping, component hierarchy
 2. **[🎨 Color System Standards](#-color-system-standards)** - OKLCH palette, transparency, CSS variables usage
 3. **[🔤 Typography System Standards](#-typography-system-standards)** - Dual-scale system, app vs website typography
-4. **[🧩 Component Development Standards](#-component-development-standards)** - Creation patterns, TypeScript, file naming
-5. **[⚡ Development Server Standards](#-development-server-standards)** - Server management, port usage, efficient workflows
+4. **[🎯 UI & Form Standards](#-ui--form-standards)** - Interactive element sizing, accessibility, user experience
+5. **[🧩 Component Development Standards](#-component-development-standards)** - Creation patterns, TypeScript, file naming
+6. **[⚡ Development Server Standards](#-development-server-standards)** - Server management, port usage, efficient workflows
 6. **[🎬 Animation & Motion Standards](#-animation--motion-standards)** - Performance, accessibility, animation components
 7. **[📝 CSS Organization Standards](#-css-organization-standards)** - CSS structure, naming conventions, modularity
 8. **[📄 Content Management Standards](#-content-management-standards)** - Centralized content, text management
@@ -551,6 +553,193 @@ export default Component;
 - **PascalCase**: `ComponentName.tsx`
 - **Descriptive names**: `UserProfileCard.tsx` not `Card.tsx`
 - **Location-specific**: Place in appropriate folder hierarchy
+
+## 🎯 UI & Form Standards
+
+### Philosophy: Accessibility-First Interactive Design
+**Interactive elements should be generous in size, easy to interact with, and feel confident and professional. Prioritize user experience over visual minimalism.**
+
+### 🚨 CRITICAL SIZING RULES FOR AI AGENTS
+
+#### **❌ NEVER CREATE:**
+- Form inputs shorter than 40px height
+- Buttons smaller than 40px in any dimension
+- Touch targets smaller than 44px (mobile requirement)
+- Text smaller than 16px in form labels/inputs
+- Cramped spacing between form elements
+
+#### **✅ ALWAYS ENSURE:**
+- **Minimum heights**: 40-48px for all interactive elements
+- **Comfortable padding**: `px-4 py-3` minimum for buttons/inputs
+- **Generous spacing**: `space-y-6` or `space-y-8` between form sections
+- **Large text**: `text-lg` minimum for form elements
+- **Clear visual hierarchy**: Bold labels, high contrast
+
+### 📏 Standard Sizing Guidelines
+
+#### **Using CSS Utility Classes (Recommended)**
+```tsx
+// ✅ Use predefined form classes for consistency
+<input className="form-input" />
+<textarea className="form-textarea" />
+<button className="form-button-primary">Submit</button>
+<button className="form-button-secondary">Cancel</button>
+
+// ✅ Form layout classes
+<div className="form-section">
+  <label className="form-label">Field Label</label>
+  <div className="form-field">
+    <input className="form-input" />
+    <p className="form-helper-text">Helper text</p>
+  </div>
+</div>
+```
+
+#### **Manual Styling (When Classes Don't Fit)**
+```tsx
+// ✅ Standard input sizing
+<input 
+  className="w-full px-4 py-3 text-lg rounded-lg"
+  style={{ 
+    minHeight: '48px',
+    border: '2px solid var(--lb-black-200)',
+    backgroundColor: 'var(--lb-black-0)'
+  }}
+/>
+
+// ✅ Standard textarea sizing  
+<textarea
+  className="w-full min-h-[160px] p-4 text-lg rounded-lg resize-none"
+  style={{
+    border: '2px solid var(--lb-black-200)',
+    backgroundColor: 'var(--lb-black-0)'
+  }}
+  rows={6}
+/>
+
+// ✅ Standard select sizing
+<Select>
+  <SelectTrigger 
+    className="w-full text-lg"
+    style={{ 
+      height: '48px',
+      border: '2px solid var(--lb-black-200)',
+      backgroundColor: 'var(--lb-black-0)'
+    }}
+  >
+</Select>
+```
+
+#### **Button Elements**
+```tsx
+// ✅ Primary button sizing
+<button
+  className="px-8 py-4 text-lg font-semibold rounded-lg transition-all hover:opacity-90"
+  style={{ 
+    minHeight: '48px',
+    backgroundColor: 'var(--purple-500)', 
+    color: 'var(--lb-black-0)'
+  }}
+>
+  Submit
+</button>
+
+// ✅ Secondary button sizing
+<button
+  className="px-6 py-3 text-lg rounded-lg transition-all"
+  style={{ 
+    minHeight: '40px',
+    border: '2px solid var(--lb-black-300)',
+    backgroundColor: 'var(--lb-black-0)',
+    color: 'var(--lb-black-800)'
+  }}
+>
+  Cancel
+</button>
+```
+
+#### **Form Layout & Spacing**
+```tsx
+// ✅ Generous form spacing
+<form className="space-y-8">
+  <div className="space-y-4">
+    <label className="text-lg font-medium" style={{ color: 'var(--lb-black-800)' }}>
+      Field Label
+    </label>
+    {/* Input element */}
+  </div>
+  
+  <div className="flex items-center justify-between pt-6">
+    {/* Support text and submit button */}
+  </div>
+</form>
+```
+
+### 🎨 Visual Design Standards
+
+#### **Color & State Management**
+- **Default state**: `border: '2px solid var(--lb-black-200)'`
+- **Focus state**: `border: '2px solid var(--purple-500)'` + `focus:ring-3 focus:ring-purple-200`
+- **Error state**: `border: '2px solid var(--red-500)'`
+- **Disabled state**: `opacity-50 cursor-not-allowed`
+
+#### **Typography in Forms**
+- **Labels**: `text-lg font-medium` minimum
+- **Input text**: `text-lg` minimum
+- **Helper text**: `text-base` minimum
+- **Error messages**: `text-base` with error color
+
+#### **Spacing Hierarchy**
+- **Between sections**: `space-y-8` (32px)
+- **Within sections**: `space-y-4` (16px)  
+- **Between related elements**: `space-y-3` (12px)
+- **Internal padding**: `p-4` (16px) minimum
+
+### 🔍 Why These Standards Exist
+
+#### **Accessibility Benefits**
+- **Touch targets**: 44px minimum meets WCAG AA standards
+- **Text size**: 16px+ prevents zoom on mobile devices
+- **Color contrast**: 2px borders ensure visibility
+- **Focus states**: Clear keyboard navigation
+
+#### **User Experience Benefits**
+- **Confidence**: Larger elements feel more trustworthy
+- **Efficiency**: Easier to tap/click accurately
+- **Readability**: Generous spacing reduces cognitive load
+- **Professional feel**: Substantial UI elements convey quality
+
+#### **Technical Benefits**
+- **Mobile-first**: Works well across all device sizes
+- **Consistency**: Standardized sizing creates coherent interface
+- **Maintainability**: Clear rules prevent ad-hoc sizing decisions
+
+### ❌ Common Mistakes to Avoid
+
+#### **Size-Related**
+- Using `h-8` (32px) or smaller for interactive elements
+- `text-sm` or `text-base` for important form elements
+- `space-y-2` or `space-y-3` for major form sections
+- `px-2 py-1` padding on buttons
+
+#### **Visual Hierarchy**
+- Same text size for labels and inputs
+- Insufficient contrast between states
+- Cramped layouts that feel crowded
+- Missing focus states or hover feedback
+
+### 🎯 Quick Validation Checklist
+
+Before implementing any form or interactive element:
+
+- [ ] **Height check**: All interactive elements ≥ 40px
+- [ ] **Text size**: All form text ≥ `text-lg` (18px)
+- [ ] **Spacing**: Major sections use `space-y-6` or larger
+- [ ] **Padding**: Buttons have `px-6 py-3` minimum
+- [ ] **States**: Focus, hover, and disabled states defined
+- [ ] **Colors**: Only CSS variables used
+- [ ] **Mobile**: Touch targets ≥ 44px
+- [ ] **Accessibility**: Labels associated with inputs
 
 ## ⚡ Development Server Standards
 
