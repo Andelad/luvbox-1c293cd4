@@ -132,7 +132,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'translateZ(80px)'
               }}
             >
-              <InteractiveTimeFace isInteractive={isStarted} />
+              <InteractiveTimeFace />
             </div>
 
             {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face - InteractiveQualityFace */}
@@ -144,7 +144,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(-90deg) translateZ(80px)'
               }}
             >
-              <InteractiveQualityFace isInteractive={isStarted} />
+              <InteractiveQualityFace />
             </div>
 
             {/* Face 3: rotateY(90deg) translateZ(80px) - Right Face - InteractiveTimeFace */}
@@ -156,7 +156,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(90deg) translateZ(80px)'
               }}
             >
-              <InteractiveTimeFace isInteractive={isStarted} />
+              <InteractiveTimeFace />
             </div>
 
             {/* Face 4: rotateX(90deg) translateZ(80px) - Top Face - InteractivePurposeFace */}
@@ -168,7 +168,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateX(90deg) translateZ(80px)'
               }}
             >
-              <InteractivePurposeFace isInteractive={isStarted} />
+              <InteractivePurposeFace />
             </div>
 
             {/* Bottom Face (hidden) */}

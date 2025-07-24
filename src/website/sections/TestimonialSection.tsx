@@ -43,8 +43,6 @@ export default function TestimonialSection() {
         <LightCarousel
           items={testimonials}
           slidesToShow={3}
-          autoplay={false}
-          autoplaySpeed={4000}
         />
       </div>
     </div>

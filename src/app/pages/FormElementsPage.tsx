@@ -219,7 +219,7 @@ export default function FormElementsPage() {
                                     <Checkbox
                                         id="checkbox"
                                         checked={checked}
-                                        onCheckedChange={setChecked}
+                                        onCheckedChange={(checked) => setChecked(checked === true)}
                                     />
                                     <Label htmlFor="checkbox">Accept terms and conditions</Label>
                                 </div>
