@@ -27,7 +27,7 @@ export default function HomePage({ onCTAClick, onNavigate, isInitialLoad = false
 
       <div className="flex flex-row justify-center relative size-full">
         {/* Main content with top padding to account for fixed header */}
-        <div className="[flex-flow:wrap] box-border content-start flex gap-0 items-start justify-center pl-4 pr-0 py-0 relative size-full pt-20">
+        <div className="[flex-flow:wrap] box-border content-start flex gap-0 items-start justify-center pr-0 py-0 relative size-full pt-20">
 
           {/* Ticker Tape - Restored */}
           <div className="w-screen relative left-1/2 transform -translate-x-1/2" style={{ marginTop: '27px', marginBottom: '24px' }}>

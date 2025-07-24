@@ -28,17 +28,17 @@ export default function HeroSection({ onCTAClick }: HeroSectionProps) {
           <div className="flex flex-col space-y-6">
             <div className="space-y-4">
               <AnimatedSection animation="slideLeft" delay={0} threshold={0.2}>
-                <h1 className="text-web-hero text-[var(--lb-black-800)] italic">
+                <h1 className="text-web-hero  italic">
                   {heroContent.title}
                 </h1>
               </AnimatedSection>
               <AnimatedSection animation="slideLeft" delay={100} threshold={0.2}>
-                <div className="text-web-caption text-[var(--lb-black-800)] uppercase tracking-wide">
+                <div className="text-web-caption  uppercase tracking-wide">
                   {heroContent.subtitle}
                 </div>
               </AnimatedSection>
               <AnimatedSection animation="slideUp" delay={200} threshold={0.2}>
-                <p className="text-web-body text-[var(--lb-black-800)] max-w-lg">
+                <p className="text-web-body  max-w-lg">
                   {heroContent.description}
                 </p>
               </AnimatedSection>

@@ -16,7 +16,7 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
         {/* Section Title */}
         <AnimatedSection animation="slideUp" delay={0} threshold={0.6}>
           <div className="text-center mb-16">
-            <h2 className="text-web-hero text-[var(--lb-black-800)] italic">
+            <h2 className="text-web-hero  italic">
               {CONTENT.website.staggeredSection.title}
             </h2>
           </div>

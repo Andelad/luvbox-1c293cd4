@@ -27,10 +27,10 @@ export default function MapSection() {
       <div className="container mx-auto px-8 max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-web-hero text-[var(--lb-black-800)] italic mb-6">
+          <h2 className="text-web-hero  italic mb-6">
             {CONTENT.website.map.title}
           </h2>
-          <p className="text-web-body text-[var(--lb-black-800)] max-w-2xl mx-auto">
+          <p className="text-web-body  max-w-2xl mx-auto">
             {CONTENT.website.map.description}
           </p>
         </div>
@@ -49,7 +49,7 @@ export default function MapSection() {
                 transform: 'translateX(-50%)'
               }}
             >
-              <span className="block italic text-[var(--text-color)] mb-2.5">
+              <span className="block italic  mb-2.5">
                 The LuvBox
               </span>
               <img
@@ -78,7 +78,7 @@ export default function MapSection() {
                 animationDelay: '1.5s'
               }}
             >
-              <span className="block italic text-[var(--text-color)] mb-2.5">
+              <span className="block italic  mb-2.5">
                 My Scripts
               </span>
               <img
@@ -107,7 +107,7 @@ export default function MapSection() {
                 animationDelay: '3s'
               }}
             >
-              <span className="block italic text-[var(--text-color)] mb-2.5">
+              <span className="block italic  mb-2.5">
                 Myself
               </span>
               <img
@@ -136,7 +136,7 @@ export default function MapSection() {
                 transform: 'translateX(-50%)'
               }}
             >
-              <span className="block italic text-[var(--text-color)] mb-2.5">
+              <span className="block italic  mb-2.5">
                 Community
               </span>
               <img
