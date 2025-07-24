@@ -22,32 +22,56 @@
    - Background effects, glows, or visual enhancements not asked for
    - **✅ KEEP IT:** Simple, minimal, exactly what was requested
 
-4. **🔧 BREAKING EXISTING PATTERNS** - NEVER:
-   - Create new animation systems when existing ones work
-   - Bypass established component patterns
-   - Add non-standard CSS classes or approaches
-   - **✅ ALWAYS:** Use existing LuvBox components and patterns
+4. **🔧 BREAKING ESTABLISHED LUVBOX HOUSE STYLING** - NEVER:
+   - Prioritize shadcn/ui component styling over LuvBox house style
+   - Use shadcn/ui components without restyling to match LuvBox design
+   - Keep minimal/flat styling when LuvBox house style has gradients/shadows
+   - **✅ ALWAYS:** Apply LuvBox house style (/styles/) over shadcn/ui defaults
 
 5. **⚡ DEVELOPMENT SERVER** - NEVER:
    - Run `npm run dev` without checking if server exists
    - Start multiple servers on same port
    - **✅ ALWAYS:** Use `npm run dev:check` (smart start)
 
+### **🎯 COMPONENT STYLING PRIORITY ORDER - CRITICAL:**
+
+**HIGHEST PRIORITY:** LuvBox house style (/styles/) consistency
+1. **Use LuvBox CSS classes FIRST** (.luvmap-button, .form-button-primary, etc.)
+2. **Restyle shadcn/ui components** to match LuvBox house style when using them
+3. **Prioritize gradients, shadows, LuvBox visual identity** over flat shadcn/ui defaults
+4. **Use `/styles/` as the source of truth** for visual design
+5. **Only use shadcn/ui for behavior/structure**, restyle for LuvBox appearance
+
+**LOWER PRIORITY:** shadcn/ui component defaults (must be restyled to LuvBox house style)
+
+### **📋 MANDATORY COMPONENT AUDIT STEPS:**
+Before changing any component:
+- [ ] Does this follow LuvBox house style (/styles/) visual design?
+- [ ] Are shadcn/ui components being restyled to match LuvBox appearance?
+- [ ] Does the component use LuvBox gradients, shadows, and visual identity?
+- [ ] Does the component use `var(--color-name)` CSS variables consistently?
+- [ ] Would applying LuvBox styling improve visual consistency?
+
 ### **🎯 BEFORE EVERY CODE CHANGE - ASK:**
 - [ ] Am I using `var(--color-name)` for ALL colors?
 - [ ] Did the user explicitly ask for this complexity?
 - [ ] Am I presenting options or implementing without permission?
-- [ ] Can I use existing components instead of creating new ones?
+- [ ] Can I use /assets/ui/ components instead of custom styling?
+- [ ] Am I removing legacy CSS classes that conflict with component defaults?
 - [ ] Should I check if dev server is running before starting new one?
 
 ### **🔍 MANDATORY VALIDATION STEPS:**
 1. **Color Check:** Search your code for `rgba(`, `#`, `rgb(`, `hsl(` - If found, STOP and use CSS variables
-2. **Permission Check:** If user said "options" or "how can we", present choices - DO NOT implement
-3. **Complexity Check:** Count new files/hooks being created - If >1 for simple task, STOP and simplify
-4. **Pattern Check:** Grep existing codebase for similar solutions - Use existing patterns first
+2. **Component Check:** Search for shadcn/ui components without LuvBox styling - MUST restyle to house style
+3. **Permission Check:** If user said "options" or "how can we", present choices - DO NOT implement
+4. **Complexity Check:** Count new files/hooks being created - If >1 for simple task, STOP and simplify
+5. **Pattern Check:** Grep existing codebase for similar solutions - Use LuvBox house style patterns first
 
 ### **🚫 INSTANT FAIL CONDITIONS:**
 - Any hardcoded color value (automatic violation)
+- Using shadcn/ui components without restyling to LuvBox house style
+- Prioritizing flat/minimal styling over LuvBox gradients and visual identity
+- Implementing when user requested options/choices
 - Implementing when user asked for "options" or "ways to"
 - Creating new animation systems when LuvBox ones exist
 - Adding visual effects not explicitly requested
@@ -66,8 +90,8 @@
 | `color`, `styling`, `hex`, `background` | [🎨 Color System](#-color-system-standards) | Use `var(--color-name)`, never hardcoded colors |
 | `animation`, `motion`, `scroll`, `fade`, `slide` | [🎬 Animation Standards](#-animation--motion-standards) | Use `<AnimatedSection>`, respect `prefers-reduced-motion` |
 | `font`, `text`, `typography`, `size` | [🔤 Typography](#-typography-system-standards) | Use `text-app-*` or `text-web-*` classes |
-| `form`, `input`, `button`, `UI`, `interface`, `height` | [🎯 UI & Form Standards](#-ui--form-standards) | 40px+ minimum height, generous sizing, accessibility-first |
-| `component`, `create`, `new`, `build` | [🧩 Component Development](#-component-development-standards) | Follow template, use TypeScript, barrel exports |
+| `form`, `input`, `button`, `UI`, `interface`, `height` | [🎯 UI & Form Standards](#-ui--form-standards) + [📘 Component Styling Guide](COMPONENT_STYLING_GUIDE.md) | 48px minimum height, use Button component, consistent styling |
+| `component`, `create`, `new`, `build` | [🧩 Component Development](#-component-development-standards) + [📘 Component Styling Guide](COMPONENT_STYLING_GUIDE.md) | Follow template, use TypeScript, consistent styling patterns |
 | `dev server`, `npm run`, `port`, `terminal` | [⚡ Development Server](#-development-server-standards) | Check existing server first, use smart restart commands |
 | `folder`, `import`, `path`, `organize` | [📁 Folder Structure](#-folder-structure-standards) | `shared/` for reusable, `app/` vs `website/` specific |
 | `css`, `styles`, `class`, `globals` | [📝 CSS Organization](#-css-organization-standards) | Use CSS variables, follow naming conventions |
@@ -78,18 +102,22 @@
 
 #### **"I need to style something"**
 ```
-1. Is it a color? → Use var(--color-name) from Color System
-2. Is it text? → Use text-app-* or text-web-* from Typography  
-3. Is it layout? → Check existing components first
-4. Is it animation? → Use AnimatedSection from Animation Standards
+1. Is it a button/form/modal? → Use LuvBox house style (.luvmap-button, .form-button-primary, etc.) FIRST
+2. If using shadcn/ui components → MUST restyle to match LuvBox visual identity  
+3. Is it a color? → Use var(--color-name) from Color System
+4. Is it text? → Use text-app-* or text-web-* from Typography  
+5. Is it layout? → Follow LuvBox house style, ensure gradients/shadows match
+6. Is it animation? → Use AnimatedSection from Animation Standards
 ```
 
 #### **"I need to create something"**
 ```
-1. Does it already exist? → Check shared/components first
-2. Is it reusable? → Put in shared/components  
-3. Is it app-specific? → Put in app/components
-4. Is it website-specific? → Put in website/components
+1. Does LuvBox house style already have it? → Use .luvmap-*, .form-*, .modal-* classes first
+2. Do I need shadcn/ui behavior? → Use component but restyle to LuvBox appearance
+3. Does it already exist in shared/components? → Extend with LuvBox styling  
+4. Is it reusable? → Put in shared/components with LuvBox house style
+5. Is it app-specific? → Put in app/components, use LuvBox visual identity
+6. Is it website-specific? → Put in website/components, follow LuvBox design system
 ```
 
 #### **"User wants animation"**
@@ -276,6 +304,21 @@ import { CONTENT } from '@/content';
 ✅ PascalCase.tsx        → Component file names
 ```
 
+#### Documentation Organization
+```
+✅ README.md            → Keep in project root (main project info)
+✅ docs/                → All development documentation
+✅ docs/DEVELOPER_HANDBOOK.md → Primary development guide
+❌ Root-level .md files → Move to docs/ (except README.md)
+
+Examples:
+✅ docs/IMPLEMENTATION_NOTES.md
+✅ docs/REFACTOR_SUMMARY.md  
+✅ docs/ARCHITECTURE_DECISIONS.md
+❌ CUBE_REFACTOR_SUMMARY.md (in root)
+❌ IMPLEMENTATION_NOTES.md (in root)
+```
+
 ### 🚨 Common Gotchas - Check These First
 - ❌ **Never use hardcoded colors** (`#ffffff`, `bg-blue-500`)
 - ❌ **Never use hardcoded fonts** (`font-family: Arial`)
@@ -294,10 +337,12 @@ import { CONTENT } from '@/content';
 4. **Reference handbook sections** - Point to relevant documentation
 
 #### **WHEN user requests styling:**
-1. **Colors**: Use `var(--color-name)` from Color System cheat sheet
-2. **Text**: Use `text-app-*` or `text-web-*` classes  
-3. **Animation**: Use `<AnimatedSection>` components only
-4. **Layout**: Check if similar component exists first
+1. **LuvBox House Style**: Use `/styles/` classes first (.luvmap-button, .form-*, .modal-*, etc.)
+2. **Colors**: Use `var(--color-name)` from Color System cheat sheet
+3. **Text**: Use `text-app-*` or `text-web-*` classes  
+4. **Animation**: Use `<AnimatedSection>` components only
+5. **shadcn/ui**: If using, MUST restyle to match LuvBox visual identity (gradients, shadows, etc.)
+6. **Layout**: Follow LuvBox house style, ensure visual consistency
 
 #### **WHEN user requests new component:**
 1. **Location**: Determine shared/ vs app/ vs website/ placement
@@ -316,6 +361,20 @@ import { CONTENT } from '@/content';
 - New successful patterns emerge that should be documented
 - Existing patterns prove insufficient or limiting
 - Performance or accessibility requirements evolve
+
+#### **COMPONENT STYLING MIGRATION PRIORITY:**
+When encountering any components (shadcn/ui or legacy):
+1. **IMMEDIATE ACTION:** Apply LuvBox house style from `/styles/` over any other styling
+2. **PRESERVE:** shadcn/ui component behavior and accessibility features
+3. **RESTYLE:** Visual appearance to match LuvBox gradients, shadows, visual identity
+4. **REPLACE:** Flat/minimal styling with LuvBox rich visual design
+5. **DOCUMENT:** Update this handbook if new LuvBox styling patterns emerge
+
+**LuvBox House Style Priority:**
+- `.luvmap-button` with gradients/shadows → Keep over flat shadcn/ui buttons
+- `.form-button-primary` with LuvBox styling → Keep over minimal button variants
+- `.modal-*` classes with LuvBox design → Apply to shadcn/ui Dialog components
+- Custom styling that matches LuvBox visual identity → Prioritize over external defaults
 
 ### 📋 Before You Start Checklist
 - [ ] I know which section(s) to read for my task
@@ -1389,12 +1448,14 @@ Always reference these files before making changes:
 ## 🎯 Quick Reference
 
 ### Before Writing Any Code
-1. Does this component already exist?
-2. Am I using the established color system?
-3. Am I using the established typography system?
-4. Am I using the content management system?
-5. Am I following the folder structure?
-6. Am I using proper TypeScript types?
+1. Does this follow LuvBox house style (/styles/) visual design?
+2. If using shadcn/ui, am I restyling it to match LuvBox appearance?
+3. Am I prioritizing LuvBox gradients/shadows over flat styling?
+4. Am I using the established color system?
+5. Am I using the established typography system?
+6. Am I using the content management system?
+7. Am I following the folder structure?
+8. Am I using proper TypeScript types?
 
 ### When in Doubt
 - Check existing similar components

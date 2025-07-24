@@ -1,7 +1,7 @@
 import { RELATIONSHIP_AREAS } from '@/content/LuvBoxContentLogic';
 import { EqualizerArea, EqualizerScores } from '@/shared/types/storage';
 import React from 'react';
-import DealbreakerSlider from './DealbreakerSlider';
+import DealbreakerSlider from '../components/DealbreakerSlider';
 
 interface DealbreakerSlidersProps {
   scores: EqualizerScores;

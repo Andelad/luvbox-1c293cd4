@@ -12,12 +12,12 @@ export { default as SimpleUserCreator } from './SimpleUserCreator';
 export { default as StaggeredAnimatedSection } from './StaggeredAnimatedSection';
 export { default as UserRegistrationDemo } from './UserRegistrationDemo';
 
-// UI Components from assets/ui
-export { Badge } from '../../assets/ui/badge';
-export { Button as UIButton } from '../../assets/ui/button';
-export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../assets/ui/card';
-export { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger } from '../../assets/ui/dialog';
-export { Input } from '../../assets/ui/input';
-export { Label } from '../../assets/ui/label';
-export { Separator } from '../../assets/ui/separator';
+// UI Components from elements
+export { Badge } from '../../elements/badge';
+export { Button as UIButton } from '../../elements/button';
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../elements/card';
+export { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTitle, DialogTrigger } from '../../elements/dialog';
+export { Input } from '../../elements/input';
+export { Label } from '../../elements/label';
+export { Separator } from '../../elements/separator';
 

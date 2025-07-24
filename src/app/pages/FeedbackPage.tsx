@@ -1,11 +1,12 @@
 import { PageHeader } from '@/app/components';
+import { Button } from '@/elements/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/assets/ui/select';
+} from '@/elements/select';
 import { CONTENT } from '@/content';
 import React, { useState } from 'react';
 
@@ -66,18 +67,11 @@ export default function FeedbackPage() {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Feedback Type Selection */}
             <div className="space-y-4">
-              <label className="text-lg font-medium" style={{ color: 'var(--lb-black-800)' }}>
+              <label className="form-label-large">
                 What kind of feedback do you have?
               </label>
               <Select value={feedbackType} onValueChange={(value: FeedbackType) => setFeedbackType(value)}>
-                <SelectTrigger
-                  className="w-full text-lg"
-                  style={{
-                    height: '48px',
-                    border: `2px solid ${feedbackType ? 'var(--purple-500)' : 'var(--lb-black-200)'}`,
-                    backgroundColor: 'var(--lb-black-0)'
-                  }}
-                >
+                <SelectTrigger className="form-select">
                   <div className="flex items-center gap-3">
                     {feedbackType === 'like' && <span className="text-lg">😊</span>}
                     {feedbackType === 'dislike' && <span className="text-lg">😞</span>}
@@ -118,47 +112,37 @@ export default function FeedbackPage() {
             {/* Conditional Feedback Text Area */}
             {feedbackType && (
               <div className="space-y-4 animate-in slide-in-from-top-2 duration-300">
-                <label className="text-lg font-medium" style={{ color: 'var(--lb-black-800)' }}>
+                <label className="form-label-large">
                   {getFeedbackPrompt()}
                 </label>
                 <textarea
                   value={feedbackText}
                   onChange={(e) => setFeedbackText(e.target.value)}
-                  className="w-full min-h-[160px] p-4 rounded-lg resize-none text-lg focus:outline-none focus:ring-3 focus:ring-purple-200"
-                  style={{
-                    border: '2px solid var(--lb-black-200)',
-                    backgroundColor: 'var(--lb-black-0)'
-                  }}
+                  className="form-textarea"
                   placeholder={getFeedbackPrompt()}
                   rows={6}
                 />
               </div>
             )}
 
-            {/* Support Link */}
-            <div className="flex items-center justify-between pt-6">
-              <button
+            {/* Support Link and Submit Button */}
+            <div className="modal-footer">
+              <Button
                 type="button"
-                className="text-lg underline hover:no-underline transition-all"
-                style={{ color: 'var(--lb-black-600)' }}
+                variant="link"
                 onClick={() => window.open('mailto:support@luvbox.com', '_blank')}
               >
                 Have an issue for support?
-              </button>
+              </Button>
 
-              {/* Submit Button */}
-              <button
+              <Button
                 type="submit"
+                variant="primary"
+                size="large"
                 disabled={!feedbackType || !feedbackText.trim()}
-                className="px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{
-                  minHeight: '48px',
-                  backgroundColor: 'var(--purple-500)',
-                  color: 'var(--lb-black-0)'
-                }}
               >
                 Submit Feedback
-              </button>
+              </Button>
             </div>
           </form>
         </div>

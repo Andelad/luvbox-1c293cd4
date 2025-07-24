@@ -1,14 +1,16 @@
-import DiagnosticSection from '@/app/components/DiagnosticSection';
+import DiagnosticSection from '@/app/widgets/DiagnosticSection';
 import { AnimatedSection } from '@/shared/components';
+import {
+  TickerTape,
+  WhoSection
+} from '@/website/components';
 import {
   HeroSection,
   MapSection,
   StaggeredSection,
   StorySection,
   TestimonialSection,
-  TickerTape,
-  WhoSection
-} from '@/website/components';
+} from '@/website/sections';
 import type { PageType } from '../../shared/types/app';
 
 interface HomePageProps {

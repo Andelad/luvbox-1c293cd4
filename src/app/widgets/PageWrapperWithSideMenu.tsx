@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import PageSideMenu from './PageSideMenu';
+import React, { useEffect, useState } from 'react';
+import PageSideMenu from '../components/PageSideMenu';
 
 interface MenuItem {
   id: string;
@@ -18,9 +18,9 @@ interface PageWrapperWithSideMenuProps {
   defaultOpenOnLargeScreen?: boolean;
 }
 
-export default function PageWrapperWithSideMenu({ 
-  children, 
-  title, 
+export default function PageWrapperWithSideMenu({
+  children,
+  title,
   sideMenuContent,
   className = "page-wrapper",
   menuItems,
@@ -29,7 +29,7 @@ export default function PageWrapperWithSideMenu({
   defaultOpenOnLargeScreen = false
 }: PageWrapperWithSideMenuProps) {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
-  
+
   useEffect(() => {
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth >= 1024);
@@ -41,15 +41,15 @@ export default function PageWrapperWithSideMenu({
   return (
     <div className={className}>
       <div style={{ position: 'relative', height: '100%' }}>
-        <PageSideMenu 
-          title={title} 
+        <PageSideMenu
+          title={title}
           content={sideMenuContent}
           menuItems={menuItems}
           activeMenuItem={activeMenuItem}
           onMenuItemChange={onMenuItemChange}
           defaultOpenOnLargeScreen={defaultOpenOnLargeScreen}
         />
-        <div 
+        <div
           className="app-content-inner"
           style={{
             // Start with closed margin, let PageSideMenu control it

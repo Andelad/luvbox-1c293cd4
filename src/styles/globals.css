@@ -657,8 +657,8 @@ body {
   font-weight: var(--font-weight-normal);
   color: var(--lb-black-900);
   background-color: var(--lb-black-0);
-  border: 2px solid var(--lb-black-200);
-  border-radius: 0.5rem;
+  border: 1px solid var(--lb-black-200);
+  border-radius: 0.75rem;
   padding: 0.75rem 1rem;
   width: 100%;
   min-height: 48px;
@@ -684,8 +684,8 @@ body {
   font-weight: var(--font-weight-normal);
   color: var(--lb-black-900);
   background-color: var(--lb-black-0);
-  border: 2px solid var(--lb-black-200);
-  border-radius: 0.5rem;
+  border: 1px solid var(--lb-black-200);
+  border-radius: 0.75rem;
   padding: 1rem;
   width: 100%;
   min-height: 160px;

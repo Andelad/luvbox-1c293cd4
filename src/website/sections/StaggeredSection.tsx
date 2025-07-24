@@ -1,7 +1,7 @@
 import { CONTENT } from '@/content';
 import { AnimatedSection } from '@/shared/components';
 import Button from '@/shared/components/Button';
-import FeatureCard from './FeatureCard';
+import FeatureCard from '../components/FeatureCard';
 
 interface StaggeredSectionProps {
   onCTAClick: () => void;

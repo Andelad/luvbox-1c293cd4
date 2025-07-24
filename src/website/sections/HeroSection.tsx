@@ -1,7 +1,7 @@
 import { CONTENT } from '@/content';
 import { AnimatedSection } from '@/shared/components';
 import Button from '@/shared/components/Button';
-import OptimizedCube from './OptimizedCube';
+import OptimizedCube from '../components/OptimizedCube';
 
 interface HeroSectionProps {
   onCTAClick: () => void;

@@ -1,5 +1,6 @@
-import { DealbreakerSliders } from '@/app/components';
+import { DealbreakerSliders } from '@/app/widgets';
 import { CONTENT } from '@/content';
+import { Button } from '@/elements/button';
 import { useAuth, useUser } from '@/shared/lib/storage';
 import { EqualizerArea, EqualizerScores, createEqualizerScores } from '@/shared/types/storage';
 import { useEffect, useState } from 'react';
@@ -109,7 +110,7 @@ const SettingsPage: React.FC = () => {
 
       <div className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-app-label text-[var(--lb-black-700)] mb-2">
+          <label htmlFor="name" className="form-label">
             {content.profile.name}
           </label>
           <input
@@ -117,13 +118,13 @@ const SettingsPage: React.FC = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="form-input"
             placeholder={content.profile.placeholders.name}
           />
         </div>
 
         <div>
-          <label htmlFor="dateOfBirth" className="block text-app-label text-[var(--lb-black-700)] mb-2">
+          <label htmlFor="dateOfBirth" className="form-label">
             {content.profile.dateOfBirth}
           </label>
           <input
@@ -131,17 +132,18 @@ const SettingsPage: React.FC = () => {
             id="dateOfBirth"
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="form-input"
           />
         </div>
 
         {user ? (
-          <button
+          <Button
+            variant="primary"
+            size="large"
             onClick={handleSaveProfile}
-            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
           >
             Save Profile
-          </button>
+          </Button>
         ) : (
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-[var(--blue-800)] text-app-body">
@@ -164,16 +166,18 @@ const SettingsPage: React.FC = () => {
           </p>
 
           {/* Retake Questionnaire Button */}
-          <button
+          <Button
+            variant="outline"
+            size="large"
             onClick={() => {
               if ((window as any).retakeQuestionnaire) {
                 (window as any).retakeQuestionnaire();
               }
             }}
-            className="mb-4 px-4 py-2 bg-[var(--lime-500)] text-[var(--lb-black-900)] rounded-md hover:bg-[var(--lime-600)] focus:outline-none focus:ring-2 focus:ring-[var(--lime-500)] focus:ring-offset-2 transition-colors text-app-button"
+            className="mb-4"
           >
             Retake Questionnaire
-          </button>
+          </Button>
         </div>
 
         <div className="space-y-6">
@@ -183,12 +187,13 @@ const SettingsPage: React.FC = () => {
             disabled={false}
           />
 
-          <button
+          <Button
+            variant="primary"
+            size="large"
             onClick={handleSaveDealbreakers}
-            className="px-6 py-2 bg-[var(--blue-500)] text-[var(--lb-black-0)] rounded-md hover:bg-[var(--blue-600)] focus:outline-none focus:ring-2 focus:ring-[var(--blue-500)] focus:ring-offset-2 transition-colors text-app-button"
           >
             Save Dealbreaker Lines
-          </button>
+          </Button>
 
           {!user && (
             <div className="bg-[var(--blue-50)] border border-[var(--blue-200)] rounded-lg p-4 mt-4">

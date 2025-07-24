@@ -7,7 +7,7 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle
-} from '../../assets/ui/alert-dialog';
+} from '../../elements/alert-dialog';
 
 interface QuestionnaireChoiceDialogProps {
     isOpen: boolean;
@@ -24,22 +24,17 @@ export default function QuestionnaireChoiceDialog({
 }: QuestionnaireChoiceDialogProps) {
     return (
         <AlertDialog open={isOpen}>
-            <AlertDialogContent
-                className="sm:max-w-[700px] p-8 questionnaire-choice-dialog"
-            >
-                <AlertDialogHeader className="space-y-6">
-                    <AlertDialogTitle
-                        className="text-2xl font-semibold text-center"
-                        style={{ color: 'var(--lb-black-900)' }}
-                    >
+            <AlertDialogContent className="questionnaire-choice-dialog sm:max-w-[700px] p-8">
+                <AlertDialogHeader className="modal-header">
+                    <AlertDialogTitle className="modal-title">
                         🎉 Welcome Back!
                     </AlertDialogTitle>
-                    <AlertDialogDescription className="space-y-6 text-lg" style={{ color: 'var(--lb-black-700)' }}>
-                        <p className="text-lg leading-relaxed">
+                    <AlertDialogDescription className="modal-description space-y-6">
+                        <p>
                             Great news! Your dealbreaker preferences have been saved locally on this device.
                         </p>
                         {hasScores && (
-                            <p className="text-lg leading-relaxed">
+                            <p>
                                 Your personalized settings are ready to use in the app, helping you identify
                                 compatibility issues based on your relationship priorities.
                             </p>
@@ -60,20 +55,14 @@ export default function QuestionnaireChoiceDialog({
                         </div>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
-                <AlertDialogFooter className="flex gap-6 pt-8">
+                <AlertDialogFooter className="modal-footer">
                     <AlertDialogCancel
                         onClick={onRecomplete}
-                        className="form-button-secondary min-h-[48px] px-8 py-4 text-lg font-semibold"
                     >
                         Retake Questionnaire
                     </AlertDialogCancel>
                     <AlertDialogAction
                         onClick={onUseExisting}
-                        className="form-button-primary min-h-[48px] px-8 py-4 text-lg font-semibold"
-                        style={{
-                            backgroundColor: 'var(--success-green-300)',
-                            color: 'var(--lb-black-900)'
-                        }}
                     >
                         Continue to App
                     </AlertDialogAction>

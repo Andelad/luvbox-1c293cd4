@@ -1,4 +1,4 @@
-import LightCarousel from './LightCarousel';
+import LightCarousel from '../components/LightCarousel';
 
 export default function TestimonialSection() {
   const testimonials = [

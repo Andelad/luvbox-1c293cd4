@@ -1,5 +1,5 @@
-import { Button } from "../../assets/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../../assets/ui/dialog";
+import { Button } from "../../elements/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../../elements/dialog";
 
 interface ExitAppDialogProps {
   isOpen: boolean;
@@ -10,31 +10,25 @@ interface ExitAppDialogProps {
 export default function ExitAppDialog({ isOpen, onExit, onStay }: ExitAppDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onStay}>
-      <DialogContent
-        className="max-w-md"
-        style={{
-          backgroundColor: 'var(--lb-black-0)',
-          borderColor: 'var(--lb-black-200)',
-          color: 'var(--lb-black-900)',
-        }}
-      >
-        <DialogHeader className="space-y-4">
-          <DialogTitle className="text-[var(--lb-black-900)] text-2xl font-semibold text-center">Return to Website?</DialogTitle>
-          <DialogDescription className="text-[var(--lb-black-600)] text-lg leading-relaxed text-center">
+      <DialogContent className="modal-content max-w-md">
+        <DialogHeader className="modal-header">
+          <DialogTitle className="modal-title">Return to Website?</DialogTitle>
+          <DialogDescription className="modal-description">
             Are you sure you want to exit the app and return to the website home page?
           </DialogDescription>
         </DialogHeader>
-        <div className="flex gap-6 justify-center pt-8">
+        <div className="modal-footer">
           <Button
-            variant="outline"
+            variant="secondary"
+            size="large"
             onClick={onStay}
-            className="border-[var(--lb-black-300)] text-[var(--lb-black-700)] hover:bg-[var(--lb-black-100)] hover:text-[var(--lb-black-900)] text-lg font-semibold min-h-[48px] px-8 py-4"
           >
             Stay in App
           </Button>
           <Button
+            variant="primary"
+            size="large"
             onClick={onExit}
-            className="bg-purple-300 text-purple-900 hover:bg-purple-400 text-lg font-semibold min-h-[48px] px-8 py-4"
           >
             Exit to Website
           </Button>
