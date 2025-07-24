@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from 'react';
 import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
 import { AnimatedSection } from '@/shared/components';
-import { useEffect, useState } from 'react';
 
 interface WebsiteHeaderProps {
   onNavigate: (page: string) => void;
