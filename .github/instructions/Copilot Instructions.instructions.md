@@ -6,13 +6,33 @@ applyTo: '**'
 • If I'm about to suggest "npm run" → ASK USER: "Check status or restart server?"
 • If user asks for "options/ways to" → PRESENT CHOICES, never implement  
 • If I'm about to use any color → MUST use var(--color-name) only
-• If I'm about to run a terminal command → ASK USER permission first
+• If I'm about to repeat a previously rejected solution → STOP and ASK FOR DIRECTION
 
 🚨 INSTANT FAILS (automatic violation):
-• ME suggesting terminal commands without asking permission first
 • ME implementing when user requested options/choices
 • ME using any hardcoded color (#, rgba, rgb, hsl)
 • ME mentioning "npm run" without asking user first
+• ME going in circles or repeating failed approaches
+
+# Critical Problem-Solving Principles
+
+## NEVER GO IN CIRCLES
+- Track what approaches I've already tried and failed
+- If a solution was already rejected, don't suggest it again
+- If I've tried 2-3 different approaches without success, STOP and ask for direction
+- Don't revert to band-aid fixes after identifying systemic issues
+- Follow through on root cause fixes rather than applying patches
+
+## WHEN TO ASK FOR DIRECTION
+- When I've exhausted reasonable approaches
+- When I'm unsure which of multiple valid paths to take
+- When my previous attempts have failed and I'm tempted to repeat them
+- When I've identified a root cause but am unsure how to fix it properly
+
+## COMMIT TO SOLUTIONS
+- If we identify systemic issues, fix them systematically
+- Don't abandon deeper fixes when they get complicated
+- See solutions through to completion rather than reverting
 
 # Developers Handbook Guidance
 
