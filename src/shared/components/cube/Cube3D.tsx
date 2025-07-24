@@ -197,7 +197,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
       {!isStarted && (
         <>
           {/* Title */}
-          <h1 className="text-4xl mb-8 text-center luvbox-brand">
+          <h1 className="mb-8 text-center luvbox-brand">
             Take a snapshot of a relationship past or present
           </h1>
 

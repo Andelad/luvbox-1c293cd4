@@ -36,7 +36,7 @@ const ScriptsPage: React.FC = () => {
                         </p>
 
                         <div className="mt-8">
-                            <p className="text-sm text-muted-foreground italic">
+                            <p >
                                 Complete the dealbreakers assessment and narrative ranking to see your personalized results.
                             </p>
                         </div>

@@ -55,10 +55,10 @@ export default function FeedbackPage() {
         <div className="w-full max-w-2xl">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 luvmap-brand" style={{ color: 'var(--lb-black-900)' }}>
+            <h1 className="sm:md:mb-6 luvmap-brand" style={{ color: 'var(--lb-black-900)' }}>
               Your feedback helps us improve the product
             </h1>
-            <p className="text-lg sm:text-xl" style={{ color: 'var(--lb-black-600)' }}>
+            <p  style={{ color: 'var(--lb-black-600)' }}>
               We love hearing from you and actively review all feedback received
             </p>
           </div>
@@ -73,35 +73,35 @@ export default function FeedbackPage() {
               <Select value={feedbackType} onValueChange={(value: FeedbackType) => setFeedbackType(value)}>
                 <SelectTrigger className="form-select">
                   <div className="flex items-center gap-3">
-                    {feedbackType === 'like' && <span className="text-lg">😊</span>}
-                    {feedbackType === 'dislike' && <span className="text-lg">😞</span>}
-                    {feedbackType === 'suggestion' && <span className="text-lg">💡</span>}
-                    {feedbackType === 'help' && <span className="text-lg">🔍</span>}
+                    {feedbackType === 'like' && <span >😊</span>}
+                    {feedbackType === 'dislike' && <span >😞</span>}
+                    {feedbackType === 'suggestion' && <span >💡</span>}
+                    {feedbackType === 'help' && <span >🔍</span>}
                     <SelectValue placeholder="I like something" />
                   </div>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="like">
                     <div className="flex items-center gap-3">
-                      <span className="text-lg">😊</span>
+                      <span >😊</span>
                       <span>I like something</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="dislike">
                     <div className="flex items-center gap-3">
-                      <span className="text-lg">😞</span>
+                      <span >😞</span>
                       <span>I don't like something</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="suggestion">
                     <div className="flex items-center gap-3">
-                      <span className="text-lg">💡</span>
+                      <span >💡</span>
                       <span>I have a suggestion</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="help">
                     <div className="flex items-center gap-3">
-                      <span className="text-lg">🔍</span>
+                      <span >🔍</span>
                       <span>I need help / I'm looking for information</span>
                     </div>
                   </SelectItem>
@@ -149,7 +149,7 @@ export default function FeedbackPage() {
 
         {/* Footer Note */}
         <div className="mt-12 text-center max-w-2xl">
-          <p className="text-sm opacity-60" style={{ color: 'var(--lb-black-600)' }}>
+          <p  style={{ color: 'var(--lb-black-600)' }}>
             {content.footerNote}
           </p>
         </div>

@@ -3,28 +3,28 @@ import LightCarousel from '../components/LightCarousel';
 export default function TestimonialSection() {
   const testimonials = [
     {
-      quote: "LuvBox helped me understand patterns in my relationships that I never noticed before. It's like having a therapist in your pocket.",
-      author: "Sarah M."
+      quote:"LuvBox helped me understand patterns in my relationships that I never noticed before. It's like having a therapist in your pocket.",
+      author:"Sarah M."
     },
     {
-      quote: "I was skeptical at first, but the diagnostic tool really opened my eyes to what I was bringing to my relationships.",
-      author: "Michael T."
+      quote:"I was skeptical at first, but the diagnostic tool really opened my eyes to what I was bringing to my relationships.",
+      author:"Michael T."
     },
     {
-      quote: "The love scripts feature showed me how my past was affecting my present. Game-changing insights.",
-      author: "Jennifer L."
+      quote:"The love scripts feature showed me how my past was affecting my present. Game-changing insights.",
+      author:"Jennifer L."
     },
     {
-      quote: "Finally, a tool that doesn't judge but helps you understand your unique love story. Highly recommend.",
-      author: "David R."
+      quote:"Finally, a tool that doesn't judge but helps you understand your unique love story. Highly recommend.",
+      author:"David R."
     },
     {
-      quote: "LuvBox gave me the clarity I needed to have better conversations with my partner about our future.",
-      author: "Amanda K."
+      quote:"LuvBox gave me the clarity I needed to have better conversations with my partner about our future.",
+      author:"Amanda K."
     },
     {
-      quote: "This app helped me realize what I truly value in a relationship. The insights were eye-opening and practical.",
-      author: "Rachel S."
+      quote:"This app helped me realize what I truly value in a relationship. The insights were eye-opening and practical.",
+      author:"Rachel S."
     }
   ];
 

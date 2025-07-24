@@ -207,29 +207,29 @@ export default function PerformanceMonitor() {
         {/* Real-time Metrics */}
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-blue-50 p-3 rounded-lg">
-            <div className="text-xs text-gray-600">FPS</div>
-            <div className={`text-lg font-semibold ${metrics.fps >= 50 ? 'text-green-600' : metrics.fps >= 30 ? 'text-yellow-600' : 'text-red-600'}`}>
+            <div className="text-gray-600">FPS</div>
+            <div className={`${metrics.fps >= 50 ? 'text-green-600' : metrics.fps >= 30 ? 'text-yellow-600' : 'text-red-600'}`}>
               {metrics.fps}
             </div>
           </div>
           
           <div className="bg-purple-50 p-3 rounded-lg">
-            <div className="text-xs text-gray-600">Memory (MB)</div>
-            <div className={`text-lg font-semibold ${metrics.memoryUsage < 50 ? 'text-green-600' : metrics.memoryUsage < 100 ? 'text-yellow-600' : 'text-red-600'}`}>
+            <div className="text-gray-600">Memory (MB)</div>
+            <div className={`${metrics.memoryUsage < 50 ? 'text-green-600' : metrics.memoryUsage < 100 ? 'text-yellow-600' : 'text-red-600'}`}>
               {metrics.memoryUsage.toFixed(1)}
             </div>
           </div>
           
           <div className="bg-orange-50 p-3 rounded-lg">
-            <div className="text-xs text-gray-600">DOM Elements</div>
-            <div className="text-lg font-semibold text-gray-800">
+            <div className="text-gray-600">DOM Elements</div>
+            <div className="text-gray-800">
               {metrics.componentCount}
             </div>
           </div>
           
           <div className="bg-green-50 p-3 rounded-lg">
-            <div className="text-xs text-gray-600">LCP (s)</div>
-            <div className={`text-lg font-semibold ${metrics.largestContentfulPaint < 2500 ? 'text-green-600' : 'text-yellow-600'}`}>
+            <div className="text-gray-600">LCP (s)</div>
+            <div className={`${metrics.largestContentfulPaint < 2500 ? 'text-green-600' : 'text-yellow-600'}`}>
               {(metrics.largestContentfulPaint / 1000).toFixed(2)}
             </div>
           </div>
@@ -237,15 +237,15 @@ export default function PerformanceMonitor() {
 
         {/* Web Vitals */}
         <div className="border-t pt-4">
-          <h4 className="font-medium text-gray-800 mb-2">Web Vitals</h4>
+          <h4 className="mb-2">Web Vitals</h4>
           <div className="space-y-2">
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between">
               <span>First Contentful Paint:</span>
               <span className={metrics.firstContentfulPaint < 1800 ? 'text-green-600' : 'text-yellow-600'}>
                 {(metrics.firstContentfulPaint / 1000).toFixed(2)}s
               </span>
             </div>
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between">
               <span>Cumulative Layout Shift:</span>
               <span className={metrics.cumulativeLayoutShift < 0.1 ? 'text-green-600' : 'text-yellow-600'}>
                 {metrics.cumulativeLayoutShift.toFixed(3)}
@@ -256,12 +256,12 @@ export default function PerformanceMonitor() {
 
         {/* Performance Issues */}
         <div className="border-t pt-4">
-          <h4 className="font-medium text-gray-800 mb-2">Performance Analysis</h4>
+          <h4 className="mb-2">Performance Analysis</h4>
           <div className="space-y-2">
             {issues.map((issue, index) => (
               <div
                 key={index}
-                className={`p-2 rounded text-xs ${
+                className={`p-2 rounded ${
                   issue.type === 'error'
                     ? 'bg-red-50 text-red-700 border border-red-200'
                     : issue.type === 'warning'
@@ -269,7 +269,7 @@ export default function PerformanceMonitor() {
                     : 'bg-blue-50 text-blue-700 border border-blue-200'
                 }`}
               >
-                <div className="font-medium">{issue.message}</div>
+                <div >{issue.message}</div>
                 <div className="mt-1 opacity-80">{issue.suggestion}</div>
               </div>
             ))}
@@ -278,8 +278,8 @@ export default function PerformanceMonitor() {
 
         {/* Optimization Status */}
         <div className="border-t pt-4">
-          <h4 className="font-medium text-gray-800 mb-2">Applied Optimizations</h4>
-          <div className="space-y-1 text-xs text-gray-600">
+          <h4 className="mb-2">Applied Optimizations</h4>
+          <div className="space-y-1 text-gray-600">
             <div className="flex items-center">
               <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
               Component splitting (HomePage → 6 sections)

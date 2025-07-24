@@ -10,10 +10,10 @@ export default function ComponentShowcaseSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
                     Component Showcase Overview
                 </h2>
-                <p className="text-lg" style={{ color: 'var(--lb-black-600)' }}>
+                <p  style={{ color: 'var(--lb-black-600)' }}>
                     Design system testing organized by component categories
                 </p>
             </div>
@@ -32,7 +32,7 @@ export default function ComponentShowcaseSection() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <ul className="text-sm space-y-1">
+                        <ul >
                             <li>• Text inputs (email, password, search)</li>
                             <li>• Select dropdowns</li>
                             <li>• Textarea components</li>
@@ -53,7 +53,7 @@ export default function ComponentShowcaseSection() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <ul className="text-sm space-y-1">
+                        <ul >
                             <li>• Buttons (small 40px, large 48px)</li>
                             <li>• Tab components</li>
                             <li>• Toggle buttons</li>
@@ -74,7 +74,7 @@ export default function ComponentShowcaseSection() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <ul className="text-sm space-y-1">
+                        <ul >
                             <li>• Card components</li>
                             <li>• Badge variations</li>
                             <li>• Avatar components</li>
@@ -95,7 +95,7 @@ export default function ComponentShowcaseSection() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <ul className="text-sm space-y-1">
+                        <ul >
                             <li>• Breadcrumb navigation</li>
                             <li>• Dropdown menus</li>
                             <li>• Tooltip components</li>
@@ -116,7 +116,7 @@ export default function ComponentShowcaseSection() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <ul className="text-sm space-y-1">
+                        <ul >
                             <li>• Alert components</li>
                             <li>• Dialog/modal components</li>
                             <li>• Toast notifications</li>
@@ -137,7 +137,7 @@ export default function ComponentShowcaseSection() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <ul className="text-sm space-y-1">
+                        <ul >
                             <li>• Accordion components</li>
                             <li>• Separator elements</li>
                             <li>• Layout containers</li>
@@ -158,19 +158,19 @@ export default function ComponentShowcaseSection() {
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="text-center">
-                            <div className="text-2xl font-bold" style={{ color: 'var(--blue-500)' }}>40px</div>
-                            <div className="text-sm">Form & Interactive Height</div>
+                            <div  style={{ color: 'var(--blue-500)' }}>40px</div>
+                            <div >Form & Interactive Height</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-2xl font-bold" style={{ color: 'var(--success-green-400)' }}>12px</div>
-                            <div className="text-sm">Standard Border Radius</div>
+                            <div  style={{ color: 'var(--success-green-400)' }}>12px</div>
+                            <div >Standard Border Radius</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-2xl font-bold" style={{ color: 'var(--purple-500)' }}>CSS</div>
-                            <div className="text-sm">Design Token System</div>
+                            <div  style={{ color: 'var(--purple-500)' }}>CSS</div>
+                            <div >Design Token System</div>
                         </div>
                     </div>
-                    <p className="text-sm text-center" style={{ color: 'var(--lb-black-600)' }}>
+                    <p  style={{ color: 'var(--lb-black-600)' }}>
                         All components use centralized CSS design tokens for consistent styling across the application.
                     </p>
                 </CardContent>

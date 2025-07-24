@@ -16,7 +16,7 @@ export function Globe() {
             height="24"
             id="mask0_1_585"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"

@@ -27,10 +27,10 @@ export default function LayoutElementsSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
                     Layout Elements
                 </h2>
-                <p className="text-lg" style={{ color: 'var(--lb-black-600)' }}>
+                <p  style={{ color: 'var(--lb-black-600)' }}>
                     Structural components for organizing content and building consistent layouts
                 </p>
             </div>
@@ -46,7 +46,7 @@ export default function LayoutElementsSection() {
                 <CardContent className="space-y-6">
                     {/* Accordion */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Accordion (Multiple Items)</h4>
+                        <h4 >Accordion (Multiple Items)</h4>
                         <Accordion type="multiple" className="w-full">
                             <AccordionItem value="item-1">
                                 <AccordionTrigger>Getting Started</AccordionTrigger>
@@ -83,14 +83,14 @@ export default function LayoutElementsSection() {
 
                     {/* Collapsible */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Collapsible Section</h4>
+                        <h4 >Collapsible Section</h4>
                         <Collapsible
                             open={isCollapsibleOpen}
                             onOpenChange={setIsCollapsibleOpen}
                             className="w-full space-y-2"
                         >
                             <div className="flex items-center justify-between space-x-4 px-4">
-                                <h4 className="text-sm font-semibold">Project Settings</h4>
+                                <h4 >Project Settings</h4>
                                 <CollapsibleTrigger asChild>
                                     <Button variant="ghost" size="small" className="w-9 p-0">
                                         <ChevronDownIcon className="h-4 w-4" />
@@ -98,17 +98,17 @@ export default function LayoutElementsSection() {
                                     </Button>
                                 </CollapsibleTrigger>
                             </div>
-                            <div className="rounded-md border px-4 py-3 font-mono text-sm">
+                            <div className="rounded-md border px-4 py-3 font-mono">
                                 General configuration and basic project information
                             </div>
                             <CollapsibleContent className="space-y-2">
-                                <div className="rounded-md border px-4 py-3 font-mono text-sm">
+                                <div className="rounded-md border px-4 py-3 font-mono">
                                     Advanced security settings and access controls
                                 </div>
-                                <div className="rounded-md border px-4 py-3 font-mono text-sm">
+                                <div className="rounded-md border px-4 py-3 font-mono">
                                     Integration configurations and API keys
                                 </div>
-                                <div className="rounded-md border px-4 py-3 font-mono text-sm">
+                                <div className="rounded-md border px-4 py-3 font-mono">
                                     Notification preferences and alert settings
                                 </div>
                             </CollapsibleContent>
@@ -137,7 +137,7 @@ export default function LayoutElementsSection() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="text-lg">Project Status</CardTitle>
+                                        <CardTitle >Project Status</CardTitle>
                                     </CardHeader>
                                     <CardContent>
                                         <div className="flex items-center justify-between">
@@ -152,10 +152,10 @@ export default function LayoutElementsSection() {
                                 </Card>
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="text-lg">Recent Activity</CardTitle>
+                                        <CardTitle >Recent Activity</CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                                        <p  style={{ color: 'var(--lb-black-600)' }}>
                                             Latest updates and changes to your project timeline and deliverables.
                                         </p>
                                     </CardContent>
@@ -165,7 +165,7 @@ export default function LayoutElementsSection() {
                         <TabsContent value="analytics" className="space-y-4">
                             <Card>
                                 <CardHeader>
-                                    <CardTitle className="text-lg">Performance Metrics</CardTitle>
+                                    <CardTitle >Performance Metrics</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <div className="space-y-4">
@@ -188,11 +188,11 @@ export default function LayoutElementsSection() {
                         <TabsContent value="settings" className="space-y-4">
                             <Card>
                                 <CardHeader>
-                                    <CardTitle className="text-lg">Configuration</CardTitle>
+                                    <CardTitle >Configuration</CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium">Project Name</label>
+                                        <label >Project Name</label>
                                         <input
                                             type="text"
                                             placeholder="Enter project name..."
@@ -200,7 +200,7 @@ export default function LayoutElementsSection() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium">Description</label>
+                                        <label >Description</label>
                                         <textarea
                                             placeholder="Project description..."
                                             className="w-full px-3 py-2 border rounded-md"
@@ -213,13 +213,13 @@ export default function LayoutElementsSection() {
                         <TabsContent value="team" className="space-y-4">
                             <Card>
                                 <CardHeader>
-                                    <CardTitle className="text-lg">Team Members</CardTitle>
+                                    <CardTitle >Team Members</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <div className="space-y-3">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center space-x-3">
-                                                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm" style={{ backgroundColor: 'var(--blue-500)' }}>
+                                                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{ backgroundColor: 'var(--blue-500)' }}>
                                                     J
                                                 </div>
                                                 <span>John Smith</span>
@@ -228,7 +228,7 @@ export default function LayoutElementsSection() {
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center space-x-3">
-                                                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm" style={{ backgroundColor: 'var(--success-green-500)' }}>
+                                                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{ backgroundColor: 'var(--success-green-500)' }}>
                                                     S
                                                 </div>
                                                 <span>Sarah Johnson</span>
@@ -253,7 +253,7 @@ export default function LayoutElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-3">
-                        <h4 className="font-medium">Horizontal Panels</h4>
+                        <h4 >Horizontal Panels</h4>
                         <ResizablePanelGroup
                             direction="horizontal"
                             className="max-w-full rounded-lg border"
@@ -262,7 +262,7 @@ export default function LayoutElementsSection() {
                                 <div className="flex h-32 items-center justify-center p-6">
                                     <div className="text-center">
                                         <SidebarIcon className="mx-auto h-6 w-6 mb-2" />
-                                        <span className="text-sm font-medium">Sidebar</span>
+                                        <span >Sidebar</span>
                                     </div>
                                 </div>
                             </ResizablePanel>
@@ -271,7 +271,7 @@ export default function LayoutElementsSection() {
                                 <div className="flex h-32 items-center justify-center p-6">
                                     <div className="text-center">
                                         <LayoutGridIcon className="mx-auto h-6 w-6 mb-2" />
-                                        <span className="text-sm font-medium">Main Content</span>
+                                        <span >Main Content</span>
                                     </div>
                                 </div>
                             </ResizablePanel>
@@ -279,7 +279,7 @@ export default function LayoutElementsSection() {
                     </div>
 
                     <div className="space-y-3">
-                        <h4 className="font-medium">Vertical Panels</h4>
+                        <h4 >Vertical Panels</h4>
                         <ResizablePanelGroup
                             direction="vertical"
                             className="max-w-full rounded-lg border"
@@ -288,7 +288,7 @@ export default function LayoutElementsSection() {
                                 <div className="flex h-24 items-center justify-center p-6">
                                     <div className="text-center">
                                         <PanelLeftIcon className="mx-auto h-6 w-6 mb-2" />
-                                        <span className="text-sm font-medium">Header Panel</span>
+                                        <span >Header Panel</span>
                                     </div>
                                 </div>
                             </ResizablePanel>
@@ -297,7 +297,7 @@ export default function LayoutElementsSection() {
                                 <div className="flex h-24 items-center justify-center p-6">
                                     <div className="text-center">
                                         <GridIcon className="mx-auto h-6 w-6 mb-2" />
-                                        <span className="text-sm font-medium">Content Panel</span>
+                                        <span >Content Panel</span>
                                     </div>
                                 </div>
                             </ResizablePanel>
@@ -318,15 +318,15 @@ export default function LayoutElementsSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Scroll Area */}
                         <div className="space-y-3">
-                            <h4 className="font-medium">Scroll Area</h4>
+                            <h4 >Scroll Area</h4>
                             <ScrollArea className="h-48 w-full rounded-md border p-4">
                                 <div className="space-y-4">
                                     {Array.from({ length: 20 }, (_, i) => (
                                         <div key={i} className="flex items-center space-x-3">
-                                            <div className="w-8 h-8 rounded flex items-center justify-center text-sm" style={{ backgroundColor: 'var(--blue-100)', color: 'var(--blue-700)' }}>
+                                            <div className="w-8 h-8 rounded flex items-center justify-center" style={{ backgroundColor: 'var(--blue-100)', color: 'var(--blue-700)' }}>
                                                 {i + 1}
                                             </div>
-                                            <span className="text-sm">Scrollable item {i + 1} with content</span>
+                                            <span >Scrollable item {i + 1} with content</span>
                                         </div>
                                     ))}
                                 </div>
@@ -335,13 +335,13 @@ export default function LayoutElementsSection() {
 
                         {/* Aspect Ratio */}
                         <div className="space-y-3">
-                            <h4 className="font-medium">Aspect Ratio Container</h4>
+                            <h4 >Aspect Ratio Container</h4>
                             <AspectRatio ratio={16 / 9} className="rounded-md" style={{ backgroundColor: 'var(--lb-black-100)' }}>
                                 <div className="flex h-full items-center justify-center">
                                     <div className="text-center">
                                         <SquareIcon className="mx-auto h-8 w-8 mb-2" style={{ color: 'var(--lb-black-400)' }} />
-                                        <span className="text-sm" style={{ color: 'var(--lb-black-600)' }}>16:9 Aspect Ratio</span>
-                                        <p className="text-xs mt-1" style={{ color: 'var(--lb-black-500)' }}>Responsive container</p>
+                                        <span  style={{ color: 'var(--lb-black-600)' }}>16:9 Aspect Ratio</span>
+                                        <p className="mt-1" style={{ color: 'var(--lb-black-500)' }}>Responsive container</p>
                                     </div>
                                 </div>
                             </AspectRatio>
@@ -360,24 +360,24 @@ export default function LayoutElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 className="font-medium">Horizontal Separators</h4>
+                        <h4 >Horizontal Separators</h4>
                         <div className="space-y-4">
-                            <p className="text-sm">Content above the separator</p>
+                            <p >Content above the separator</p>
                             <Separator />
-                            <p className="text-sm">Content below the separator</p>
+                            <p >Content below the separator</p>
                             <Separator className="my-6" />
-                            <p className="text-sm">Another section with spacing</p>
+                            <p >Another section with spacing</p>
                         </div>
                     </div>
 
                     <div className="space-y-4">
-                        <h4 className="font-medium">Vertical Separators</h4>
+                        <h4 >Vertical Separators</h4>
                         <div className="flex items-center space-x-4">
-                            <span className="text-sm">Left content</span>
+                            <span >Left content</span>
                             <Separator orientation="vertical" className="h-8" />
-                            <span className="text-sm">Middle content</span>
+                            <span >Middle content</span>
                             <Separator orientation="vertical" className="h-8" />
-                            <span className="text-sm">Right content</span>
+                            <span >Right content</span>
                         </div>
                     </div>
                 </CardContent>
@@ -393,22 +393,22 @@ export default function LayoutElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 className="font-medium">Interactive Element Examples</h4>
+                        <h4 >Interactive Element Examples</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {/* Interactive Menu Items */}
                             <div className="space-y-2">
-                                <h5 className="text-sm font-medium">Menu Items (Interactive)</h5>
+                                <h5 >Menu Items (Interactive)</h5>
                                 <div className="border rounded-lg p-2 space-y-1">
-                                    <div className="luvbox-menu-item px-3 py-2 rounded-md text-sm">
+                                    <div className="luvbox-menu-item px-3 py-2 rounded-md">
                                         Dashboard Overview
                                     </div>
-                                    <div className="luvbox-menu-item px-3 py-2 rounded-md text-sm" data-state="active">
+                                    <div className="luvbox-menu-item px-3 py-2 rounded-md" data-state="active">
                                         Current Page (Active)
                                     </div>
-                                    <div className="luvbox-menu-item px-3 py-2 rounded-md text-sm">
+                                    <div className="luvbox-menu-item px-3 py-2 rounded-md">
                                         Settings & Preferences
                                     </div>
-                                    <div className="luvbox-menu-item px-3 py-2 rounded-md text-sm">
+                                    <div className="luvbox-menu-item px-3 py-2 rounded-md">
                                         User Profile
                                     </div>
                                 </div>
@@ -416,12 +416,12 @@ export default function LayoutElementsSection() {
 
                             {/* Interactive Buttons */}
                             <div className="space-y-2">
-                                <h5 className="text-sm font-medium">Interactive Buttons</h5>
+                                <h5 >Interactive Buttons</h5>
                                 <div className="border rounded-lg p-4 space-y-2">
-                                    <div className="luvbox-interactive-hover px-4 py-2 rounded-md text-sm border cursor-pointer">
+                                    <div className="luvbox-interactive-hover px-4 py-2 rounded-md border cursor-pointer">
                                         Hover for Effect
                                     </div>
-                                    <div className="luvbox-interactive-active px-4 py-2 rounded-md text-sm border">
+                                    <div className="luvbox-interactive-active px-4 py-2 rounded-md border">
                                         Active State
                                     </div>
                                     <Button variant="ghost" className="w-full">
@@ -435,35 +435,35 @@ export default function LayoutElementsSection() {
                     <Separator />
 
                     <div className="space-y-4">
-                        <h4 className="font-medium">Color Usage Guidelines</h4>
+                        <h4 >Color Usage Guidelines</h4>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div className="space-y-2">
-                                <h5 className="text-sm font-medium">Hover State</h5>
+                                <h5 >Hover State</h5>
                                 <div
-                                    className="h-12 rounded-md border flex items-center justify-center text-sm"
+                                    className="h-12 rounded-md border flex items-center justify-center"
                                     style={{ backgroundColor: 'var(--interactive-hover)' }}
                                 >
                                     var(--interactive-hover)
                                 </div>
-                                <p className="text-xs" style={{ color: 'var(--lb-black-500)' }}>
+                                <p  style={{ color: 'var(--lb-black-500)' }}>
                                     Purple 20% opacity - Subtle feedback
                                 </p>
                             </div>
                             <div className="space-y-2">
-                                <h5 className="text-sm font-medium">Active State</h5>
+                                <h5 >Active State</h5>
                                 <div
-                                    className="h-12 rounded-md border flex items-center justify-center text-sm font-semibold"
+                                    className="h-12 rounded-md border flex items-center justify-center"
                                     style={{ backgroundColor: 'var(--interactive-active)' }}
                                 >
                                     var(--interactive-active)
                                 </div>
-                                <p className="text-xs" style={{ color: 'var(--lb-black-500)' }}>
+                                <p  style={{ color: 'var(--lb-black-500)' }}>
                                     Purple 40% opacity - Clear selection
                                 </p>
                             </div>
                             <div className="space-y-2">
-                                <h5 className="text-sm font-medium">Implementation</h5>
-                                <div className="text-xs space-y-1" style={{ color: 'var(--lb-black-600)' }}>
+                                <h5 >Implementation</h5>
+                                <div className="space-y-1" style={{ color: 'var(--lb-black-600)' }}>
                                     <div>✅ Use CSS variables</div>
                                     <div>✅ 0.2s ease transition</div>
                                     <div>✅ Consistent across components</div>
@@ -486,8 +486,8 @@ export default function LayoutElementsSection() {
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <h4 className="font-medium">Interactive States</h4>
-                            <ul className="text-sm space-y-1">
+                            <h4 >Interactive States</h4>
+                            <ul >
                                 <li>• Hover: var(--interactive-hover) - Purple 20% opacity</li>
                                 <li>• Active/Selected: var(--interactive-active) - Purple 40% opacity</li>
                                 <li>• Transition: 0.2s ease for smooth feedback</li>
@@ -495,8 +495,8 @@ export default function LayoutElementsSection() {
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <h4 className="font-medium">Component Standards</h4>
-                            <ul className="text-sm space-y-1">
+                            <h4 >Component Standards</h4>
+                            <ul >
                                 <li>• Border radius: 8px (cards), 6px (elements)</li>
                                 <li>• Accordion trigger height: 48px</li>
                                 <li>• Tab height: 40px</li>
@@ -506,7 +506,7 @@ export default function LayoutElementsSection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                        <p  style={{ color: 'var(--lb-black-600)' }}>
                             All layout elements follow responsive design principles and maintain consistent spacing across breakpoints
                         </p>
                     </div>

@@ -22,7 +22,7 @@ export default function PageWrapperWithSideMenu({
   children,
   title,
   sideMenuContent,
-  className = "page-wrapper",
+  className ="page-wrapper",
   menuItems,
   activeMenuItem,
   onMenuItemChange,

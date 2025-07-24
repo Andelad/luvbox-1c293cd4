@@ -28,7 +28,7 @@ const CloseIcon: React.FC = () => (
 );
 
 export default function PageSideMenu({
-  title = "In this section",
+  title ="In this section",
   content,
   menuItems,
   activeMenuItem,
@@ -220,7 +220,7 @@ export default function PageSideMenu({
             fontWeight: '600',
             color: 'var(--lb-black-800)',
             margin: 0,
-            fontFamily: "'Source Sans 3', sans-serif",
+            fontFamily:"'Source Sans 3', sans-serif",
             lineHeight: '24px', // Match button height for perfect alignment
           }}>
             {title}
@@ -267,7 +267,7 @@ export default function PageSideMenu({
                     backgroundColor: activeMenuItem === item.id ? 'var(--interactive-active)' : 'transparent',
                     color: 'var(--lb-black-800)',
                     fontSize: '14px',
-                    fontFamily: "'Source Sans 3', sans-serif",
+                    fontFamily:"'Source Sans 3', sans-serif",
                     fontWeight: activeMenuItem === item.id ? '600' : '400',
                     textAlign: 'left',
                     cursor: 'pointer',
@@ -301,7 +301,7 @@ export default function PageSideMenu({
               color: 'var(--lb-black-600)',
               opacity: 0.8,
               lineHeight: '1.5',
-              fontFamily: "'Source Sans 3', sans-serif",
+              fontFamily:"'Source Sans 3', sans-serif",
             }}>
               This section contains helpful information and quick actions related to the current page.
             </p>

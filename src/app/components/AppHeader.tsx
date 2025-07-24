@@ -6,7 +6,7 @@ import {
 } from '@/assets/icons';
 import { CONTENT } from '@/content';
 import { useEffect, useState } from 'react';
-import { AccountCircle } from "./SidebarNavigation";
+import { AccountCircle } from"./SidebarNavigation";
 
 // Mobile menu button component
 function MobileMenuButton({ onToggleSidebar, expanded }: { onToggleSidebar: () => void; expanded: boolean }) {

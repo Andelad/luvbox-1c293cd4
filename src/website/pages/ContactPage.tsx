@@ -1,4 +1,4 @@
-import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
+import svgPaths from"@/assets/icons/WebsiteHeaderIcons";
 import { CONTENT } from '@/content';
 
 function Layer1() {

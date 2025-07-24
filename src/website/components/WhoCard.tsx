@@ -18,7 +18,7 @@ const XIcon = () => (
   </svg>
 );
 
-export default function WhoCard({ items, iconType, className = "" }: WhoCardProps) {
+export default function WhoCard({ items, iconType, className ="" }: WhoCardProps) {
   const { elementRef, isInCenter, centerProgress } = useCenterViewport<HTMLDivElement>();
 
   // Calculate dynamic background opacity based on center proximity

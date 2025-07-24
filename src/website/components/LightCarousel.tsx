@@ -75,7 +75,7 @@ export default function LightCarousel({
                 <div className="bg-[rgba(255,255,255,0.1)] rounded-2xl p-8 shadow-[0px_4px_12px_0px_rgba(0,0,0,0.25)] border border-[rgba(61,53,53,0.16)] h-full">
                   <div className="space-y-4">
                     <p className="text-web-body text-[var(--lb-black-800)] italic">
-                      "{item.quote}"
+"{item.quote}"
                     </p>
                     <div className="text-right">
                       <p className="text-web-subheading text-[var(--lb-black-800)]">

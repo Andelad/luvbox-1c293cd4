@@ -32,10 +32,10 @@ export default function FormElementsPage() {
             <div className="max-w-4xl mx-auto space-y-8">
                 {/* Header */}
                 <div className="text-center">
-                    <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                    <h1 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
                         Form Elements
                     </h1>
-                    <p className="text-lg" style={{ color: 'var(--lb-black-600)' }}>
+                    <p  style={{ color: 'var(--lb-black-600)' }}>
                         All form inputs maintain consistent 40px height for uniform user experience
                     </p>
                 </div>
@@ -60,7 +60,7 @@ export default function FormElementsPage() {
                                     onChange={(e) => setInputValue(e.target.value)}
                                     className="luvbox-form-base"
                                 />
-                                <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                                <div  style={{ color: 'var(--lb-black-500)' }}>
                                     Height: 40px • Border radius: 12px
                                 </div>
                             </div>
@@ -123,7 +123,7 @@ export default function FormElementsPage() {
                         </div>
 
                         {/* Character Count Display */}
-                        <div className="text-sm text-center p-4 rounded-lg" style={{ backgroundColor: 'var(--blue-50)', color: 'var(--blue-700)' }}>
+                        <div  style={{ backgroundColor: 'var(--blue-50)', color: 'var(--blue-700)' }}>
                             Current text input character count: {inputValue.length}
                         </div>
                     </CardContent>
@@ -170,7 +170,7 @@ export default function FormElementsPage() {
                         </div>
 
                         {selectValue && (
-                            <div className="text-sm text-center p-4 rounded-lg" style={{ backgroundColor: 'var(--green-50)', color: 'var(--green-700)' }}>
+                            <div  style={{ backgroundColor: 'var(--green-50)', color: 'var(--green-700)' }}>
                                 Selected value: {selectValue}
                             </div>
                         )}
@@ -194,7 +194,7 @@ export default function FormElementsPage() {
                                 onChange={(e) => setTextareaValue(e.target.value)}
                                 className="min-h-32"
                             />
-                            <div className="text-sm flex justify-between" style={{ color: 'var(--lb-black-500)' }}>
+                            <div  style={{ color: 'var(--lb-black-500)' }}>
                                 <span>Character count: {textareaValue.length}</span>
                                 <span>Min height: 128px</span>
                             </div>
@@ -223,7 +223,7 @@ export default function FormElementsPage() {
                                     />
                                     <Label htmlFor="checkbox">Accept terms and conditions</Label>
                                 </div>
-                                <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                                <div  style={{ color: 'var(--lb-black-500)' }}>
                                     Status: {checked ? 'Checked' : 'Unchecked'}
                                 </div>
                             </div>
@@ -239,7 +239,7 @@ export default function FormElementsPage() {
                                     />
                                     <Label htmlFor="switch">Enable notifications</Label>
                                 </div>
-                                <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                                <div  style={{ color: 'var(--lb-black-500)' }}>
                                     Status: {switched ? 'Enabled' : 'Disabled'}
                                 </div>
                             </div>
@@ -261,7 +261,7 @@ export default function FormElementsPage() {
                                         <Label htmlFor="radio3">Option 3</Label>
                                     </div>
                                 </RadioGroup>
-                                <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                                <div  style={{ color: 'var(--lb-black-500)' }}>
                                     Selected: {radioValue}
                                 </div>
                             </div>
@@ -280,8 +280,8 @@ export default function FormElementsPage() {
                     <CardContent className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-3">
-                                <h4 className="font-medium">Input Dimensions</h4>
-                                <ul className="text-sm space-y-1">
+                                <h4 >Input Dimensions</h4>
+                                <ul >
                                     <li>• Height: 40px (all text inputs and selects)</li>
                                     <li>• Border radius: 12px</li>
                                     <li>• Padding: 0 12px</li>
@@ -289,8 +289,8 @@ export default function FormElementsPage() {
                                 </ul>
                             </div>
                             <div className="space-y-3">
-                                <h4 className="font-medium">Visual States</h4>
-                                <ul className="text-sm space-y-1">
+                                <h4 >Visual States</h4>
+                                <ul >
                                     <li>• Focus: Blue ring with 2px offset</li>
                                     <li>• Disabled: 50% opacity, not-allowed cursor</li>
                                     <li>• Error: Red border and focus ring</li>
@@ -300,7 +300,7 @@ export default function FormElementsPage() {
                         </div>
                         <Separator />
                         <div className="text-center">
-                            <p className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                            <p  style={{ color: 'var(--lb-black-600)' }}>
                                 All form elements use the <code>.luvbox-form-base</code> class and design tokens from <code>/src/styles/colors.css</code>
                             </p>
                         </div>

@@ -57,8 +57,8 @@ function AnimatedBubble({ text, delay, position, triangleLeft }: BubbleProps) {
                 {/* Main speech bubble container */}
                 <div className="bg-[var(--success-green-100)] box-border content-stretch flex flex-row gap-2.5 items-center justify-center px-4 py-2 rounded-lg shrink-0 opacity-80 max-w-[200px]">
                     <div className="text-web-mono text-[var(--lb-black-800)] italic tracking-[-0.02em] text-center leading-tight">
-                        <p className="block whitespace-normal text-sm">
-                            "{text}"
+                        <p className="block whitespace-normal">
+"{text}"
                         </p>
                     </div>
                 </div>

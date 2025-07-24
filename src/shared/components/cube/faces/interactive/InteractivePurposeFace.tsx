@@ -13,7 +13,7 @@ const InteractivePurposeFace: React.FC = () => {
             }}
         >
             {/* Example content: replace with interactive or dynamic content as needed */}
-            <span className="text-app-body font-semibold">Purpose Face</span>
+            <span className="text-app-body">Purpose Face</span>
         </div>
     );
 };

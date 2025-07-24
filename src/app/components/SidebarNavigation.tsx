@@ -17,7 +17,7 @@ function DeployedCode() {
             height="24"
             id="mask0_1_581"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"
@@ -56,7 +56,7 @@ function Map() {
             height="24"
             id="mask0_1_573"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"
@@ -95,7 +95,7 @@ function Bookmarks() {
             height="24"
             id="mask0_1_559"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"
@@ -134,7 +134,7 @@ function Diversity4() {
             height="24"
             id="mask0_1_553"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"
@@ -173,7 +173,7 @@ function Tutorial() {
             height="24"
             id="mask0_1_549"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"
@@ -212,7 +212,7 @@ export function AccountCircle() {
             height="24"
             id="mask0_1_545"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"
@@ -251,7 +251,7 @@ function ChatBubble() {
             height="24"
             id="mask0_1_541"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"

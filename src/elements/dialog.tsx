@@ -1,10 +1,10 @@
 "use client";
 
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { XIcon } from "lucide-react";
-import * as React from "react";
+import * as DialogPrimitive from"@radix-ui/react-dialog";
+import { XIcon } from"lucide-react";
+import * as React from"react";
 
-import { cn } from "./utils";
+import { cn } from"./utils";
 
 function Dialog({
   ...props
@@ -42,7 +42,7 @@ const DialogOverlay = React.forwardRef<
     ref={ref}
     data-slot="dialog-overlay"
     className={cn(
-      "luvbox-dialog-overlay data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50",
+"luvbox-dialog-overlay data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50",
       className,
     )}
     {...props}
@@ -60,7 +60,7 @@ const DialogContent = React.forwardRef<
       ref={ref}
       data-slot="dialog-content"
       className={cn(
-        "luvbox-dialog-base fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 p-6 transition-opacity duration-200 sm:max-w-lg data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
+"luvbox-dialog-base fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 p-6 transition-opacity duration-200 sm:max-w-lg data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
         className,
       )}
       onOpenAutoFocus={(e) => e.preventDefault()}
@@ -92,7 +92,7 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="dialog-footer"
       className={cn(
-        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
         className,
       )}
       {...props}
@@ -107,7 +107,7 @@ const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     data-slot="dialog-title"
-    className={cn("text-lg leading-none font-semibold", className)}
+    className={cn("leading-none", className)}
     {...props}
   />
 ));
@@ -120,7 +120,7 @@ const DialogDescription = React.forwardRef<
   <DialogPrimitive.Description
     ref={ref}
     data-slot="dialog-description"
-    className={cn("text-muted-foreground text-sm", className)}
+    className={cn("text-muted-foreground", className)}
     {...props}
   />
 ));

@@ -220,11 +220,11 @@ const SettingsPage: React.FC = () => {
   const renderTypographySection = () => {
     return (
       <div className="max-w-4xl">
-        <h2 className="text-app-3xl font-serif font-semibold text-foreground mb-6">Typography System</h2>
+        <h2 className="text-app-3xl font-serif text-foreground mb-6">Typography System</h2>
 
         {/* App Typography Scale */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif font-semibold text-foreground mb-4">App Typography Scale</h3>
+          <h3 className="text-app-2xl font-serif text-foreground mb-4">App Typography Scale</h3>
           <p className="text-app-base font-sans text-muted-foreground mb-6">
             Compact scale optimized for app interface. Responsive sizing: 14px base mobile → 16px base desktop.
           </p>
@@ -263,7 +263,7 @@ const SettingsPage: React.FC = () => {
 
         {/* Website Typography Scale */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif font-semibold text-foreground mb-4">Website Typography Scale</h3>
+          <h3 className="text-app-2xl font-serif text-foreground mb-4">Website Typography Scale</h3>
           <p className="text-app-base font-sans text-muted-foreground mb-6">
             Generous scale for website content, optimized for reading and marketing. Same responsive system.
           </p>
@@ -306,7 +306,7 @@ const SettingsPage: React.FC = () => {
 
         {/* Monospace Typography Scale */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif font-semibold text-foreground mb-4">Monospace Typography Scale</h3>
+          <h3 className="text-app-2xl font-serif text-foreground mb-4">Monospace Typography Scale</h3>
           <div className="bg-accent/50 p-4 rounded-lg border border-accent mb-6">
             <p className="text-app-base font-sans text-foreground mb-2">
               <strong>Design Rule:</strong> Spline Sans Mono should always be <strong>90%</strong> of the equivalent Source Sans 3 size, while retaining the same line height.
@@ -319,7 +319,7 @@ const SettingsPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* App Monospace Scale */}
             <div>
-              <h4 className="text-app-xl font-serif font-semibold text-foreground mb-4">App Monospace Scale</h4>
+              <h4 className="text-app-xl font-serif text-foreground mb-4">App Monospace Scale</h4>
               <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
                 <div className="flex items-center gap-4 overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-mono-xs</code>
@@ -354,7 +354,7 @@ const SettingsPage: React.FC = () => {
 
             {/* Website Monospace Scale */}
             <div>
-              <h4 className="text-app-xl font-serif font-semibold text-foreground mb-4">Website Monospace Scale</h4>
+              <h4 className="text-app-xl font-serif text-foreground mb-4">Website Monospace Scale</h4>
               <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
                 <div className="flex items-center gap-4 overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-xs</code>
@@ -394,7 +394,7 @@ const SettingsPage: React.FC = () => {
 
           {/* Visual Comparison */}
           <div className="mt-6 bg-background p-6 rounded-lg border border-border">
-            <h5 className="text-app-lg font-serif font-semibold text-foreground mb-4">Visual Size Comparison</h5>
+            <h5 className="text-app-lg font-serif text-foreground mb-4">Visual Size Comparison</h5>
             <div className="space-y-3">
               <div className="flex items-baseline gap-4">
                 <span className="text-app-base font-sans text-foreground">Source Sans 3 (base):</span>
@@ -413,29 +413,29 @@ const SettingsPage: React.FC = () => {
 
         {/* Font Families */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif font-semibold text-foreground mb-4">Font Families</h3>
+          <h3 className="text-app-2xl font-serif text-foreground mb-4">Font Families</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-muted p-6 rounded-lg border border-border">
-              <h4 className="text-app-lg font-serif font-semibold text-foreground mb-3">EB Garamond</h4>
+              <h4 className="text-app-lg font-serif text-foreground mb-3">EB Garamond</h4>
               <p className="text-app-sm font-sans text-muted-foreground mb-4">Serif • Headlines • Display</p>
               <div className="space-y-2">
-                <p className="text-web-lg font-serif font-medium text-foreground">The quick brown fox jumps</p>
+                <p className="text-web-lg font-serif text-foreground">The quick brown fox jumps</p>
                 <p className="text-app-base font-serif text-foreground">Headlines, display text, elegant content</p>
               </div>
             </div>
 
             <div className="bg-muted p-6 rounded-lg border border-border">
-              <h4 className="text-app-lg font-serif font-semibold text-foreground mb-3">Source Sans 3</h4>
+              <h4 className="text-app-lg font-serif text-foreground mb-3">Source Sans 3</h4>
               <p className="text-app-sm font-sans text-muted-foreground mb-4">Sans-serif • Body • UI</p>
               <div className="space-y-2">
-                <p className="text-web-lg font-sans font-medium text-foreground">The quick brown fox jumps</p>
+                <p className="text-web-lg font-sans text-foreground">The quick brown fox jumps</p>
                 <p className="text-app-base font-sans text-foreground">Body text, UI elements, readable content</p>
               </div>
             </div>
 
             <div className="bg-muted p-6 rounded-lg border border-border">
-              <h4 className="text-app-lg font-serif font-semibold text-foreground mb-3">Spline Sans Mono</h4>
+              <h4 className="text-app-lg font-serif text-foreground mb-3">Spline Sans Mono</h4>
               <p className="text-app-sm font-sans text-muted-foreground mb-4">Monospace • Code • Technical</p>
               <div className="space-y-2">
                 <p className="text-web-lg font-mono font-normal text-foreground">const example = 'code';</p>
@@ -447,24 +447,24 @@ const SettingsPage: React.FC = () => {
 
         {/* Semantic Classes */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif font-semibold text-foreground mb-4">Semantic Typography Classes</h3>
+          <h3 className="text-app-2xl font-serif text-foreground mb-4">Semantic Typography Classes</h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* App Semantic */}
             <div>
-              <h4 className="text-app-xl font-serif font-semibold text-foreground mb-4">App Semantic Classes</h4>
+              <h4 className="text-app-xl font-serif text-foreground mb-4">App Semantic Classes</h4>
               <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-app-display</code>
-                  <p className="text-app-display font-serif font-semibold text-foreground truncate">Large titles</p>
+                  <p className="text-app-display font-serif text-foreground truncate">Large titles</p>
                 </div>
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-app-heading</code>
-                  <p className="text-app-heading font-serif font-semibold text-foreground truncate">Section headers</p>
+                  <p className="text-app-heading font-serif text-foreground truncate">Section headers</p>
                 </div>
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-app-subheading</code>
-                  <p className="text-app-subheading font-serif font-medium text-foreground truncate">Subsection headers</p>
+                  <p className="text-app-subheading font-serif text-foreground truncate">Subsection headers</p>
                 </div>
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-app-body</code>
@@ -483,23 +483,23 @@ const SettingsPage: React.FC = () => {
 
             {/* Website Semantic */}
             <div>
-              <h4 className="text-app-xl font-serif font-semibold text-foreground mb-4">Website Semantic Classes</h4>
+              <h4 className="text-app-xl font-serif text-foreground mb-4">Website Semantic Classes</h4>
               <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-web-hero</code>
-                  <p className="text-web-hero font-serif font-semibold text-foreground truncate">Hero headings</p>
+                  <p className="text-web-hero font-serif text-foreground truncate">Hero headings</p>
                 </div>
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-web-display</code>
-                  <p className="text-web-display font-serif font-semibold text-foreground truncate">Large titles</p>
+                  <p className="text-web-display font-serif text-foreground truncate">Large titles</p>
                 </div>
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-web-heading</code>
-                  <p className="text-web-heading font-serif font-semibold text-foreground truncate">Section headers</p>
+                  <p className="text-web-heading font-serif text-foreground truncate">Section headers</p>
                 </div>
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-web-subheading</code>
-                  <p className="text-web-subheading font-serif font-medium text-foreground truncate">Subsection headers</p>
+                  <p className="text-web-subheading font-serif text-foreground truncate">Subsection headers</p>
                 </div>
                 <div className="overflow-hidden">
                   <code className="text-app-code font-mono text-muted-foreground">text-web-body</code>
@@ -520,7 +520,7 @@ const SettingsPage: React.FC = () => {
 
         {/* Responsive Example */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif font-semibold text-foreground mb-4">Responsive Typography</h3>
+          <h3 className="text-app-2xl font-serif text-foreground mb-4">Responsive Typography</h3>
           <div className="bg-accent p-6 rounded-lg border border-border">
             <p className="text-app-base font-sans text-muted-foreground mb-4">
               📱 <strong>Mobile (&lt; 768px):</strong> 14px root font size<br />
@@ -534,7 +534,7 @@ const SettingsPage: React.FC = () => {
 
         {/* Debug Section - Actual computed values */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif font-semibold text-foreground mb-4">Debug: Actual Computed Values</h3>
+          <h3 className="text-app-2xl font-serif text-foreground mb-4">Debug: Actual Computed Values</h3>
           <div className="bg-destructive/10 p-6 rounded-lg border border-destructive/20">
             <p className="text-app-base font-sans text-foreground mb-4">
               Use browser dev tools to inspect these elements and verify actual computed font sizes:
@@ -543,7 +543,7 @@ const SettingsPage: React.FC = () => {
             <div className="space-y-3">
               <div className="p-2 bg-background border border-border rounded">
                 <code className="text-app-code font-mono text-muted-foreground">1rem text:</code>
-                <span className="ml-4 text-base font-sans text-foreground" id="test-1rem">This should be 16px on desktop</span>
+                <span className="ml-4 font-sans text-foreground" id="test-1rem">This should be 16px on desktop</span>
               </div>
 
               <div className="p-2 bg-background border border-border rounded">

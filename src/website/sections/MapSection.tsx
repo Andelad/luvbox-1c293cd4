@@ -49,7 +49,7 @@ export default function MapSection() {
                 transform: 'translateX(-50%)'
               }}
             >
-              <span className="block font-semibold italic text-lg text-[var(--text-color)] mb-2.5">
+              <span className="block italic text-[var(--text-color)] mb-2.5">
                 The LuvBox
               </span>
               <img
@@ -78,7 +78,7 @@ export default function MapSection() {
                 animationDelay: '1.5s'
               }}
             >
-              <span className="block font-semibold italic text-lg text-[var(--text-color)] mb-2.5">
+              <span className="block italic text-[var(--text-color)] mb-2.5">
                 My Scripts
               </span>
               <img
@@ -107,7 +107,7 @@ export default function MapSection() {
                 animationDelay: '3s'
               }}
             >
-              <span className="block font-semibold italic text-lg text-[var(--text-color)] mb-2.5">
+              <span className="block italic text-[var(--text-color)] mb-2.5">
                 Myself
               </span>
               <img
@@ -136,7 +136,7 @@ export default function MapSection() {
                 transform: 'translateX(-50%)'
               }}
             >
-              <span className="block font-semibold italic text-lg text-[var(--text-color)] mb-2.5">
+              <span className="block italic text-[var(--text-color)] mb-2.5">
                 Community
               </span>
               <img

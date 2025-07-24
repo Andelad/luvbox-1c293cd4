@@ -25,10 +25,10 @@ export default function InteractiveElementsPage() {
             <div className="max-w-4xl mx-auto space-y-8">
                 {/* Header */}
                 <div className="text-center">
-                    <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                    <h1 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
                         Interactive Elements
                     </h1>
-                    <p className="text-lg" style={{ color: 'var(--lb-black-600)' }}>
+                    <p  style={{ color: 'var(--lb-black-600)' }}>
                         Buttons, tabs, toggles, and other interactive components with consistent 40px/48px heights
                     </p>
                 </div>
@@ -44,7 +44,7 @@ export default function InteractiveElementsPage() {
                     <CardContent className="space-y-8">
                         {/* Small Buttons */}
                         <div className="space-y-4">
-                            <h4 className="text-md font-medium">Small Buttons (40px)</h4>
+                            <h4 >Small Buttons (40px)</h4>
                             <div className="flex flex-wrap gap-3">
                                 <Button variant="primary" size="small">Primary Small</Button>
                                 <Button variant="secondary" size="small">Secondary Small</Button>
@@ -52,7 +52,7 @@ export default function InteractiveElementsPage() {
                                 <Button variant="ghost" size="small">Ghost Small</Button>
                                 <Button variant="destructive" size="small">Destructive Small</Button>
                             </div>
-                            <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                            <div  style={{ color: 'var(--lb-black-500)' }}>
                                 Small buttons maintain 40px height, consistent with form elements
                             </div>
                         </div>
@@ -61,7 +61,7 @@ export default function InteractiveElementsPage() {
 
                         {/* Large Buttons */}
                         <div className="space-y-4">
-                            <h4 className="text-md font-medium">Large Buttons (48px)</h4>
+                            <h4 >Large Buttons (48px)</h4>
                             <div className="flex flex-wrap gap-3">
                                 <Button variant="primary" size="large">Primary Large</Button>
                                 <Button variant="secondary" size="large">Secondary Large</Button>
@@ -69,7 +69,7 @@ export default function InteractiveElementsPage() {
                                 <Button variant="ghost" size="large">Ghost Large</Button>
                                 <Button variant="destructive" size="large">Destructive Large</Button>
                             </div>
-                            <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                            <div  style={{ color: 'var(--lb-black-500)' }}>
                                 Large buttons use 48px height for enhanced prominence
                             </div>
                         </div>
@@ -78,7 +78,7 @@ export default function InteractiveElementsPage() {
 
                         {/* Icon Buttons */}
                         <div className="space-y-4">
-                            <h4 className="text-md font-medium">Icon Buttons</h4>
+                            <h4 >Icon Buttons</h4>
                             <div className="flex flex-wrap gap-3">
                                 <Button variant="outline" size="icon">
                                     <PlayIcon className="h-4 w-4" />
@@ -93,7 +93,7 @@ export default function InteractiveElementsPage() {
                                     <Volume2Icon className="h-4 w-4" />
                                 </Button>
                             </div>
-                            <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                            <div  style={{ color: 'var(--lb-black-500)' }}>
                                 Icon buttons maintain square aspect ratio with consistent padding
                             </div>
                         </div>
@@ -102,7 +102,7 @@ export default function InteractiveElementsPage() {
 
                         {/* Button States */}
                         <div className="space-y-4">
-                            <h4 className="text-md font-medium">Button States</h4>
+                            <h4 >Button States</h4>
                             <div className="flex flex-wrap gap-3">
                                 <Button variant="primary">Normal</Button>
                                 <Button variant="primary" disabled>Disabled</Button>
@@ -131,25 +131,25 @@ export default function InteractiveElementsPage() {
                             </TabsList>
                             <TabsContent value="tab1" className="mt-6">
                                 <div className="p-6 rounded-lg" style={{ backgroundColor: 'var(--blue-50)' }}>
-                                    <h3 className="font-medium mb-2">Overview Tab</h3>
+                                    <h3 className="mb-2">Overview Tab</h3>
                                     <p>Tabs maintain 40px height for consistency with form elements. This ensures visual harmony across the interface.</p>
                                 </div>
                             </TabsContent>
                             <TabsContent value="tab2" className="mt-6">
                                 <div className="p-6 rounded-lg" style={{ backgroundColor: 'var(--green-50)' }}>
-                                    <h3 className="font-medium mb-2">Details Tab</h3>
+                                    <h3 className="mb-2">Details Tab</h3>
                                     <p>All interactive elements follow the same height standard, creating a cohesive user experience.</p>
                                 </div>
                             </TabsContent>
                             <TabsContent value="tab3" className="mt-6">
                                 <div className="p-6 rounded-lg" style={{ backgroundColor: 'var(--purple-50)' }}>
-                                    <h3 className="font-medium mb-2">Settings Tab</h3>
+                                    <h3 className="mb-2">Settings Tab</h3>
                                     <p>The design system ensures consistent spacing and alignment throughout the application.</p>
                                 </div>
                             </TabsContent>
                             <TabsContent value="tab4" className="mt-6">
                                 <div className="p-6 rounded-lg" style={{ backgroundColor: 'var(--orange-50)' }}>
-                                    <h3 className="font-medium mb-2">Advanced Tab</h3>
+                                    <h3 className="mb-2">Advanced Tab</h3>
                                     <p>Advanced configuration options maintain the same visual standards as all other components.</p>
                                 </div>
                             </TabsContent>
@@ -176,7 +176,7 @@ export default function InteractiveElementsPage() {
                                 >
                                     {toggled ? 'Active' : 'Inactive'}
                                 </Toggle>
-                                <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                                <div  style={{ color: 'var(--lb-black-500)' }}>
                                     Status: {toggled ? 'Pressed' : 'Not Pressed'}
                                 </div>
                             </div>
@@ -194,7 +194,7 @@ export default function InteractiveElementsPage() {
                                         <PlayIcon className="h-4 w-4" />
                                     )}
                                 </Toggle>
-                                <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                                <div  style={{ color: 'var(--lb-black-500)' }}>
                                     {playToggled ? 'Playing' : 'Paused'}
                                 </div>
                             </div>
@@ -212,7 +212,7 @@ export default function InteractiveElementsPage() {
                                         <Volume2Icon className="h-4 w-4" />
                                     )}
                                 </Toggle>
-                                <div className="text-sm" style={{ color: 'var(--lb-black-500)' }}>
+                                <div  style={{ color: 'var(--lb-black-500)' }}>
                                     {muteToggled ? 'Muted' : 'Unmuted'}
                                 </div>
                             </div>
@@ -233,7 +233,7 @@ export default function InteractiveElementsPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between items-center">
                                 <Label>Progress Bar</Label>
-                                <span className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                                <span  style={{ color: 'var(--lb-black-600)' }}>
                                     {progressValue}%
                                 </span>
                             </div>
@@ -271,7 +271,7 @@ export default function InteractiveElementsPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between items-center">
                                 <Label>Standard Slider</Label>
-                                <span className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                                <span  style={{ color: 'var(--lb-black-600)' }}>
                                     Value: {sliderValue[0]}
                                 </span>
                             </div>
@@ -288,7 +288,7 @@ export default function InteractiveElementsPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between items-center">
                                 <Label>Volume Slider</Label>
-                                <span className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                                <span  style={{ color: 'var(--lb-black-600)' }}>
                                     Volume: {volumeSlider[0]}%
                                 </span>
                             </div>
@@ -318,8 +318,8 @@ export default function InteractiveElementsPage() {
                     <CardContent className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-3">
-                                <h4 className="font-medium">Button Specifications</h4>
-                                <ul className="text-sm space-y-1">
+                                <h4 >Button Specifications</h4>
+                                <ul >
                                     <li>• Small buttons: 40px height</li>
                                     <li>• Large buttons: 48px height (default)</li>
                                     <li>• Border radius: 12px</li>
@@ -327,8 +327,8 @@ export default function InteractiveElementsPage() {
                                 </ul>
                             </div>
                             <div className="space-y-3">
-                                <h4 className="font-medium">Interactive Elements</h4>
-                                <ul className="text-sm space-y-1">
+                                <h4 >Interactive Elements</h4>
+                                <ul >
                                     <li>• Tabs: 40px height</li>
                                     <li>• Toggles: 40px height</li>
                                     <li>• Sliders: 40px interactive area</li>
@@ -338,7 +338,7 @@ export default function InteractiveElementsPage() {
                         </div>
                         <Separator />
                         <div className="text-center">
-                            <p className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                            <p  style={{ color: 'var(--lb-black-600)' }}>
                                 All interactive elements use the <code>.luvbox-interactive-base</code> class and maintain visual consistency with form elements
                             </p>
                         </div>

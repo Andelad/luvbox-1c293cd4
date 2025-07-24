@@ -5,8 +5,8 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from "@/elements/toast"
-import { useToast } from "@/shared/hooks/use-toast"
+} from"@/elements/toast"
+import { useToast } from"@/shared/hooks/use-toast"
 
 export function Toaster() {
   const { toasts } = useToast()

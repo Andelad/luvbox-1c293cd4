@@ -11,7 +11,7 @@ const TimeFace: React.FC = () => {
                 borderRadius: '2px' // 2px rounded corners for consistency
             }}
         >
-            <span className="text-app-body font-semibold">Time Face</span>
+            <span className="text-app-body">Time Face</span>
         </div>
     );
 };

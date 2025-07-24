@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Button } from "../../elements/button";
+import { useEffect } from"react";
+import { Button } from"../../elements/button";
 
 interface ExitAppDialogProps {
   isOpen: boolean;

@@ -27,7 +27,7 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
           {/* Cards in order of appearance */}
           <div
             className="col-start-1 staggered-card-scroll"
-            style={{ gridRow: "1 / 3" }}
+            style={{ gridRow:"1 / 3" }}
           >
             <AnimatedSection
               animation="slideRight"
@@ -45,7 +45,7 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
 
           <div
             className="col-start-2 staggered-card-scroll"
-            style={{ gridRow: "2 / 4" }}
+            style={{ gridRow:"2 / 4" }}
           >
             <AnimatedSection
               animation="slideLeft"
@@ -63,7 +63,7 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
 
           <div
             className="col-start-1 staggered-card-scroll"
-            style={{ gridRow: "3 / 5" }}
+            style={{ gridRow:"3 / 5" }}
           >
             <AnimatedSection
               animation="slideRight"
@@ -81,7 +81,7 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
 
           <div
             className="col-start-2 staggered-card-scroll"
-            style={{ gridRow: "4 / 6" }}
+            style={{ gridRow:"4 / 6" }}
           >
             <AnimatedSection
               animation="slideLeft"
@@ -99,7 +99,7 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
 
           <div
             className="col-start-1 staggered-card-scroll"
-            style={{ gridRow: "5 / 7" }}
+            style={{ gridRow:"5 / 7" }}
           >
             <AnimatedSection
               animation="slideRight"
@@ -117,7 +117,7 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
 
           <div
             className="col-start-2 staggered-card-scroll"
-            style={{ gridRow: "6 / 8" }}
+            style={{ gridRow:"6 / 8" }}
           >
             <AnimatedSection
               animation="slideLeft"
@@ -135,7 +135,7 @@ export default function StaggeredSection({ onCTAClick }: StaggeredSectionProps) 
 
           <div
             className="col-start-1 staggered-card-scroll"
-            style={{ gridRow: "7 / 9" }}
+            style={{ gridRow:"7 / 9" }}
           >
             <AnimatedSection
               animation="slideRight"

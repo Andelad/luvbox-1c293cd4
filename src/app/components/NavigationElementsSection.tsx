@@ -23,10 +23,10 @@ export default function NavigationElementsSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
                     Navigation Elements
                 </h2>
-                <p className="text-lg" style={{ color: 'var(--lb-black-600)' }}>
+                <p  style={{ color: 'var(--lb-black-600)' }}>
                     Breadcrumbs, dropdown menus, tooltips, and navigation components with consistent styling
                 </p>
             </div>
@@ -42,7 +42,7 @@ export default function NavigationElementsSection() {
                 <CardContent className="space-y-6">
                     {/* Standard Breadcrumb */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Standard Breadcrumb</h4>
+                        <h4 >Standard Breadcrumb</h4>
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem>
@@ -67,7 +67,7 @@ export default function NavigationElementsSection() {
 
                     {/* Deep Navigation Breadcrumb */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Deep Navigation Example</h4>
+                        <h4 >Deep Navigation Example</h4>
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem>
@@ -100,7 +100,7 @@ export default function NavigationElementsSection() {
 
                     {/* Simple Text Breadcrumb */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Simple Text Breadcrumb</h4>
+                        <h4 >Simple Text Breadcrumb</h4>
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem>
@@ -131,7 +131,7 @@ export default function NavigationElementsSection() {
                 <CardContent className="space-y-8">
                     {/* User Menu */}
                     <div className="space-y-4">
-                        <h4 className="font-medium">User Account Menu</h4>
+                        <h4 >User Account Menu</h4>
                         <div className="flex space-x-4">
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
@@ -190,9 +190,9 @@ export default function NavigationElementsSection() {
 
                     {/* Context Menu */}
                     <div className="space-y-4">
-                        <h4 className="font-medium">Context Menu Example</h4>
+                        <h4 >Context Menu Example</h4>
                         <div className="p-4 border-2 border-dashed rounded-lg text-center" style={{ borderColor: 'var(--form-border)' }}>
-                            <p className="text-sm text-gray-500 mb-2">Right-click area for context menu</p>
+                            <p >Right-click area for context menu</p>
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
                                     <Button variant="ghost" size="small">
@@ -229,7 +229,7 @@ export default function NavigationElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 className="font-medium">Tooltip Examples</h4>
+                        <h4 >Tooltip Examples</h4>
                         <div className="flex flex-wrap gap-4">
                             <TooltipProvider>
                                 <Tooltip>
@@ -288,7 +288,7 @@ export default function NavigationElementsSection() {
                     <Separator />
 
                     <div className="space-y-4">
-                        <h4 className="font-medium">Complex Tooltip Content</h4>
+                        <h4 >Complex Tooltip Content</h4>
                         <div className="flex gap-4">
                             <TooltipProvider>
                                 <Tooltip>
@@ -299,9 +299,9 @@ export default function NavigationElementsSection() {
                                     </TooltipTrigger>
                                     <TooltipContent className="max-w-xs">
                                         <div className="space-y-2">
-                                            <p className="font-medium">Advanced Feature</p>
-                                            <p className="text-sm">This feature provides enhanced functionality with multiple options and settings.</p>
-                                            <p className="text-xs text-gray-500">Available in Pro plan</p>
+                                            <p >Advanced Feature</p>
+                                            <p >This feature provides enhanced functionality with multiple options and settings.</p>
+                                            <p className="text-gray-500">Available in Pro plan</p>
                                         </div>
                                     </TooltipContent>
                                 </Tooltip>
@@ -317,7 +317,7 @@ export default function NavigationElementsSection() {
                                     <TooltipContent>
                                         <div className="flex items-center gap-2">
                                             <span>Save file</span>
-                                            <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">Ctrl+S</kbd>
+                                            <kbd className="px-2 py-1 bg-gray-100 rounded">Ctrl+S</kbd>
                                         </div>
                                     </TooltipContent>
                                 </Tooltip>
@@ -338,17 +338,17 @@ export default function NavigationElementsSection() {
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <h4 className="font-medium">Breadcrumb Specifications</h4>
-                            <ul className="text-sm space-y-1">
-                                <li>• Separator: "/" or chevron</li>
+                            <h4 >Breadcrumb Specifications</h4>
+                            <ul >
+                                <li>• Separator:"/" or chevron</li>
                                 <li>• Current page: Non-clickable, emphasized</li>
                                 <li>• Links: Clickable, hover states</li>
                                 <li>• Icons: 16px, consistent spacing</li>
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <h4 className="font-medium">Dropdown & Tooltip Standards</h4>
-                            <ul className="text-sm space-y-1">
+                            <h4 >Dropdown & Tooltip Standards</h4>
+                            <ul >
                                 <li>• Dropdown: Consistent border radius</li>
                                 <li>• Menu items: 40px height minimum</li>
                                 <li>• Tooltips: Dark background, white text</li>
@@ -358,7 +358,7 @@ export default function NavigationElementsSection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                        <p  style={{ color: 'var(--lb-black-600)' }}>
                             All navigation elements use the <code>.luvbox-dropdown-base</code> classes and consistent interactive patterns
                         </p>
                     </div>

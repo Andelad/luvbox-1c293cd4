@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Button } from "../../elements/button";
+import React, { useEffect } from"react";
+import { Button } from"../../elements/button";
 
 interface QuestionnaireChoiceDialogProps {
     isOpen: boolean;
@@ -75,7 +75,7 @@ export default function QuestionnaireChoiceDialog({
                             }}
                         >
                             <p
-                                className="text-lg font-medium leading-relaxed"
+                                className="leading-relaxed"
                                 style={{ color: 'var(--blue-800)' }}
                             >
                                 💾 Data stored locally - Your preferences stay on this device only

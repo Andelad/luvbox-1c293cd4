@@ -9,10 +9,10 @@ export default function DataDisplaySection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
                     Data Display Components
                 </h2>
-                <p className="text-lg" style={{ color: 'var(--lb-black-600)' }}>
+                <p  style={{ color: 'var(--lb-black-600)' }}>
                     Cards, badges, avatars, and data presentation elements with consistent styling
                 </p>
             </div>
@@ -51,8 +51,8 @@ export default function DataDisplaySection() {
                                         <AvatarFallback>JD</AvatarFallback>
                                     </Avatar>
                                     <div>
-                                        <p className="font-medium">John Doe</p>
-                                        <p className="text-sm text-gray-500">Software Developer</p>
+                                        <p >John Doe</p>
+                                        <p >Software Developer</p>
                                         <div className="flex items-center space-x-1 mt-1">
                                             <StarIcon className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                                             <StarIcon className="h-3 w-3 fill-yellow-400 text-yellow-400" />
@@ -98,20 +98,20 @@ export default function DataDisplaySection() {
                             <CardContent>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold" style={{ color: 'var(--blue-500)' }}>127</div>
-                                        <div className="text-sm text-gray-500">Active Users</div>
+                                        <div  style={{ color: 'var(--blue-500)' }}>127</div>
+                                        <div >Active Users</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold" style={{ color: 'var(--green-500)' }}>98%</div>
-                                        <div className="text-sm text-gray-500">Uptime</div>
+                                        <div  style={{ color: 'var(--green-500)' }}>98%</div>
+                                        <div >Uptime</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold" style={{ color: 'var(--purple-500)' }}>42</div>
-                                        <div className="text-sm text-gray-500">Projects</div>
+                                        <div  style={{ color: 'var(--purple-500)' }}>42</div>
+                                        <div >Projects</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold" style={{ color: 'var(--orange-500)' }}>15</div>
-                                        <div className="text-sm text-gray-500">Pending</div>
+                                        <div  style={{ color: 'var(--orange-500)' }}>15</div>
+                                        <div >Pending</div>
                                     </div>
                                 </div>
                             </CardContent>
@@ -131,7 +131,7 @@ export default function DataDisplaySection() {
                 <CardContent className="space-y-6">
                     {/* Status Badges */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Status Badges</h4>
+                        <h4 >Status Badges</h4>
                         <div className="flex flex-wrap gap-3">
                             <Badge variant="default">Default</Badge>
                             <Badge variant="secondary">Secondary</Badge>
@@ -144,7 +144,7 @@ export default function DataDisplaySection() {
 
                     {/* Badge with Icons */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Badges with Icons</h4>
+                        <h4 >Badges with Icons</h4>
                         <div className="flex flex-wrap gap-3">
                             <Badge variant="default" className="flex items-center gap-1">
                                 <CheckIcon className="h-3 w-3" />
@@ -169,11 +169,11 @@ export default function DataDisplaySection() {
 
                     {/* Size Variations */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Badge Sizing</h4>
+                        <h4 >Badge Sizing</h4>
                         <div className="flex flex-wrap items-center gap-3">
-                            <Badge variant="default" className="text-xs px-2 py-1">Small</Badge>
+                            <Badge variant="default" className="px-2 py-1">Small</Badge>
                             <Badge variant="default">Standard</Badge>
-                            <Badge variant="default" className="text-sm px-3 py-1.5">Large</Badge>
+                            <Badge variant="default" >Large</Badge>
                         </div>
                     </div>
                 </CardContent>
@@ -190,7 +190,7 @@ export default function DataDisplaySection() {
                 <CardContent className="space-y-6">
                     {/* Standard Avatars */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Standard Avatars</h4>
+                        <h4 >Standard Avatars</h4>
                         <div className="flex items-center space-x-4">
                             <Avatar>
                                 <AvatarImage src="/placeholder.svg" />
@@ -215,10 +215,10 @@ export default function DataDisplaySection() {
 
                     {/* Avatar Sizes */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Avatar Sizes</h4>
+                        <h4 >Avatar Sizes</h4>
                         <div className="flex items-center space-x-4">
                             <Avatar className="h-8 w-8">
-                                <AvatarFallback className="text-xs">SM</AvatarFallback>
+                                <AvatarFallback >SM</AvatarFallback>
                             </Avatar>
                             <Avatar>
                                 <AvatarFallback>MD</AvatarFallback>
@@ -227,7 +227,7 @@ export default function DataDisplaySection() {
                                 <AvatarFallback>LG</AvatarFallback>
                             </Avatar>
                             <Avatar className="h-16 w-16">
-                                <AvatarFallback className="text-lg">XL</AvatarFallback>
+                                <AvatarFallback >XL</AvatarFallback>
                             </Avatar>
                         </div>
                     </div>
@@ -236,7 +236,7 @@ export default function DataDisplaySection() {
 
                     {/* Avatar with Status */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Avatars with Status</h4>
+                        <h4 >Avatars with Status</h4>
                         <div className="flex items-center space-x-6">
                             <div className="relative">
                                 <Avatar>
@@ -258,7 +258,7 @@ export default function DataDisplaySection() {
                                 <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-gray-400 border-2 border-white"></div>
                             </div>
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div >
                             Status indicators: Online (green), Away (yellow), Offline (gray)
                         </div>
                     </div>
@@ -276,8 +276,8 @@ export default function DataDisplaySection() {
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <h4 className="font-medium">Card Specifications</h4>
-                            <ul className="text-sm space-y-1">
+                            <h4 >Card Specifications</h4>
+                            <ul >
                                 <li>• Border radius: 12px</li>
                                 <li>• Padding: 24px (header), 16px (content)</li>
                                 <li>• Shadow: Subtle drop shadow</li>
@@ -285,8 +285,8 @@ export default function DataDisplaySection() {
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <h4 className="font-medium">Badge & Avatar Standards</h4>
-                            <ul className="text-sm space-y-1">
+                            <h4 >Badge & Avatar Standards</h4>
+                            <ul >
                                 <li>• Badge padding: 4px 8px</li>
                                 <li>• Badge border radius: 6px</li>
                                 <li>• Avatar default size: 40px</li>
@@ -296,7 +296,7 @@ export default function DataDisplaySection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                        <p  style={{ color: 'var(--lb-black-600)' }}>
                             All data display components use the <code>.luvbox-card-base</code> class and consistent spacing
                         </p>
                     </div>

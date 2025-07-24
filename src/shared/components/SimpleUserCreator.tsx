@@ -39,7 +39,7 @@ const SimpleUserCreator: React.FC = () => {
         <p className="text-green-700">
           Logged in as: <strong>{user.name}</strong> ({user.email})
         </p>
-        <p className="text-sm text-green-600 mt-2">
+        <p >
           You can now go to Settings to manage your profile and dealbreaker lines.
         </p>
       </div>
@@ -55,7 +55,7 @@ const SimpleUserCreator: React.FC = () => {
 
       <form onSubmit={handleCreateUser} className="space-y-4">
         <div>
-          <label htmlFor="create-name" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="create-name" className="block text-gray-700 mb-1">
             Name
           </label>
           <input
@@ -70,7 +70,7 @@ const SimpleUserCreator: React.FC = () => {
         </div>
 
         <div>
-          <label htmlFor="create-email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="create-email" className="block text-gray-700 mb-1">
             Email
           </label>
           <input

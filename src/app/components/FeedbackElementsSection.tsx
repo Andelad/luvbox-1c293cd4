@@ -20,27 +20,27 @@ export default function FeedbackElementsSection() {
         switch (type) {
             case 'success':
                 toast({
-                    title: "Success!",
-                    description: "Your action was completed successfully.",
+                    title:"Success!",
+                    description:"Your action was completed successfully.",
                 });
                 break;
             case 'error':
                 toast({
-                    title: "Error",
-                    description: "Something went wrong. Please try again.",
-                    variant: "destructive",
+                    title:"Error",
+                    description:"Something went wrong. Please try again.",
+                    variant:"destructive",
                 });
                 break;
             case 'info':
                 toast({
-                    title: "Information",
-                    description: "Here's some useful information for you.",
+                    title:"Information",
+                    description:"Here's some useful information for you.",
                 });
                 break;
             case 'warning':
                 toast({
-                    title: "Warning",
-                    description: "Please review this action before proceeding.",
+                    title:"Warning",
+                    description:"Please review this action before proceeding.",
                 });
                 break;
         }
@@ -50,10 +50,10 @@ export default function FeedbackElementsSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
                     Feedback Elements
                 </h2>
-                <p className="text-lg" style={{ color: 'var(--lb-black-600)' }}>
+                <p  style={{ color: 'var(--lb-black-600)' }}>
                     Alerts, dialogs, toasts, and user feedback components for clear communication
                 </p>
             </div>
@@ -69,7 +69,7 @@ export default function FeedbackElementsSection() {
                 <CardContent className="space-y-6">
                     {/* Information Alert */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Information Alerts</h4>
+                        <h4 >Information Alerts</h4>
                         <Alert>
                             <InfoIcon className="h-4 w-4" />
                             <AlertTitle>Information</AlertTitle>
@@ -81,7 +81,7 @@ export default function FeedbackElementsSection() {
 
                     {/* Success Alert */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Success Alerts</h4>
+                        <h4 >Success Alerts</h4>
                         <Alert className="border-green-200 bg-green-50">
                             <CheckCircleIcon className="h-4 w-4 text-green-600" />
                             <AlertTitle className="text-green-800">Success</AlertTitle>
@@ -93,7 +93,7 @@ export default function FeedbackElementsSection() {
 
                     {/* Warning Alert */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Warning Alerts</h4>
+                        <h4 >Warning Alerts</h4>
                         <Alert className="border-yellow-200 bg-yellow-50">
                             <AlertCircleIcon className="h-4 w-4 text-yellow-600" />
                             <AlertTitle className="text-yellow-800">Warning</AlertTitle>
@@ -105,7 +105,7 @@ export default function FeedbackElementsSection() {
 
                     {/* Error Alert */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Error Alerts</h4>
+                        <h4 >Error Alerts</h4>
                         <Alert variant="destructive">
                             <XCircleIcon className="h-4 w-4" />
                             <AlertTitle>Error</AlertTitle>
@@ -117,7 +117,7 @@ export default function FeedbackElementsSection() {
 
                     {/* Critical Alert */}
                     <div className="space-y-3">
-                        <h4 className="font-medium">Critical Alerts</h4>
+                        <h4 >Critical Alerts</h4>
                         <Alert variant="destructive" className="border-red-500 bg-red-50">
                             <AlertTriangleIcon className="h-4 w-4" />
                             <AlertTitle>Critical Error</AlertTitle>
@@ -139,7 +139,7 @@ export default function FeedbackElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 className="font-medium">Dialog Examples</h4>
+                        <h4 >Dialog Examples</h4>
                         <div className="flex flex-wrap gap-3">
                             {/* Confirmation Dialog */}
                             <Dialog>
@@ -176,7 +176,7 @@ export default function FeedbackElementsSection() {
                                         </DialogDescription>
                                     </DialogHeader>
                                     <div className="space-y-3 mt-4">
-                                        <ul className="text-sm space-y-2">
+                                        <ul >
                                             <li>• Automated data processing</li>
                                             <li>• Real-time synchronization</li>
                                             <li>• Advanced filtering options</li>
@@ -203,7 +203,7 @@ export default function FeedbackElementsSection() {
                                     </DialogHeader>
                                     <div className="space-y-4 mt-4">
                                         <div className="space-y-2">
-                                            <label className="text-sm font-medium">Name</label>
+                                            <label >Name</label>
                                             <input
                                                 type="text"
                                                 placeholder="Enter item name..."
@@ -211,7 +211,7 @@ export default function FeedbackElementsSection() {
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-sm font-medium">Description</label>
+                                            <label >Description</label>
                                             <textarea
                                                 placeholder="Enter description..."
                                                 className="w-full px-3 py-2 border rounded-md"
@@ -240,7 +240,7 @@ export default function FeedbackElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 className="font-medium">Toast Examples</h4>
+                        <h4 >Toast Examples</h4>
                         <div className="flex flex-wrap gap-3">
                             <Button
                                 variant="outline"
@@ -267,7 +267,7 @@ export default function FeedbackElementsSection() {
                                 Show Warning Toast
                             </Button>
                         </div>
-                        <p className="text-sm text-gray-500">
+                        <p >
                             Click the buttons above to see different types of toast notifications.
                         </p>
                     </div>
@@ -275,23 +275,23 @@ export default function FeedbackElementsSection() {
                     <Separator />
 
                     <div className="space-y-4">
-                        <h4 className="font-medium">Toast Behavior</h4>
+                        <h4 >Toast Behavior</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <h5 className="font-medium text-sm">Auto-dismiss</h5>
-                                <p className="text-sm text-gray-600">Most toasts automatically disappear after 5 seconds</p>
+                                <h5 >Auto-dismiss</h5>
+                                <p >Most toasts automatically disappear after 5 seconds</p>
                             </div>
                             <div className="space-y-2">
-                                <h5 className="font-medium text-sm">Manual dismiss</h5>
-                                <p className="text-sm text-gray-600">Users can click the X button to dismiss early</p>
+                                <h5 >Manual dismiss</h5>
+                                <p >Users can click the X button to dismiss early</p>
                             </div>
                             <div className="space-y-2">
-                                <h5 className="font-medium text-sm">Stacking</h5>
-                                <p className="text-sm text-gray-600">Multiple toasts stack vertically</p>
+                                <h5 >Stacking</h5>
+                                <p >Multiple toasts stack vertically</p>
                             </div>
                             <div className="space-y-2">
-                                <h5 className="font-medium text-sm">Position</h5>
-                                <p className="text-sm text-gray-600">Appear in the bottom-right corner</p>
+                                <h5 >Position</h5>
+                                <p >Appear in the bottom-right corner</p>
                             </div>
                         </div>
                     </div>
@@ -308,10 +308,10 @@ export default function FeedbackElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 className="font-medium">Loading States</h4>
+                        <h4 >Loading States</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-3">
-                                <h5 className="font-medium text-sm">Button Loading</h5>
+                                <h5 >Button Loading</h5>
                                 <div className="flex gap-2">
                                     <Button variant="primary" disabled>
                                         <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
@@ -323,7 +323,7 @@ export default function FeedbackElementsSection() {
                                 </div>
                             </div>
                             <div className="space-y-3">
-                                <h5 className="font-medium text-sm">Content Loading</h5>
+                                <h5 >Content Loading</h5>
                                 <div className="space-y-2">
                                     <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
                                     <div className="h-4 bg-gray-200 rounded animate-pulse w-3/4"></div>
@@ -346,8 +346,8 @@ export default function FeedbackElementsSection() {
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <h4 className="font-medium">Alert Specifications</h4>
-                            <ul className="text-sm space-y-1">
+                            <h4 >Alert Specifications</h4>
+                            <ul >
                                 <li>• Border radius: 8px</li>
                                 <li>• Padding: 16px</li>
                                 <li>• Icons: 16px, consistent positioning</li>
@@ -355,8 +355,8 @@ export default function FeedbackElementsSection() {
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <h4 className="font-medium">Dialog & Toast Standards</h4>
-                            <ul className="text-sm space-y-1">
+                            <h4 >Dialog & Toast Standards</h4>
+                            <ul >
                                 <li>• Dialog border radius: 16px</li>
                                 <li>• Toast duration: 5 seconds (default)</li>
                                 <li>• Max width: 400px for toasts</li>
@@ -366,7 +366,7 @@ export default function FeedbackElementsSection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
+                        <p  style={{ color: 'var(--lb-black-600)' }}>
                             All feedback elements follow accessibility guidelines and use consistent color coding for different message types
                         </p>
                     </div>

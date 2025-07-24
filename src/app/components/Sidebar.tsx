@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SidebarIcons as svgPaths } from '@/assets/icons';
-import { MenuButtons, TechButtons } from "./SidebarNavigation";
+import { MenuButtons, TechButtons } from"./SidebarNavigation";
 
 function SideMenuIcon() {
   return (
@@ -64,7 +64,7 @@ function LeftPanelOpen() {
             height="24"
             id="mask0_1_563"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"
@@ -103,7 +103,7 @@ function LeftPanelClose() {
             height="24"
             id="mask0_1_564"
             maskUnits="userSpaceOnUse"
-            style={{ maskType: "alpha" }}
+            style={{ maskType:"alpha" }}
             width="24"
             x="0"
             y="0"
