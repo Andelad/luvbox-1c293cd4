@@ -124,6 +124,7 @@
   width: 100%;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  border-radius: 12px; /* Ensures consistent rounded corners on hover/active */
 }
 
 .sidebar-button:hover {
@@ -329,6 +330,57 @@
 
 .luvbox-interactive-base:focus-visible {
   box-shadow: 0 0 0 var(--focus-ring-width) rgba(from var(--focus-ring-color) r g b / var(--focus-ring-opacity));
+}
+
+/* Universal Interactive States */
+.luvbox-interactive-hover:hover {
+  background-color: var(--interactive-hover);
+  transition: var(--interactive-transition);
+}
+
+.luvbox-interactive-active {
+  background-color: var(--interactive-active);
+}
+
+/* Accordion/Collapsible Interactive States */
+.luvbox-accordion-trigger {
+  transition: var(--interactive-transition);
+}
+
+.luvbox-accordion-trigger:hover {
+  background-color: var(--interactive-hover);
+}
+
+.luvbox-accordion-trigger[data-state="open"] {
+  background-color: var(--interactive-active);
+}
+
+/* Tab Interactive States */
+.luvbox-tab-trigger {
+  transition: var(--interactive-transition);
+}
+
+.luvbox-tab-trigger:hover {
+  background-color: var(--interactive-hover);
+}
+
+.luvbox-tab-trigger[data-state="active"] {
+  background-color: var(--interactive-active);
+}
+
+/* Menu Item Interactive States */
+.luvbox-menu-item {
+  transition: var(--interactive-transition);
+  cursor: pointer;
+}
+
+.luvbox-menu-item:hover {
+  background-color: var(--interactive-hover);
+}
+
+.luvbox-menu-item[data-state="active"] {
+  background-color: var(--interactive-active);
+  font-weight: 600;
 }
 
 /* Universal Card/Container Styling */

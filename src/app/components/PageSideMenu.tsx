@@ -165,14 +165,14 @@ export default function PageSideMenu({
         left: 0,
         height: '100%',
         width: isOpen ? '240px' : '48px',
-        backgroundColor: 'white',
-        border: '1px solid rgba(61,53,53,0.4)',
+        backgroundColor: 'var(--lb-black-0)',
+        border: '1px solid var(--lb-black-300)',
         borderTopLeftRadius: '24px',
         borderBottomLeftRadius: '24px',
         paddingTop: '16px',
         transition: isPageChange ? 'none' : 'width 0.3s ease',
         zIndex: isLargeScreen ? 10 : 20,
-        boxShadow: isOpen && !isLargeScreen ? '2px 0 8px rgba(0,0,0,0.1)' : 'none',
+        boxShadow: isOpen && !isLargeScreen ? '0 2px 8px var(--lb-black-900-alpha-10)' : 'none',
       }}
     >
       {/* Toggle button - always at the same position */}
@@ -190,12 +190,12 @@ export default function PageSideMenu({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: '4px',
+          borderRadius: '12px',
           zIndex: 100,
           transition: 'background-color 0.2s ease',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(181, 182, 233, 0.2)';
+          e.currentTarget.style.backgroundColor = 'var(--interactive-hover)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.backgroundColor = 'transparent';
@@ -218,7 +218,7 @@ export default function PageSideMenu({
           <h3 style={{
             fontSize: '16px',
             fontWeight: '600',
-            color: '#3d3535',
+            color: 'var(--lb-black-800)',
             margin: 0,
             fontFamily: "'Source Sans 3', sans-serif",
             lineHeight: '24px', // Match button height for perfect alignment
@@ -233,7 +233,7 @@ export default function PageSideMenu({
         <div style={{
           margin: '0 16px 16px 16px',
           height: '1px',
-          backgroundColor: 'rgba(61,53,53,0.2)',
+          backgroundColor: 'var(--lb-black-200)',
         }} />
       )}
 
@@ -263,9 +263,9 @@ export default function PageSideMenu({
                     width: '100%',
                     padding: '12px 16px',
                     marginBottom: '8px',
-                    borderRadius: '8px',
-                    backgroundColor: activeMenuItem === item.id ? 'rgba(181, 182, 233, 0.4)' : 'transparent',
-                    color: '#3d3535',
+                    borderRadius: '12px',
+                    backgroundColor: activeMenuItem === item.id ? 'var(--interactive-active)' : 'transparent',
+                    color: 'var(--lb-black-800)',
                     fontSize: '14px',
                     fontFamily: "'Source Sans 3', sans-serif",
                     fontWeight: activeMenuItem === item.id ? '600' : '400',
@@ -276,7 +276,7 @@ export default function PageSideMenu({
                   }}
                   onMouseEnter={(e) => {
                     if (activeMenuItem !== item.id) {
-                      e.currentTarget.style.setProperty('background-color', 'rgba(181, 182, 233, 0.2)', 'important');
+                      e.currentTarget.style.setProperty('background-color', 'var(--interactive-hover)', 'important');
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -298,7 +298,7 @@ export default function PageSideMenu({
           {content || (
             <p style={{
               fontSize: '14px',
-              color: '#3d3535',
+              color: 'var(--lb-black-600)',
               opacity: 0.8,
               lineHeight: '1.5',
               fontFamily: "'Source Sans 3', sans-serif",

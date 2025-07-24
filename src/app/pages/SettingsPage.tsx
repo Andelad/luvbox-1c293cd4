@@ -119,7 +119,7 @@ const SettingsPage: React.FC = () => {
 
       <div className="space-y-6">
         <div>
-          <label htmlFor="name" className="form-label">
+          <label htmlFor="name" className="form-label-large">
             {content.profile.name}
           </label>
           <input
@@ -127,13 +127,13 @@ const SettingsPage: React.FC = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="form-input"
+            className="luvbox-form-base"
             placeholder={content.profile.placeholders.name}
           />
         </div>
 
         <div>
-          <label htmlFor="dateOfBirth" className="form-label">
+          <label htmlFor="dateOfBirth" className="form-label-large">
             {content.profile.dateOfBirth}
           </label>
           <input
@@ -141,7 +141,7 @@ const SettingsPage: React.FC = () => {
             id="dateOfBirth"
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
-            className="form-input"
+            className="luvbox-form-base"
           />
         </div>
 

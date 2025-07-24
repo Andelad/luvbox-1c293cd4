@@ -155,7 +155,7 @@ export default function LayoutElementsSection() {
                                         <CardTitle className="text-lg">Recent Activity</CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-sm text-gray-600">
+                                        <p className="text-sm" style={{ color: 'var(--lb-black-600)' }}>
                                             Latest updates and changes to your project timeline and deliverables.
                                         </p>
                                     </CardContent>
@@ -219,7 +219,7 @@ export default function LayoutElementsSection() {
                                     <div className="space-y-3">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center space-x-3">
-                                                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">
+                                                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm" style={{ backgroundColor: 'var(--blue-500)' }}>
                                                     J
                                                 </div>
                                                 <span>John Smith</span>
@@ -228,7 +228,7 @@ export default function LayoutElementsSection() {
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center space-x-3">
-                                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">
+                                                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm" style={{ backgroundColor: 'var(--success-green-500)' }}>
                                                     S
                                                 </div>
                                                 <span>Sarah Johnson</span>
@@ -323,7 +323,7 @@ export default function LayoutElementsSection() {
                                 <div className="space-y-4">
                                     {Array.from({ length: 20 }, (_, i) => (
                                         <div key={i} className="flex items-center space-x-3">
-                                            <div className="w-8 h-8 bg-blue-100 rounded flex items-center justify-center text-sm">
+                                            <div className="w-8 h-8 rounded flex items-center justify-center text-sm" style={{ backgroundColor: 'var(--blue-100)', color: 'var(--blue-700)' }}>
                                                 {i + 1}
                                             </div>
                                             <span className="text-sm">Scrollable item {i + 1} with content</span>
@@ -336,12 +336,12 @@ export default function LayoutElementsSection() {
                         {/* Aspect Ratio */}
                         <div className="space-y-3">
                             <h4 className="font-medium">Aspect Ratio Container</h4>
-                            <AspectRatio ratio={16 / 9} className="bg-gray-100 rounded-md">
+                            <AspectRatio ratio={16 / 9} className="rounded-md" style={{ backgroundColor: 'var(--lb-black-100)' }}>
                                 <div className="flex h-full items-center justify-center">
                                     <div className="text-center">
-                                        <SquareIcon className="mx-auto h-8 w-8 mb-2 text-gray-400" />
-                                        <span className="text-sm text-gray-600">16:9 Aspect Ratio</span>
-                                        <p className="text-xs text-gray-500 mt-1">Responsive container</p>
+                                        <SquareIcon className="mx-auto h-8 w-8 mb-2" style={{ color: 'var(--lb-black-400)' }} />
+                                        <span className="text-sm" style={{ color: 'var(--lb-black-600)' }}>16:9 Aspect Ratio</span>
+                                        <p className="text-xs mt-1" style={{ color: 'var(--lb-black-500)' }}>Responsive container</p>
                                     </div>
                                 </div>
                             </AspectRatio>
@@ -383,6 +383,98 @@ export default function LayoutElementsSection() {
                 </CardContent>
             </Card>
 
+            {/* Interactive States Demo */}
+            <Card className="luvbox-card-base">
+                <CardHeader>
+                    <CardTitle>Interactive States System</CardTitle>
+                    <CardDescription>
+                        Consistent hover, active, and focus states across all interactive elements
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                    <div className="space-y-4">
+                        <h4 className="font-medium">Interactive Element Examples</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* Interactive Menu Items */}
+                            <div className="space-y-2">
+                                <h5 className="text-sm font-medium">Menu Items (Interactive)</h5>
+                                <div className="border rounded-lg p-2 space-y-1">
+                                    <div className="luvbox-menu-item px-3 py-2 rounded-md text-sm">
+                                        Dashboard Overview
+                                    </div>
+                                    <div className="luvbox-menu-item px-3 py-2 rounded-md text-sm" data-state="active">
+                                        Current Page (Active)
+                                    </div>
+                                    <div className="luvbox-menu-item px-3 py-2 rounded-md text-sm">
+                                        Settings & Preferences
+                                    </div>
+                                    <div className="luvbox-menu-item px-3 py-2 rounded-md text-sm">
+                                        User Profile
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Interactive Buttons */}
+                            <div className="space-y-2">
+                                <h5 className="text-sm font-medium">Interactive Buttons</h5>
+                                <div className="border rounded-lg p-4 space-y-2">
+                                    <div className="luvbox-interactive-hover px-4 py-2 rounded-md text-sm border cursor-pointer">
+                                        Hover for Effect
+                                    </div>
+                                    <div className="luvbox-interactive-active px-4 py-2 rounded-md text-sm border">
+                                        Active State
+                                    </div>
+                                    <Button variant="ghost" className="w-full">
+                                        Standard Ghost Button
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <Separator />
+
+                    <div className="space-y-4">
+                        <h4 className="font-medium">Color Usage Guidelines</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="space-y-2">
+                                <h5 className="text-sm font-medium">Hover State</h5>
+                                <div
+                                    className="h-12 rounded-md border flex items-center justify-center text-sm"
+                                    style={{ backgroundColor: 'var(--interactive-hover)' }}
+                                >
+                                    var(--interactive-hover)
+                                </div>
+                                <p className="text-xs" style={{ color: 'var(--lb-black-500)' }}>
+                                    Purple 20% opacity - Subtle feedback
+                                </p>
+                            </div>
+                            <div className="space-y-2">
+                                <h5 className="text-sm font-medium">Active State</h5>
+                                <div
+                                    className="h-12 rounded-md border flex items-center justify-center text-sm font-semibold"
+                                    style={{ backgroundColor: 'var(--interactive-active)' }}
+                                >
+                                    var(--interactive-active)
+                                </div>
+                                <p className="text-xs" style={{ color: 'var(--lb-black-500)' }}>
+                                    Purple 40% opacity - Clear selection
+                                </p>
+                            </div>
+                            <div className="space-y-2">
+                                <h5 className="text-sm font-medium">Implementation</h5>
+                                <div className="text-xs space-y-1" style={{ color: 'var(--lb-black-600)' }}>
+                                    <div>✅ Use CSS variables</div>
+                                    <div>✅ 0.2s ease transition</div>
+                                    <div>✅ Consistent across components</div>
+                                    <div>❌ Never hardcode RGBA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
             {/* Design Standards */}
             <Card className="luvbox-card-base">
                 <CardHeader>
@@ -394,12 +486,12 @@ export default function LayoutElementsSection() {
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <h4 className="font-medium">Spacing Standards</h4>
+                            <h4 className="font-medium">Interactive States</h4>
                             <ul className="text-sm space-y-1">
-                                <li>• Card padding: 24px</li>
-                                <li>• Section spacing: 32px</li>
-                                <li>• Element spacing: 16px</li>
-                                <li>• Compact spacing: 8px</li>
+                                <li>• Hover: var(--interactive-hover) - Purple 20% opacity</li>
+                                <li>• Active/Selected: var(--interactive-active) - Purple 40% opacity</li>
+                                <li>• Transition: 0.2s ease for smooth feedback</li>
+                                <li>• Focus: 3px ring with color-appropriate variants</li>
                             </ul>
                         </div>
                         <div className="space-y-3">

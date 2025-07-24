@@ -169,6 +169,11 @@
   /* Blue transparency variants */
   --blue-200-alpha-20: color(from var(--blue-200) srgb r g b / 0.2);
 
+  /* Universal Interactive States */
+  --interactive-hover: var(--purple-200-alpha-20);
+  --interactive-active: var(--purple-200-alpha-40);
+  --interactive-transition: background-color 0.2s ease;
+
   /* Semantic Color Mappings for Tailwind compatibility */
   --background: var(--lb-black-0);
   --foreground: var(--lb-black-900);
