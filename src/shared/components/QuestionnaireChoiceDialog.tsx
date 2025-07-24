@@ -1,18 +1,11 @@
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle
-} from '../../elements/alert-dialog';
+import { useEffect } from "react";
+import { Button } from "../../elements/button";
 
 interface QuestionnaireChoiceDialogProps {
     isOpen: boolean;
     onUseExisting: () => void;
     onRecomplete: () => void;
+    onClose?: () => void;
     hasScores: boolean;
 }
 
@@ -20,16 +13,51 @@ export default function QuestionnaireChoiceDialog({
     isOpen,
     onUseExisting,
     onRecomplete,
+    onClose,
     hasScores
 }: QuestionnaireChoiceDialogProps) {
+    // Handle escape key
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && isOpen) {
+                // Don't close on escape for this dialog since it requires a choice
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener('keydown', handleEscape);
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape);
+        };
+    }, [isOpen]);
+
+    if (!isOpen) return null;
+
     return (
-        <AlertDialog open={isOpen}>
-            <AlertDialogContent className="questionnaire-choice-dialog sm:max-w-[700px] p-8">
-                <AlertDialogHeader className="modal-header">
-                    <AlertDialogTitle className="modal-title">
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/50" />
+
+            {/* Dialog */}
+            <div className="relative bg-[var(--lb-black-0)] border border-[var(--lb-black-200)] rounded-xl p-8 max-w-[700px] w-full mx-4 shadow-lg">
+                {/* Close button */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 p-2 rounded-lg hover:bg-[var(--lb-black-100)] transition-colors"
+                    aria-label="Close dialog"
+                >
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </button>
+
+                <div className="modal-header">
+                    <h2 className="modal-title">
                         🎉 Welcome Back!
-                    </AlertDialogTitle>
-                    <AlertDialogDescription className="modal-description space-y-6">
+                    </h2>
+                    <div className="modal-description space-y-6">
                         <p>
                             Great news! Your dealbreaker preferences have been saved locally on this device.
                         </p>
@@ -40,7 +68,7 @@ export default function QuestionnaireChoiceDialog({
                             </p>
                         )}
                         <div
-                            className="mt-8 p-6 rounded-lg border-2"
+                            className="mt-8 p-6 rounded-lg border"
                             style={{
                                 backgroundColor: 'var(--blue-50)',
                                 borderColor: 'var(--blue-200)'
@@ -53,21 +81,25 @@ export default function QuestionnaireChoiceDialog({
                                 💾 Data stored locally - Your preferences stay on this device only
                             </p>
                         </div>
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter className="modal-footer">
-                    <AlertDialogCancel
+                    </div>
+                </div>
+                <div className="modal-footer">
+                    <Button
+                        variant="outline"
+                        size="large"
                         onClick={onRecomplete}
                     >
                         Retake Questionnaire
-                    </AlertDialogCancel>
-                    <AlertDialogAction
+                    </Button>
+                    <Button
+                        variant="primary"
+                        size="large"
                         onClick={onUseExisting}
                     >
                         Continue to App
-                    </AlertDialogAction>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
+                    </Button>
+                </div>
+            </div>
+        </div>
     );
 }

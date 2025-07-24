@@ -296,6 +296,11 @@ html {
   backface-visibility: hidden;
 }
 
+/* Ensure ticker bubbles have proper rounded corners */
+.ticker-bubble {
+  border-radius: 0.5rem !important;
+}
+
 @keyframes ticker {
   0% {
     transform: translateX(0);

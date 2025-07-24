@@ -430,17 +430,72 @@ select.form-select:disabled {
 /* Dialog Styles - Consistent Modal Patterns */
 .questionnaire-choice-dialog {
   background-color: var(--lb-black-0) !important;
-  border: 2px solid var(--lb-black-200) !important;
+  border: 1px solid var(--lb-black-200) !important;
   border-radius: 0.75rem !important;
   color: var(--lb-black-900) !important;
 }
 
-.modal-content {
-  background-color: var(--lb-black-0);
-  border: 2px solid var(--lb-black-200);
-  border-radius: 0.75rem;
-  padding: 2rem;
-  color: var(--lb-black-900);
+/* Apply modal styling directly to dialog content elements */
+[data-slot="dialog-content"],
+[data-slot="alert-dialog-content"] {
+  background-color: var(--lb-black-0) !important;
+  border: 1px solid var(--lb-black-200) !important;
+  border-radius: 0.75rem !important;
+  color: var(--lb-black-900) !important;
+}
+
+/* Force center positioning for all dialogs */
+[data-slot="dialog-content"],
+[data-slot="alert-dialog-content"] {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 50 !important;
+  margin: 0 !important;
+}
+
+/* Prevent scrollbar compensation padding that causes layout jump */
+/* Use the most aggressive approach to prevent any padding */
+body {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+body[data-scroll-locked] {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+  overflow: visible !important;
+}
+
+/* Prevent Radix from adding padding to body when dialog is open */
+body:has([data-slot="dialog-overlay"]),
+body:has([data-slot="alert-dialog-overlay"]) {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+  overflow: visible !important;
+}
+
+/* Additional selectors to catch all possible scrollbar compensation */
+html[data-scroll-locked],
+html:has([data-radix-scroll-area-viewport]) {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Ensure no padding is added to any element when modals are open */
+*[data-scroll-locked],
+*:has([data-radix-dialog-content]),
+*:has([data-radix-alert-dialog-content]) {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Target specific Radix classes that might be applied */
+.radix-dialog-overlay ~ body,
+.radix-alert-dialog-overlay ~ body,
+body[style*="padding-right"] {
+  padding-right: 0 !important;
 }
 
 .modal-header {

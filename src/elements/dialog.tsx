@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
+import * as React from "react";
 
 import { cn } from "./utils";
 
@@ -54,7 +54,7 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <DialogPortal data-slot="dialog-portal">
+  <DialogPrimitive.Portal container={document.body}>
     <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}
@@ -63,6 +63,8 @@ const DialogContent = React.forwardRef<
         "bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg transition-opacity duration-200 sm:max-w-lg data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
         className,
       )}
+      onOpenAutoFocus={(e) => e.preventDefault()}
+      onCloseAutoFocus={(e) => e.preventDefault()}
       {...props}
     >
       {children}
@@ -71,7 +73,7 @@ const DialogContent = React.forwardRef<
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
-  </DialogPortal>
+  </DialogPrimitive.Portal>
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
@@ -134,5 +136,6 @@ export {
   DialogOverlay,
   DialogPortal,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 };
+

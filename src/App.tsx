@@ -100,6 +100,11 @@ export default function App() {
     setShowQuestionnaire(true);
   };
 
+  const handleCloseQuestionnaireChoice = () => {
+    setShowQuestionnaireChoice(false);
+    // Stay on the website home page
+  };
+
   const handleRetakeQuestionnaire = () => {
     setShowQuestionnaire(true);
   };
@@ -401,6 +406,7 @@ export default function App() {
         isOpen={showQuestionnaireChoice}
         onUseExisting={handleUseExistingSettings}
         onRecomplete={handleRecompleteQuestionnaire}
+        onClose={handleCloseQuestionnaireChoice}
         hasScores={!!localStorage.getItem('luvbox_dealbreaker_scores')}
       />
     </StorageProvider>

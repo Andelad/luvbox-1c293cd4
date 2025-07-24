@@ -9,9 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-[var(--success-green-500)] text-[var(--lb-black-900)] hover:bg-[var(--success-green-600)] focus-visible:ring-[var(--success-green-400)]",
-        secondary: "bg-[var(--lb-black-100)] text-[var(--lb-black-900)] border-2 border-[var(--lb-black-300)] hover:bg-[var(--lb-black-200)] hover:border-[var(--lb-black-400)] focus-visible:ring-[var(--lb-black-400)]",
-        outline: "border-2 border-[var(--lb-black-300)] bg-transparent text-[var(--lb-black-700)] hover:bg-[var(--lb-black-50)] hover:text-[var(--lb-black-900)] hover:border-[var(--lb-black-400)] focus-visible:ring-[var(--lb-black-400)]",
+        primary: "bg-[var(--success-green-300)] text-[var(--lb-black-900)] hover:bg-[var(--success-green-400)] focus-visible:ring-[var(--success-green-400)]",
+        secondary: "border border-[var(--lb-black-300)] bg-transparent text-[var(--lb-black-700)] hover:bg-[var(--lb-black-50)] hover:text-[var(--lb-black-900)] hover:border-[var(--lb-black-400)] focus-visible:ring-[var(--lb-black-400)]",
+        outline: "border border-[var(--lb-black-300)] bg-transparent text-[var(--lb-black-700)] hover:bg-[var(--lb-black-50)] hover:text-[var(--lb-black-900)] hover:border-[var(--lb-black-400)] focus-visible:ring-[var(--lb-black-400)]",
         ghost: "text-[var(--lb-black-700)] hover:bg-[var(--lb-black-100)] hover:text-[var(--lb-black-900)] focus-visible:ring-[var(--lb-black-400)]",
         destructive: "bg-[var(--pink-500)] text-[var(--lb-black-0)] hover:bg-[var(--pink-600)] focus-visible:ring-[var(--pink-400)]",
         link: "text-[var(--blue-500)] underline-offset-4 hover:underline focus-visible:ring-[var(--blue-400)]",
