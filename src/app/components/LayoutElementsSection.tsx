@@ -27,11 +27,11 @@ export default function LayoutElementsSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="text-app-display mb-4">
                     Layout Elements
                 </h2>
-                <p  style={{ color: 'var(--lb-black-600)' }}>
-                    Structural components for organizing content and building consistent layouts
+                <p className="text-app-caption">
+                    Layout and container components for organizing content
                 </p>
             </div>
 
@@ -155,7 +155,7 @@ export default function LayoutElementsSection() {
                                         <CardTitle >Recent Activity</CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p  style={{ color: 'var(--lb-black-600)' }}>
+                                        <p className="text-app-body">
                                             Latest updates and changes to your project timeline and deliverables.
                                         </p>
                                     </CardContent>
@@ -339,9 +339,9 @@ export default function LayoutElementsSection() {
                             <AspectRatio ratio={16 / 9} className="rounded-md" style={{ backgroundColor: 'var(--lb-black-100)' }}>
                                 <div className="flex h-full items-center justify-center">
                                     <div className="text-center">
-                                        <SquareIcon className="mx-auto h-8 w-8 mb-2" style={{ color: 'var(--lb-black-400)' }} />
-                                        <span  style={{ color: 'var(--lb-black-600)' }}>16:9 Aspect Ratio</span>
-                                        <p className="mt-1" style={{ color: 'var(--lb-black-500)' }}>Responsive container</p>
+                                        <SquareIcon className="mx-auto h-8 w-8 mb-2 text-app-caption" />
+                                        <span className="text-app-body">16:9 Aspect Ratio</span>
+                                        <p className="mt-1 text-app-caption">Responsive container</p>
                                     </div>
                                 </div>
                             </AspectRatio>
@@ -445,7 +445,7 @@ export default function LayoutElementsSection() {
                                 >
                                     var(--interactive-hover)
                                 </div>
-                                <p  style={{ color: 'var(--lb-black-500)' }}>
+                                <p className="text-app-caption">
                                     Purple 20% opacity - Subtle feedback
                                 </p>
                             </div>
@@ -457,13 +457,13 @@ export default function LayoutElementsSection() {
                                 >
                                     var(--interactive-active)
                                 </div>
-                                <p  style={{ color: 'var(--lb-black-500)' }}>
+                                <p className="text-app-caption">
                                     Purple 40% opacity - Clear selection
                                 </p>
                             </div>
                             <div className="space-y-2">
                                 <h5 >Implementation</h5>
-                                <div className="space-y-1" style={{ color: 'var(--lb-black-600)' }}>
+                                <div className="space-y-1 text-app-body">
                                     <div>✅ Use CSS variables</div>
                                     <div>✅ 0.2s ease transition</div>
                                     <div>✅ Consistent across components</div>
@@ -506,7 +506,7 @@ export default function LayoutElementsSection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p  style={{ color: 'var(--lb-black-600)' }}>
+                        <p className="text-app-caption">
                             All layout elements follow responsive design principles and maintain consistent spacing across breakpoints
                         </p>
                     </div>

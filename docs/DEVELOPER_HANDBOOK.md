@@ -87,15 +87,15 @@ Before changing any component:
 
 | **Keywords/Intent** | **Go To** | **Key Info** |
 |---------------------|-----------|--------------|
-| `color`, `styling`, `hex`, `background` | [🎨 Color System](#-color-system-standards) | Use `var(--color-name)`, never hardcoded colors |
+| `color`, `styling`, `hex`, `background` | [`/src/styles/colors.css`](../src/styles/colors.css) | Use `var(--color-name)`, never hardcoded colors |
 | `animation`, `motion`, `scroll`, `fade`, `slide` | [🎬 Animation Standards](#-animation--motion-standards) | Use `<AnimatedSection>`, respect `prefers-reduced-motion` |
-| `font`, `text`, `typography`, `size` | [🔤 Typography](#-typography-system-standards) | Use `text-app-*` or `text-web-*` classes |
-| `form`, `input`, `button`, `UI`, `interface`, `height`, `component` | [🎯 LuvBox Design System](#-luvbox-design-system) + [📘 Component Styling Guide](COMPONENT_STYLING_GUIDE.md) | CSS design tokens, universal classes, component showcase |
-| `consistent`, `styling`, `design`, `tokens`, `variables` | [🎯 LuvBox Design System](#-luvbox-design-system) | Central design control via CSS variables |
-| `component`, `create`, `new`, `build` | [🧩 Component Development](#-component-development-standards) + [📘 Component Styling Guide](COMPONENT_STYLING_GUIDE.md) | Follow template, use TypeScript, consistent styling patterns |
+| `font`, `text`, `typography`, `size` | [`/src/styles/typography.css`](../src/styles/typography.css) | Use typography classes |
+| `form`, `input`, `button`, `UI`, `interface`, `height`, `component` | [`/src/styles/components.css`](../src/styles/components.css) | CSS design tokens, component classes |
+| `consistent`, `styling`, `design`, `tokens`, `variables` | [`/src/styles/colors.css`](../src/styles/colors.css) | Central design control via CSS variables |
+| `component`, `create`, `new`, `build` | [🧩 Component Development](#-component-development-standards) | Follow template, use TypeScript, check CSS files first |
 | `dev server`, `npm run`, `port`, `terminal` | [⚡ Development Server](#-development-server-standards) | Check existing server first, use smart restart commands |
 | `folder`, `import`, `path`, `organize` | [📁 Folder Structure](#-folder-structure-standards) | `shared/` for reusable, `app/` vs `website/` specific |
-| `css`, `styles`, `class`, `globals` | [📝 CSS Organization](#-css-organization-standards) | Use CSS variables, follow naming conventions |
+| `css`, `styles`, `class`, `globals` | [`/src/styles/`](../src/styles/) | Use CSS variables, follow naming conventions |
 | `content`, `text`, `copy`, `strings` | [📄 Content Management](#-content-management-standards) | Centralized in `/content`, no hardcoded text |
 | `icon`, `image`, `asset`, `svg` | [🖼️ Asset Management](#-asset-management-standards) | Organized by category, optimized formats |
 
@@ -103,17 +103,17 @@ Before changing any component:
 
 #### **"I need to style something"**
 ```
-1. Is it a button/form/modal? → Use LuvBox house style (.luvmap-button, .form-button-primary, etc.) FIRST
+1. Is it a button/form/modal? → Check /src/styles/components.css for existing classes FIRST
 2. If using shadcn/ui components → MUST restyle to match LuvBox visual identity  
-3. Is it a color? → Use var(--color-name) from Color System
-4. Is it text? → Use text-app-* or text-web-* from Typography  
+3. Is it a color? → Use var(--color-name) from /src/styles/colors.css
+4. Is it text? → Use classes from /src/styles/typography.css  
 5. Is it layout? → Follow LuvBox house style, ensure gradients/shadows match
-6. Is it animation? → Use AnimatedSection from Animation Standards
+6. Is it animation? → Use AnimatedSection from /src/shared/components
 ```
 
 #### **"I need to create something"**
 ```
-1. Does LuvBox house style already have it? → Use .luvmap-*, .form-*, .modal-* classes first
+1. Does LuvBox house style already have it? → Check /src/styles/components.css first
 2. Do I need shadcn/ui behavior? → Use component but restyle to LuvBox appearance
 3. Does it already exist in shared/components? → Extend with LuvBox styling  
 4. Is it reusable? → Put in shared/components with LuvBox house style
@@ -146,10 +146,16 @@ This handbook ensures all developers follow### 📋 Before You Start Checklist
 4. **[🎯 UI & Form Standards](#-ui--form-standards)** - Interactive element sizing, accessibility, user experience
 5. **[🧩 Component Development Standards](#-component-development-standards)** - Creation patterns, TypeScript, file naming
 6. **[⚡ Development Server Standards](#-development-server-standards)** - Server management, port usage, efficient workflows
-6. **[🎬 Animation & Motion Standards](#-animation--motion-standards)** - Performance, accessibility, animation components
-7. **[📝 CSS Organization Standards](#-css-organization-standards)** - CSS structure, naming conventions, modularity
-8. **[📄 Content Management Standards](#-content-management-standards)** - Centralized content, text management
-9. **[🖼️ Asset Management Standards](#-asset-management-standards)** - Icons, images, fonts organization
+7. **[🎬 Animation & Motion Standards](#-animation--motion-standards)** - Performance, accessibility, animation components
+8. **[📝 CSS Organization Standards](#-css-organization-standards)** - CSS structure, naming conventions, modularity
+9. **[📄 Content Management Standards](#-content-management-standards)** - Centralized content, text management
+10. **[🖼️ Asset Management Standards](#-asset-management-standards)** - Icons, images, fonts organization
+
+### 📖 Implementation References (Source of Truth)
+- **[🎨 Color Variables](../src/styles/colors.css)** - All color definitions and usage patterns
+- **[🔤 Typography Classes](../src/styles/typography.css)** - All text classes and font scales
+- **[🧩 Component Styles](../src/styles/components.css)** - All component classes and patterns
+- **[🔘 Button Component](../src/elements/button.tsx)** - React button implementation
 
 ---
 
@@ -162,7 +168,8 @@ This handbook ensures all developers follow### 📋 Before You Start Checklist
 
 | 🎯 **I'm doing...** | 📖 **Read these sections** | ⏱️ **Time** |
 |---------------------|----------------------------|-------------|
-| **Creating a new component** | [🧩 Component Development](#-component-development-standards) → [🎨 Color System](#-color-system-standards) → [🔤 Typography](#-typography-system-standards) | 5 min |
+| **Creating a new component** | [🧩 Component Development](#-component-development-standards) → [📘 Component Styling Guide](COMPONENT_STYLING_GUIDE.md) → [🎨 Color System](#-color-system-standards) | 5 min |
+| **Styling buttons/forms/modals** | [� Component Styling Guide](COMPONENT_STYLING_GUIDE.md) → [🎨 Color System](#-color-system-standards) | 3 min |
 | **Adding animations** | [🎬 Animation Standards](#-animation--motion-standards) → [📝 CSS Organization](#-css-organization-standards) | 3 min |
 | **Styling existing elements** | [🎨 Color System](#-color-system-standards) → [🔤 Typography](#-typography-system-standards) | 2 min |
 | **Organizing files/folders** | [📁 Folder Structure](#-folder-structure-standards) | 2 min |
@@ -203,6 +210,22 @@ This handbook ensures all developers follow### 📋 Before You Start Checklist
 .text-web-caption  /* 1rem - Marketing captions */
 ```
 
+#### Essential Component References
+```bash
+# 🔍 Quick searches to find component styles:
+grep "\.form-button-" src/styles/components.css    # Button classes
+grep "\.form-input" src/styles/components.css      # Form field classes  
+grep "\.modal-" src/styles/components.css          # Modal/dialog classes
+grep "\.luvmap-" src/styles/components.css         # LuvBox brand buttons
+grep "\.sidebar-" src/styles/components.css        # Sidebar components
+grep "\.text-" src/styles/typography.css           # Typography classes
+grep "^  --.*:" src/styles/colors.css              # All color variables
+```
+.text-web-heading  /* 2rem - Marketing headings */
+.text-web-body     /* 1.125rem - Marketing body */
+.text-web-caption  /* 1rem - Marketing captions */
+```
+
 #### Essential Animation Components
 ```tsx
 /* Basic animations */
@@ -214,6 +237,19 @@ This handbook ensures all developers follow### 📋 Before You Start Checklist
 <StaggeredAnimatedSection staggerDelay={100} animation="slideUp">
   {items.map(item => <Item key={item.id} />)}
 </StaggeredAnimatedSection>
+```
+
+#### Development Server Commands
+```bash
+# ✅ Smart server management (ALWAYS use this first)
+npm run dev:check        # Check if running, start if not
+
+# ✅ Other server commands  
+npm run dev:status       # Check server status
+npm run dev:restart      # Force restart (kills existing)
+npm run dev             # Direct start (use only if no server running)
+
+# ❌ NEVER run npm run dev without checking first
 ```
 
 ### 📋 Instant Code Examples (Copy-Paste Ready)
@@ -296,6 +332,20 @@ import { useScrollAnimation } from '@/shared/hooks';
 import { CONTENT } from '@/content';
 ```
 
+#### Available Shared Components (Check Before Creating New)
+```bash
+# 🔍 Find existing components before creating new ones:
+ls src/shared/components/           # List all shared components
+grep "export.*from" src/shared/components/index.ts  # See exported components
+```
+
+**Key existing components** (check `/src/shared/components/` for complete list):
+- `AnimatedSection` - Standard scroll animations  
+- `Button` - LuvBox styled buttons (prefer `/src/elements/button.tsx`)
+- `ImageWithFallback` - Images with error handling
+- Dialog components for common patterns
+- Development/demo components
+
 #### File Organization Quick Rules
 ```
 ✅ shared/components/    → Reusable across app & website
@@ -321,13 +371,13 @@ Examples:
 ```
 
 ### 🚨 Common Gotchas - Check These First
-- ❌ **Never use hardcoded colors** (`#ffffff`, `bg-blue-500`)
-- ❌ **Never use hardcoded fonts** (`font-family: Arial`)
-- ❌ **Never create custom animations** without checking existing components
+- ❌ **Never use hardcoded colors** (`#ffffff`, `bg-blue-500`) → Use `/src/styles/colors.css`
+- ❌ **Never use hardcoded fonts** (`font-family: Arial`) → Use `/src/styles/typography.css`
+- ❌ **Never create custom animations** → Check `/src/shared/components/AnimatedSection.tsx`
 - ❌ **Never ignore `prefers-reduced-motion`** in animations
-- ✅ **Always use CSS variables** (`var(--lime-500)`)
-- ✅ **Always use typography classes** (`text-app-body`)
-- ✅ **Always check existing components** before creating new ones
+- ❌ **Never create separate styling docs** → Add comments to CSS files
+- ✅ **Always check CSS files first** for existing patterns
+- ✅ **Always add usage examples to CSS comments** when creating new patterns
 
 ### 🤖 AI Agent Rules (Priority Order)
 
@@ -338,12 +388,12 @@ Examples:
 4. **Reference handbook sections** - Point to relevant documentation
 
 #### **WHEN user requests styling:**
-1. **LuvBox House Style**: Use `/styles/` classes first (.luvmap-button, .form-*, .modal-*, etc.)
-2. **Colors**: Use `var(--color-name)` from Color System cheat sheet
-3. **Text**: Use `text-app-*` or `text-web-*` classes  
-4. **Animation**: Use `<AnimatedSection>` components only
-5. **shadcn/ui**: If using, MUST restyle to match LuvBox visual identity (gradients, shadows, etc.)
-6. **Layout**: Follow LuvBox house style, ensure visual consistency
+1. **LuvBox House Style**: Check `/src/styles/components.css` for existing classes first
+2. **Colors**: Use `var(--color-name)` from `/src/styles/colors.css`
+3. **Text**: Use classes from `/src/styles/typography.css`
+4. **Animation**: Use `<AnimatedSection>` components from `/src/shared/components`
+5. **shadcn/ui**: If using, MUST restyle to match LuvBox visual identity
+6. **Layout**: Follow patterns in `/src/styles/components.css`
 
 #### **WHEN user requests new component:**
 1. **Location**: Determine shared/ vs app/ vs website/ placement
@@ -357,11 +407,13 @@ Examples:
 3. **Components**: Use `AnimatedSection` or `StaggeredAnimatedSection`
 4. **Extensions**: If new animation type needed, extend existing vs create new
 
-#### **CRITICAL - Always Recommend Handbook Updates When:**
-- User requests patterns not covered in examples
+#### **CRITICAL - Always Add Documentation to CSS Files When:**
+- User requests patterns not covered in CSS comments
 - New successful patterns emerge that should be documented
-- Existing patterns prove insufficient or limiting
+- Component styling patterns are created or modified
 - Performance or accessibility requirements evolve
+
+**IMPORTANT**: Add comprehensive comments to CSS files, NOT separate documentation files. This ensures documentation stays in sync with implementation.
 
 #### **COMPONENT STYLING MIGRATION PRIORITY:**
 When encountering any components (shadcn/ui or legacy):
@@ -673,43 +725,93 @@ Before writing ANY code, verify:
 
 ## 🔤 Typography System Standards
 
-### Dual-Scale Typography
-LuvBox uses **two typography scales** defined in `globals.css`:
+### Font Family Hierarchy Rules
+**CRITICAL:** EB Garamond is **ONLY** for H1/H2 level headings. Everything else uses Source Sans 3.
+
+#### Font Usage Rules:
+- **EB Garamond (serif)**: Only `.text-app-display` and `.text-web-hero`, `.text-web-heading-1`
+- **Source Sans 3 (sans-serif)**: Everything else (headings H3+, body, UI elements)
+- **Spline Sans Mono**: Code and technical content only
+
+### Typography Hierarchy
 
 #### App Scale (Compact Interface)
-- `text-app-display` - Large headings
-- `text-app-heading` - Section headings  
-- `text-app-subheading` - Subsection headings
-- `text-app-body` - Body text
-- `text-app-caption` - Small text
-- `text-app-code` - Code/monospace
+- `text-app-display` - **H1/H2 Major titles** (EB Garamond) - Page titles, main features
+- `text-app-heading` - **H2/H3 Section headings** (Source Sans 3) - Content sections, cards
+- `text-app-subheading` - **H3/H4 Subsections** (Source Sans 3) - Minor organization
+- `text-app-body` - **Body text** (Source Sans 3)
+- `text-app-caption` - **Small text** (Source Sans 3)
+- `text-app-code` - **Code/monospace** (Spline Sans Mono)
 
 #### Website Scale (Marketing Content)
-- `text-web-hero` - Hero headings
-- `text-web-display` - Large headings
-- `text-web-heading` - Section headings
-- `text-web-subheading` - Subsection headings
-- `text-web-body` - Body text
-- `text-web-caption` - Small text
-- `text-web-code` - Code/monospace
-- `text-web-mono` - Monospace (scaled down 10%)
+- `text-web-hero` - **H1 Hero headings** (EB Garamond) - Landing page heroes
+- `text-web-heading-1` - **H1 Large headings** (EB Garamond) - Major marketing sections
+- `text-web-heading-2` - **H2 Section headings** (Source Sans 3) - Content organization
+- `text-web-heading-3` - **H3 Subsections** (Source Sans 3) - Minor organization
+- `text-web-body` - **Body text** (Source Sans 3)
+- `text-web-caption` - **Small text** (Source Sans 3)
+- `text-web-code` - **Code/monospace** (Spline Sans Mono)
 
 ### Typography Rules
-1. **Always use semantic typography classes** instead of hardcoded font properties
-2. **Choose the appropriate scale**: App for interface elements, Website for marketing content
-3. **Font families are built into the classes** - no need to specify separately
+1. **Always use semantic typography classes** - never hardcode fonts, sizes, or colors
+2. **EB Garamond ONLY for major headings** - H1/H2 level content
+3. **Source Sans 3 for everything functional** - H3+, body, UI elements
+4. **Colors are built into classes** - no manual color overrides
+5. **Choose appropriate scale**: App for interface, Website for marketing
 
-#### ✅ CORRECT
+#### ✅ CORRECT - Consistent Hierarchy
 ```tsx
-<h1 className="text-app-heading">Dashboard Title</h1>
-<p className="text-app-body">Interface text</p>
-<h1 className="text-web-hero">Marketing Hero</h1>
+// Page/Feature titles (H1/H2 level)
+<h1 className="text-app-display">Typography System</h1>     // EB Garamond
+<h1 className="text-app-display">Form Elements</h1>         // EB Garamond
+
+// Section headings (H2/H3 level) 
+<h2 className="text-app-heading">App Typography Classes</h2>  // Source Sans 3
+<h3 className="text-app-heading">Text Input Fields</h3>       // Source Sans 3
+
+// Subsections (H3/H4 level)
+<h3 className="text-app-subheading">Input States</h3>        // Source Sans 3
+<h4 className="text-app-subheading">Validation Examples</h4> // Source Sans 3
 ```
 
-#### ❌ WRONG
+#### ❌ CRITICAL VIOLATIONS TO FIX
 ```tsx
-<h1 className="font-['EB_Garamond'] text-2xl font-semibold">Title</h1>
-<p style={{ fontFamily: 'Source Sans 3', fontSize: '16px' }}>Text</p>
+// 1. Inline style colors (violates typography system)
+<h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>Form Elements</h2>
+
+// 2. Missing typography classes (no semantic styling)  
+<h3 className="mb-2">Overview Tab</h3>
+
+// 3. Hardcoded sizes (bypasses design system)
+<h2 className="text-[32px]">Page Title</h2>
+
+// 4. Inconsistent hierarchy (same level, different classes)
+<h2 className="text-app-display">Typography System</h2>    // Level 1
+<h2 className="mb-4" style={{...}}>Form Elements</h2>     // Level 1 but wrong
+
+// 5. Wrong font families (hardcoded fonts)
+<h1 className="font-['EB_Garamond'] text-2xl">Title</h1>
+<p style={{ fontFamily: 'Source Sans 3' }}>Text</p>
+```
+
+#### ✅ FIXES
+```tsx
+// Fix 1: Use typography classes with built-in colors
+<h2 className="text-app-display mb-4">Form Elements</h2>
+
+// Fix 2: Add proper typography classes
+<h3 className="text-app-subheading mb-2">Overview Tab</h3>
+
+// Fix 3: Use semantic size classes
+<h2 className="text-app-display">Page Title</h2>
+
+// Fix 4: Consistent hierarchy
+<h2 className="text-app-display">Typography System</h2>   // Level 1
+<h2 className="text-app-display">Form Elements</h2>       // Level 1
+
+// Fix 5: Use semantic typography classes only
+<h1 className="text-app-display">Title</h1>
+<p className="text-app-body">Text</p>
 ```
 
 ## 🧩 Component Development Standards

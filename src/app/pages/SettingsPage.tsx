@@ -115,7 +115,7 @@ const SettingsPage: React.FC = () => {
 
   const renderUserProfileSection = () => (
     <div className="max-w-2xl">
-      <h2 className="text-app-display text-[var(--lb-black-900)] mb-6">{content.profile.title}</h2>
+      <h2 className="text-app-display mb-6">{content.profile.title}</h2>
 
       <div className="space-y-6">
         <div>
@@ -154,8 +154,8 @@ const SettingsPage: React.FC = () => {
             Save Profile
           </Button>
         ) : (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p className="text-[var(--blue-800)] text-app-body">
+          <div className="p-4 rounded-lg border bg-blue-50 border-blue-200">
+            <p className="text-app-body">
               <strong>Note:</strong> Your profile information is saved locally. Create an account to save it permanently.
             </p>
           </div>
@@ -167,10 +167,10 @@ const SettingsPage: React.FC = () => {
   const renderDealbreakerSection = () => {
     return (
       <div className="max-w-2xl">
-        <h2 className="text-app-display text-[var(--lb-black-900)] mb-6">Dealbreaker Lines</h2>
+        <h2 className="text-app-display mb-6">Dealbreaker Lines</h2>
 
         <div className="mb-6">
-          <p className="text-app-body text-[var(--lb-black-600)] mb-4">
+          <p className="text-app-body mb-4">
             Your dealbreaker lines help you identify potential compatibility issues early. You can adjust these anytime.
           </p>
 
@@ -205,8 +205,8 @@ const SettingsPage: React.FC = () => {
           </Button>
 
           {!user && (
-            <div className="bg-[var(--blue-50)] border border-[var(--blue-200)] rounded-lg p-4 mt-4">
-              <p className="text-[var(--blue-800)] text-app-body">
+            <div className="p-4 rounded-lg border mt-4 bg-blue-50 border-blue-200">
+              <p className="text-app-body">
                 <strong>Note:</strong> Your dealbreaker settings are saved locally. Create an account to save them permanently across devices.
               </p>
             </div>
@@ -220,191 +220,122 @@ const SettingsPage: React.FC = () => {
   const renderTypographySection = () => {
     return (
       <div className="max-w-4xl">
-        <h2 className="text-app-3xl font-serif text-foreground mb-6">Typography System</h2>
+        <h2 className="text-app-display mb-6">Typography System</h2>
 
         {/* App Typography Scale */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif text-foreground mb-4">App Typography Scale</h3>
-          <p className="text-app-base font-sans text-muted-foreground mb-6">
+          <h3 className="text-app-heading mb-4">App Typography Classes</h3>
+          <p className="text-app-body mb-6">
             Compact scale optimized for app interface. Responsive sizing: 14px base mobile → 16px base desktop.
           </p>
 
-          <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
+          <div className="space-y-4 p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-50)', borderColor: 'var(--lb-black-200)' }}>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-xs</code>
-              <span className="text-app-xs font-sans text-foreground truncate">Fine print, metadata (0.75rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-app-display</code>
+              <span className="text-app-display truncate">Large display text (1.875rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-sm</code>
-              <span className="text-app-sm font-sans text-foreground truncate">Captions, labels (0.875rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-app-heading</code>
+              <span className="text-app-heading truncate">Section headings (1.5rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-base</code>
-              <span className="text-app-base font-sans text-foreground truncate">Body text, paragraphs (1rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-app-subheading</code>
+              <span className="text-app-subheading truncate">Subsection headings (1.25rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-lg</code>
-              <span className="text-app-lg font-sans text-foreground truncate">Emphasized text (1.125rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-app-body</code>
+              <span className="text-app-body truncate">Body text, paragraphs (1rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-xl</code>
-              <span className="text-app-xl font-sans text-foreground truncate">Subheadings (1.25rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-app-caption</code>
+              <span className="text-app-caption truncate">Captions, small text (0.875rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-2xl</code>
-              <span className="text-app-2xl font-sans text-foreground truncate">Section headings (1.5rem)</span>
-            </div>
-            <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-3xl</code>
-              <span className="text-app-3xl font-sans text-foreground truncate">Page titles (1.875rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-app-code</code>
+              <code className="text-app-code truncate">Code text (90% of 0.875rem)</code>
             </div>
           </div>
         </div>
 
         {/* Website Typography Scale */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif text-foreground mb-4">Website Typography Scale</h3>
-          <p className="text-app-base font-sans text-muted-foreground mb-6">
+          <h3 className="text-app-heading mb-4">Website Typography Classes</h3>
+          <p className="text-app-body mb-6">
             Generous scale for website content, optimized for reading and marketing. Same responsive system.
           </p>
 
-          <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
+          <div className="space-y-4 p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-50)', borderColor: 'var(--lb-black-200)' }}>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-xs</code>
-              <span className="text-web-xs font-sans text-foreground truncate">Fine print, metadata (1rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-hero</code>
+              <span className="text-web-hero truncate">Hero headings (3.25rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-sm</code>
-              <span className="text-web-sm font-sans text-foreground truncate">Captions, labels (1.125rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-heading-1</code>
+              <span className="text-web-heading-1 truncate">H1 headings (2.5rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-base</code>
-              <span className="text-web-base font-sans text-foreground truncate">Body text, paragraphs (1.25rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-heading-2</code>
+              <span className="text-web-heading-2 truncate">H2 headings (2rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-lg</code>
-              <span className="text-web-lg font-sans text-foreground truncate">Emphasized text (1.375rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-heading-3</code>
+              <span className="text-web-heading-3 truncate">H3 headings (1.625rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-xl</code>
-              <span className="text-web-xl font-sans text-foreground truncate">Subheadings (1.625rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-body</code>
+              <span className="text-web-body truncate">Body text, paragraphs (1.25rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-2xl</code>
-              <span className="text-web-2xl font-sans text-foreground truncate">Section headings (2rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-caption</code>
+              <span className="text-web-caption truncate">Captions, labels (1.125rem)</span>
             </div>
             <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-3xl</code>
-              <span className="text-web-3xl font-sans text-foreground truncate">Page titles (2.5rem)</span>
-            </div>
-            <div className="flex items-center gap-4 overflow-hidden">
-              <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-4xl</code>
-              <span className="text-web-4xl font-sans text-foreground truncate">Hero headings (3.25rem)</span>
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-code</code>
+              <code className="text-web-code truncate">Code text (90% of 1.125rem)</code>
             </div>
           </div>
         </div>
 
-        {/* Monospace Typography Scale */}
+        {/* Monospace Typography */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif text-foreground mb-4">Monospace Typography Scale</h3>
-          <div className="bg-accent/50 p-4 rounded-lg border border-accent mb-6">
-            <p className="text-app-base font-sans text-foreground mb-2">
+          <h3 className="text-app-heading mb-4">Monospace Typography</h3>
+          <div className="p-4 rounded-lg border mb-6" style={{ backgroundColor: 'var(--lb-black-100)', borderColor: 'var(--lb-black-200)' }}>
+            <p className="text-app-body mb-2">
               <strong>Design Rule:</strong> Spline Sans Mono should always be <strong>90%</strong> of the equivalent Source Sans 3 size, while retaining the same line height.
             </p>
-            <p className="text-app-sm font-sans text-muted-foreground">
+            <p className="text-app-caption">
               This creates visual balance between monospace and sans-serif fonts due to monospace's fixed-width nature.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* App Monospace Scale */}
-            <div>
-              <h4 className="text-app-xl font-serif text-foreground mb-4">App Monospace Scale</h4>
-              <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-mono-xs</code>
-                  <code className="text-app-mono-xs font-mono text-foreground truncate">console.log('xs');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-mono-sm</code>
-                  <code className="text-app-mono-sm font-mono text-foreground truncate">console.log('sm');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-mono-base</code>
-                  <code className="text-app-mono-base font-mono text-foreground truncate">console.log('base');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-mono-lg</code>
-                  <code className="text-app-mono-lg font-mono text-foreground truncate">console.log('lg');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-mono-xl</code>
-                  <code className="text-app-mono-xl font-mono text-foreground truncate">console.log('xl');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-mono-2xl</code>
-                  <code className="text-app-mono-2xl font-mono text-foreground truncate">console.log('2xl');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-app-mono-3xl</code>
-                  <code className="text-app-mono-3xl font-mono text-foreground truncate">console.log('3xl');</code>
-                </div>
-              </div>
+          <div className="space-y-4 p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-50)', borderColor: 'var(--lb-black-200)' }}>
+            <div className="flex items-center gap-4 overflow-hidden">
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-app-code</code>
+              <code className="text-app-code truncate">App code text (90% of 0.875rem)</code>
             </div>
-
-            {/* Website Monospace Scale */}
-            <div>
-              <h4 className="text-app-xl font-serif text-foreground mb-4">Website Monospace Scale</h4>
-              <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-xs</code>
-                  <code className="text-web-mono-xs font-mono text-foreground truncate">console.log('xs');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-sm</code>
-                  <code className="text-web-mono-sm font-mono text-foreground truncate">console.log('sm');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-base</code>
-                  <code className="text-web-mono-base font-mono text-foreground truncate">console.log('base');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-lg</code>
-                  <code className="text-web-mono-lg font-mono text-foreground truncate">console.log('lg');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-xl</code>
-                  <code className="text-web-mono-xl font-mono text-foreground truncate">console.log('xl');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-2xl</code>
-                  <code className="text-web-mono-2xl font-mono text-foreground truncate">console.log('2xl');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-3xl</code>
-                  <code className="text-web-mono-3xl font-mono text-foreground truncate">console.log('3xl');</code>
-                </div>
-                <div className="flex items-center gap-4 overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground min-w-[140px] flex-shrink-0">text-web-mono-4xl</code>
-                  <code className="text-web-mono-4xl font-mono text-foreground truncate">console.log('4xl');</code>
-                </div>
-              </div>
+            <div className="flex items-center gap-4 overflow-hidden">
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-code</code>
+              <code className="text-web-code truncate">Website code text (90% of 1.125rem)</code>
+            </div>
+            <div className="flex items-center gap-4 overflow-hidden">
+              <code className="text-app-code min-w-[140px] flex-shrink-0">text-web-mono</code>
+              <code className="text-web-mono truncate">General monospace (90% of 1.25rem)</code>
             </div>
           </div>
 
           {/* Visual Comparison */}
-          <div className="mt-6 bg-background p-6 rounded-lg border border-border">
-            <h5 className="text-app-lg font-serif text-foreground mb-4">Visual Size Comparison</h5>
+          <div className="mt-6 p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-0)', borderColor: 'var(--lb-black-200)' }}>
+            <h4 className="text-app-subheading mb-4">Visual Size Comparison</h4>
             <div className="space-y-3">
               <div className="flex items-baseline gap-4">
-                <span className="text-app-base font-sans text-foreground">Source Sans 3 (base):</span>
-                <span className="text-app-base font-sans text-foreground">Hello World</span>
+                <span className="text-app-body">Source Sans 3 (base):</span>
+                <span className="text-app-body">Hello World</span>
               </div>
               <div className="flex items-baseline gap-4">
-                <span className="text-app-base font-sans text-foreground">Spline Mono (90%):</span>
-                <code className="text-app-mono-base font-mono text-foreground">Hello World</code>
+                <span className="text-app-body">Spline Mono (90%):</span>
+                <code className="text-app-code">Hello World</code>
               </div>
-              <div className="mt-2 text-app-sm font-sans text-muted-foreground">
+              <div className="mt-2 text-app-caption">
                 Notice how the monospace text appears visually balanced with the sans-serif text despite being smaller.
               </div>
             </div>
@@ -413,33 +344,33 @@ const SettingsPage: React.FC = () => {
 
         {/* Font Families */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif text-foreground mb-4">Font Families</h3>
+          <h3 className="text-app-heading mb-4">Font Families</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-muted p-6 rounded-lg border border-border">
-              <h4 className="text-app-lg font-serif text-foreground mb-3">EB Garamond</h4>
-              <p className="text-app-sm font-sans text-muted-foreground mb-4">Serif • Headlines • Display</p>
+            <div className="p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-50)', borderColor: 'var(--lb-black-200)' }}>
+              <h4 className="text-app-subheading mb-3">EB Garamond</h4>
+              <p className="text-app-caption mb-4">Serif • Headlines • Display</p>
               <div className="space-y-2">
-                <p className="text-web-lg font-serif text-foreground">The quick brown fox jumps</p>
-                <p className="text-app-base font-serif text-foreground">Headlines, display text, elegant content</p>
+                <p className="text-web-heading-3">The quick brown fox jumps</p>
+                <p className="text-app-body">Headlines, display text, elegant content</p>
               </div>
             </div>
 
-            <div className="bg-muted p-6 rounded-lg border border-border">
-              <h4 className="text-app-lg font-serif text-foreground mb-3">Source Sans 3</h4>
-              <p className="text-app-sm font-sans text-muted-foreground mb-4">Sans-serif • Body • UI</p>
+            <div className="p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-50)', borderColor: 'var(--lb-black-200)' }}>
+              <h4 className="text-app-subheading mb-3">Source Sans 3</h4>
+              <p className="text-app-caption mb-4">Sans-serif • Body • UI</p>
               <div className="space-y-2">
-                <p className="text-web-lg font-sans text-foreground">The quick brown fox jumps</p>
-                <p className="text-app-base font-sans text-foreground">Body text, UI elements, readable content</p>
+                <p className="text-web-body">The quick brown fox jumps</p>
+                <p className="text-app-body">Body text, UI elements, readable content</p>
               </div>
             </div>
 
-            <div className="bg-muted p-6 rounded-lg border border-border">
-              <h4 className="text-app-lg font-serif text-foreground mb-3">Spline Sans Mono</h4>
-              <p className="text-app-sm font-sans text-muted-foreground mb-4">Monospace • Code • Technical</p>
+            <div className="p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-50)', borderColor: 'var(--lb-black-200)' }}>
+              <h4 className="text-app-subheading mb-3">Spline Sans Mono</h4>
+              <p className="text-app-caption mb-4">Monospace • Code • Technical</p>
               <div className="space-y-2">
-                <p className="text-web-lg font-mono font-normal text-foreground">const example = 'code';</p>
-                <p className="text-app-base font-sans text-foreground">Code, technical content, data</p>
+                <code className="text-web-code">const example = 'code';</code>
+                <p className="text-app-body">Code, technical content, data</p>
               </div>
             </div>
           </div>
@@ -447,71 +378,71 @@ const SettingsPage: React.FC = () => {
 
         {/* Semantic Classes */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif text-foreground mb-4">Semantic Typography Classes</h3>
+          <h3 className="text-app-heading mb-4">Semantic Typography Classes</h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* App Semantic */}
             <div>
-              <h4 className="text-app-xl font-serif text-foreground mb-4">App Semantic Classes</h4>
-              <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
+              <h4 className="text-app-subheading mb-4">App Semantic Classes</h4>
+              <div className="space-y-4 p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-50)', borderColor: 'var(--lb-black-200)' }}>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-app-display</code>
-                  <p className="text-app-display font-serif text-foreground truncate">Large titles</p>
+                  <code className="text-app-code">text-app-display</code>
+                  <p className="text-app-display truncate">Large titles</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-app-heading</code>
-                  <p className="text-app-heading font-serif text-foreground truncate">Section headers</p>
+                  <code className="text-app-code">text-app-heading</code>
+                  <p className="text-app-heading truncate">Section headers</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-app-subheading</code>
-                  <p className="text-app-subheading font-serif text-foreground truncate">Subsection headers</p>
+                  <code className="text-app-code">text-app-subheading</code>
+                  <p className="text-app-subheading truncate">Subsection headers</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-app-body</code>
-                  <p className="text-app-body font-sans text-foreground truncate">Body text</p>
+                  <code className="text-app-code">text-app-body</code>
+                  <p className="text-app-body truncate">Body text</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-app-caption</code>
-                  <p className="text-app-caption font-sans text-foreground truncate">Small text</p>
+                  <code className="text-app-code">text-app-caption</code>
+                  <p className="text-app-caption truncate">Small text</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-app-code</code>
-                  <code className="text-app-code font-mono text-foreground truncate">Code text</code>
+                  <code className="text-app-code">text-app-code</code>
+                  <code className="text-app-code truncate">Code text</code>
                 </div>
               </div>
             </div>
 
             {/* Website Semantic */}
             <div>
-              <h4 className="text-app-xl font-serif text-foreground mb-4">Website Semantic Classes</h4>
-              <div className="space-y-4 bg-muted p-6 rounded-lg border border-border">
+              <h4 className="text-app-subheading mb-4">Website Semantic Classes</h4>
+              <div className="space-y-4 p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-50)', borderColor: 'var(--lb-black-200)' }}>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-web-hero</code>
-                  <p className="text-web-hero font-serif text-foreground truncate">Hero headings</p>
+                  <code className="text-app-code">text-web-hero</code>
+                  <p className="text-web-hero truncate">Hero headings</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-web-display</code>
-                  <p className="text-web-display font-serif text-foreground truncate">Large titles</p>
+                  <code className="text-app-code">text-web-heading-1</code>
+                  <p className="text-web-heading-1 truncate">Large titles</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-web-heading</code>
-                  <p className="text-web-heading font-serif text-foreground truncate">Section headers</p>
+                  <code className="text-app-code">text-web-heading-2</code>
+                  <p className="text-web-heading-2 truncate">Section headers</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-web-subheading</code>
-                  <p className="text-web-subheading font-serif text-foreground truncate">Subsection headers</p>
+                  <code className="text-app-code">text-web-heading-3</code>
+                  <p className="text-web-heading-3 truncate">Subsection headers</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-web-body</code>
-                  <p className="text-web-body font-sans text-foreground truncate">Body text</p>
+                  <code className="text-app-code">text-web-body</code>
+                  <p className="text-web-body truncate">Body text</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-web-caption</code>
-                  <p className="text-web-caption font-sans text-foreground truncate">Small text</p>
+                  <code className="text-app-code">text-web-caption</code>
+                  <p className="text-web-caption truncate">Small text</p>
                 </div>
                 <div className="overflow-hidden">
-                  <code className="text-app-code font-mono text-muted-foreground">text-web-code</code>
-                  <code className="text-web-code font-mono text-foreground truncate">Code text</code>
+                  <code className="text-app-code">text-web-code</code>
+                  <code className="text-web-code truncate">Code text</code>
                 </div>
               </div>
             </div>
@@ -520,56 +451,56 @@ const SettingsPage: React.FC = () => {
 
         {/* Responsive Example */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif text-foreground mb-4">Responsive Typography</h3>
-          <div className="bg-accent p-6 rounded-lg border border-border">
-            <p className="text-app-base font-sans text-muted-foreground mb-4">
+          <h3 className="text-app-heading mb-4">Responsive Typography</h3>
+          <div className="p-6 rounded-lg border" style={{ backgroundColor: 'var(--lb-black-100)', borderColor: 'var(--lb-black-200)' }}>
+            <p className="text-app-body mb-4">
               📱 <strong>Mobile (&lt; 768px):</strong> 14px root font size<br />
               🖥️ <strong>Desktop (≥ 768px):</strong> 16px root font size
             </p>
-            <p className="text-web-lg font-serif text-foreground">
-              This text automatically scales from 19.25px on mobile to 22px on desktop!
+            <p className="text-web-body">
+              This text automatically scales from 17.5px on mobile to 20px on desktop!
             </p>
           </div>
         </div>
 
         {/* Debug Section - Actual computed values */}
         <div className="mb-8">
-          <h3 className="text-app-2xl font-serif text-foreground mb-4">Debug: Actual Computed Values</h3>
-          <div className="bg-destructive/10 p-6 rounded-lg border border-destructive/20">
-            <p className="text-app-base font-sans text-foreground mb-4">
+          <h3 className="text-app-heading mb-4">Debug: Actual Computed Values</h3>
+          <div className="p-6 rounded-lg border" style={{ backgroundColor: 'var(--caution-red-50)', borderColor: 'var(--caution-red-200)' }}>
+            <p className="text-app-body mb-4">
               Use browser dev tools to inspect these elements and verify actual computed font sizes:
             </p>
 
             <div className="space-y-3">
-              <div className="p-2 bg-background border border-border rounded">
-                <code className="text-app-code font-mono text-muted-foreground">1rem text:</code>
-                <span className="ml-4 font-sans text-foreground" id="test-1rem">This should be 16px on desktop</span>
+              <div className="p-2 border rounded" style={{ backgroundColor: 'var(--lb-black-0)', borderColor: 'var(--lb-black-200)' }}>
+                <code className="text-app-code">1rem text:</code>
+                <span className="ml-4" id="test-1rem">This should be 16px on desktop</span>
               </div>
 
-              <div className="p-2 bg-background border border-border rounded">
-                <code className="text-app-code font-mono text-muted-foreground">text-app-base:</code>
-                <span className="ml-4 text-app-base font-sans text-foreground" id="test-app-base">This should be 16px on desktop</span>
+              <div className="p-2 border rounded" style={{ backgroundColor: 'var(--lb-black-0)', borderColor: 'var(--lb-black-200)' }}>
+                <code className="text-app-code">text-app-body:</code>
+                <span className="ml-4 text-app-body" id="test-app-base">This should be 16px on desktop</span>
               </div>
 
-              <div className="p-2 bg-background border border-border rounded">
-                <code className="text-app-code font-mono text-muted-foreground">text-web-base:</code>
-                <span className="ml-4 text-web-base font-sans text-foreground" id="test-web-base">This should be 20px on desktop</span>
+              <div className="p-2 border rounded" style={{ backgroundColor: 'var(--lb-black-0)', borderColor: 'var(--lb-black-200)' }}>
+                <code className="text-app-code">text-web-body:</code>
+                <span className="ml-4 text-web-body" id="test-web-base">This should be 20px on desktop</span>
               </div>
 
-              <div className="p-2 bg-background border border-border rounded">
-                <code className="text-app-code font-mono text-muted-foreground">text-app-mono-base:</code>
-                <code className="ml-4 text-app-mono-base font-mono text-foreground" id="test-mono-base">This should be 90% of 16px (14.4px)</code>
+              <div className="p-2 border rounded" style={{ backgroundColor: 'var(--lb-black-0)', borderColor: 'var(--lb-black-200)' }}>
+                <code className="text-app-code">text-app-code:</code>
+                <code className="ml-4 text-app-code" id="test-mono-base">This should be 90% of 14px (12.6px)</code>
               </div>
 
-              <div className="p-2 bg-background border border-border rounded">
-                <code className="text-app-code font-mono text-muted-foreground">Raw 16px:</code>
-                <span className="ml-4 font-sans text-foreground" style={{ fontSize: '16px' }} id="test-raw-16px">This is hardcoded 16px</span>
+              <div className="p-2 border rounded" style={{ backgroundColor: 'var(--lb-black-0)', borderColor: 'var(--lb-black-200)' }}>
+                <code className="text-app-code">Raw 16px:</code>
+                <span className="ml-4" style={{ fontSize: '16px' }} id="test-raw-16px">This is hardcoded 16px</span>
               </div>
             </div>
 
-            <div className="mt-4 p-3 bg-background border border-border rounded">
-              <p className="text-app-sm font-sans text-muted-foreground mb-2">Current viewport and root font size info:</p>
-              <div className="text-app-code font-mono text-foreground">
+            <div className="mt-4 p-3 border rounded" style={{ backgroundColor: 'var(--lb-black-0)', borderColor: 'var(--lb-black-200)' }}>
+              <p className="text-app-caption mb-2">Current viewport and root font size info:</p>
+              <div className="text-app-code">
                 <div>Viewport width: <span id="viewport-width">--</span>px</div>
                 <div>Root font size: <span id="root-font-size">--</span>px</div>
                 <div>1rem computed: <span id="one-rem-computed">--</span>px</div>

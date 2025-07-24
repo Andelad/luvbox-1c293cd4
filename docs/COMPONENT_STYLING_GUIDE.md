@@ -1,11 +1,28 @@
 # LuvBox Component Styling Guide
 
+> **⚠️ SOURCE OF TRUTH**: For current implementation details, always check:
+> - **Components**: `/src/styles/components.css` 
+> - **Colors**: `/src/styles/colors.css`
+> - **Typography**: `/src/styles/typography.css`
+> - **Button Component**: `/src/elements/button.tsx`
+>
+> This guide provides patterns and examples but CSS files contain the definitive implementation.
+
+## Quick Navigation
+
+### 🎯 Find What You Need:
+- **Button styling**: Search `.form-button-` in `/src/styles/components.css`
+- **Form styling**: Search `.form-input` in `/src/styles/components.css`  
+- **Modal styling**: Search `.modal-` in `/src/styles/components.css`
+- **Color variables**: Browse `/src/styles/colors.css`
+- **Typography classes**: Browse `/src/styles/typography.css`
+
 ## Button System
 
 ### Primary Usage: Use the Updated shadcn/ui Button Component
 
 ```tsx
-import { Button } from "@/assets/ui/button";
+import { Button } from "@/elements/button";
 
 // Primary button (success green)
 <Button variant="primary" size="large">Save Changes</Button>
@@ -35,9 +52,9 @@ import { Button } from "@/assets/ui/button";
 ```
 
 ### Color Usage
-- **Primary**: Uses `var(--success-green-500)` with `var(--success-green-600)` on hover
-- **Secondary**: Uses `var(--lb-black-100)` background with `var(--lb-black-300)` border
-- **Focus States**: Consistent 2px ring with appropriate color variations
+- **See current implementation**: `/src/styles/colors.css` for all available variables
+- **Button colors**: Check `/src/elements/button.tsx` for exact usage
+- **Form colors**: Search `.form-` classes in `/src/styles/components.css`
 
 ## Form Components
 
@@ -70,7 +87,7 @@ import { Button } from "@/assets/ui/button";
 ### Consistent Dialog Structure
 
 ```tsx
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/assets/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/elements/dialog";
 
 <Dialog open={isOpen} onOpenChange={onClose}>
   <DialogContent className="modal-content">

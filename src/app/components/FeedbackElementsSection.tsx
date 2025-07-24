@@ -20,27 +20,27 @@ export default function FeedbackElementsSection() {
         switch (type) {
             case 'success':
                 toast({
-                    title:"Success!",
-                    description:"Your action was completed successfully.",
+                    title: "Success!",
+                    description: "Your action was completed successfully.",
                 });
                 break;
             case 'error':
                 toast({
-                    title:"Error",
-                    description:"Something went wrong. Please try again.",
-                    variant:"destructive",
+                    title: "Error",
+                    description: "Something went wrong. Please try again.",
+                    variant: "destructive",
                 });
                 break;
             case 'info':
                 toast({
-                    title:"Information",
-                    description:"Here's some useful information for you.",
+                    title: "Information",
+                    description: "Here's some useful information for you.",
                 });
                 break;
             case 'warning':
                 toast({
-                    title:"Warning",
-                    description:"Please review this action before proceeding.",
+                    title: "Warning",
+                    description: "Please review this action before proceeding.",
                 });
                 break;
         }
@@ -50,11 +50,11 @@ export default function FeedbackElementsSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="text-app-display mb-4">
                     Feedback Elements
                 </h2>
-                <p  style={{ color: 'var(--lb-black-600)' }}>
-                    Alerts, dialogs, toasts, and user feedback components for clear communication
+                <p className="text-app-body">
+                    User feedback components including alerts, toasts, and notifications
                 </p>
             </div>
 
@@ -69,7 +69,7 @@ export default function FeedbackElementsSection() {
                 <CardContent className="space-y-6">
                     {/* Information Alert */}
                     <div className="space-y-3">
-                        <h4 >Information Alerts</h4>
+                        <h4 className="text-app-subheading">Information Alerts</h4>
                         <Alert>
                             <InfoIcon className="h-4 w-4" />
                             <AlertTitle>Information</AlertTitle>
@@ -81,11 +81,11 @@ export default function FeedbackElementsSection() {
 
                     {/* Success Alert */}
                     <div className="space-y-3">
-                        <h4 >Success Alerts</h4>
-                        <Alert className="border-green-200 bg-green-50">
-                            <CheckCircleIcon className="h-4 w-4 text-green-600" />
-                            <AlertTitle className="text-green-800">Success</AlertTitle>
-                            <AlertDescription className="text-green-700">
+                        <h4 className="text-app-subheading">Success Alerts</h4>
+                        <Alert style={{ borderColor: 'var(--success-green-200)', backgroundColor: 'var(--success-green-50)' }}>
+                            <CheckCircleIcon className="h-4 w-4" style={{ color: 'var(--success-green-600)' }} />
+                            <AlertTitle style={{ color: 'var(--success-green-800)' }}>Success</AlertTitle>
+                            <AlertDescription style={{ color: 'var(--success-green-700)' }}>
                                 Your action was completed successfully. All changes have been saved.
                             </AlertDescription>
                         </Alert>
@@ -93,11 +93,11 @@ export default function FeedbackElementsSection() {
 
                     {/* Warning Alert */}
                     <div className="space-y-3">
-                        <h4 >Warning Alerts</h4>
-                        <Alert className="border-yellow-200 bg-yellow-50">
-                            <AlertCircleIcon className="h-4 w-4 text-yellow-600" />
-                            <AlertTitle className="text-yellow-800">Warning</AlertTitle>
-                            <AlertDescription className="text-yellow-700">
+                        <h4 className="text-app-subheading">Warning Alerts</h4>
+                        <Alert style={{ borderColor: 'var(--yellow-200)', backgroundColor: 'var(--yellow-50)' }}>
+                            <AlertCircleIcon className="h-4 w-4" style={{ color: 'var(--yellow-600)' }} />
+                            <AlertTitle style={{ color: 'var(--yellow-800)' }}>Warning</AlertTitle>
+                            <AlertDescription style={{ color: 'var(--yellow-700)' }}>
                                 Please review this action carefully before proceeding. This cannot be undone.
                             </AlertDescription>
                         </Alert>
@@ -105,7 +105,7 @@ export default function FeedbackElementsSection() {
 
                     {/* Error Alert */}
                     <div className="space-y-3">
-                        <h4 >Error Alerts</h4>
+                        <h4 className="text-app-subheading">Error Alerts</h4>
                         <Alert variant="destructive">
                             <XCircleIcon className="h-4 w-4" />
                             <AlertTitle>Error</AlertTitle>
@@ -117,8 +117,8 @@ export default function FeedbackElementsSection() {
 
                     {/* Critical Alert */}
                     <div className="space-y-3">
-                        <h4 >Critical Alerts</h4>
-                        <Alert variant="destructive" className="border-red-500 bg-red-50">
+                        <h4 className="text-app-subheading">Critical Alerts</h4>
+                        <Alert variant="destructive" style={{ borderColor: 'var(--red-500)', backgroundColor: 'var(--red-50)' }}>
                             <AlertTriangleIcon className="h-4 w-4" />
                             <AlertTitle>Critical Error</AlertTitle>
                             <AlertDescription>
@@ -139,7 +139,7 @@ export default function FeedbackElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 >Dialog Examples</h4>
+                        <h4 className="text-app-subheading">Dialog Examples</h4>
                         <div className="flex flex-wrap gap-3">
                             {/* Confirmation Dialog */}
                             <Dialog>
@@ -168,7 +168,7 @@ export default function FeedbackElementsSection() {
                                 <DialogContent className="luvbox-dialog-base">
                                     <DialogHeader>
                                         <DialogTitle className="flex items-center gap-2">
-                                            <InfoIcon className="h-5 w-5 text-blue-500" />
+                                            <InfoIcon className="h-5 w-5" style={{ color: 'var(--blue-500)' }} />
                                             About This Feature
                                         </DialogTitle>
                                         <DialogDescription>
@@ -240,7 +240,7 @@ export default function FeedbackElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 >Toast Examples</h4>
+                        <h4 className="text-app-subheading">Toast Examples</h4>
                         <div className="flex flex-wrap gap-3">
                             <Button
                                 variant="outline"
@@ -275,7 +275,7 @@ export default function FeedbackElementsSection() {
                     <Separator />
 
                     <div className="space-y-4">
-                        <h4 >Toast Behavior</h4>
+                        <h4 className="text-app-subheading">Toast Behavior</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <h5 >Auto-dismiss</h5>
@@ -308,7 +308,7 @@ export default function FeedbackElementsSection() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <h4 >Loading States</h4>
+                        <h4 className="text-app-subheading">Loading States</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-3">
                                 <h5 >Button Loading</h5>
@@ -346,7 +346,7 @@ export default function FeedbackElementsSection() {
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-3">
-                            <h4 >Alert Specifications</h4>
+                            <h4 className="text-app-subheading">Alert Specifications</h4>
                             <ul >
                                 <li>• Border radius: 8px</li>
                                 <li>• Padding: 16px</li>
@@ -355,7 +355,7 @@ export default function FeedbackElementsSection() {
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <h4 >Dialog & Toast Standards</h4>
+                            <h4 className="text-app-subheading">Dialog & Toast Standards</h4>
                             <ul >
                                 <li>• Dialog border radius: 16px</li>
                                 <li>• Toast duration: 5 seconds (default)</li>
@@ -366,7 +366,7 @@ export default function FeedbackElementsSection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p  style={{ color: 'var(--lb-black-600)' }}>
+                        <p className="text-app-caption">
                             All feedback elements follow accessibility guidelines and use consistent color coding for different message types
                         </p>
                     </div>

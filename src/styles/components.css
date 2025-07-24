@@ -1,6 +1,51 @@
-/* Component Styles */
+/* LuvBox Component Styles - SOURCE OF TRUTH for component styling
+ * 
+ * COMPONENT HIERARCHY:
+ * 1. LuvBox House Style (.luvmap-*, .form-*, .modal-*) - USE FIRST
+ * 2. shadcn/ui components (/src/elements/) - Restyle with LuvBox classes  
+ * 3. Custom components - Follow LuvBox visual identity
+ * 
+ * BUTTON USAGE EXAMPLES:
+ * 
+ * React Component (Preferred):
+ *   import { Button } from "@/elements/button";
+ *   <Button variant="primary" size="large">Save Changes</Button>
+ *   <Button variant="secondary" size="small">Cancel</Button>
+ * 
+ * CSS Classes (Non-React contexts):
+ *   <button class="form-button-primary">Save</button>
+ *   <button class="form-button-secondary-small">Cancel</button>
+ * 
+ * FORM USAGE EXAMPLES:
+ *   <input class="form-input" placeholder="Enter text..." />
+ *   <textarea class="form-textarea" placeholder="Description..." />
+ *   <select class="form-select"><option>Choose...</option></select>
+ *   <label class="form-label">Field Name</label>
+ * 
+ * MODAL USAGE EXAMPLES:
+ *   import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/elements/dialog";
+ *   <DialogContent className="modal-content">
+ *     <DialogHeader className="modal-header">
+ *       <DialogTitle className="modal-title">Title</DialogTitle>
+ *     </DialogHeader>
+ *     <div className="modal-footer">
+ *       <Button variant="secondary">Cancel</Button>
+ *       <Button variant="primary">Confirm</Button>
+ *     </div>
+ *   </DialogContent>
+ * 
+ * STANDARDS:
+ * - Minimum 48px height for touch accessibility
+ * - Always use var(--color-name) from /src/styles/colors.css
+ * - Never hardcode colors (#ffffff, rgb(), etc.)
+ * - Focus rings required for keyboard navigation
+ * 
+ * FOR COLORS: See /src/styles/colors.css
+ * FOR TYPOGRAPHY: See /src/styles/typography.css
+ */
 
-/* LuvMap Custom Components */
+/* === LUVBOX BRAND COMPONENTS === */
+
 .luvmap-brand {
   font-family: 'EB Garamond', serif;
   font-weight: 600;
@@ -8,7 +53,46 @@
   color: var(--text-color);
 }
 
-/* Custom LuvMap Button Component */
+/* === LUVBOX SPECIAL BUTTONS === */
+
+/* ========================================
+   LUVBOX COMPONENT STYLES - SOURCE OF TRUTH
+   ======================================== 
+   
+   BUTTON USAGE PATTERNS:
+   
+   React Components (Preferred):
+     import { Button } from "@/elements/button";
+     <Button variant="primary" size="large">Save</Button>
+     <Button variant="secondary" size="small">Cancel</Button>
+   
+   CSS Classes (Non-React contexts):
+     .form-button-primary        // Large primary (48px)
+     .form-button-secondary      // Large secondary (48px)  
+     .form-button-primary-small  // Small primary (40px)
+     .form-button-secondary-small // Small secondary (40px)
+   
+   FORM USAGE PATTERNS:
+     <input className="form-input" />
+     <textarea className="form-textarea" />
+     <select className="form-select" />
+     <label className="form-label" />
+   
+   MODAL USAGE PATTERNS:
+     import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/elements/dialog";
+     <DialogContent className="modal-content">
+       <DialogHeader className="modal-header">
+         <DialogTitle className="modal-title">Title</DialogTitle>
+       </DialogHeader>
+       <div className="modal-footer">
+         <Button variant="secondary">Cancel</Button>
+         <Button variant="primary">Confirm</Button>
+       </div>
+     </DialogContent>
+   
+   ======================================== */
+
+/* LuvBox brand button - Primary brand component with gradients and shadows */
 .luvmap-button {
   background: linear-gradient(to right, var(--blue-200), var(--purple-200));
   position: relative;
@@ -215,6 +299,13 @@
   background-color: var(--lb-black-50);
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+/* Textarea specific overrides */
+textarea.luvbox-form-base {
+  height: auto;
+  min-height: 120px;
+  resize: vertical;
 }
 
 /* Universal Select/Dropdown Styling */

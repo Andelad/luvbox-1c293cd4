@@ -28,10 +28,10 @@ export default function FormElementsSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="text-app-display mb-4">
                     Form Elements
                 </h2>
-                <p  style={{ color: 'var(--lb-black-600)' }}>
+                <p className="text-app-caption">
                     All form inputs maintain consistent 40px height for uniform user experience
                 </p>
             </div>
@@ -56,7 +56,7 @@ export default function FormElementsSection() {
                                 onChange={(e) => setInputValue(e.target.value)}
                                 className="luvbox-form-base"
                             />
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div className="text-app-caption">
                                 Height: 40px • Border radius: 12px
                             </div>
                         </div>
@@ -119,7 +119,7 @@ export default function FormElementsSection() {
                     </div>
 
                     {/* Character Count Display */}
-                    <div  style={{ backgroundColor: 'var(--blue-50)', color: 'var(--blue-700)' }}>
+                    <div className="text-app-caption bg-blue-50 text-blue-700 p-3 rounded">
                         Current text input character count: {inputValue.length}
                     </div>
                 </CardContent>
@@ -166,7 +166,7 @@ export default function FormElementsSection() {
                     </div>
 
                     {selectValue && (
-                        <div  style={{ backgroundColor: 'var(--green-50)', color: 'var(--green-700)' }}>
+                        <div className="text-app-caption bg-green-50 text-green-700 p-3 rounded">
                             Selected value: {selectValue}
                         </div>
                     )}
@@ -190,7 +190,7 @@ export default function FormElementsSection() {
                             onChange={(e) => setTextareaValue(e.target.value)}
                             className="min-h-32"
                         />
-                        <div  style={{ color: 'var(--lb-black-500)' }}>
+                        <div className="text-app-caption">
                             <span>Character count: {textareaValue.length}</span>
                             <span>Min height: 128px</span>
                         </div>
@@ -219,7 +219,7 @@ export default function FormElementsSection() {
                                 />
                                 <Label htmlFor="checkbox">Accept terms and conditions</Label>
                             </div>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div className="text-app-caption">
                                 Status: {checked ? 'Checked' : 'Unchecked'}
                             </div>
                         </div>
@@ -235,7 +235,7 @@ export default function FormElementsSection() {
                                 />
                                 <Label htmlFor="switch">Enable notifications</Label>
                             </div>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div className="text-app-caption">
                                 Status: {switched ? 'Enabled' : 'Disabled'}
                             </div>
                         </div>
@@ -257,7 +257,7 @@ export default function FormElementsSection() {
                                     <Label htmlFor="radio3">Option 3</Label>
                                 </div>
                             </RadioGroup>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div className="text-app-caption">
                                 Selected: {radioValue}
                             </div>
                         </div>
@@ -296,7 +296,7 @@ export default function FormElementsSection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p  style={{ color: 'var(--lb-black-600)' }}>
+                        <p className="text-app-caption">
                             All form elements use the <code>.luvbox-form-base</code> class and design tokens from <code>/src/styles/colors.css</code>
                         </p>
                     </div>

@@ -3,7 +3,7 @@ applyTo: '**'
 ---
 
 🚨 STOP CONDITIONS - Check BEFORE I respond:
-• If I'm about to suggest "npm run" → ASK USER: "Check status or restart server?"
+• If I'm about to suggest "npm run" → ASK USER: "Check server status on port 8080 or restart?"
 • If user asks for "options/ways to" → PRESENT CHOICES, never implement  
 • If I'm about to use any color → MUST use var(--color-name) only
 • If I'm about to repeat a previously rejected solution → STOP and ASK FOR DIRECTION
@@ -39,7 +39,7 @@ applyTo: '**'
 ## Primary Directive
 Always check the developers handbook for established patterns, conventions, and guidelines before suggesting code changes or architectural decisions.
 
-**📖 Developers Handbook Location: `/docs/developers-handbook.md`**
+**📖 Developers Handbook Location: `/docs/DEVELOPER_HANDBOOK.md`**
 
 ## Quick Reference - Common File Locations
 For faster navigation to frequently accessed files:

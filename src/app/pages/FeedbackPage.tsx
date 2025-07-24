@@ -1,4 +1,5 @@
 import { PageHeader } from '@/app/components';
+import { CONTENT } from '@/content';
 import { Button } from '@/elements/button';
 import {
   Select,
@@ -7,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/elements/select';
-import { CONTENT } from '@/content';
 import React, { useState } from 'react';
 
 type FeedbackType = 'like' | 'dislike' | 'suggestion' | 'help' | '';
@@ -55,10 +55,10 @@ export default function FeedbackPage() {
         <div className="w-full max-w-2xl">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="sm:md:mb-6 luvmap-brand" style={{ color: 'var(--lb-black-900)' }}>
+            <h2 className="text-app-display mb-6">
               Your feedback helps us improve the product
-            </h1>
-            <p  style={{ color: 'var(--lb-black-600)' }}>
+            </h2>
+            <p className="text-app-body">
               We love hearing from you and actively review all feedback received
             </p>
           </div>
@@ -71,37 +71,37 @@ export default function FeedbackPage() {
                 What kind of feedback do you have?
               </label>
               <Select value={feedbackType} onValueChange={(value: FeedbackType) => setFeedbackType(value)}>
-                <SelectTrigger className="form-select">
+                <SelectTrigger className="luvbox-form-base">
                   <div className="flex items-center gap-3">
-                    {feedbackType === 'like' && <span >😊</span>}
-                    {feedbackType === 'dislike' && <span >😞</span>}
-                    {feedbackType === 'suggestion' && <span >💡</span>}
-                    {feedbackType === 'help' && <span >🔍</span>}
+                    {feedbackType === 'like' && <span className="text-app-body">😊</span>}
+                    {feedbackType === 'dislike' && <span className="text-app-body">😞</span>}
+                    {feedbackType === 'suggestion' && <span className="text-app-body">💡</span>}
+                    {feedbackType === 'help' && <span className="text-app-body">🔍</span>}
                     <SelectValue placeholder="I like something" />
                   </div>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="like">
                     <div className="flex items-center gap-3">
-                      <span >😊</span>
+                      <span className="text-app-body">😊</span>
                       <span>I like something</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="dislike">
                     <div className="flex items-center gap-3">
-                      <span >😞</span>
+                      <span className="text-app-body">😞</span>
                       <span>I don't like something</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="suggestion">
                     <div className="flex items-center gap-3">
-                      <span >💡</span>
+                      <span className="text-app-body">💡</span>
                       <span>I have a suggestion</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="help">
                     <div className="flex items-center gap-3">
-                      <span >🔍</span>
+                      <span className="text-app-body">🔍</span>
                       <span>I need help / I'm looking for information</span>
                     </div>
                   </SelectItem>
@@ -118,7 +118,7 @@ export default function FeedbackPage() {
                 <textarea
                   value={feedbackText}
                   onChange={(e) => setFeedbackText(e.target.value)}
-                  className="form-textarea"
+                  className="luvbox-form-base"
                   placeholder={getFeedbackPrompt()}
                   rows={6}
                 />
@@ -149,7 +149,7 @@ export default function FeedbackPage() {
 
         {/* Footer Note */}
         <div className="mt-12 text-center max-w-2xl">
-          <p  style={{ color: 'var(--lb-black-600)' }}>
+          <p className="text-app-body">
             {content.footerNote}
           </p>
         </div>

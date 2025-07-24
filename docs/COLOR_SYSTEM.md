@@ -1,33 +1,48 @@
-# LuvBox Color System Implementation
+# LuvBox Color System - Navigation Guide
 
-## Overview
-This document outlines the comprehensive color system implemented for LuvBox using OKLCH color space for better color consistency and accessibility.
+> **🎯 SOURCE OF TRUTH**: `/src/styles/colors.css`
+> 
+> This file contains the definitive color variables and usage examples.
+> When in doubt, check the CSS file for current implementation.
 
-## Color Palette
+## Quick Navigation
 
-### Lime (Primary Green)
-```css
---lime-900: oklch(21.75% 0.064 147);
---lime-800: oklch(30.23% 0.064 149.82);
---lime-700: oklch(38.71% 0.062 149.71);
---lime-600: oklch(47.25% 0.06 149.58);
---lime-500: oklch(55.81% 0.056 149.47);
---lime-400: oklch(64.43% 0.054 149.35);
---lime-300: oklch(73.09% 0.052 149.24);
---lime-200: oklch(81.82% 0.05 149.13);
---lime-100: oklch(90.61% 0.048 149.02);
---lime-50: oklch(97.05% 0.0481 148.92);
+### 📂 Where to Find Colors:
+- **All color variables**: `/src/styles/colors.css` (lines 20-120)
+- **Component usage examples**: Comments in `/src/styles/colors.css` header
+- **Button colors**: `/src/elements/button.tsx` 
+- **Form element colors**: Search `.form-` in `/src/styles/components.css`
+
+### 🎨 Color Categories:
+Browse `/src/styles/colors.css` for these sections:
+- **Lime**: Brand primary colors (not used for buttons)
+- **Blue**: Links, focus states, info elements  
+- **Pink**: Destructive actions, error states
+- **Purple**: Interactive elements, sidebar styling
+- **Success Green**: Primary action buttons
+- **LB Black**: Text, backgrounds, secondary elements
+
+### 💡 Usage Rules:
+1. **NEVER** use hardcoded colors (`#ffffff`, `rgb()`, etc.)
+2. **ALWAYS** use `var(--color-name)` format
+3. **CHECK** `/src/styles/colors.css` for current variables
+4. **REFERENCE** component files for specific usage patterns
+
+### 🔍 Find Specific Usage:
+```bash
+# Find button color usage
+grep -r "success-green" src/elements/button.tsx
+
+# Find all form colors  
+grep -r "\.form-" src/styles/components.css
+
+# Find focus ring colors
+grep -r "blue-200\|blue-500" src/styles/
 ```
 
-### Blue
-```css
---blue-900: oklch(22.44% 0.021 216.51);
---blue-800: oklch(31.34% 0.03 216.51);
---blue-700: oklch(39.7% 0.037 216.51);
---blue-600: oklch(48.33% 0.046 216.51);
---blue-500: oklch(56.99% 0.053 216.51);
---blue-400: oklch(65.56% 0.062 216.51);
---blue-300: oklch(74.53% 0.07 216.51);
+---
+
+*For detailed color values and implementation examples, see `/src/styles/colors.css`*
 --blue-200: oklch(86.26% 0.0519 216.51);
 --blue-100: oklch(91.36% 0.029 216.51);
 --blue-50: oklch(95.76% 0.012 216.51);

@@ -55,8 +55,8 @@ const DealbreakerSliders: React.FC<DealbreakerSlidersProps> = ({
   return (
     <div className="space-y-6">
       <div className="mb-6">
-        <h3 className="text-app-heading text-[var(--lb-black-900)] mb-3">Set Your Dealbreaker Lines</h3>
-        <p className="text-[var(--lb-black-600)] text-app-body">
+        <h3 className="text-app-heading mb-3">Set Your Dealbreaker Lines</h3>
+        <p className="text-app-body">
           Set your minimum acceptable scores (0-10) for each area. These represent your personal dealbreaker lines -
           the lowest score you'd accept in a potential partner.
         </p>

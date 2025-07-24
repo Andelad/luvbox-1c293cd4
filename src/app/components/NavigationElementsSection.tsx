@@ -23,11 +23,11 @@ export default function NavigationElementsSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="text-app-display mb-4">
                     Navigation Elements
                 </h2>
-                <p  style={{ color: 'var(--lb-black-600)' }}>
-                    Breadcrumbs, dropdown menus, tooltips, and navigation components with consistent styling
+                <p className="text-app-caption">
+                    Navigation and wayfinding components for app structure
                 </p>
             </div>
 
@@ -358,7 +358,7 @@ export default function NavigationElementsSection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p  style={{ color: 'var(--lb-black-600)' }}>
+                        <p className="text-app-caption">
                             All navigation elements use the <code>.luvbox-dropdown-base</code> classes and consistent interactive patterns
                         </p>
                     </div>

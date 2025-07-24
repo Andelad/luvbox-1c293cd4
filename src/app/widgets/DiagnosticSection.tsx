@@ -26,7 +26,7 @@ export default function DiagnosticSection({ onCTAClick }: DiagnosticSectionProps
                 </h2>
               </AnimatedSection>
               <AnimatedSection animation="slideUp" delay={200} threshold={0.2}>
-                <p className="text-web-body" style={{ color: 'var(--lb-black-800)' }}>
+                <p className="text-web-body">
                   {diagnosticContent.description}
                 </p>
               </AnimatedSection>

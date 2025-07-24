@@ -21,11 +21,11 @@ export default function InteractiveElementsSection() {
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header */}
             <div className="text-center">
-                <h2 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                <h2 className="text-app-display mb-4">
                     Interactive Elements
                 </h2>
-                <p  style={{ color: 'var(--lb-black-600)' }}>
-                    Buttons, tabs, toggles, and other interactive components with consistent 40px/48px heights
+                <p className="text-app-caption">
+                    Interactive components like buttons, toggles, and navigation elements
                 </p>
             </div>
 
@@ -48,7 +48,7 @@ export default function InteractiveElementsSection() {
                             <Button variant="ghost" size="small">Ghost Small</Button>
                             <Button variant="destructive" size="small">Destructive Small</Button>
                         </div>
-                        <div  style={{ color: 'var(--lb-black-500)' }}>
+                        <div className="text-app-caption">
                             Small buttons maintain 40px height, consistent with form elements
                         </div>
                     </div>
@@ -65,7 +65,7 @@ export default function InteractiveElementsSection() {
                             <Button variant="ghost" size="large">Ghost Large</Button>
                             <Button variant="destructive" size="large">Destructive Large</Button>
                         </div>
-                        <div  style={{ color: 'var(--lb-black-500)' }}>
+                        <div className="text-app-caption">
                             Large buttons use 48px height for enhanced prominence
                         </div>
                     </div>
@@ -89,7 +89,7 @@ export default function InteractiveElementsSection() {
                                 <Volume2Icon className="h-4 w-4" />
                             </Button>
                         </div>
-                        <div  style={{ color: 'var(--lb-black-500)' }}>
+                        <div className="text-app-caption">
                             Icon buttons maintain square aspect ratio with consistent padding
                         </div>
                     </div>
@@ -172,7 +172,7 @@ export default function InteractiveElementsSection() {
                             >
                                 {toggled ? 'Active' : 'Inactive'}
                             </Toggle>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div className="text-app-caption">
                                 Status: {toggled ? 'Pressed' : 'Not Pressed'}
                             </div>
                         </div>
@@ -190,7 +190,7 @@ export default function InteractiveElementsSection() {
                                     <PlayIcon className="h-4 w-4" />
                                 )}
                             </Toggle>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div className="text-app-caption">
                                 {playToggled ? 'Playing' : 'Paused'}
                             </div>
                         </div>
@@ -208,7 +208,7 @@ export default function InteractiveElementsSection() {
                                     <Volume2Icon className="h-4 w-4" />
                                 )}
                             </Toggle>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div className="text-app-caption">
                                 {muteToggled ? 'Muted' : 'Unmuted'}
                             </div>
                         </div>
@@ -229,7 +229,7 @@ export default function InteractiveElementsSection() {
                     <div className="space-y-4">
                         <div className="flex justify-between items-center">
                             <Label>Progress Bar</Label>
-                            <span  style={{ color: 'var(--lb-black-600)' }}>
+                            <span className="text-app-caption">
                                 {progressValue}%
                             </span>
                         </div>
@@ -267,7 +267,7 @@ export default function InteractiveElementsSection() {
                     <div className="space-y-4">
                         <div className="flex justify-between items-center">
                             <Label>Standard Slider</Label>
-                            <span  style={{ color: 'var(--lb-black-600)' }}>
+                            <span className="text-app-caption">
                                 Value: {sliderValue[0]}
                             </span>
                         </div>
@@ -284,12 +284,12 @@ export default function InteractiveElementsSection() {
                     <div className="space-y-4">
                         <div className="flex justify-between items-center">
                             <Label>Volume Slider</Label>
-                            <span  style={{ color: 'var(--lb-black-600)' }}>
+                            <span className="text-app-caption">
                                 Volume: {volumeSlider[0]}%
                             </span>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <VolumeXIcon className="h-4 w-4" style={{ color: 'var(--lb-black-400)' }} />
+                            <VolumeXIcon className="h-4 w-4 text-app-caption" />
                             <Slider
                                 value={volumeSlider}
                                 onValueChange={setVolumeSlider}
@@ -297,7 +297,7 @@ export default function InteractiveElementsSection() {
                                 step={5}
                                 className="flex-1"
                             />
-                            <Volume2Icon className="h-4 w-4" style={{ color: 'var(--lb-black-400)' }} />
+                            <Volume2Icon className="h-4 w-4 text-app-caption" />
                         </div>
                     </div>
                 </CardContent>
@@ -334,7 +334,7 @@ export default function InteractiveElementsSection() {
                     </div>
                     <Separator />
                     <div className="text-center">
-                        <p  style={{ color: 'var(--lb-black-600)' }}>
+                        <p className="text-app-caption">
                             All interactive elements use the <code>.luvbox-interactive-base</code> class and maintain visual consistency with form elements
                         </p>
                     </div>

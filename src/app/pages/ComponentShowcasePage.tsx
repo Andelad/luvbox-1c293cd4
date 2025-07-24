@@ -14,11 +14,11 @@ export default function ComponentShowcasePage() {
             <div className="max-w-4xl mx-auto space-y-8">
                 {/* Header */}
                 <div className="text-center">
-                    <h1 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
-                        Component Showcase Overview
+                    <h1 className="text-app-display mb-4">
+                        Component Showcase
                     </h1>
-                    <p  style={{ color: 'var(--lb-black-600)' }}>
-                        Design system testing organized by component categories
+                    <p className="text-app-caption">
+                        Complete overview of all design system components and their specifications
                     </p>
                 </div>
 
@@ -162,19 +162,19 @@ export default function ComponentShowcasePage() {
                     <CardContent className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div className="text-center">
-                                <div  style={{ color: 'var(--blue-500)' }}>40px</div>
+                                <div style={{ color: 'var(--blue-500)' }}>40px</div>
                                 <div >Form & Interactive Height</div>
                             </div>
                             <div className="text-center">
-                                <div  style={{ color: 'var(--success-green-400)' }}>12px</div>
+                                <div style={{ color: 'var(--success-green-400)' }}>12px</div>
                                 <div >Standard Border Radius</div>
                             </div>
                             <div className="text-center">
-                                <div  style={{ color: 'var(--purple-500)' }}>CSS</div>
+                                <div style={{ color: 'var(--purple-500)' }}>CSS</div>
                                 <div >Design Token System</div>
                             </div>
                         </div>
-                        <p  style={{ color: 'var(--lb-black-600)' }}>
+                        <p style={{ color: 'var(--lb-black-600)' }}>
                             All components use centralized CSS design tokens for consistent styling across the application.
                         </p>
                     </CardContent>

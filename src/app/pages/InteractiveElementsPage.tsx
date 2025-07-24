@@ -25,11 +25,11 @@ export default function InteractiveElementsPage() {
             <div className="max-w-4xl mx-auto space-y-8">
                 {/* Header */}
                 <div className="text-center">
-                    <h1 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
+                    <h1 className="text-app-display mb-4">
                         Interactive Elements
                     </h1>
-                    <p  style={{ color: 'var(--lb-black-600)' }}>
-                        Buttons, tabs, toggles, and other interactive components with consistent 40px/48px heights
+                    <p className="text-app-caption">
+                        Interactive components like buttons, toggles, and navigation elements
                     </p>
                 </div>
 
@@ -52,7 +52,7 @@ export default function InteractiveElementsPage() {
                                 <Button variant="ghost" size="small">Ghost Small</Button>
                                 <Button variant="destructive" size="small">Destructive Small</Button>
                             </div>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div style={{ color: 'var(--lb-black-500)' }}>
                                 Small buttons maintain 40px height, consistent with form elements
                             </div>
                         </div>
@@ -69,7 +69,7 @@ export default function InteractiveElementsPage() {
                                 <Button variant="ghost" size="large">Ghost Large</Button>
                                 <Button variant="destructive" size="large">Destructive Large</Button>
                             </div>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div style={{ color: 'var(--lb-black-500)' }}>
                                 Large buttons use 48px height for enhanced prominence
                             </div>
                         </div>
@@ -93,7 +93,7 @@ export default function InteractiveElementsPage() {
                                     <Volume2Icon className="h-4 w-4" />
                                 </Button>
                             </div>
-                            <div  style={{ color: 'var(--lb-black-500)' }}>
+                            <div style={{ color: 'var(--lb-black-500)' }}>
                                 Icon buttons maintain square aspect ratio with consistent padding
                             </div>
                         </div>
@@ -176,7 +176,7 @@ export default function InteractiveElementsPage() {
                                 >
                                     {toggled ? 'Active' : 'Inactive'}
                                 </Toggle>
-                                <div  style={{ color: 'var(--lb-black-500)' }}>
+                                <div style={{ color: 'var(--lb-black-500)' }}>
                                     Status: {toggled ? 'Pressed' : 'Not Pressed'}
                                 </div>
                             </div>
@@ -194,7 +194,7 @@ export default function InteractiveElementsPage() {
                                         <PlayIcon className="h-4 w-4" />
                                     )}
                                 </Toggle>
-                                <div  style={{ color: 'var(--lb-black-500)' }}>
+                                <div style={{ color: 'var(--lb-black-500)' }}>
                                     {playToggled ? 'Playing' : 'Paused'}
                                 </div>
                             </div>
@@ -212,7 +212,7 @@ export default function InteractiveElementsPage() {
                                         <Volume2Icon className="h-4 w-4" />
                                     )}
                                 </Toggle>
-                                <div  style={{ color: 'var(--lb-black-500)' }}>
+                                <div style={{ color: 'var(--lb-black-500)' }}>
                                     {muteToggled ? 'Muted' : 'Unmuted'}
                                 </div>
                             </div>
@@ -233,7 +233,7 @@ export default function InteractiveElementsPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between items-center">
                                 <Label>Progress Bar</Label>
-                                <span  style={{ color: 'var(--lb-black-600)' }}>
+                                <span style={{ color: 'var(--lb-black-600)' }}>
                                     {progressValue}%
                                 </span>
                             </div>
@@ -271,7 +271,7 @@ export default function InteractiveElementsPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between items-center">
                                 <Label>Standard Slider</Label>
-                                <span  style={{ color: 'var(--lb-black-600)' }}>
+                                <span style={{ color: 'var(--lb-black-600)' }}>
                                     Value: {sliderValue[0]}
                                 </span>
                             </div>
@@ -288,7 +288,7 @@ export default function InteractiveElementsPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between items-center">
                                 <Label>Volume Slider</Label>
-                                <span  style={{ color: 'var(--lb-black-600)' }}>
+                                <span style={{ color: 'var(--lb-black-600)' }}>
                                     Volume: {volumeSlider[0]}%
                                 </span>
                             </div>
@@ -338,7 +338,7 @@ export default function InteractiveElementsPage() {
                         </div>
                         <Separator />
                         <div className="text-center">
-                            <p  style={{ color: 'var(--lb-black-600)' }}>
+                            <p style={{ color: 'var(--lb-black-600)' }}>
                                 All interactive elements use the <code>.luvbox-interactive-base</code> class and maintain visual consistency with form elements
                             </p>
                         </div>

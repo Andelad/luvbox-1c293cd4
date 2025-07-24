@@ -13,11 +13,11 @@ export default function DataDisplayPage() {
             <div className="max-w-4xl mx-auto space-y-8">
                 {/* Header */}
                 <div className="text-center">
-                    <h1 className="mb-4" style={{ color: 'var(--lb-black-900)' }}>
-                        Data Display Components
+                    <h1 className="text-app-display mb-4">
+                        Data Display
                     </h1>
-                    <p  style={{ color: 'var(--lb-black-600)' }}>
-                        Cards, badges, avatars, and data presentation elements with consistent styling
+                    <p className="text-app-caption">
+                        Data visualization and display components with consistent styling
                     </p>
                 </div>
 
@@ -102,19 +102,19 @@ export default function DataDisplayPage() {
                                 <CardContent>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="text-center">
-                                            <div  style={{ color: 'var(--blue-500)' }}>127</div>
+                                            <div style={{ color: 'var(--blue-500)' }}>127</div>
                                             <div >Active Users</div>
                                         </div>
                                         <div className="text-center">
-                                            <div  style={{ color: 'var(--green-500)' }}>98%</div>
+                                            <div style={{ color: 'var(--green-500)' }}>98%</div>
                                             <div >Uptime</div>
                                         </div>
                                         <div className="text-center">
-                                            <div  style={{ color: 'var(--purple-500)' }}>42</div>
+                                            <div style={{ color: 'var(--purple-500)' }}>42</div>
                                             <div >Projects</div>
                                         </div>
                                         <div className="text-center">
-                                            <div  style={{ color: 'var(--orange-500)' }}>15</div>
+                                            <div style={{ color: 'var(--orange-500)' }}>15</div>
                                             <div >Pending</div>
                                         </div>
                                     </div>
@@ -300,7 +300,7 @@ export default function DataDisplayPage() {
                         </div>
                         <Separator />
                         <div className="text-center">
-                            <p  style={{ color: 'var(--lb-black-600)' }}>
+                            <p style={{ color: 'var(--lb-black-600)' }}>
                                 All data display components use the <code>.luvbox-card-base</code> class and consistent spacing
                             </p>
                         </div>

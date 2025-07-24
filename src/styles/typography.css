@@ -1,4 +1,125 @@
-/* Typography System - Font Loading, Scales, and Text Classes */
+/* LuvBox Typography System - SOURCE OF TRUTH for all typography
+ * 
+ * 🚨 CRITICAL RULE FOR AI AGENTS - READ THIS FIRST! 🚨
+ * 
+ * ❌ NEVER USE TAILWIND FOR TYPOGRAPHY:
+ *   ❌ text-app-3xl font-serif  (mixing Tailwind + utility)
+ *   ❌ text-lg font-semibold    (Tailwind utilities)
+ *   ❌ font-sans text-base      (Tailwind utilities)
+ *   ❌ text-sm text-muted-foreground (Tailwind size classes)
+ * 
+ * ✅ ALWAYS USE PURE CSS SEMANTIC CLASSES:
+ *   ✅ text-app-display         (pure CSS semantic class)
+ *   ✅ text-app-heading         (pure CSS semantic class)
+ *   ✅ text-web-heading-1       (pure CSS semantic class)
+ *   ✅ text-app-caption         (replaces text-sm)
+ *   ✅ text-element-small       (for element-specific small text)
+ *   ✅ text-element-large       (for element-specific large text)
+ * 
+ * 🎯 ARCHITECTURE: CSS for styling, Tailwind for layout only
+ *   - CSS: text-app-*, text-web-*, colors via var(--color)
+ *   - Tailwind: grid, flex, gap, space-y-6, etc. (layout only)
+ * 
+ * 📋 COMMON MAPPINGS (for migration reference):
+ *   text-sm      → text-app-caption or text-element-small
+ *   text-base    → text-app-body
+ *   text-lg      → text-element-large or text-app-subheading
+ *   text-xl      → text-app-heading
+ *   text-2xl     → text-app-display
+ *   font-mono    → text-app-code or text-web-code
+ * 
+ * USAGE EXAMPLES:
+ *   <h1 className="text-app-display">Largest App Text</h1>
+ *   <h2 className="text-app-heading">Section Title</h2>
+ *   <p className="text-app-body">Body content</p>
+ *   <span className="text-app-caption">Small text</span>
+ *   
+ *   <h1 className="text-web-hero">Marketing Hero</h1>
+ *   <h2 className="text-web-heading-1">Marketing H1</h2>
+ *   <p className="text-web-body">Marketing copy</p>
+ * 
+ * RESPONSIVE SYSTEM:
+ *   Mobile (< 768px): 14px root font size
+ *   Desktop (≥ 768px): 16px root font size
+ *   All typography scales proportionally
+ * 
+ * FONT FAMILIES:
+ *   'EB Garamond', serif - Headlines, display text, elegant content
+ *   'Source Sans 3', sans-serif - Body text, UI elements, readable content  
+ *   'Spline Sans Mono', monospace - Code, technical content, data
+ * DUAL SCALE SYSTEM:
+ * - .text-app-*: Compact scale for app interface (14px base → 16px desktop)
+ * - .text-web-*: Marketing scale for website (larger, more dramatic)
+ * 
+ * AVAILABLE CLASSES:
+ * App Scale: .text-app-display, .text-app-heading, .text-app-subheading, 
+ *           .text-app-body, .text-app-caption, .text-app-label, .text-app-micro
+ * Web Scale: .text-web-hero, .text-web-heading-1/2/3, .text-web-body, .text-web-caption
+ * 
+ * TEXT COLORS (BUILT INTO TYPOGRAPHY CLASSES):
+ *   Headings (.text-app-display, .text-app-heading, .text-web-hero, etc.): var(--lb-black-800)
+ *   Body text (.text-app-body, .text-web-body): var(--lb-black-700)
+ *   Code/captions (.text-app-caption, .text-app-code, .text-web-caption, etc.): var(--lb-black-600)
+ *   Form inputs: var(--lb-black-700) (via --form-text)
+ *   Form placeholders: var(--lb-black-400) (via --form-placeholder)
+ * 
+ * STANDARDS:
+ *   ✅ ALWAYS: Use text-app-* or text-web-* classes (PURE CSS ONLY)
+ *   ✅ ALWAYS: Colors are built into typography classes - no manual color styling needed
+ *   ❌ NEVER: Tailwind typography utilities (text-lg, font-serif, font-semibold)
+ *   ❌ NEVER: Hardcoded font-family, font-size, font-weight, or color
+ *   ❌ NEVER: style={{color: '...'}} or manual color application
+ *   ❌ NEVER: Generic fonts (Arial, Times New Roman, etc.)
+ *   🎯 RULE: CSS for styling, Tailwind for layout only
+ * 
+ * FONT FAMILIES:
+ *   'EB Garamond', serif - ONLY for H1/H2 level headings (.text-app-display, .text-web-hero, .text-web-heading-1)
+ *   'Source Sans 3', sans-serif - Everything else (H3+ headings, body text, UI elements)  
+ *   'Spline Sans Mono', monospace - Code, technical content, data
+ * 
+ * CRITICAL RULE: EB Garamond is reserved for major titles only. All functional content uses Source Sans 3.
+ * 
+ * NEVER use hardcoded font-family - use the predefined classes
+ */
+
+/* ========================================
+   LUVBOX TYPOGRAPHY SYSTEM - SOURCE OF TRUTH
+   ======================================== 
+   
+   USAGE PATTERNS:
+   
+   App Interface (Compact):
+     .text-app-display    // Largest app text
+     .text-app-heading    // Section headings  
+     .text-app-subheading // Subsection headings
+     .text-app-body       // Main body text
+     .text-app-caption    // Small text
+     .text-app-micro      // Tiny text
+     .text-app-label      // Form labels
+     .text-app-input      // Form inputs
+     .text-app-code       // Code text
+   
+   Website/Marketing (Spacious):
+     .text-web-hero       // Hero headings
+     .text-web-heading-1  // H1 headings
+     .text-web-heading-2  // H2 headings  
+     .text-web-heading-3  // H3 headings
+     .text-web-body       // Marketing body text
+     .text-web-caption    // Marketing captions
+     .text-web-code       // Code blocks
+     .text-web-mono       // Monospace text
+   
+   FONT FAMILIES:
+     'EB Garamond' - Headlines, elegant content
+     'Source Sans 3' - Body text, UI elements
+     'Spline Sans Mono' - Code, technical content
+   
+   RESPONSIVE SCALING:
+     Mobile (< 768px): 14px root font size
+     Desktop (≥ 768px): 16px root font size
+     All rem values scale automatically
+   
+   ======================================== */
 
 /* Optimized font loading with font-display: swap for better performance */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,600&family=Source+Sans+3:wght@400;500;600&family=Spline+Sans+Mono:ital,wght@1,400&display=swap') layer(fonts);
@@ -7,70 +128,69 @@
  * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
  */
 @layer base {
-  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
-    h1 {
-      font-family: 'EB Garamond', serif;
-      font-size: var(--text-2xl);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-      color: var(--text-color);
-    }
+  /* Base element styles - lower specificity than classes */
+  h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--text-color);
+  }
 
-    h2 {
-      font-family: 'EB Garamond', serif;
-      font-size: var(--text-xl);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-      color: var(--text-color);
-    }
+  h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--text-color);
+  }
 
-    h3 {
-      font-family: 'EB Garamond', serif;
-      font-size: var(--text-lg);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-      color: var(--text-color);
-    }
+  h3 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--text-color);
+  }
 
-    h4 {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-semibold);
-      line-height: 1.5;
-      color: var(--text-color);
-    }
+  h4 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.5;
+    color: var(--text-color);
+  }
 
-    p {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.5;
-      color: var(--text-color);
-    }
+  p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+    color: var(--text-color);
+  }
 
-    label {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-      color: var(--text-color);
-    }
+  label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--text-color);
+  }
 
-    button {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-      color: var(--text-color);
-    }
+  button {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--text-color);
+  }
 
-    input {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.5;
-      color: var(--text-color);
-    }
+  input {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+    color: var(--text-color);
   }
 }
 
@@ -156,25 +276,35 @@ html {
 }
 
 /* App Typography Classes */
+
+/* 🎯 FONT FAMILY HIERARCHY RULE:
+ * EB Garamond: ONLY for H1/H2 level headings (.text-app-display)
+ * Source Sans 3: Everything else (H3+, body, UI elements)
+ * Spline Sans Mono: Code and technical content only
+ */
+
 .text-app-display {
-  font-family: 'EB Garamond', serif;
+  font-family: 'EB Garamond', serif;  /* 🎨 SERIF: Only for major page/feature titles (H1/H2 level) */
   font-size: var(--app-text-3xl);
   line-height: var(--app-leading-3xl);
   font-weight: var(--font-weight-semibold);
+  color: var(--lb-black-800);
 }
 
 .text-app-heading {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;  /* 📝 SANS: Section headings (H2/H3 level) */
   font-size: var(--app-text-2xl);
   line-height: var(--app-leading-2xl);
   font-weight: var(--font-weight-semibold);
+  color: var(--lb-black-800);
 }
 
 .text-app-subheading {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;  /* 📝 SANS: Subsection headings (H3/H4 level) */
   font-size: var(--app-text-xl);
   line-height: var(--app-leading-xl);
   font-weight: var(--font-weight-medium);
+  color: var(--lb-black-800);
 }
 
 .text-app-body {
@@ -182,7 +312,7 @@ html {
   font-size: var(--app-text-base);
   line-height: var(--app-leading-base);
   font-weight: var(--font-weight-normal);
-  opacity: 0.8;
+  color: var(--lb-black-700);
 }
 
 .text-app-caption {
@@ -190,7 +320,7 @@ html {
   font-size: var(--app-text-sm);
   line-height: var(--app-leading-sm);
   font-weight: var(--font-weight-normal);
-  opacity: 0.8;
+  color: var(--lb-black-600);
 }
 
 .text-app-code {
@@ -198,35 +328,47 @@ html {
   font-size: var(--app-mono-sm);
   line-height: var(--app-leading-sm);
   font-weight: var(--font-weight-normal);
+  color: var(--lb-black-600);
 }
 
 /* Website Typography Classes */
+
+/* 🎯 WEBSITE SCALE FONT FAMILY RULES:
+ * EB Garamond: Only .text-web-hero and .text-web-heading-1 (H1 level)
+ * Source Sans 3: All other website typography (H2+, body, captions)
+ * Spline Sans Mono: Code blocks only
+ */
+
 .text-web-hero {
-  font-family: 'EB Garamond', serif;
+  font-family: 'EB Garamond', serif;  /* 🎨 SERIF: Hero headings only (H1 level) */
   font-size: var(--web-text-4xl);
   line-height: var(--web-leading-4xl);
   font-weight: var(--font-weight-semibold);
+  color: var(--lb-black-800);
 }
 
 .text-web-heading-1 {
-  font-family: 'EB Garamond', serif;
+  font-family: 'EB Garamond', serif;  /* 🎨 SERIF: Large marketing headings (H1 level) */
   font-size: var(--web-text-3xl);
   line-height: var(--web-leading-3xl);
   font-weight: var(--font-weight-semibold);
+  color: var(--lb-black-800);
 }
 
 .text-web-heading-2 {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;  /* 📝 SANS: Secondary headings (H2 level) */
   font-size: var(--web-text-2xl);
   line-height: var(--web-leading-2xl);
   font-weight: var(--font-weight-semibold);
+  color: var(--lb-black-800);
 }
 
 .text-web-heading-3 {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;  /* 📝 SANS: Tertiary headings (H3 level) */
   font-size: var(--web-text-xl);
   line-height: var(--web-leading-xl);
   font-weight: var(--font-weight-medium);
+  color: var(--lb-black-800);
 }
 
 .text-web-body {
@@ -234,7 +376,7 @@ html {
   font-size: var(--web-text-base);
   line-height: var(--web-leading-base);
   font-weight: var(--font-weight-normal);
-  opacity: 0.8;
+  color: var(--lb-black-700);
 }
 
 .text-web-caption {
@@ -242,6 +384,7 @@ html {
   font-size: var(--web-text-sm);
   line-height: var(--web-leading-sm);
   font-weight: var(--font-weight-semibold);
+  color: var(--lb-black-600);
 }
 
 .text-web-code {
@@ -249,6 +392,7 @@ html {
   font-size: var(--web-mono-sm);
   line-height: var(--web-leading-sm);
   font-weight: var(--font-weight-normal);
+  color: var(--lb-black-600);
 }
 
 .text-web-mono {
@@ -256,6 +400,7 @@ html {
   font-size: calc(var(--web-text-base) * 0.9);
   line-height: var(--web-leading-base);
   font-weight: var(--font-weight-normal);
+  color: var(--lb-black-600);
 }
 
 /* Extended App Typography Classes */
@@ -287,4 +432,19 @@ html {
   font-size: var(--app-text-lg);
   line-height: var(--app-leading-lg);
   font-weight: var(--font-weight-semibold);
+}
+
+/* Utility aliases for common element needs */
+.text-element-small {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: var(--app-text-sm);
+  line-height: var(--app-leading-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.text-element-large {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: var(--app-text-lg);
+  line-height: var(--app-leading-lg);
+  font-weight: var(--font-weight-normal);
 }
