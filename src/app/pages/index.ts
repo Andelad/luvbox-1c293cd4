@@ -1,5 +1,6 @@
 // App pages - private application functionality
 export { default as CommunityPage } from './CommunityPage';
+export { default as ComponentShowcasePage } from './ComponentShowcasePage';
 export { default as FeedbackPage } from './FeedbackPage';
 export { default as MySnapshotsPage } from './MySnapshotsPage';
 export { default as QuestionnairePage } from './QuestionnairePage';

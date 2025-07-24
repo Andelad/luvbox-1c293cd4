@@ -90,7 +90,8 @@ Before changing any component:
 | `color`, `styling`, `hex`, `background` | [🎨 Color System](#-color-system-standards) | Use `var(--color-name)`, never hardcoded colors |
 | `animation`, `motion`, `scroll`, `fade`, `slide` | [🎬 Animation Standards](#-animation--motion-standards) | Use `<AnimatedSection>`, respect `prefers-reduced-motion` |
 | `font`, `text`, `typography`, `size` | [🔤 Typography](#-typography-system-standards) | Use `text-app-*` or `text-web-*` classes |
-| `form`, `input`, `button`, `UI`, `interface`, `height` | [🎯 UI & Form Standards](#-ui--form-standards) + [📘 Component Styling Guide](COMPONENT_STYLING_GUIDE.md) | 48px minimum height, use Button component, consistent styling |
+| `form`, `input`, `button`, `UI`, `interface`, `height`, `component` | [🎯 LuvBox Design System](#-luvbox-design-system) + [📘 Component Styling Guide](COMPONENT_STYLING_GUIDE.md) | CSS design tokens, universal classes, component showcase |
+| `consistent`, `styling`, `design`, `tokens`, `variables` | [🎯 LuvBox Design System](#-luvbox-design-system) | Central design control via CSS variables |
 | `component`, `create`, `new`, `build` | [🧩 Component Development](#-component-development-standards) + [📘 Component Styling Guide](COMPONENT_STYLING_GUIDE.md) | Follow template, use TypeScript, consistent styling patterns |
 | `dev server`, `npm run`, `port`, `terminal` | [⚡ Development Server](#-development-server-standards) | Check existing server first, use smart restart commands |
 | `folder`, `import`, `path`, `organize` | [📁 Folder Structure](#-folder-structure-standards) | `shared/` for reusable, `app/` vs `website/` specific |
@@ -426,7 +427,168 @@ src/
 - Use barrel exports (`index.ts`) for clean imports
 - Follow the shared > app/website hierarchy
 
-## 🎨 Color System Standards
+## � LuvBox Design System
+
+### **🎨 Design Token Architecture**
+
+**THE SINGLE SOURCE OF TRUTH**: All component styling flows from CSS design tokens in `/src/styles/colors.css`
+
+```css
+/* Form Elements - ALL use these tokens */
+--form-height: 40px;           /* Universal form element height */
+--form-radius: 12px;           /* Universal border radius (rounded-xl) */
+--form-bg: var(--lb-black-0);  /* Form background color */
+--form-border: var(--lb-black-200); /* Form border color */
+--form-border-focus: var(--blue-500); /* Focus state color */
+
+/* Interactive Elements - tabs, toggles, menubar */
+--interactive-height: 40px;    /* Consistent with forms */
+--interactive-radius: 12px;    /* Consistent border radius */
+
+/* Buttons - Only elements that can have different heights */
+--button-height-small: 40px;   /* Small button height */
+--button-height-large: 48px;   /* Large button height */
+
+/* Cards & Containers */
+--card-radius: 12px;           /* Card border radius */
+--card-border: var(--lb-black-200); /* Card border color */
+
+/* Dialogs & Modals */
+--dialog-radius: 16px;         /* Slightly larger for prominence */
+--dialog-overlay: rgba(0, 0, 0, 0.5); /* Modal overlay */
+```
+
+### **📏 Universal CSS Classes**
+
+**USE THESE CLASSES** instead of individual component styling:
+
+```css
+/* Form Elements */
+.luvbox-form-base          /* Standard input styling */
+.luvbox-select-trigger     /* Select dropdown trigger */
+.luvbox-select-content     /* Select dropdown content */
+.luvbox-select-item        /* Select dropdown items */
+
+/* Interactive Elements */
+.luvbox-interactive-base   /* Tabs, toggles, menubar */
+
+/* Buttons */
+.luvbox-button-base        /* Button foundation */
+.luvbox-button-small       /* 40px height button */
+.luvbox-button-large       /* 48px height button */
+.luvbox-button-primary     /* Primary button colors */
+.luvbox-button-secondary   /* Secondary button colors */
+
+/* Containers */
+.luvbox-card-base          /* Card styling */
+.luvbox-dialog-base        /* Dialog/modal styling */
+.luvbox-dropdown-base      /* Dropdown/menu styling */
+```
+
+### **🎯 Component Height Standards**
+
+| **Component Type** | **Height** | **Reason** |
+|-------------------|------------|------------|
+| **Form Elements** | `40px` | Consistent input experience |
+| `input`, `select`, `command`, `input-otp` | `40px` | All form inputs same height |
+| **Interactive Elements** | `40px` | Consistent with forms |
+| `tabs`, `toggle`, `menubar` | `40px` | User expects same height as inputs |
+| **Buttons** | `40px` OR `48px` | Only elements with size options |
+| Small buttons | `40px` | Matches form elements |
+| Large buttons | `48px` | More prominent CTAs |
+| **Variable Height** | As needed | Content-dependent |
+| `textarea`, `card`, `dialog` | Variable | Content determines height |
+
+### **🔧 Implementation Workflow**
+
+#### **1. Adding New Components**
+```tsx
+// ❌ DON'T: Individual styling
+<input className="h-10 rounded-xl border-gray-300 px-3" />
+
+// ✅ DO: Use universal class
+<input className="luvbox-form-base" />
+```
+
+#### **2. Making Global Changes**
+```css
+/* Change ALL form elements at once */
+:root {
+  --form-height: 44px; /* Changed from 40px */
+}
+/* Every form element updates automatically! */
+```
+
+#### **3. Testing Component Consistency**
+**Location**: Settings → Component Showcase  
+**Purpose**: Visual testing ground for ALL components  
+**Use**: Verify height consistency, focus states, styling  
+
+### **🚨 CRITICAL RULES**
+
+#### **Component Styling Priority Order:**
+1. **LuvBox CSS Design Tokens** (highest priority)
+2. **LuvBox Universal Classes** 
+3. **Component-specific classes** (if needed)
+4. **shadcn/ui defaults** (lowest priority - must be overridden)
+
+#### **Height Consistency Rules:**
+- **ALL form elements**: Must be 40px (`--form-height`)
+- **ALL interactive elements**: Must be 40px (`--interactive-height`) 
+- **Buttons only**: Can be 40px OR 48px (`--button-height-*`)
+- **Variable elements**: `textarea`, `card`, `dialog` can vary
+
+#### **Before Every Component Update:**
+- [ ] Does it use CSS design tokens instead of hardcoded values?
+- [ ] Does it follow the height standards above?
+- [ ] Have I tested it in the Component Showcase?
+- [ ] Will this change affect other components?
+
+### **📱 Component Showcase Page**
+
+**Access**: Settings → Component Showcase  
+**Purpose**: Visual testing and design token validation  
+
+**Features**:
+- Live preview of ALL form elements at 40px height
+- Focus state testing across components  
+- Real-time design token display
+- Interactive examples for consistency testing
+
+**Use Cases**:
+- Test global design token changes
+- Verify new component consistency
+- Debug styling inconsistencies
+- Demo design system to stakeholders
+
+### **🎨 Design Token Updates**
+
+**When to Update Design Tokens:**
+- User reports height inconsistencies
+- Adding new component categories  
+- Major design system changes
+- Brand guideline updates
+
+**How to Update:**
+1. **Update tokens** in `/src/styles/colors.css`
+2. **Test changes** in Component Showcase  
+3. **Verify consistency** across all affected components
+4. **Update handbook** if new patterns emerge
+
+**Example Global Update:**
+```css
+/* Update all form heights globally */
+:root {
+  --form-height: 42px;        /* Changed from 40px */
+  --interactive-height: 42px; /* Keep consistent */
+  --button-height-small: 42px; /* Keep consistent */
+}
+/* All 60+ form elements update automatically! */
+```
+
+---
+
+## �🎨 Color System Standards
 
 ### 🚨 CRITICAL: NO HARDCODED COLORS ALLOWED
 **ANY hardcoded color is a VIOLATION of LuvBox standards:**

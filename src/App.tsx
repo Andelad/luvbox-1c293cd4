@@ -25,6 +25,7 @@ const CommunityPage = lazy(() => import('./app/pages/CommunityPage'));
 const TutorialPage = lazy(() => import('./app/pages/TutorialPage'));
 const SettingsPage = lazy(() => import('./app/pages/SettingsPage'));
 const FeedbackPage = lazy(() => import('./app/pages/FeedbackPage'));
+const DataDisplayPage = lazy(() => import('./app/pages/DataDisplayPage'));
 
 // Import QuestionnairePage directly to avoid dynamic import issues
 import QuestionnairePage from './app/pages/QuestionnairePage';
@@ -143,7 +144,10 @@ export default function App() {
   // Listen for settings menu changes
   useEffect(() => {
     const handleSettingsMenuChange = (event: CustomEvent) => {
-      setSettingsActiveMenuItem(event.detail);
+      const menuItem = event.detail;
+
+      // Handle all settings menu items by setting the active menu item
+      setSettingsActiveMenuItem(menuItem);
     };
 
     window.addEventListener('settingsMenuChange', handleSettingsMenuChange as EventListener);
@@ -236,6 +240,77 @@ export default function App() {
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M2 3h12v2H8.5v8H6.5V5H2V3z" fill="currentColor" />
                   <path d="M10 8h4v1.5h-1.5V14H11V9.5h-1V8z" fill="currentColor" />
+                </svg>
+              )
+            },
+            {
+              id: 'component-showcase', label: 'Component Showcase', icon: (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <rect x="1" y="1" width="6" height="4" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <rect x="9" y="1" width="6" height="4" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <rect x="1" y="7" width="6" height="4" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <rect x="9" y="7" width="6" height="4" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <circle cx="4" cy="13.5" r="1" fill="currentColor" />
+                  <circle cx="12" cy="13.5" r="1" fill="currentColor" />
+                </svg>
+              )
+            },
+            {
+              id: 'form-elements', label: 'Form Elements', icon: (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <rect x="2" y="3" width="12" height="2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <rect x="2" y="7" width="8" height="2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <rect x="2" y="11" width="10" height="2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              )
+            },
+            {
+              id: 'interactive-elements', label: 'Interactive Elements', icon: (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <rect x="2" y="3" width="5" height="2" rx="1" fill="currentColor" />
+                  <rect x="9" y="3" width="5" height="2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <circle cx="4" cy="8" r="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <rect x="8" y="6" width="6" height="4" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <circle cx="11" cy="8" r="1" fill="currentColor" />
+                </svg>
+              )
+            },
+            {
+              id: 'data-display', label: 'Data Display', icon: (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <rect x="2" y="2" width="5" height="3" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <rect x="9" y="2" width="5" height="3" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <rect x="2" y="7" width="12" height="3" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <circle cx="4" cy="13" r="1" fill="currentColor" />
+                  <circle cx="8" cy="13" r="1" fill="currentColor" />
+                  <circle cx="12" cy="13" r="1" fill="currentColor" />
+                </svg>
+              )
+            },
+            {
+              id: 'navigation-elements', label: 'Navigation Elements', icon: (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 3h4v1H2V3zM8 3h6v1H8V3zM2 7h6v1H2V7zM10 7h4v1h-4V7zM2 11h3v1H2v-1zM7 11h7v1H7v-1z" fill="currentColor" />
+                  <path d="M14 5l-3-2v1H6v2h5v1l3-2z" fill="currentColor" />
+                </svg>
+              )
+            },
+            {
+              id: 'feedback-elements', label: 'Feedback Elements', icon: (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <rect x="2" y="4" width="12" height="8" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M6 7h4M6 9h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <circle cx="12" cy="2" r="2" fill="currentColor" />
+                  <path d="M4 12l-2 2v-2h2z" fill="currentColor" />
+                </svg>
+              )
+            },
+            {
+              id: 'layout-elements', label: 'Layout Elements', icon: (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M1 5h14M5 1v14" stroke="currentColor" strokeWidth="1.5" />
+                  <circle cx="8" cy="8" r="1" fill="currentColor" />
                 </svg>
               )
             }

@@ -181,6 +181,199 @@
   align-items: center;
   justify-content: center;
 }
+/* ========================================
+   LUVBOX UNIVERSAL COMPONENT SYSTEM
+   Consistent styling across all form elements
+ ======================================== */
+
+/* Universal Form Element Base */
+.luvbox-form-base {
+  height: var(--form-height);
+  border-radius: var(--form-radius);
+  padding: var(--form-padding-y) var(--form-padding-x);
+  border: 1px solid var(--form-border);
+  background-color: var(--form-bg);
+  color: var(--form-text);
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+.luvbox-form-base::placeholder {
+  color: var(--form-placeholder);
+}
+
+.luvbox-form-base:focus,
+.luvbox-form-base:focus-visible {
+  outline: none;
+  border-color: var(--form-border-focus);
+  box-shadow: 0 0 0 var(--focus-ring-width) rgba(from var(--focus-ring-color) r g b / var(--focus-ring-opacity));
+}
+
+.luvbox-form-base:disabled {
+  background-color: var(--lb-black-50);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Universal Select/Dropdown Styling */
+.luvbox-select-trigger {
+  height: var(--form-height);
+  border-radius: var(--form-radius);
+  padding: var(--form-padding-y) var(--form-padding-x);
+  border: 1px solid var(--form-border);
+  background-color: var(--form-bg);
+  color: var(--form-text);
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.luvbox-select-trigger:focus,
+.luvbox-select-trigger:focus-visible,
+.luvbox-select-trigger[data-state="open"] {
+  outline: none;
+  border-color: var(--form-border-focus);
+  box-shadow: 0 0 0 var(--focus-ring-width) rgba(from var(--focus-ring-color) r g b / var(--focus-ring-opacity));
+}
+
+.luvbox-select-content {
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--form-radius);
+  box-shadow: var(--dropdown-shadow);
+  overflow: hidden;
+  /* Prevent scroll bar jumping */
+  scrollbar-gutter: stable;
+}
+
+.luvbox-select-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  color: var(--form-text);
+}
+
+.luvbox-select-item:hover,
+.luvbox-select-item:focus {
+  background-color: var(--dropdown-item-hover);
+  outline: none;
+}
+
+/* Universal Button Styling */
+.luvbox-button-base {
+  border-radius: var(--button-radius);
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+.luvbox-button-small {
+  height: var(--button-height-small);
+  padding: 0 1rem;
+  font-size: 0.875rem;
+}
+
+.luvbox-button-large {
+  height: var(--button-height-large);
+  padding: 0 1.5rem;
+  font-size: 1.125rem;
+}
+
+.luvbox-button-primary {
+  background-color: var(--success-green-300);
+  color: var(--lb-black-900);
+}
+
+.luvbox-button-primary:hover {
+  background-color: var(--success-green-400);
+}
+
+.luvbox-button-primary:focus-visible {
+  box-shadow: 0 0 0 var(--focus-ring-width) rgba(from var(--success-green-400) r g b / var(--focus-ring-opacity));
+}
+
+.luvbox-button-secondary {
+  background-color: transparent;
+  color: var(--lb-black-700);
+  border: 1px solid var(--lb-black-300);
+}
+
+.luvbox-button-secondary:hover {
+  background-color: var(--lb-black-50);
+  color: var(--lb-black-900);
+  border-color: var(--lb-black-400);
+}
+
+.luvbox-button-secondary:focus-visible {
+  box-shadow: 0 0 0 var(--focus-ring-width) rgba(from var(--lb-black-400) r g b / var(--focus-ring-opacity));
+}
+
+/* Universal Interactive Element Styling */
+.luvbox-interactive-base {
+  height: var(--interactive-height);
+  border-radius: var(--interactive-radius);
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+.luvbox-interactive-base:focus-visible {
+  box-shadow: 0 0 0 var(--focus-ring-width) rgba(from var(--focus-ring-color) r g b / var(--focus-ring-opacity));
+}
+
+/* Universal Card/Container Styling */
+.luvbox-card-base {
+  border-radius: var(--card-radius);
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+
+/* Universal Dialog/Modal Styling */
+.luvbox-dialog-base {
+  border-radius: var(--dialog-radius);
+  border: 1px solid var(--dialog-border);
+  background-color: var(--dialog-bg);
+  box-shadow: var(--dialog-shadow);
+}
+
+.luvbox-dialog-overlay {
+  background-color: var(--dialog-overlay);
+}
+
+/* Universal Dropdown/Menu Styling */
+.luvbox-dropdown-base {
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--form-radius);
+  box-shadow: var(--dropdown-shadow);
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+.luvbox-dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  color: var(--form-text);
+}
+
+.luvbox-dropdown-item:hover,
+.luvbox-dropdown-item:focus {
+  background-color: var(--dropdown-item-hover);
+  outline: none;
+}
+
 /* Form Components - Updated to align with LuvBox Button System */
 .form-button-primary {
   background-color: var(--success-green-500);
@@ -301,13 +494,13 @@
 /* Form Input Components - Consistent Styling */
 .form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--lb-black-200);
   border-radius: 0.75rem;
   background-color: var(--lb-black-0);
   color: var(--lb-black-900);
   font-size: 1rem;
-  min-height: 48px;
+  height: 40px;
   transition: all 0.2s ease-in-out;
 }
 
@@ -361,8 +554,8 @@
 /* Enhanced form select that works with shadcn/ui Select */
 .form-select {
   width: 100%;
-  height: 48px;
-  padding: 0.75rem 1rem;
+  height: 40px;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--lb-black-200) !important;
   border-radius: 0.75rem !important;
   background-color: var(--lb-black-0) !important;
@@ -388,13 +581,13 @@
 /* For native select elements */
 select.form-select {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--lb-black-200);
   border-radius: 0.75rem;
   background-color: var(--lb-black-0);
   color: var(--lb-black-900);
   font-size: 1rem;
-  min-height: 48px;
+  height: 40px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }

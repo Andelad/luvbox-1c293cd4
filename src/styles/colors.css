@@ -99,6 +99,57 @@
   --lb-black-900-alpha-15: color(from var(--lb-black-900) srgb r g b / 0.15);
   --lb-black-900-alpha-10: color(from var(--lb-black-900) srgb r g b / 0.1);
 
+  /* ========================================
+     LUVBOX DESIGN TOKENS
+     Central source of truth for all component dimensions and styles
+   ======================================== */
+  
+  /* Form Element Dimensions */
+  --form-height: 40px;
+  --form-radius: 12px; /* 0.75rem rounded-xl */
+  --form-padding-x: 12px; /* 0.75rem */
+  --form-padding-y: 8px; /* 0.5rem */
+  
+  /* Button Dimensions */
+  --button-height-small: 40px;
+  --button-height-large: 48px;
+  --button-radius: 12px; /* 0.75rem rounded-xl to match forms */
+  
+  /* Interactive Element Heights */
+  --interactive-height: 40px; /* tabs, toggles, menubar, etc. */
+  --interactive-radius: 12px;
+  
+  /* Focus States */
+  --focus-ring-color: var(--blue-500);
+  --focus-ring-width: 3px;
+  --focus-ring-opacity: 0.5;
+  
+  /* Form Element Colors */
+  --form-bg: var(--lb-black-0);
+  --form-border: var(--lb-black-200);
+  --form-border-focus: var(--blue-500);
+  --form-text: var(--lb-black-900);
+  --form-placeholder: var(--lb-black-400);
+  
+  /* Dropdown/Select Specific */
+  --dropdown-bg: var(--lb-black-0);
+  --dropdown-border: var(--lb-black-200);
+  --dropdown-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --dropdown-item-hover: var(--lb-black-50);
+  
+  /* Card/Container Elements */
+  --card-radius: 12px;
+  --card-border: var(--lb-black-200);
+  --card-bg: var(--lb-black-0);
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  
+  /* Dialog/Modal Elements */
+  --dialog-radius: 16px; /* Slightly larger for prominence */
+  --dialog-border: var(--lb-black-200);
+  --dialog-bg: var(--lb-black-0);
+  --dialog-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --dialog-overlay: rgba(0, 0, 0, 0.5);
+
   --lb-black-700-alpha-50: color(from var(--lb-black-700) srgb r g b / 0.5);
   --lb-black-700-alpha-40: color(from var(--lb-black-700) srgb r g b / 0.4);
   --lb-black-700-alpha-30: color(from var(--lb-black-700) srgb r g b / 0.3);

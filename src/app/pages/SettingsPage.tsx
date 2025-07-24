@@ -5,6 +5,15 @@ import { useAuth, useUser } from '@/shared/lib/storage';
 import { EqualizerArea, EqualizerScores, createEqualizerScores } from '@/shared/types/storage';
 import { useEffect, useState } from 'react';
 
+// Import component showcase sections
+import ComponentShowcaseSection from '@/app/components/ComponentShowcaseSection';
+import DataDisplaySection from '@/app/components/DataDisplaySection';
+import FeedbackElementsSection from '@/app/components/FeedbackElementsSection';
+import FormElementsSection from '@/app/components/FormElementsSection';
+import InteractiveElementsSection from '@/app/components/InteractiveElementsSection';
+import LayoutElementsSection from '@/app/components/LayoutElementsSection';
+import NavigationElementsSection from '@/app/components/NavigationElementsSection';
+
 const SettingsPage: React.FC = () => {
   const content = CONTENT.pages.settings;
   const { currentUserId } = useAuth();
@@ -606,6 +615,13 @@ const SettingsPage: React.FC = () => {
       {activeSection === 'profile' && renderUserProfileSection()}
       {activeSection === 'dealbreakers' && renderDealbreakerSection()}
       {activeSection === 'typography' && renderTypographySection()}
+      {activeSection === 'component-showcase' && <ComponentShowcaseSection />}
+      {activeSection === 'form-elements' && <FormElementsSection />}
+      {activeSection === 'interactive-elements' && <InteractiveElementsSection />}
+      {activeSection === 'data-display' && <DataDisplaySection />}
+      {activeSection === 'navigation-elements' && <NavigationElementsSection />}
+      {activeSection === 'feedback-elements' && <FeedbackElementsSection />}
+      {activeSection === 'layout-elements' && <LayoutElementsSection />}
     </div>
   );
 };
