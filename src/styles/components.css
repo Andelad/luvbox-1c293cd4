@@ -53,6 +53,19 @@
   color: var(--text-color);
 }
 
+/* === LOGO COMPONENTS === */
+
+.app-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.app-header-logo:hover .app-header-logo-text {
+  opacity: 0.8;
+}
+
 /* === LUVBOX SPECIAL BUTTONS === */
 
 /* ========================================

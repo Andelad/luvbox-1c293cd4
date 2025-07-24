@@ -265,19 +265,6 @@
   height: 48px;
 }
 
-.app-header-logo-text {
-  font-family: 'EB Garamond', serif;
-  font-weight: 600;
-  font-style: italic;
-  line-height: normal;
-  position: relative;
-  flex-shrink: 0;
-  color: var(--text-color);
-  font-size: 24px;
-  text-align: left;
-  white-space: nowrap;
-}
-
 .app-header-actions {
   box-sizing: border-box;
   display: flex;
@@ -495,6 +482,45 @@
   border-top: 1px solid oklch(33.74% 0.0114 17.73 / 0.4);
   inset: 0;
   pointer-events: none;
+}
+
+/* Staggered Grid Layout for Homepage */
+.staggered-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(7, minmax(120px, auto));
+  gap: 2rem;
+}
+
+.staggered-grid-extended {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(8, minmax(auto, 1fr));
+  gap: 2rem;
+}
+
+.staggered-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.staggered-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 24px 0px var(--lb-black-900-alpha-15);
+}
+
+/* Responsive adjustments for staggered grid */
+@media (max-width: 1024px) {
+  .staggered-grid,
+  .staggered-grid-extended {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, minmax(200px, auto));
+  }
+
+  .staggered-grid > *,
+  .staggered-grid-extended > * {
+    grid-row: auto !important;
+    grid-column: 1 !important;
+  }
 }
 
 /* ========================================================================== */

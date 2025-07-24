@@ -1,4 +1,3 @@
-import React from 'react';
 import { WebsiteHeaderIcons as headerSvgPaths } from './index';
 
 export function Layer1() {
@@ -60,7 +59,7 @@ export function AppHeaderLogo({ onClick }: { onClick: () => void }) {
   return (
     <button onClick={onClick} className="app-header-logo">
       <LogoFrame />
-      <div className="app-header-logo-text">
+      <div className="logo-font">
         <p>LuvMap 1.0</p>
       </div>
     </button>

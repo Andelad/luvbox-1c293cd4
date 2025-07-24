@@ -8,7 +8,7 @@ interface FeatureCardProps {
   className?: string;
 }
 
-export default function FeatureCard({ title, description, gridRow, className ="" }: FeatureCardProps) {
+export default function FeatureCard({ title, description, gridRow, className = "" }: FeatureCardProps) {
   const { elementRef, isInCenter, centerProgress } = useCenterViewport<HTMLDivElement>();
 
   // Calculate dynamic background opacity based on center proximity
@@ -26,10 +26,10 @@ export default function FeatureCard({ title, description, gridRow, className =""
       }}
     >
       <div className="space-y-6">
-        <h3 className="text-web-heading text-[var(--lb-black-800)]">
+        <h3 className="text-web-heading-2">
           {title}
         </h3>
-        <p className="text-web-body text-[var(--lb-black-800)]">
+        <p className="text-web-body">
           {description}
         </p>
       </div>

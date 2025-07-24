@@ -8,11 +8,9 @@ function TickerItem({ text, index }: { text: string; index: number }) {
     <div className="relative mb-3">
       {/* Main speech bubble container */}
       <div className="bg-[var(--success-green-100)] box-border content-stretch flex flex-row gap-2.5 items-center justify-center px-4 py-2 rounded-lg shrink-0 ticker-bubble">
-        <div className="text-web-mono text-[var(--lb-black-800)] italic tracking-[-0.02em] text-nowrap">
-          <p className="block whitespace-pre">
-"{text}"
-          </p>
-        </div>
+        <span className="text-web-mono tracking-[-0.02em] text-nowrap">
+          "{text}"
+        </span>
       </div>
 
       {/* Speech bubble triangle tail using SVG for better visibility */}

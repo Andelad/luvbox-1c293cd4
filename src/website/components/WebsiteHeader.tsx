@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import svgPaths from"@/assets/icons/WebsiteHeaderIcons";
+import svgPaths from "@/assets/icons/WebsiteHeaderIcons";
 import { AnimatedSection } from '@/shared/components';
+import { useEffect, useState } from 'react';
 
 interface WebsiteHeaderProps {
   onNavigate: (page: string) => void;
@@ -72,7 +72,7 @@ function Frame33({ onNavigate }: { onNavigate: (page: string) => void }) {
     <div className="basis-0 box-border content-stretch flex flex-row grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
       <button onClick={() => onNavigate('home')} className="flex items-center gap-2">
         <LogoFrame />
-        <div className="text-app-brand relative shrink-0 text-left text-nowrap" style={{ color: 'var(--text-color)', fontSize: '24px' }}>
+        <div className="logo-font relative shrink-0 text-left text-nowrap">
           <p className="block leading-[normal] whitespace-pre">LuvMap 1.0</p>
         </div>
       </button>
