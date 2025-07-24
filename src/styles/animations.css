@@ -1,0 +1,112 @@
+/* Animations, Transitions, and Motion Design */
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float-cube {
+  0% { transform: translateY(0px) translateX(-50%); }
+  50% { transform: translateY(-8px) translateX(-50%); }
+  100% { transform: translateY(0px) translateX(-50%); }
+}
+
+@keyframes float-simple {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes float-community {
+  0% { transform: translateY(0px) rotate(-15deg); }
+  50% { transform: translateY(-10px) rotate(-15deg); }
+  100% { transform: translateY(0px) rotate(-15deg); }
+}
+
+/* ============================================
+   ANIMATION UTILITY CLASSES
+   ============================================ */
+
+.animate-float-cube {
+  animation: float-cube 3s ease-in-out infinite;
+}
+
+.animate-float-simple {
+  animation: float-simple 2.5s ease-in-out infinite;
+}
+
+.animate-float-community {
+  animation: float-community 3.5s ease-in-out infinite;
+}
+
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+
+.page-transition {
+  transition: opacity 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+  
+  /* Disable all animations for users who prefer reduced motion */
+  .animate-float-cube,
+  .animate-float-simple,
+  .animate-float-community {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   COMPONENT-SPECIFIC TRANSITIONS
+   ============================================ */
+
+/* LuvMap Button Transitions */
+.luvmap-button-transition {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.luvmap-button-transition-fast {
+  transition: all 0.1s ease;
+}
+
+.luvmap-button-pseudo-transition {
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Sidebar Button Transitions */
+.sidebar-button-transition {
+  transition: background-color 0.2s ease;
+}
+
+/* Form Button Transitions */
+.form-button-transition {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Cube 3D Transitions */
+.cube-transition {
+  transition: transform 0.6s;
+}
+
+.cube-transition-fast {
+  transition: transform 0.1s;
+}

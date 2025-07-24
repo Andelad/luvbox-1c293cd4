@@ -10,7 +10,14 @@ interface ExitAppDialogProps {
 export default function ExitAppDialog({ isOpen, onExit, onStay }: ExitAppDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onStay}>
-      <DialogContent className="sm:max-w-[600px] p-8">
+      <DialogContent
+        className="max-w-md"
+        style={{
+          backgroundColor: 'var(--lb-black-0)',
+          borderColor: 'var(--lb-black-200)',
+          color: 'var(--lb-black-900)',
+        }}
+      >
         <DialogHeader className="space-y-4">
           <DialogTitle className="text-[var(--lb-black-900)] text-2xl font-semibold text-center">Return to Website?</DialogTitle>
           <DialogDescription className="text-[var(--lb-black-600)] text-lg leading-relaxed text-center">
@@ -27,7 +34,7 @@ export default function ExitAppDialog({ isOpen, onExit, onStay }: ExitAppDialogP
           </Button>
           <Button
             onClick={onExit}
-            className="bg-[var(--purple-300)] text-[var(--lb-black-900)] hover:bg-[var(--purple-400)] text-lg font-semibold min-h-[48px] px-8 py-4"
+            className="bg-purple-300 text-purple-900 hover:bg-purple-400 text-lg font-semibold min-h-[48px] px-8 py-4"
           >
             Exit to Website
           </Button>

@@ -1,0 +1,128 @@
+/* LuvBox Color System - OKLCH Color Palette */
+
+:root {
+  /* LuvBox Color Palette */
+  /* Lime */
+  --lime-900: oklch(21.75% 0.064 147);
+  --lime-800: oklch(30.23% 0.064 149.82);
+  --lime-700: oklch(38.71% 0.062 149.71);
+  --lime-600: oklch(47.25% 0.06 149.58);
+  --lime-500: oklch(55.81% 0.056 149.47);
+  --lime-400: oklch(64.43% 0.054 149.35);
+  --lime-300: oklch(73.09% 0.052 149.24);
+  --lime-200: oklch(81.82% 0.05 149.13);
+  --lime-100: oklch(90.61% 0.048 149.02);
+  --lime-50: oklch(97.05% 0.0481 148.92);
+
+  /* Blue */
+  --blue-900: oklch(22.44% 0.021 216.51);
+  --blue-800: oklch(31.34% 0.03 216.51);
+  --blue-700: oklch(39.7% 0.037 216.51);
+  --blue-600: oklch(48.33% 0.046 216.51);
+  --blue-500: oklch(56.99% 0.053 216.51);
+  --blue-400: oklch(65.56% 0.062 216.51);
+  --blue-300: oklch(74.53% 0.07 216.51);
+  --blue-200: oklch(86.26% 0.0519 216.51);
+  --blue-100: oklch(91.36% 0.029 216.51);
+  --blue-50: oklch(95.76% 0.012 216.51);
+
+  /* Pink */
+  --pink-900: oklch(22.71% 0.0582 52.29);
+  --pink-800: oklch(31.48% 0.0691 41.48);
+  --pink-700: oklch(40.18% 0.0833 41.77);
+  --pink-600: oklch(48.84% 0.0918 42.16);
+  --pink-500: oklch(57.46% 0.0955 42.5);
+  --pink-400: oklch(66.06% 0.0943 42.77);
+  --pink-300: oklch(74.62% 0.0865 42.97);
+  --pink-200: oklch(83.14% 0.0707 43.07);
+  --pink-100: oklch(92% 0.0435 43.03);
+  --pink-50: oklch(95.79% 0.0193 42.91);
+
+  /* Purple */
+  --purple-900: oklch(23% 0.046 287);
+  --purple-800: oklch(31.96% 0.07 286.6);
+  --purple-700: oklch(40.88% 0.086 286.2);
+  --purple-600: oklch(49.77% 0.098 285.8);
+  --purple-500: oklch(58.36% 0.1 285.3);
+  --purple-400: oklch(66.6% 0.096 284.8);
+  --purple-300: oklch(74.89% 0.086 284.3);
+  --purple-200: oklch(79.31% 0.072 283.75);
+  --purple-100: oklch(91.57% 0.042 284.9);
+  --purple-50: oklch(95.77% 0.01 287.43);
+
+  /* LB Black */
+  --lb-black-900: oklch(22.47% 0.0067 17.75);
+  --lb-black-800: oklch(33.74% 0.0114 17.73);
+  --lb-black-700: oklch(39.78% 0.0134 17.73);
+  --lb-black-600: oklch(48.42% 0.0163 17.73);
+  --lb-black-500: oklch(57.07% 0.0192 17.73);
+  --lb-black-400: oklch(65.67% 0.0175 17.76);
+  --lb-black-300: oklch(74.24% 0.012 17.81);
+  --lb-black-200: oklch(82.82% 0.0073 17.84);
+  --lb-black-100: oklch(91.41% 0.0029 17.86);
+  --lb-black-50: oklch(95.7% 0.0012 17.87);
+  --lb-black-0: oklch(100% 0 0);
+
+  /* Success Green */
+  --success-green-900: oklch(22.22% 0.0191 131.5);
+  --success-green-800: oklch(30.65% 0.0392 132.87);
+  --success-green-700: oklch(39.13% 0.054 133.08);
+  --success-green-600: oklch(47.64% 0.0659 133.09);
+  --success-green-500: oklch(56.14% 0.0776 133.09);
+  --success-green-400: oklch(64.65% 0.0893 133.08);
+  --success-green-300: oklch(76.09% 0.1051 133.08);
+  --success-green-200: oklch(81.7% 0.1095 133);
+  --success-green-100: oklch(90.36% 0.1043 132.61);
+  --success-green-50: oklch(95.26% 0.0417 131.16);
+
+  /* Caution Red */
+  --caution-red-900: oklch(22.4% 0.065 17);
+  --caution-red-800: oklch(31.19% 0.091 17);
+  --caution-red-700: oklch(39.62% 0.116 17);
+  --caution-red-600: oklch(48.23% 0.141 16.5);
+  --caution-red-500: oklch(56.91% 0.1663 16);
+  --caution-red-400: oklch(65.44% 0.173 15.5);
+  --caution-red-300: oklch(74.43% 0.115 15.5);
+  --caution-red-200: oklch(82.32% 0.069 15.5);
+  --caution-red-100: oklch(91.31% 0.027 16);
+  --caution-red-50: oklch(95.74% 0.011 17);
+
+  /* Transparency Variants using color() function */
+  /* LB Black transparency variants */
+  --lb-black-900-alpha-95: color(from var(--lb-black-900) srgb r g b / 0.95);
+  --lb-black-900-alpha-50: color(from var(--lb-black-900) srgb r g b / 0.5);
+  --lb-black-900-alpha-40: color(from var(--lb-black-900) srgb r g b / 0.4);
+  --lb-black-900-alpha-35: color(from var(--lb-black-900) srgb r g b / 0.35);
+  --lb-black-900-alpha-30: color(from var(--lb-black-900) srgb r g b / 0.3);
+  --lb-black-900-alpha-25: color(from var(--lb-black-900) srgb r g b / 0.25);
+  --lb-black-900-alpha-20: color(from var(--lb-black-900) srgb r g b / 0.2);
+  --lb-black-900-alpha-15: color(from var(--lb-black-900) srgb r g b / 0.15);
+  --lb-black-900-alpha-10: color(from var(--lb-black-900) srgb r g b / 0.1);
+
+  --lb-black-700-alpha-50: color(from var(--lb-black-700) srgb r g b / 0.5);
+  --lb-black-700-alpha-40: color(from var(--lb-black-700) srgb r g b / 0.4);
+  --lb-black-700-alpha-30: color(from var(--lb-black-700) srgb r g b / 0.3);
+
+  --lb-black-0-alpha-40: color(from var(--lb-black-0) srgb r g b / 0.4);
+  --lb-black-0-alpha-10: color(from var(--lb-black-0) srgb r g b / 0.1);
+  --lb-black-0-alpha-15: color(from var(--lb-black-0) srgb r g b / 0.15);
+
+  /* Purple transparency variants */
+  --purple-200-alpha-40: color(from var(--purple-200) srgb r g b / 0.4);
+  --purple-200-alpha-20: color(from var(--purple-200) srgb r g b / 0.2);
+  --purple-300-alpha-12: color(from var(--purple-300) srgb r g b / 0.12);
+
+  /* Pink transparency variants */
+  --pink-200-alpha-12: color(from var(--pink-200) srgb r g b / 0.12);
+
+  /* Blue transparency variants */
+  --blue-200-alpha-20: color(from var(--blue-200) srgb r g b / 0.2);
+
+  /* Semantic Color Mappings for Tailwind compatibility */
+  --background: var(--lb-black-0);
+  --foreground: var(--lb-black-900);
+  --border: var(--lb-black-200);
+  --text-color: var(--lb-black-800);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}

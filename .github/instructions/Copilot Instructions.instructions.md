@@ -25,7 +25,7 @@ Always check the developers handbook for established patterns, conventions, and 
 For faster navigation to frequently accessed files:
 
 • **Content Management**: `/src/content/index.ts` - All text content, titles, labels
-• **CSS Variables**: `/src/styles/globals.css` - Color system and design tokens  
+• **CSS Variables**: `/src/styles/colors.css` - Color system and design tokens  
 • **Animation Components**: `/src/shared/components/AnimatedSection.tsx` - Standard animations
 • **Page Components**: `/src/app/pages/` (app) and `/src/website/pages/` (website)
 • **Layout Components**: `/src/website/layout/WebsiteLayout.tsx` - Website structure

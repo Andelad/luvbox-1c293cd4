@@ -39,6 +39,24 @@ export default {
 				'web-2xl': ['var(--web-text-2xl)', { lineHeight: 'var(--web-leading-2xl)' }],
 				'web-3xl': ['var(--web-text-3xl)', { lineHeight: 'var(--web-leading-3xl)' }],
 				'web-4xl': ['var(--web-text-4xl)', { lineHeight: 'var(--web-leading-4xl)' }],
+
+				// Monospace Typography Scale (90% of equivalent sans-serif sizes)
+				'app-mono-xs': ['var(--app-mono-xs)', { lineHeight: 'var(--app-leading-xs)' }],
+				'app-mono-sm': ['var(--app-mono-sm)', { lineHeight: 'var(--app-leading-sm)' }],
+				'app-mono-base': ['var(--app-mono-base)', { lineHeight: 'var(--app-leading-base)' }],
+				'app-mono-lg': ['var(--app-mono-lg)', { lineHeight: 'var(--app-leading-lg)' }],
+				'app-mono-xl': ['var(--app-mono-xl)', { lineHeight: 'var(--app-leading-xl)' }],
+				'app-mono-2xl': ['var(--app-mono-2xl)', { lineHeight: 'var(--app-leading-2xl)' }],
+				'app-mono-3xl': ['var(--app-mono-3xl)', { lineHeight: 'var(--app-leading-3xl)' }],
+
+				'web-mono-xs': ['var(--web-mono-xs)', { lineHeight: 'var(--web-leading-xs)' }],
+				'web-mono-sm': ['var(--web-mono-sm)', { lineHeight: 'var(--web-leading-sm)' }],
+				'web-mono-base': ['var(--web-mono-base)', { lineHeight: 'var(--web-leading-base)' }],
+				'web-mono-lg': ['var(--web-mono-lg)', { lineHeight: 'var(--web-leading-lg)' }],
+				'web-mono-xl': ['var(--web-mono-xl)', { lineHeight: 'var(--web-leading-xl)' }],
+				'web-mono-2xl': ['var(--web-mono-2xl)', { lineHeight: 'var(--web-leading-2xl)' }],
+				'web-mono-3xl': ['var(--web-mono-3xl)', { lineHeight: 'var(--web-leading-3xl)' }],
+				'web-mono-4xl': ['var(--web-mono-4xl)', { lineHeight: 'var(--web-leading-4xl)' }],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

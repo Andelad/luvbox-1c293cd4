@@ -281,9 +281,9 @@ const InteractiveQualityFace: React.FC<InteractiveQualityFaceProps> = ({
                             stroke="#fff"
                             strokeWidth="0.8"
                             filter="drop-shadow(0px 1px 1px rgba(0,0,0,0.3))"
-                            style={{ cursor: isInteractive ? 'pointer' : 'default' }}
+                            style={{ cursor: isInteractive ? 'grab' : 'default' }}
                             onMouseDown={handleDotMouseDown(index)}
-                            className={activeDot === index ? 'active-dot' : ''}
+                            className={`${activeDot === index ? 'active-dot' : ''} ${isInteractive ? 'interactive-dot' : ''}`}
                         />
                     ))}
                 </svg>

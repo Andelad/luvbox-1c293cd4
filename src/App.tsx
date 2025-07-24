@@ -225,6 +225,14 @@ export default function App() {
                   <rect x="14" y="3" width="2" height="10" fill="currentColor" />
                 </svg>
               )
+            },
+            {
+              id: 'typography', label: 'Typography Styles', icon: (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 3h12v2H8.5v8H6.5V5H2V3z" fill="currentColor" />
+                  <path d="M10 8h4v1.5h-1.5V14H11V9.5h-1V8z" fill="currentColor" />
+                </svg>
+              )
             }
           ],
           defaultOpen: true

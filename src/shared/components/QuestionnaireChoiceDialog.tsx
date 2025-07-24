@@ -24,7 +24,9 @@ export default function QuestionnaireChoiceDialog({
 }: QuestionnaireChoiceDialogProps) {
     return (
         <AlertDialog open={isOpen}>
-            <AlertDialogContent className="sm:max-w-[700px] !animate-none !duration-0 !transition-none p-8">
+            <AlertDialogContent
+                className="sm:max-w-[700px] p-8 questionnaire-choice-dialog"
+            >
                 <AlertDialogHeader className="space-y-6">
                     <AlertDialogTitle
                         className="text-2xl font-semibold text-center"

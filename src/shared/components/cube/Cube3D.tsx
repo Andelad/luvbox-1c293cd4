@@ -9,6 +9,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
   const [rotation, setRotation] = useState({ x: -30, y: 45 });
   const [personName, setPersonName] = useState('');
   const [dateOfReading, setDateOfReading] = useState('');
+  const [isStarted, setIsStarted] = useState(false);
 
   // Drag state
   const [isDragging, setIsDragging] = useState(false);
@@ -29,10 +30,11 @@ const Cube3D: React.FC<Cube3DProps> = () => {
   };
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (isStarted) return;
     setIsDragging(true);
     setLastMousePos({ x: e.clientX, y: e.clientY });
     e.preventDefault();
-  }, []);
+  }, [isStarted]);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!isDragging) return;
@@ -70,8 +72,27 @@ const Cube3D: React.FC<Cube3DProps> = () => {
   }, [isDragging, handleMouseMove, handleMouseUp]);
 
   const handleStartNow = () => {
-    console.log('Starting with:', { personName, dateOfReading });
-    // Add your logic here for what happens when "Start Now" is clicked
+    if (personName && dateOfReading) {
+      setIsStarted(true);
+      // Rotate to show the Quality face, which is on the left (rotated -90deg)
+      setRotation({ x: 0, y: 90 });
+    } else {
+      alert('Please provide a name and date to start.');
+    }
+  };
+
+  const showFace = (face: 'purpose' | 'quality' | 'time') => {
+    switch (face) {
+      case 'purpose':
+        setRotation({ x: -90, y: 0 });
+        break;
+      case 'quality':
+        setRotation({ x: 0, y: 90 });
+        break;
+      case 'time':
+        setRotation({ x: 0, y: 0 });
+        break;
+    }
   };
 
   return (
@@ -85,12 +106,14 @@ const Cube3D: React.FC<Cube3DProps> = () => {
             width: '160px',
             height: '160px',
             perspective: '1000px',
-            perspectiveOrigin: '50% 50%'
+            perspectiveOrigin: '50% 50%',
+            transform: isStarted ? 'scale(1.5)' : 'scale(1)',
+            transition: 'transform 0.5s ease-in-out',
           }}
           onMouseDown={handleMouseDown}
         >
           <div
-            className="relative preserve-3d transition-transform duration-100 ease-out"
+            className="relative preserve-3d transition-transform duration-500 ease-in-out"
             style={{
               width: '160px',
               height: '160px',
@@ -109,7 +132,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'translateZ(80px)'
               }}
             >
-              <InteractiveTimeFace />
+              <InteractiveTimeFace isInteractive={isStarted} />
             </div>
 
             {/* Face 2: rotateY(-90deg) translateZ(80px) - Left Face - InteractiveQualityFace */}
@@ -121,7 +144,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(-90deg) translateZ(80px)'
               }}
             >
-              <InteractiveQualityFace />
+              <InteractiveQualityFace isInteractive={isStarted} />
             </div>
 
             {/* Face 3: rotateY(90deg) translateZ(80px) - Right Face - InteractiveTimeFace */}
@@ -133,7 +156,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateY(90deg) translateZ(80px)'
               }}
             >
-              <InteractiveTimeFace />
+              <InteractiveTimeFace isInteractive={isStarted} />
             </div>
 
             {/* Face 4: rotateX(90deg) translateZ(80px) - Top Face - InteractivePurposeFace */}
@@ -145,7 +168,7 @@ const Cube3D: React.FC<Cube3DProps> = () => {
                 transform: 'rotateX(90deg) translateZ(80px)'
               }}
             >
-              <InteractivePurposeFace />
+              <InteractivePurposeFace isInteractive={isStarted} />
             </div>
 
             {/* Bottom Face (hidden) */}
@@ -163,36 +186,48 @@ const Cube3D: React.FC<Cube3DProps> = () => {
 
       </div>
 
-      {/* Title */}
-      <h1 className="text-4xl mb-8 text-center luvbox-brand">
-        Take a snapshot of a relationship past or present
-      </h1>
+      {isStarted && (
+        <div className="flex justify-center space-x-4 my-4">
+          <Button onClick={() => showFace('purpose')}>Purpose</Button>
+          <Button onClick={() => showFace('quality')}>Qualities</Button>
+          <Button onClick={() => showFace('time')}>Time</Button>
+        </div>
+      )}
 
-      {/* Input Fields - Centered */}
-      <div className="space-y-4 w-full max-w-sm mx-auto">
-        <input
-          type="text"
-          placeholder="Name of person"
-          value={personName}
-          onChange={(e) => setPersonName(e.target.value)}
-          className="w-full py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
-        />
+      {!isStarted && (
+        <>
+          {/* Title */}
+          <h1 className="text-4xl mb-8 text-center luvbox-brand">
+            Take a snapshot of a relationship past or present
+          </h1>
 
-        <input
-          type="text"
-          placeholder="Date of reading"
-          value={dateOfReading}
-          onChange={(e) => setDateOfReading(e.target.value)}
-          className="w-full py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
-        />
-      </div>
+          {/* Input Fields - Centered */}
+          <div className="space-y-4 w-full max-w-sm mx-auto">
+            <input
+              type="text"
+              placeholder="Name of person"
+              value={personName}
+              onChange={(e) => setPersonName(e.target.value)}
+              className="w-full py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
+            />
 
-      {/* Start Button - Centered */}
-      <div className="flex justify-center mt-6">
-        <Button onClick={handleStartNow}>
-          Start Now
-        </Button>
-      </div>
+            <input
+              type="text"
+              placeholder="Date of reading"
+              value={dateOfReading}
+              onChange={(e) => setDateOfReading(e.target.value)}
+              className="w-full py-3 bg-[rgba(181,182,233,0.4)] rounded-2xl text-center text-[20px] placeholder:text-[rgba(61,53,53,0.4)] border-none outline-none"
+            />
+          </div>
+
+          {/* Start Button - Centered */}
+          <div className="flex justify-center mt-6">
+            <Button onClick={handleStartNow}>
+              Start Now
+            </Button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

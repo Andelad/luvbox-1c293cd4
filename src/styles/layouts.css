@@ -1,0 +1,500 @@
+/* Layout Components - Page structure, headers, sidebars, footers */
+
+/* ==========================================================================
+/* LAYOUT COMPONENTS
+   ========================================================================== */
+
+.content-area {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.page-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* App Layout */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-top: none;
+}
+
+.app-layout-header {
+  height: 80px;
+  width: 100%;
+  border-top: none !important;
+}
+
+.app-layout-content {
+  display: flex;
+  flex: 1;
+}
+
+.app-layout-main {
+  flex: 1;
+  margin-left: 64px;
+  position: relative;
+  transition: margin-left 0.3s ease;
+}
+
+/* Remove sidebar margin on mobile screens */
+@media (max-width: 1023px) {
+  .app-layout-main {
+    margin-left: 0;
+  }
+}
+
+.app-layout-main.sidebar-expanded {
+  margin-left: 200px;
+}
+
+/* Ensure expanded state doesn't affect mobile */
+@media (max-width: 1023px) {
+  .app-layout-main.sidebar-expanded {
+    margin-left: 0;
+  }
+}
+
+.app-content-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.app-content-container {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  gap: 0;
+  align-items: stretch;
+  justify-content: center;
+  padding: 32px 16px 72px 16px;
+  position: relative;
+  width: 100%;
+}
+
+/* Responsive padding adjustments for app content container */
+@media (max-width: 640px) {
+  .app-content-container {
+    padding: 24px 12px 72px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-content-container {
+    padding: 16px 8px 72px 8px;
+  }
+}
+
+.app-content-card {
+  flex-basis: 0;
+  background-color: var(--lb-black-0);
+  flex-grow: 1;
+  max-width: 1200px;
+  min-height: calc(100vh - 80px - 96px - 32px - 72px);
+  min-width: 1px;
+  position: relative;
+  border-radius: 24px;
+  flex-shrink: 0;
+  box-shadow: 0px 4px 12px 0px var(--lb-black-900-alpha-25);
+}
+
+.app-content-inner {
+  max-width: inherit;
+  overflow: visible;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-left: 0; /* Let PageSideMenu JavaScript handle margin dynamically */
+  transition: margin-left 0.3s ease;
+  box-sizing: border-box; /* Ensure padding doesn't add to width */
+}
+
+/* Disable transitions during page changes */
+.app-content-inner.no-transition {
+  transition: none !important;
+}
+
+/* Remove content margin on mobile screens */
+@media (max-width: 1023px) {
+  .app-content-inner {
+    margin-left: 0;
+  }
+}
+
+.app-content-padding {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: inherit;
+  padding: 24px 24px;
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* Responsive padding adjustments for app content */
+@media (max-width: 640px) {
+  .app-content-padding {
+    padding: 16px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-content-padding {
+    padding: 12px 12px;
+  }
+}
+
+.app-content-border {
+  position: absolute;
+  border: 1px solid oklch(33.74% 0.0114 17.73 / 0.4);
+  border-radius: 24px;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Website Layout */
+.website-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.website-layout-content {
+  flex: 1;
+}
+
+/* ========================================================================== */
+/* HEADER COMPONENTS
+   ========================================================================== */
+
+.app-header {
+  background: linear-gradient(to right, var(--pink-200-alpha-12), var(--purple-300-alpha-12));
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.app-header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.app-header-inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 16px 80px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: padding-left 0.3s ease;
+}
+
+/* Remove large left padding on mobile screens */
+@media (max-width: 1023px) {
+  .app-header-inner {
+    padding-left: 16px;
+  }
+}
+
+.app-header-inner.sidebar-expanded {
+  padding-left: 216px;
+  /* 200px sidebar + 16px padding */
+}
+
+/* Ensure expanded state doesn't affect mobile */
+@media (max-width: 1023px) {
+  .app-header-inner.sidebar-expanded {
+    padding-left: 16px;
+  }
+}
+
+.app-header-border {
+  position: absolute;
+  border-bottom: 1px solid var(--lb-black-900-alpha-20);
+  inset: 0;
+  pointer-events: none;
+}
+
+.app-header-logo {
+  flex-basis: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 1px;
+  min-width: 1px;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.app-header-logo-frame {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.app-header-logo-text {
+  font-family: 'EB Garamond', serif;
+  font-weight: 600;
+  font-style: italic;
+  line-height: normal;
+  position: relative;
+  flex-shrink: 0;
+  color: var(--text-color);
+  font-size: 24px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.app-header-actions {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Globe Button */
+.globe-button {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 12px;
+  position: relative;
+  border-radius: 8px;
+  flex-shrink: 0;
+  width: 48px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: none;
+  border: none;
+}
+
+.globe-button:hover {
+  background-color: var(--purple-200-alpha-20);
+}
+
+.globe-button.active {
+  background-color: var(--purple-200-alpha-40);
+}
+
+.globe-button.active svg path {
+  fill: var(--purple-400);
+}
+
+/* Mobile menu button specific styling */
+.globe-button.mobile-menu-button {
+  border: 1px solid var(--lb-black-700-alpha-30);
+  background-color: var(--success-green-100);
+}
+
+.globe-button.mobile-menu-button:hover {
+  border-color: var(--lb-black-700-alpha-50);
+  background-color: var(--success-green-200);
+}
+
+.globe-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+/* ========================================================================== */
+/* SIDEBAR COMPONENTS
+   ========================================================================== */
+
+.app-sidebar {
+  background: linear-gradient(to bottom, var(--lime-50), var(--pink-50));
+  height: 100%;
+  width: 64px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  transition: width 0.3s ease;
+}
+
+.app-sidebar.expanded {
+  width: 200px;
+}
+
+.app-sidebar-content {
+  min-height: inherit;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.app-sidebar-inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: inherit;
+  padding: 8px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.app-sidebar-border {
+  position: absolute;
+  border-right: 1px solid var(--lb-black-700-alpha-40);
+  box-shadow: 8px 8px 16px 0px var(--blue-200-alpha-20);
+  inset: 0;
+  pointer-events: none;
+}
+
+.sidebar-logo {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+  background: none;
+  border: none;
+}
+
+.sidebar-logo:hover {
+  background-color: var(--purple-200-alpha-20);
+}
+
+.sidebar-menu-section {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+/* Sidebar Separators */
+.sidebar-separator {
+  height: 0;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.sidebar-separator-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: -1px;
+}
+
+/* ========================================================================== */
+/* FOOTER COMPONENTS
+   ========================================================================== */
+
+.app-footer {
+  position: relative;
+  background-color: var(--lb-black-0-alpha-40);
+  height: 96px;
+  width: 100%;
+}
+
+.app-footer-content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
+  align-items: center;
+  justify-content: space-between;
+  line-height: normal;
+  overflow: hidden;
+  padding: 22px 24px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: var(--text-color);
+  font-size: 16px;
+  text-align: left;
+}
+
+.app-footer-content.with-sidebar {
+  padding-left: 80px;
+  /* 64px sidebar + 16px padding */
+  transition: padding-left 0.3s ease;
+}
+
+.app-footer-content.with-sidebar.sidebar-expanded {
+  padding-left: 216px;
+  /* 200px sidebar + 16px padding */
+}
+
+.app-footer-item {
+  position: relative;
+  flex-shrink: 0;
+  width: 110px;
+}
+
+.app-footer-item.wide {
+  width: 155px;
+}
+
+.app-footer-border {
+  position: absolute;
+  border-top: 1px solid oklch(33.74% 0.0114 17.73 / 0.4);
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ========================================================================== */

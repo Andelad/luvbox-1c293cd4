@@ -1,0 +1,36 @@
+/* Base Styles, Tailwind Directives, and Global Behavior */
+
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Responsive Scrollbar Management */
+  /* Desktop: Always show scrollbar to prevent content jumping */
+  @media (min-width: 1024px) {
+    html {
+      overflow-y: scroll;
+    }
+  }
+
+  /* Mobile and Tablet: Use natural overlay scrollbars to maximize viewing space */
+  @media (max-width: 1023px) {
+    html {
+      overflow-y: auto;
+    }
+    
+    /* Ensure smooth scrolling on touch devices */
+    body {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
